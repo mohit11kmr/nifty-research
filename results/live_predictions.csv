@@ -1,0 +1,4 @@
+date,close,regime,bias,strength,confidence,iv,hit,sentiment,sentiment_score,fii_cash,dii_cash
+2026-08-08,24570.65,RANGE,CALL,LOW,100.0,,,,,,
+2026-08-08 00:00:00,24570.65,RANGE,CALL,,80.0,,,BULLISH,2.0,,
+2026-08-08 00:00:00,24570.65,RANGE,CALL,,50.0,,,BULLISH,2.0,,

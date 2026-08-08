@@ -1,0 +1,10 @@
+{
+  "fii_cash_cr": 480,
+  "dii_cash_cr": 236,
+  "fii_net_short_futures": 150058,
+  "fii_regime": "Profit Lock (cash buy + futures short = hedge)",
+  "usdinr": 95.14,
+  "usdinr_zone": "range 94-96, RBI smoothing, weak but stable",
+  "geopolitical": "Iran-US/Middle East tension, crude volatile, gold/silver surging",
+  "sentiment_override": null
+}
