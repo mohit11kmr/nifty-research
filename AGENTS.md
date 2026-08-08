@@ -1,5 +1,10 @@
 # Nifty Research — Agent Memory & Instructions
 
+> **First read `OWNER_INSTRUCTIONS.md`** — it records the owner's text
+> instructions (trading philosophy, risk rules, VIX regime matrix, ML
+> honesty, live-tick source). It is the source of truth for *why* this code
+> exists; this file is the operational memory for *how* to work here.
+
 ## Purpose
 Options intelligence + backtesting toolset for NSE (Nifty 50 / Bank Nifty).
 Built around Nitin Murarkar-style OI + institutional flow logic, with a

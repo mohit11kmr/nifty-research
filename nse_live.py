@@ -55,7 +55,7 @@ def _eval_fetch(page, url):
 
 def _boot_nse(page, symbol="NIFTY"):
     """Load the option chain page once so NSE issues bot cookies + decrypt key."""
-    if time.time() - _cache["last"] > 60 or True:
+    if time.time() - _cache["last"] > 60:
         for attempt in range(3):
             try:
                 page.goto("https://www.nseindia.com/option-chain",

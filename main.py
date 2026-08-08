@@ -8,6 +8,7 @@ Commands:
 """
 import argparse
 import datetime as dt
+import glob
 import os
 import sys
 import time
@@ -106,12 +107,21 @@ def market_report():
     df = indicators.add_all_indicators(df)
 
     chain = None
-    if os.path.exists(os.path.join(DATA_DIR, "option_chain.json")):
+    # Option chain now lives in data/oi_snapshots/ (nse_live) - load latest,
+    # fall back to legacy option_chain.json.
+    snap_dir = os.path.join(DATA_DIR, "oi_snapshots")
+    snaps = sorted(glob.glob(os.path.join(snap_dir, "*.csv"))) if os.path.isdir(snap_dir) else []
+    chain_file = snaps[-1] if snaps else os.path.join(DATA_DIR, "option_chain.json")
+    if os.path.exists(chain_file):
         try:
-            chain = pd.read_json(os.path.join(DATA_DIR, "option_chain.json"))
+            chain = pd.read_csv(chain_file)
             chain = data_fetcher.compute_chain_metrics(chain)
         except Exception:  # noqa: BLE001
-            chain = None
+            try:
+                chain = pd.read_json(chain_file)
+                chain = data_fetcher.compute_chain_metrics(chain)
+            except Exception:  # noqa: BLE001
+                chain = None
 
     txt = report_mod.generate_market_report(df, chain, os.path.join(RESULT_DIR, "market_report.md"))
     print(txt)

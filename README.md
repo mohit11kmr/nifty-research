@@ -150,6 +150,30 @@ blog_post.py       Blog post + index generator
 
 ---
 
+## CLI reference (`main.py`)
+
+```
+python main.py fetch-data    download NIFTY history + option chain
+python main.py research      backtest strategy grid, write reports
+python main.py report        market snapshot report (uses latest cached chain)
+python main.py all           full pipeline
+```
+
+`main.py report` reads the most recent option-chain snapshot from
+`data/oi_snapshots/` (fallback: legacy `data/option_chain.json`) so it works
+out of the box after `python build_data.py`.
+
+---
+
+## Owner instructions
+
+`OWNER_INSTRUCTIONS.md` records the project owner's requirements and trading
+philosophy (risk rules, VIX regime matrix, ML honesty, data-pipeline rules,
+live-tick source). Read it before making changes — it defines *why* the code
+is the way it is.
+
+---
+
 ## Data cache
 
 Everything is cached in `data/` on first fetch — scripts **never re-download
