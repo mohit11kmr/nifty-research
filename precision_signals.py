@@ -125,18 +125,37 @@ def generate_precision_signal():
     except Exception as e:
         checks["institutional_layer"] = {"status": "ERROR", "error": str(e)}
 
+    # Layer 6: Super-AI Machine Learning Ensemble (XGBoost + LightGBM + Random Forest)
+    max_score = 6
+    try:
+        import super_ai_ml
+        ml_res = super_ai_ml.train_super_ai_ensemble()
+        if ml_res:
+            ml_verdict = ml_res.get("super_ai_verdict", "NEUTRAL_SIDEWAYS")
+            ml_prob = ml_res.get("ensemble_bullish_probability", 0.5)
+            if ml_verdict != "NEUTRAL_SIDEWAYS":
+                confluence_score += 1
+                checks["super_ai_ml_layer"] = {"status": "PASSED", "verdict": ml_verdict, "bullish_probability": ml_prob}
+            else:
+                checks["super_ai_ml_layer"] = {"status": "NEUTRAL", "verdict": ml_verdict, "bullish_probability": ml_prob}
+        else:
+            checks["super_ai_ml_layer"] = {"status": "NO_DATA"}
+    except Exception as e:
+        checks["super_ai_ml_layer"] = {"status": "ERROR", "error": str(e)}
+
     # Confluence Rating Logic
     confluence_pct = (confluence_score / max_score) * 100
 
-    if confluence_score >= 4 and checks.get("regime_layer", {}).get("status") == "PASSED":
+    if confluence_score >= 5 and checks.get("regime_layer", {}).get("status") == "PASSED":
         signal_grade = "A+ GRADE (SUPER PRECISE)"
         signal_action = f"HIGH_CONVICTION_{tech_bias}" if tech_bias != "NEUTRAL" else "HIGH_CONVICTION_SPREAD"
-    elif confluence_score >= 3 and checks.get("regime_layer", {}).get("status") == "PASSED":
+    elif confluence_score >= 4 and checks.get("regime_layer", {}).get("status") == "PASSED":
         signal_grade = "A GRADE (HIGH QUALITY)"
         signal_action = f"MODERATE_{tech_bias}" if tech_bias != "NEUTRAL" else "NEUTRAL_SPREAD"
     else:
         signal_grade = "NO_SIGNAL (FILTERED OUT NOISE)"
         signal_action = "STAY_OUT"
+
 
     # Exact Strikes & Risk Levels Calculation
     ce_strike = round((spot * 1.01) / 50) * 50
