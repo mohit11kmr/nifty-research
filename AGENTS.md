@@ -35,6 +35,10 @@ strategy research/backtest pipeline.
 - `data/nifty_history.csv` — Nifty 50 daily history.
 - `data/india_vix.csv` — India VIX daily history (Yahoo ^INDIAVIX, ~1yr).
   Feeds regime_filter premium side + expected move.
+- `data/research.db` — SQLite research DB built by `tick_recorder.py` during
+  market hours: tables `ticks` (per-strike CE/PE quotes: ltp/bid/ask/oi/iv/
+  volume, every stream update) and `spot` (index sampled every 60s). Grows
+  every market day -> intraday OI build-up + IV skew + spread research.
 
 ## Modules
 - `data_fetcher.py`  — NSE/Yahoo data + option chain (plain requests).
@@ -58,6 +62,11 @@ strategy research/backtest pipeline.
 - `blog_post.py`     — auto-generates dated HTML blog post from daily report +
   regime gate + AI-trading setup guide; regenerates `blog/index.html`.
 - `build_data.py`    — fetch all data once into cache.
+- `tick_recorder.py` — live research DB recorder: streams every NSE option
+  quote (same `live_feed` WebSocket) into `data/research.db` table `ticks`
+  + samples index spot (Yahoo ^NSEI 1m) into `spot` every 60s. Batch-commits
+  every ~200 rows / 5s, auto-reconnects, stops at 15:30 IST. Run every market
+  day to grow the research dataset.
 - `live_feed.py`     — live tick-by-tick via NSE official streamer WebSocket
   (`wss://streamer.nseindia.com/streams/fo/mbp?symbol=<SYM>&expiry=<DATE>`).
   Same endpoint NSE's own option-chain page uses (optionchain-stream JS).
@@ -68,6 +77,8 @@ strategy research/backtest pipeline.
 
 ## Entry points
 - `python build_data.py` — build/refresh full data cache.
+- `python tick_recorder.py NIFTY` — record whole market day into data/research.db
+  (background: PTY / `nohup`). `--seconds N` for a short test run.
 - `python daily_report.py` — combined daily report (uses cache, refreshes
   what is stale).
 - `python daily_report.py --blog` — same + auto-post to `blog/`.
@@ -89,8 +100,11 @@ strategy research/backtest pipeline.
   (`nse_live.fetch_option_chain_live`). Plain `data_fetcher` is fallback.
 - Yahoo intraday range caps: 15m/30m<=60d, 60m<=90d, daily<=730d.
 - Max pain: compute on ATM band (spot ±8%), not full strike set. Formula:
-  calls pay `max(0, K - s)`, puts pay `max(0, s - K)`, and max pain = the
-  strike with the LEAST total payout (argmin) - NOT argmax.
+  at settlement S calls pay `max(0, S - K)`, puts pay `max(0, K - S)`, and
+  max pain = the strike with the LEAST total payout to buyers (argmin) -
+  NOT argmax. NOTE: fixed in BOTH `oi_intel.pcr_and_pain` and
+  `data_fetcher.compute_chain_metrics` (main.py report path) - both had the
+  swapped-formula + argmax bug; keep them in sync.
 - Blog post = one per day: `blog_post.main()` overwrites today's post
   (`blog/posts/<date>.html`), never appends timestamped duplicates.
 - `backtester.run_backtest(mode="underlying")` for cross-TF comparison;

@@ -9,7 +9,7 @@ import pandas as pd
 from math import log, sqrt, exp, erf
 
 COST_PER_TRADE = 40.0          # brokerage + taxes per trade (approx)
-SLIPPAGE_PCT = 0.0005          # 0.05% slippage on option premium
+SLIPPAGE_PCT = 0.015           # 1.5% realistic bid-ask spread slippage on option premium
 DAYS_TO_EXPIRY = 20            # assume ~4 weeks to expiry
 TRADING_DAYS = 252
 

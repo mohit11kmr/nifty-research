@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 .playwright-mcp/
+.env
+data/research.db
+data/*.log
+*.mp3
+.DS_Store

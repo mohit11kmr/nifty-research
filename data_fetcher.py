@@ -87,7 +87,7 @@ def fetch_index_history(symbol="NIFTY 50", start=None, end=None, out_csv=None):
     symbol examples: 'NIFTY 50', 'NIFTY BANK', 'NIFTY FIN SERVICE'
     """
     if start is None:
-        start = dt.date.today() - dt.timedelta(days=365)
+        start = dt.date.today() - dt.timedelta(days=730)
     if end is None:
         end = dt.date.today()
 
@@ -198,17 +198,17 @@ def compute_chain_metrics(chain):
     if band.empty:
         band = chain
     max_pain = None
-    best = -1
+    best = None
     for _, row in band.iterrows():
-        # Option buyers lose when spot = strike => max OI pain calculation
-        loss = 0.0
-        # ATM+ITM CE buyers lose when spot < strike
+        payout = 0.0
+        # Calls pay max(0, S - K), puts pay max(0, K - S); max pain = strike
+        # with the LEAST total payout to buyers (argmin), not the most.
         for strike, oi in zip(band["strike"], band["ce_oi"].fillna(0)):
-            loss += max(0.0, strike - row["strike"]) * oi * 1.0
+            payout += max(0.0, row["strike"] - strike) * oi
         for strike, oi in zip(band["strike"], band["pe_oi"].fillna(0)):
-            loss += max(0.0, row["strike"] - strike) * oi * 1.0
-        if loss > best:
-            best = loss
+            payout += max(0.0, strike - row["strike"]) * oi
+        if best is None or payout < best:
+            best = payout
             max_pain = row["strike"]
 
     top_oi = chain.sort_values("ce_oi", ascending=False).head(5)

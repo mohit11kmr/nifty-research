@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIFTY Quant Terminal | Mohit Kumar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card-bg: #131b2e;
+            --border: #1e2a4a;
+            --accent-green: #00e676;
+            --accent-red: #ff1744;
+            --accent-blue: #29b6f6;
+            --accent-purple: #ab47bc;
+            --text: #e0e6ed;
+            --text-dim: #90a4ae;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 24px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .title { font-size: 26px; font-weight: 700; background: linear-gradient(90deg, #29b6f6, #00e676); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .badge { background: var(--border); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-family: 'JetBrains Mono', monospace; color: var(--accent-green); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); }
+        .card-title { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .card-value { font-size: 28px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+        .sub-text { font-size: 13px; color: var(--text-dim); margin-top: 6px; }
+        .tag-blocked { color: var(--accent-red); font-weight: 600; }
+        .tag-open { color: var(--accent-green); font-weight: 600; }
+        .terminal-box { background: #070a12; border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #a5d6a7; margin-top: 24px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <div class="title">⚡ NIFTY QUANT TERMINAL & CAPITAL GUARD</div>
+            <div style="color: var(--text-dim); font-size: 14px;">Broker: Angel One SmartAPI Connected ✅</div>
+        </div>
+        <div class="badge">LIVE: 11 Aug 2026 | 23:04:47 IST</div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="card-title">NIFTY 50 Index Spot</div>
+            <div class="card-value" style="color: var(--accent-blue);">24,583.80</div>
+            <div class="sub-text">Live Closing / Intraday Benchmark</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Regime Gate Filter</div>
+            <div class="card-value"><span class="tag-blocked">RANGE_LV (NO_TRADE)</span></div>
+            <div class="sub-text">❌ Low-Vol Chop: STAY OUT</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">India VIX & Premium Zone</div>
+            <div class="card-value" style="color: var(--accent-purple);">12.02</div>
+            <div class="sub-text">Zone: Normal (Defined-Risk Spreads)</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Signal Confluence Rating</div>
+            <div class="card-value" style="font-size: 20px; color: var(--accent-red);">NO_SIGNAL (FILTERED OUT NOISE)</div>
+            <div class="sub-text">5-Layer Noise Filter Evaluation</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Market Maker Gamma Flip</div>
+            <div class="card-value" style="color: var(--accent-green);">24550</div>
+            <div class="sub-text">LONG_GAMMA (STABILIZING)</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Capital Preservation Guard</div>
+            <div class="card-value" style="color: var(--accent-green);">100% SECURE</div>
+            <div class="sub-text">3% Daily Kill-Switch Active</div>
+        </div>
+    </div>
+
+    <div class="terminal-box">
+        <div>> System Status: All 14 Multi-Asset Quant Engines Operational</div>
+        <div>> SQLite Tick DB: data/research.db (WAL Mode) Active</div>
+        <div>> SmartAPI Session: Connected to NSE F&O, NSE Cash, MCX F&O</div>
+        <div>> Voice Coach: voice_coach.py Enabled</div>
+    </div>
+
+
+</body>
+</html>

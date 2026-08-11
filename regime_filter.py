@@ -183,10 +183,11 @@ def detect_regime(row, df):
     trending = adx >= 25 and abs(pdi - mdi) >= 5
     reasons = []
 
-    # volatility gauge: current Bollinger width vs recent percentile
+    # volatility gauge: current Bollinger width vs recent percentile.
+    # Normalize by close on both sides so units match (points vs points).
     high_vol = False
     try:
-        hist_width = (df["bb_upper"] - df["bb_lower"]).dropna()
+        hist_width = ((df["bb_upper"] - df["bb_lower"]) / df["close"]).dropna()
         cur_width = (bb_upper - bb_lower) / max(close, 1e-9)
         pctile = float((hist_width.values < cur_width).mean() * 100)
         high_vol = pctile >= 60

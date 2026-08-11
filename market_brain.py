@@ -64,6 +64,12 @@ def directional_consensus(df, row):
 
 def regime_strategy_bias(regime):
     """Which strategy families fit the current market state (YouTuber logic mapping)."""
+    regime_key = regime
+    if "TREND" in regime:
+        regime_key = REGIME_TRENDING
+    elif "RANGE" in regime:
+        regime_key = REGIME_RANGE
+
     mapping = {
         REGIME_TRENDING: {
             "favored": ["trend_sma", "momentum_roc", "volume_trend", "golden_cross"],
@@ -86,11 +92,14 @@ def regime_strategy_bias(regime):
             "note": "Trend forming: wait for confirmation, small size.",
         },
     }
-    return mapping[regime]
+    return mapping.get(regime_key, mapping[REGIME_RANGE])
+
 
 
 def options_layer(row):
     """Options-specific reasoning (IV regime, strike distance, risk)."""
+    if row is None:
+        row = {}
     iv = row.get("iv", 0)
     close = row.get("close", 0)
     hv = row.get("hv", 0)
@@ -114,8 +123,11 @@ def make_verdict(df, row, regime, consensus_score, total_votes, horizon_bias=0):
     2. VOLATILE regime most reliable -> weight regime stronger there.
     3. High confidence score alone is NOT predictive -> blend regime reliability.
     """
+    if row is None:
+        row = {}
     reasons = []
     regime_fit = regime_strategy_bias(regime)
+
 
     pct_score = consensus_score / total_votes if total_votes else 0
 

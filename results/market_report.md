@@ -1,6 +1,6 @@
 # NSE Market Research Report
 
-_Generated: 08 Aug 2026 16:05_
+_Generated: 10 Aug 2026 10:36_
 
 ## Market Snapshot
 - **Close:** 24,570.65  (-0.27% / -65.35)
@@ -10,7 +10,12 @@ _Generated: 08 Aug 2026 16:05_
 - **20-day return:** +1.50%  (last 20 sessions)
 
 ## Options Sentiment (live chain)
-- Chain data unavailable right now.
+- **ATM strike:** 24600
+- **Put-Call Ratio (PCR):** 0.734
+- **Max Pain:** 24600
+- **OI Support (highest PE OI):** 24000, 24600, 24500, 24200, 23500
+- **OI Resistance (highest CE OI):** 24600, 25000, 24700, 25500, 24800
+- _Interpretation: PCR>1.5 = extreme bearish (contrarian buy signal), PCR<0.7 = extreme bullish_
 
 ## Technical State
 - Price vs 50-SMA: **Uptrend**
