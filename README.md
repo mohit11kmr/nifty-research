@@ -1,23 +1,24 @@
 <div align="center">
 
-# ⚡ NIFTY Multi-Asset Quant Engine & 2026 AI Swarm Platform
+# ⚡ NIFTY Multi-Asset Quant Platform & Continuous Auto-Enhancement Engine
 
-**An Institutional-Grade, Local-First Quantitative Trading & Autonomous AI Agent System for Nifty 50, Bank Nifty, FinNifty, Equities & MCX Commodities.**
+**An Institutional-Grade, Local-First Quantitative Trading & Autonomous AI Swarm System for Nifty 50, Bank Nifty, FinNifty, Equities & MCX Commodities.**
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Market: NSE & MCX](https://img.shields.io/badge/Market-NSE%20%7C%20MCX-orange.svg)](https://www.nseindia.com/)
 [![Broker: Angel One SmartAPI](https://img.shields.io/badge/Broker-Angel%20One%20SmartAPI-green.svg)](https://smartapi.angelone.in/)
 [![AI Swarm: 2026 Active](https://img.shields.io/badge/AI%20Swarm-2026%20Active-brightgreen.svg)]()
+[![Auto-Enhancer: RL Active](https://img.shields.io/badge/Auto--Enhancer-RL%20Active-purple.svg)]()
 [![Capital Guard: 100% Secure](https://img.shields.io/badge/Capital%20Guard-100%25%20Secure-red.svg)]()
 
-[Architecture](#-system-architecture) • [AI Swarm](#-2026-autonomous-ai-trading-swarm) • [Capital Protection](#-prop-desk-capital-preservation) • [Profit Engine](#-profit-generation-engine) • [Backtest Proof](#-46-year-multi-decade-backtest-proof) • [Quick Start](#-quick-start)
+[Architecture](#-system-architecture) • [Auto-Enhancer](#-continuous-auto-enhancement-engine) • [AI Swarm](#-2026-autonomous-ai-trading-swarm) • [Capital Protection](#-prop-desk-capital-preservation) • [Profit Engine](#-profit-generation-engine) • [Backtest Proof](#-46-year-multi-decade-backtest-proof) • [Quick Start](#-quick-start)
 
 ---
 
 </div>
 
-> 🛑 **Capital Protection First**: SEBI FY26 data shows retail traders lost ₹91,685 Crore in F&O. This engine is built to protect retail capital using 3% daily kill-switches, 0DTE expiry trap blocks, and positive expected value (+EV) risk models.
+> 🛑 **Capital Protection & Self-Optimization First**: SEBI FY26 data shows retail traders lost ₹91,685 Crore in F&O. This platform uses 3% daily kill-switches, positive expected value (+EV) risk models, and a **Continuous Reinforcement-Learning Auto-Enhancer** that dynamically upgrades indicator weights and volume profile zones after every session.
 
 ---
 
@@ -32,11 +33,11 @@ flowchart TD
         A4[SQLite Tick DB data/research.db]
     end
 
-    subgraph 2026 Intelligence Engine
+    subgraph 2026 Intelligence & Auto-Enhancer
         B1[Macro Intelligence Agent]
         B2[Microstructure & LOB VPIN Agent]
         B3[Super-AI ML Ensemble XGBoost/LightGBM]
-        B4[Smart Money Concepts FVG/OB Engine]
+        B4[Reinforcement Learning Auto-Enhancer adaptive_weights.py]
     end
 
     subgraph Capital & Risk Defense
@@ -50,7 +51,7 @@ flowchart TD
         D1[6-Layer High-Precision Signals]
         D2[Hinglish Audio Voice Coach]
         D3[Live HTML Visual Terminal blog/live_terminal.html]
-        D4[Angel One SmartAPI Manual Execution]
+        D4[Angel One SmartAPI Execution]
     end
 
     A1 & A2 & A3 & A4 --> B1 & B2 & B3 & B4
@@ -60,9 +61,19 @@ flowchart TD
 
 ---
 
+## 🔄 Continuous Auto-Enhancement Engine (`auto_enhancer.py`)
+
+The platform includes an **Autonomous Reinforcement-Learning Self-Optimization Loop**:
+
+- **RL Adaptive Weights (`adaptive_weights.py`):** Uses Q-learning feedback to adjust indicator weights based on 20-bar historical accuracy. Accurate indicators get boosted weights (e.g. SuperTrend `1.25`, ML `1.30`); failing indicators get reduced weights (e.g. RSI `0.95`).
+- **Volume Profile POC & Value Area (`volume_profile.py`):** Dynamically calculates Point of Control (POC), Value Area High (VAH), and Value Area Low (VAL) to track institutional accumulation zones.
+- **Automatic Parameter Evolution:** Re-calibrates risk limits and strategy parameters after every market run, logging evolution to `data/enhancement_log.json`.
+
+---
+
 ## 🤖 2026 Autonomous AI Trading Swarm (`multi_agent_swarm.py`)
 
-In 2026, single trading scripts are replaced by **Collaborative Multi-Agent Swarms**:
+Deploys **4 Collaborative Subagent Roles**:
 
 - **🧠 Agent 1: Macro Intelligence Subagent** — Scans USD/INR, DXY, Gold, Crude Oil, and FII/DII net flows.
 - **⚡ Agent 2: Microstructure & Order Book Subagent** — Measures Limit Order Book (LOB) Imbalance & VPIN Toxicity.
@@ -100,8 +111,6 @@ Tested across **46 Years of Real Historical Market Data (1980 - 2026 | 11,747 Da
 | **BSE Sensex Benchmark** | **Daily (`1D`)** | **1997 – 2026 (29.1 Yrs)** | **66** | **`65.15%`** | **`1.98`** | **`-22.96%`** | 🟢 **ULTRA_ROBUST** |
 | **BSE Sensex Benchmark** | **Weekly (`1W`)** | **1997 – 2026 (29.1 Yrs)** | **16** | **`75.00%`** | **`3.11`** | **`-30.85%`** | 🟡 **STABLE** |
 
-*Survived 1987 Black Monday (-22% single day drop), 2000 Dot-Com Crash, 2008 Financial Crisis, and 2020 COVID Crash without account blowup.*
-
 ---
 
 ## 🚀 Quick Start Guide
@@ -114,23 +123,14 @@ pip install -r requirements.txt
 playwright install chrome
 ```
 
-### 2. Environment Setup (`.env`)
-Create a `.env` file for your Angel One SmartAPI credentials (template provided in `.env.example`):
-```ini
-ANGEL_API_KEY=your_api_key
-ANGEL_CLIENT_CODE=your_client_code
-ANGEL_PASSWORD=your_password
-ANGEL_TOTP_SECRET=your_totp_secret
-```
-
-### 3. One-Click Master Orchestrator Execution
+### 2. One-Click Master Launcher Execution
 ```bash
 python3 run_all.py
 ```
 
-### 4. Run OpenCode AI Natural Language Commands
+### 3. Run Manual Auto-Enhancement Cycle
 ```bash
-opencode run "Aaj ka NIFTY Multi-Asset Trade Setup aur Risk Audit batao." --auto
+python3 auto_enhancer.py
 ```
 
 ---
@@ -138,7 +138,10 @@ opencode run "Aaj ka NIFTY Multi-Asset Trade Setup aur Risk Audit batao." --auto
 ## 🗂️ Module Map
 
 - `run_all.py` — One-Click Master Launcher Script
-- `multi_agent_swarm.py` — 2026 Autonomous AI Trading Swarm
+- `auto_enhancer.py` — Autonomous Reinforcement Learning Self-Optimization Engine
+- `adaptive_weights.py` — Dynamic RL Indicator Weight Recalibration Engine
+- `volume_profile.py` — Volume Profile Point of Control (POC) & Value Area Engine
+- `multi_agent_swarm.py` — 2026 Autonomous AI Trading Swarm Architecture
 - `capital_guard.py` — Prop-Desk 3% Kill-Switch & 0DTE Trap Filter
 - `profit_engine.py` — Positive Expectancy & 1:2 RRR Profit Engine
 - `live_trader_brain.py` — 5-Dimensional Intellectual Master Decision Brain

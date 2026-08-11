@@ -1,12 +1,12 @@
 """One-Click Master Orchestrator Script for NIFTY Research.
 
-Executes all 14 Multi-Asset Quant & Capital Protection Engines in 1 Step:
+Executes all 18 Multi-Asset Quant & Self-Enhancement Engines in 1 Step:
 1. Capital Guard Risk Audit (capital_guard.py)
-2. Options IV Skew & Smile (skew.py)
-3. Equity Mansfield RS Outperformance (equity_quant.py)
-4. MCX Commodity Intelligence (mcx_intel.py)
-5. Gamma Flip & GEX Engine (gamma_flip.py)
-6. 5-Layer Precision Signal Generator (precision_signals.py)
+2. 6-Layer Precision Signal Generator (precision_signals.py)
+3. Gamma Flip & GEX Engine (gamma_flip.py)
+4. Multi-Asset Analytics (skew.py, equity_quant.py, mcx_intel.py)
+5. 2026 Microstructure & Anti-Spoofing (lob_microstructure.py, anti_spoofing.py)
+6. Autonomous Self-Enhancement Loop (auto_enhancer.py)
 7. Live HTML Visual Terminal Generator (web_dashboard.py)
 8. Systematic Dashboard Generator (systematic_report.py)
 9. Hinglish Voice Coach Audio Alert (voice_coach.py)
@@ -26,7 +26,7 @@ def run_complete_suite():
     print("==================================================================")
 
     # 1. Capital Guard
-    print("\n[1/7] Running Capital Guard Risk Audit...")
+    print("\n[1/8] Running Capital Guard Risk Audit...")
     try:
         import capital_guard
         cg = capital_guard.CapitalGuard()
@@ -36,7 +36,7 @@ def run_complete_suite():
         print(f" -> Capital Guard Error: {e}")
 
     # 2. Precision Signal Generator
-    print("\n[2/7] Running 5-Layer High-Precision Signal Generator...")
+    print("\n[2/8] Running 6-Layer High-Precision Signal Generator...")
     try:
         import precision_signals
         sig = precision_signals.generate_precision_signal()
@@ -46,7 +46,7 @@ def run_complete_suite():
         print(f" -> Precision Signal Error: {e}")
 
     # 3. Gamma Flip Engine
-    print("\n[3/7] Running Market Maker Gamma Flip & GEX Engine...")
+    print("\n[3/8] Running Market Maker Gamma Flip & GEX Engine...")
     try:
         import gamma_flip, pandas as pd
         snap_dir = os.path.join("data", "oi_snapshots")
@@ -61,15 +61,24 @@ def run_complete_suite():
         print(f" -> Gamma Flip Error: {e}")
 
     # 4. Multi-Asset Engines (Skew, Equity RS, MCX)
-    print("\n[4/7] Running Multi-Asset Analytics (Options Skew, Equity RS, MCX)...")
+    print("\n[4/8] Running Multi-Asset Analytics (Options Skew, Equity RS, MCX)...")
     try:
         import skew, equity_quant, mcx_intel
         print(" -> Options Skew, Mansfield Relative Strength & MCX Intelligence Executed.")
     except Exception as e:
         print(f" -> Multi-Asset Error: {e}")
 
-    # 5. Live HTML Terminal Generator
-    print("\n[5/7] Updating Live Browser Terminal (blog/live_terminal.html)...")
+    # 5. Autonomous Auto-Enhancement Loop
+    print("\n[5/8] Running Autonomous Self-Enhancement Loop (RL Weights & Volume Profile)...")
+    try:
+        import auto_enhancer
+        enh_res = auto_enhancer.run_auto_enhancement_cycle()
+        print(f" -> Auto-Enhancement Status: {enh_res.get('enhancement_cycle_status')}")
+    except Exception as e:
+        print(f" -> Auto-Enhancement Error: {e}")
+
+    # 6. Live HTML Terminal Generator
+    print("\n[6/8] Updating Live Browser Terminal (blog/live_terminal.html)...")
     try:
         import web_dashboard
         term_path = web_dashboard.generate_live_terminal_html()
@@ -77,8 +86,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Web Dashboard Error: {e}")
 
-    # 6. Systematic Dashboard Generator
-    print("\n[6/7] Updating Systematic Dashboard (results/systematic_dashboard.md)...")
+    # 7. Systematic Dashboard Generator
+    print("\n[7/8] Updating Systematic Dashboard (results/systematic_dashboard.md)...")
     try:
         import systematic_report
         dash_path = systematic_report.generate_systematic_dashboard()
@@ -86,8 +95,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Systematic Dashboard Error: {e}")
 
-    # 7. Voice Coach Audio Alert
-    print("\n[7/7] Activating Interactive Hinglish Voice Coach...")
+    # 8. Voice Coach Audio Alert
+    print("\n[8/8] Activating Interactive Hinglish Voice Coach...")
     try:
         import voice_coach
         voice_coach.run_voice_summary()
@@ -95,7 +104,7 @@ def run_complete_suite():
         print(f" -> Voice Coach Error: {e}")
 
     print("\n==================================================================")
-    print("✅ MASTER ORCHESTRATION COMPLETE — ALL SYSTEMS ACTIVE & READY!")
+    print("✅ MASTER ORCHESTRATION COMPLETE — ALL SYSTEMS ACTIVE & SELF-ENHANCED!")
     print("==================================================================")
 
 
