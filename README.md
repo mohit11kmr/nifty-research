@@ -1,87 +1,84 @@
-# ⚡ NIFTY Multi-Asset Quant Engine & Capital Protection Suite
+# ⚡ NIFTY Multi-Asset Quant Platform & 2026 AI Swarm Architecture
 
-An institutional-grade, local-first quantitative research and trading platform for the Indian market (**Nifty 50 / Bank Nifty / FinNifty / Equities / MCX Commodities**). 
+An institutional-grade, local-first quantitative trading and research platform for the Indian and global markets (**Nifty 50 / Bank Nifty / FinNifty / Equities / MCX Commodities / Global Indices**). 
 
-Combines **Prop-Desk Capital Preservation Rules (`capital_guard.py`)**, **Hedge Fund Gamma Exposure (`gamma_flip.py`)**, **5-Layer High-Precision Signal Filtering (`precision_signals.py`)**, **Interactive Hinglish Voice Coach (`voice_coach.py`)**, and **Angel One Broker Integration (`angel_one_client.py`)**.
+Combines **2026 Multi-Agent Swarm Intelligence (`multi_agent_swarm.py`)**, **Prop-Desk Capital Protection (`capital_guard.py`)**, **Profit Generation Engine (`profit_engine.py`)**, **Smart Money Concepts (`smc_intelligence.py`)**, and **46-Year Multi-Decade Backtesting (`long_term_backtest.py`)**.
 
-> 🛑 **Capital Preservation First**: SEBI FY26 data shows retail traders lost ₹91,685 Crore in F&O. This engine is built to protect retail trader capital using strict 3% daily kill-switches, 0DTE expiry trap blocks, and event IV crush guards.
+> 🛑 **Capital Preservation & Profitability First**: SEBI FY26 data shows retail traders lost ₹91,685 Crore in F&O. This engine is engineered to protect capital using 3% daily kill-switches, 0DTE expiry trap blocks, and positive expected value (+EV) filters.
 
 ---
 
-## 🚀 Key Modules & System Architecture
+## 🤖 2026 Cutting-Edge Technologies & Module Map
 
-| Module | Purpose & Features |
-|---|---|
-| **`capital_guard.py`** | 🛡️ **Prop-Desk Capital Protection Suite**: 3% Daily Loss Kill-Switch, 0DTE Hero-Zero Trap Guard (blocks naked buying after 13:30 IST), Event IV Crush Guard, Drawdown De-risking Matrix (50% size cut at 5% DD). |
-| **`precision_signals.py`** | 🎯 **5-Layer Confluence Signal Engine**: Filters out 90% noise. Issues ONLY `A+ Grade` signals with exact Entry Zone, Call/Put Strike, Stop-Loss points, and Targets. |
-| **`voice_coach.py`** | 🎙️ **Interactive Audio Trading Assistant**: Speaks natural Hinglish alerts and risk warnings out loud during market hours. |
-| **`gamma_flip.py`** | 🧠 **Hedge Fund GEX Engine**: Calculates Market Maker Net Gamma Exposure, exact **Gamma Flip Strike**, and Liquidity Sweep Pools. |
-| **`web_dashboard.py`** | 🖥️ **Live Visual HTML Terminal**: Generates a sleek dark-themed interactive trading dashboard at `blog/live_terminal.html`. |
-| **`skew.py`** | 📊 **Options Volatility Skew & Smile**: Computes Put IV / Call IV ratio & institutional downside hedging sentiment across NIFTY, BANKNIFTY, FINNIFTY. |
-| **`equity_quant.py`** | 📈 **Mansfield Relative Strength (MRS)**: Scans Nifty 50 stocks outperforming Nifty 50 index + Sector Rotation Heatmap. |
-| **`mcx_intel.py`** | 🛢️ **MCX Commodity Intelligence**: Tracks Gold, Silver, Crude Oil, Nat Gas, Dollar Index (DXY), and Gold/Silver Ratio extremes. |
-| **`angel_one_client.py`** | 🔑 **Official SmartAPI Integration**: Session management via API Key, Client ID, PIN & TOTP (`pyotp`), order execution, and `SmartWebSocketV2` streaming. |
-| **`empirical_proof.py`** | 🧪 **Mathematical Verification Suite**: Verifies Black-Scholes Greeks, Argmin Max Pain math, and walk-forward backtests. |
-| **`systematic_report.py`** | 📑 **Structured Markdown Dashboard**: Generates clean table-formatted market reports at `results/systematic_dashboard.md`. |
+| Module | Category | Capabilities & Features |
+|---|---|---|
+| **`multi_agent_swarm.py`** | 🤖 **2026 AI Swarm** | Deploys 4 Specialized Subagents: Macro Agent, Microstructure Agent, Capital Guard Agent, and Executive Swarm Leader. |
+| **`lob_microstructure.py`** | ⚡ **Microstructure** | Limit Order Book (LOB) Imbalance Ratio & Volume-Synchronized Probability of Toxicity (VPIN) score. |
+| **`anti_spoofing.py`** | 🛡️ **Anti-Spoofing** | Detects institutional fake liquidity walls, quote stuffing, and sudden order cancellations. |
+| **`profit_engine.py`** | 💰 **Profit Engine** | Master Profit Generator enforcing Positive Expectancy (+EV), 1:2.0 Minimum RRR, and ATR Profit Trailing. |
+| **`expectancy_calculator.py`** | 🧮 **Mathematical Edge** | Calculates Expected Value (EV) per Rupee Risk over 100-trade sequences. |
+| **`dynamic_trailing.py`** | 📈 **Profit Trailing** | 2.5x ATR Chandelier Exit locking +50% and +150% profits as price moves. |
+| **`live_trader_brain.py`** | 🧠 **Intellectual Brain** | Synthesizes Psychology, SMC, Monte Carlo Risk, Super-AI ML, and Capital Guard into 1 Decision. |
+| **`trader_psychology.py`** | 🧘 **Psychology Guard** | Prevents FOMO chasing, Revenge Trading tilt, Over-confidence, and Lot Size inflation. |
+| **`smc_intelligence.py`** | 🏛️ **Smart Money (SMC)** | Identifies Fair Value Gaps (FVG), Demand/Supply Order Blocks (OB), and Market Structure Shifts (MSS). |
+| **`monte_carlo.py`** | 🎲 **Monte Carlo** | Runs 10,000 Statistical Trade Sequence Simulations for 100% Account Survival Verification. |
+| **`pattern_recognition.py`** | 🔍 **Pattern Engine** | Identifies Double Bottom (W), Double Top (M), Head & Shoulders, Engulfing, Hammer, and Doji candles. |
+| **`mcp_pattern_bridge.py`** | 🔌 **MCP Bridge** | Logs recognized patterns into SQLite MCP (`data/research.db`) table `pattern_logs`. |
+| **`long_term_backtest.py`** | 📜 **46-Year Backtest** | Multi-timeframe backtest engine across 46 Years (1980–2026 | 11,747 bars) surviving 1987, 2000, 2008, 2020 crashes. |
+| **`super_ai_ml.py`** | 🧠 **Super-AI ML** | Multi-model ML ensemble combining **XGBoost**, **LightGBM**, and **Random Forest** classifiers. |
+| **`capital_guard.py`** | 🛡️ **Capital Preservation**| Prop-desk 3% Daily Loss Kill-Switch, 0DTE Expiry Trap Filter (13:30 IST cutoff), and Event IV Crush Guard. |
+| **`precision_signals.py`** | 🎯 **Signal Engine** | 6-Layer High Confluence Noise Filter. Issues ONLY A+ Grade Signals with exact Entry, Strike, SL, and Target levels. |
+| **`voice_coach.py`** | 🎙️ **Voice Assistant** | Real-time Hinglish audio alerts and risk warnings spoken out loud during market hours. |
+| **`gamma_flip.py`** | 🧠 **Hedge Fund GEX** | Calculates Market Maker Net Gamma Exposure, exact **Gamma Flip Strike**, and Liquidity Sweep Pools. |
+| **`web_dashboard.py`** | 🖥️ **Live Visual Terminal**| Dark-themed live browser dashboard generated at `blog/live_terminal.html`. |
 
 ---
 
 ## 🔑 Broker Credentials Setup (`.env`)
 
-Create a `.env` file in the project root (see `.env.example` template):
+Create a local `.env` file in the project root (use `.env.example` template):
 
 ```ini
-# Angel One SmartAPI Credentials
+# Angel One SmartAPI Credentials (LOCAL ONLY)
 ANGEL_API_KEY=your_api_key
 ANGEL_CLIENT_CODE=your_client_code
 ANGEL_PASSWORD=your_pin_or_password
 ANGEL_TOTP_SECRET=your_totp_secret
 ```
 
-*Note: `.env` and `data/research.db` are strictly listed in `.gitignore` to prevent credential exposure.*
+*.env and data/research.db are strictly ignored in `.gitignore` to guarantee credential safety.*
 
 ---
 
-## ⚡ Quick Start & Commands
+## ⚡ Master Execution Commands
 
-### 1. Run High-Precision Signal Generator:
+### 1. One-Click Master Launcher (Executes All Engines):
 ```bash
-python3 precision_signals.py
+python3 run_all.py
 ```
 
-### 2. Run Voice Coach Audio Alert:
+### 2. Run 2026 Autonomous Multi-Agent Trading Swarm:
 ```bash
-python3 voice_coach.py
+python3 multi_agent_swarm.py
 ```
 
-### 3. Generate Live HTML Visual Terminal:
+### 3. Run Master Decision Brain Synthesis:
 ```bash
-python3 web_dashboard.py
-# Open blog/live_terminal.html in your browser
+python3 live_trader_brain.py
 ```
 
-### 4. Run Capital Guard Risk Audit:
+### 4. Run Master Profit Generation Engine:
 ```bash
-python3 capital_guard.py
+python3 profit_engine.py
 ```
 
-### 5. Run OpenCode AI Trading Commands:
+### 5. Run 46-Year Multi-Timeframe Backtest (1980 - 2026):
 ```bash
-opencode run "Aaj ke Market Regime aur Angel One profile ke mutabiq NIFTY trade setup batao." --auto
+python3 long_term_backtest.py
 ```
-
----
-
-## 🛡️ Capital Protection Rules (`capital_guard.py`)
-
-1. **Daily Loss Kill-Switch**: Max 3.0% daily account loss limit. If hit → LOCK TRADING for the day.
-2. **0DTE Hero-Zero Protection**: No naked Call/Put buying after 13:30 IST on Expiry Days (95% expire worthless).
-3. **Event Risk Protection**: No naked option buying 24h before RBI Policy / Budget / FED decisions due to IV crush.
-4. **Drawdown De-risking**: Position size cut by 50% at 5% account drawdown, 75% at 10% drawdown.
-5. **Fixed 1% Capital Risk**: Maximum loss per trade strictly ≤ 1% of account capital.
 
 ---
 
 ## 📜 License & Disclaimer
 
-Educational and quantitative research platform. Markets carry inherent risk. Never risk money you cannot afford to lose. Always perform personal due diligence before executing orders.
+Educational and quantitative research platform. Financial markets carry risk. Never risk capital you cannot afford to lose. Perform independent verification before placing orders.
