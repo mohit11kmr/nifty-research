@@ -17,6 +17,17 @@ This guide details the exact step-by-step workflow to use the platform for pre-m
 
 ---
 
+## 🌐 LIVE VISUAL TERMINAL URL (HTTP SERVER)
+
+Chrome/Firefox me Terminal dekhne ke liye **http://127.0.0.1:8766/** ka upyog karein:
+
+- **Primary Live Terminal URL (Recommended):** `http://127.0.0.1:8766/` (or `http://127.0.0.1:8766/live_terminal.html`)
+- **Static File Backup:** `blog/live_terminal.html`
+
+> 💡 *Note: `file://` URLs in Chrome block dynamic JavaScript auto-refresh due to browser security CORS policies. Always use `http://127.0.0.1:8766/` for full dynamic live terminal features.*
+
+---
+
 ## 🌅 STEP 1: PRE-MARKET ROUTINE (08:30 – 09:00 IST)
 
 Pehle subah market khulne se pehle ye steps follow karein:
@@ -35,7 +46,7 @@ python3 run_all.py
    - Verify Kill-Switch is `OPEN` (0.0% Daily Loss).
    - Check if today is an Event Day (RBI Policy / Budget / FED).
 3. **Open Visual Browser Terminal:**
-   - Open [`blog/live_terminal.html`](file:///home/mohit/Desktop/nifty-research/blog/live_terminal.html) in Chrome or Firefox.
+   - Open **http://127.0.0.1:8766/** in Chrome or Firefox.
 
 ---
 
@@ -43,25 +54,20 @@ python3 run_all.py
 
 Live market hours ke dauran jab bhi setup check karna ho:
 
-### 1. High-Precision Signal Scan:
+### 1. Real-Time Market Spot Sync:
+```bash
+python3 live_market_fetch.py
+```
+
+### 2. High-Precision Signal Scan:
 ```bash
 python3 precision_signals.py
 ```
-- **If Signal = `A+ GRADE (SUPER PRECISE)`**: Check exact Entry Zone, Strike (e.g. `24850 CE`), Stop Loss (`90 pts`), Target (`180 pts`).
-- **If Signal = `NO_SIGNAL (FILTERED OUT NOISE)`**: **DO NOT TRADE**. Sit out and wait for high-confluence setups.
 
-### 2. Check Gamma Flip Level:
+### 3. Check Live Paper Trading Status:
 ```bash
-python3 gamma_flip.py
+python3 auto_paper_runner.py
 ```
-- **Price Above Gamma Flip Strike (e.g., 24,550):** Market Makers stabilize market. Dip buying preferred.
-- **Price Below Gamma Flip Strike:** Short Gamma volatility acceleration. Exercise caution.
-
-### 3. Voice Coach Guidance:
-```bash
-python3 voice_coach.py
-```
-- Listen to real-time audio guidance in Hinglish regarding current market conditions and risk rules.
 
 ---
 
@@ -80,29 +86,16 @@ python3 voice_coach.py
 
 OpenCode CLI ya IDE chat box me aap ye commands pooch sakte hain:
 
-- **Daily Setup:** `opencode run "Aaj ka NIFTY trade setup batao." --auto`
-- **OI Analysis:** `opencode run "NIFTY PCR, Max Pain aur CE/PE Walls check karo." --auto`
-- **Risk Audit:** `opencode run "Capital Guard Risk Audit run karke dikhao." --auto`
-
----
-
-## 🌇 STEP 5: POST-MARKET ROUTINE (15:30 – 16:30 IST)
-
-Market close hone ke baad daily performance aur data summary update karein:
-
-```bash
-python3 systematic_report.py
-```
-- Summary Report [`results/systematic_dashboard.md`](file:///home/mohit/Desktop/nifty-research/results/systematic_dashboard.md) me save ho jaayegi.
+- **Daily Setup:** `opencode run "/trade-setup" --auto`
+- **Deep Research:** `opencode run "/deep-research Nifty Options Microstructure" --auto`
+- **Auto Enhancement:** `opencode run "/auto-enhance" --auto`
 
 ---
 
 ## 📂 FILE LOCATION QUICK REFERENCE
 
+- **Live Terminal Web Server:** `http://127.0.0.1:8766/`
 - **One-Click Launcher:** `run_all.py`
 - **High-Precision Signals:** `precision_signals.py`
-- **Voice Assistant:** `voice_coach.py`
-- **Visual Web Terminal:** `blog/live_terminal.html`
-- **Capital Protection Audit:** `capital_guard.py`
-- **Master Decision Brain:** `live_trader_brain.py`
-- **Long-Term 46-Year Backtest:** `long_term_backtest.py`
+- **Live Paper Trader:** `auto_paper_runner.py`
+- **Permanent Audit Logger:** `history_logger.py`
