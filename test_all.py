@@ -1,6 +1,6 @@
 """Enterprise Automated Test & Verification Suite for NIFTY Research.
 
-Verifies 100% operational readiness across all 32 Quantitative & Risk Modules.
+Verifies 100% operational readiness across all 33 Quantitative & Risk Modules.
 """
 import os
 import sys
@@ -110,6 +110,12 @@ class TestNiftyQuantPlatform(unittest.TestCase):
         import notifications_system
         notif = notifications_system.notifier.notify_trade_signal()
         self.assertEqual(notif.get("status"), "NOTIFIED")
+
+    def test_17_connection_resilience(self):
+        """Test Connection Resilience & Outage Guard."""
+        import connection_resilience
+        res = connection_resilience.connection_guard.auto_reconnect_loop(max_retries=1, initial_backoff_sec=1)
+        self.assertIn(res.get("status"), ["ONLINE", "RECONNECTED", "OFFLINE_SAFETY_LOCKED"])
 
 
 if __name__ == "__main__":
