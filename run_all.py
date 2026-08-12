@@ -1,27 +1,28 @@
 """One-Click Master Orchestrator Script for NIFTY Research.
 
-Executes all 30 Multi-Asset Quant, Self-Enhancement, Paper Trading & Adopted Engines:
+Executes all 31 Multi-Asset Quant, Self-Enhancement, Paper Trading & Adopted Engines:
 1. Capital Guard Risk Audit (capital_guard.py)
-2. LangGraph 6-Node Agentic State Graph Workflow (agent_workflow_graph.py)
-3. Angel One SmartAPI Scrip Master Token Lookup (token_lookup.py)
-4. Value-at-Risk (VaR) & Portfolio Stress Test Engine (var_risk_manager.py)
-5. Deep Learning LSTM Neural Sequence Engine (lstm_neural_engine.py)
-6. Volume Surge & Pocket Pivot Analytics Engine (volume_analytics_engine.py)
-7. Real-Time 5-Second Market Ticker Stream (live_ticker_service.py)
-8. Live Market Real-Time Price Sync (live_market_fetch.py)
-9. Permanent Append-Only History Audit Logger (history_logger.py)
-10. Multi-Timeframe Trend Alignment Engine (mtf_alignment.py)
-11. 6-Layer Precision Signal Generator (precision_signals.py)
-12. Smart Strike Price Selector (smart_strike_selector.py)
-13. Multi-Leg Option Spreads Generator (multi_leg_options.py)
-14. Reflection & Self-Critique Hypothesis Engine (reflection_engine.py)
-15. Gamma Flip & GEX Engine (gamma_flip.py)
-16. Multi-Asset Analytics (skew.py, equity_quant.py, mcx_intel.py)
-17. Autonomous Self-Enhancement Loop (auto_enhancer.py)
-18. Autonomous Live Paper Trading Simulation (auto_paper_runner.py)
-19. Live HTML Visual Terminal Generator (web_dashboard.py)
-20. Systematic Dashboard Generator (systematic_report.py)
-21. Hinglish Voice Coach Audio Alert (voice_coach.py)
+2. Swarm Dynamic Delta-Hedging Guard (delta_hedging_guard.py)
+3. LangGraph 6-Node Agentic State Graph Workflow (agent_workflow_graph.py)
+4. Angel One SmartAPI Scrip Master Token Lookup (token_lookup.py)
+5. Value-at-Risk (VaR) & Portfolio Stress Test Engine (var_risk_manager.py)
+6. Deep Learning LSTM Neural Sequence Engine (lstm_neural_engine.py)
+7. Volume Surge & Pocket Pivot Analytics Engine (volume_analytics_engine.py)
+8. Real-Time 5-Second Market Ticker Stream (live_ticker_service.py)
+9. Live Market Real-Time Price Sync (live_market_fetch.py)
+10. Permanent Append-Only History Audit Logger (history_logger.py)
+11. Multi-Timeframe Trend Alignment Engine (mtf_alignment.py)
+12. 6-Layer Precision Signal Generator (precision_signals.py)
+13. Smart Strike Price Selector (smart_strike_selector.py)
+14. Multi-Leg Option Spreads Generator (multi_leg_options.py)
+15. Reflection & Self-Critique Hypothesis Engine (reflection_engine.py)
+16. Gamma Flip & GEX Engine (gamma_flip.py)
+17. Multi-Asset Analytics (skew.py, equity_quant.py, mcx_intel.py)
+18. Autonomous Self-Enhancement Loop (auto_enhancer.py)
+19. Autonomous Live Paper Trading Simulation (auto_paper_runner.py)
+20. Live HTML Visual Terminal Generator (web_dashboard.py)
+21. Systematic Dashboard Generator (systematic_report.py)
+22. Hinglish Voice Coach Audio Alert (voice_coach.py)
 """
 import os
 import sys
@@ -38,7 +39,7 @@ def run_complete_suite():
     print("==================================================================")
 
     # 1. Capital Guard
-    print("\n[1/21] Running Capital Guard Risk Audit...")
+    print("\n[1/22] Running Capital Guard Risk Audit...")
     try:
         import capital_guard
         cg = capital_guard.CapitalGuard()
@@ -47,8 +48,17 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Capital Guard Error: {e}")
 
-    # 2. Agentic Workflow Graph
-    print("\n[2/21] Running LangGraph 6-Node Agentic State Graph Workflow (agent_workflow_graph.py)...")
+    # 2. Swarm Delta Hedging Guard
+    print("\n[2/22] Running Swarm Dynamic Delta-Hedging Guard (delta_hedging_guard.py)...")
+    try:
+        import delta_hedging_guard
+        dh_res = delta_hedging_guard.delta_guard.evaluate_portfolio_delta()
+        print(f" -> Delta Guard Status: {dh_res.get('guard_status')} | Hedge Needed: {dh_res.get('hedge_needed')} | Action: {dh_res.get('hedge_recommendation', {}).get('action')}")
+    except Exception as e:
+        print(f" -> Delta Guard Error: {e}")
+
+    # 3. Agentic Workflow Graph
+    print("\n[3/22] Running LangGraph 6-Node Agentic State Graph Workflow (agent_workflow_graph.py)...")
     try:
         import agent_workflow_graph
         graph_res = agent_workflow_graph.run_agentic_workflow_graph()
@@ -56,8 +66,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Workflow Graph Error: {e}")
 
-    # 3. Token Lookup
-    print("\n[3/21] Running Angel One SmartAPI Scrip Master Token Lookup (token_lookup.py)...")
+    # 4. Token Lookup
+    print("\n[4/22] Running Angel One SmartAPI Scrip Master Token Lookup (token_lookup.py)...")
     try:
         import token_lookup
         token_info = token_lookup.get_token_for_symbol(symbol_name="NIFTY", strike=24500, option_type="CE")
@@ -65,8 +75,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Token Lookup Error: {e}")
 
-    # 4. Value-at-Risk (VaR) & Stress Testing
-    print("\n[4/21] Running Value-at-Risk (VaR) & Portfolio Stress Test (var_risk_manager.py)...")
+    # 5. Value-at-Risk (VaR) & Stress Testing
+    print("\n[5/22] Running Value-at-Risk (VaR) & Portfolio Stress Test (var_risk_manager.py)...")
     try:
         import var_risk_manager
         var_res = var_risk_manager.var_engine.compute_value_at_risk()
@@ -74,8 +84,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> VaR Engine Error: {e}")
 
-    # 5. Deep Learning LSTM Engine
-    print("\n[5/21] Running Deep Learning LSTM Neural Sequence Engine (lstm_neural_engine.py)...")
+    # 6. Deep Learning LSTM Engine
+    print("\n[6/22] Running Deep Learning LSTM Neural Sequence Engine (lstm_neural_engine.py)...")
     try:
         import lstm_neural_engine
         lstm = lstm_neural_engine.predict_lstm_sequence()
@@ -83,8 +93,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> LSTM Engine Error: {e}")
 
-    # 6. Volume Analytics & Pocket Pivot Engine
-    print("\n[6/21] Running Volume Surge & Pocket Pivot Engine (volume_analytics_engine.py)...")
+    # 7. Volume Analytics & Pocket Pivot Engine
+    print("\n[7/22] Running Volume Surge & Pocket Pivot Engine (volume_analytics_engine.py)...")
     try:
         import volume_analytics_engine
         vol_res = volume_analytics_engine.compute_volume_analytics()
@@ -92,16 +102,16 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Volume Analytics Error: {e}")
 
-    # 7. Live Ticker Streaming
-    print("\n[7/21] Running 5-Second Real-Time Market Ticker Stream (live_ticker_service.py)...")
+    # 8. Live Ticker Streaming
+    print("\n[8/22] Running 5-Second Real-Time Market Ticker Stream (live_ticker_service.py)...")
     try:
         import live_ticker_service
         live_ticker_service.stream_live_market_ticks(interval_sec=1, max_ticks=2)
     except Exception as e:
         print(f" -> Live Ticker Error: {e}")
 
-    # 8. Live Market Real-Time Price Sync
-    print("\n[8/21] Syncing Live Real-Time Market Ticks (live_market_fetch.py)...")
+    # 9. Live Market Real-Time Price Sync
+    print("\n[9/22] Syncing Live Real-Time Market Ticks (live_market_fetch.py)...")
     try:
         import live_market_fetch
         live = live_market_fetch.update_live_market_cache()
@@ -109,8 +119,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Live Price Fetch Error: {e}")
 
-    # 9. History & Audit Logger Summary
-    print("\n[9/21] Checking Permanent Append-Only Audit Logs (history_logger.py)...")
+    # 10. History & Audit Logger Summary
+    print("\n[10/22] Checking Permanent Append-Only Audit Logs (history_logger.py)...")
     try:
         import history_logger
         audit_sum = history_logger.get_historical_audit_summary()
@@ -118,8 +128,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> History Logger Error: {e}")
 
-    # 10. Multi-Timeframe Alignment Engine
-    print("\n[10/21] Running Multi-Timeframe Alignment Engine (mtf_alignment.py)...")
+    # 11. Multi-Timeframe Alignment Engine
+    print("\n[11/22] Running Multi-Timeframe Alignment Engine (mtf_alignment.py)...")
     try:
         import mtf_alignment
         mtf = mtf_alignment.compute_mtf_alignment()
@@ -127,8 +137,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> MTF Alignment Error: {e}")
 
-    # 11. Precision Signal Generator
-    print("\n[11/21] Running 6-Layer High-Precision Signal Generator...")
+    # 12. Precision Signal Generator
+    print("\n[12/22] Running 6-Layer High-Precision Signal Generator...")
     try:
         import precision_signals
         sig = precision_signals.generate_precision_signal()
@@ -140,8 +150,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Precision Signal Error: {e}")
 
-    # 12. Smart Strike Price Selector
-    print("\n[12/21] Running Smart Strike Price Selector (smart_strike_selector.py)...")
+    # 13. Smart Strike Price Selector
+    print("\n[13/22] Running Smart Strike Price Selector (smart_strike_selector.py)...")
     try:
         import smart_strike_selector
         best_strike = smart_strike_selector.strike_selector.select_best_strike(spot_price=24403.10, option_type="CE")
@@ -149,8 +159,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Strike Selector Error: {e}")
 
-    # 13. Quantum Nexus Multi-Leg Options Engine
-    print("\n[13/21] Running Multi-Leg Option Spreads Generator (multi_leg_options.py)...")
+    # 14. Quantum Nexus Multi-Leg Options Engine
+    print("\n[14/22] Running Multi-Leg Option Spreads Generator (multi_leg_options.py)...")
     try:
         import multi_leg_options
         condor = multi_leg_options.construct_multi_leg_strategy()
@@ -158,8 +168,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Multi-Leg Option Error: {e}")
 
-    # 14. Quantum Nexus Reflection Hypothesis Engine
-    print("\n[14/21] Running AI Reflection & Self-Critique Engine (reflection_engine.py)...")
+    # 15. Quantum Nexus Reflection Hypothesis Engine
+    print("\n[15/22] Running AI Reflection & Self-Critique Engine (reflection_engine.py)...")
     try:
         import reflection_engine
         hyp = reflection_engine.run_reflection_loop()
@@ -167,8 +177,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Reflection Error: {e}")
 
-    # 15. Gamma Flip Engine
-    print("\n[15/21] Running Market Maker Gamma Flip & GEX Engine...")
+    # 16. Gamma Flip Engine
+    print("\n[16/22] Running Market Maker Gamma Flip & GEX Engine...")
     try:
         import gamma_flip, pandas as pd
         snap_dir = os.path.join("data", "oi_snapshots")
@@ -182,16 +192,16 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Gamma Flip Error: {e}")
 
-    # 16. Multi-Asset Analytics (Skew, Equity RS, MCX)
-    print("\n[16/21] Running Multi-Asset Analytics (Options Skew, Equity RS, MCX)...")
+    # 17. Multi-Asset Analytics (Skew, Equity RS, MCX)
+    print("\n[17/22] Running Multi-Asset Analytics (Options Skew, Equity RS, MCX)...")
     try:
         import skew, equity_quant, mcx_intel
         print(" -> Options Skew, Mansfield Relative Strength & MCX Intelligence Executed.")
     except Exception as e:
         print(f" -> Multi-Asset Error: {e}")
 
-    # 17. Autonomous Auto-Enhancement Loop
-    print("\n[17/21] Running Autonomous Self-Enhancement Loop (RL Weights & Volume Profile)...")
+    # 18. Autonomous Auto-Enhancement Loop
+    print("\n[18/22] Running Autonomous Self-Enhancement Loop (RL Weights & Volume Profile)...")
     try:
         import auto_enhancer
         enh_res = auto_enhancer.run_auto_enhancement_cycle()
@@ -199,8 +209,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Auto-Enhancement Error: {e}")
 
-    # 18. Live Paper Trading Engine
-    print("\n[18/21] Running Live Paper Trading Simulation (auto_paper_runner.py)...")
+    # 19. Live Paper Trading Engine
+    print("\n[19/22] Running Live Paper Trading Simulation (auto_paper_runner.py)...")
     try:
         import paper_trader
         summary = paper_trader.paper_engine.get_paper_account_summary()
@@ -208,8 +218,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Paper Trading Error: {e}")
 
-    # 19. Live HTML Terminal Generator
-    print("\n[19/21] Updating Live Browser Terminal (blog/live_terminal.html)...")
+    # 20. Live HTML Terminal Generator
+    print("\n[20/22] Updating Live Browser Terminal (blog/live_terminal.html)...")
     try:
         import web_dashboard
         term_path = web_dashboard.generate_live_terminal_html()
@@ -217,8 +227,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Web Dashboard Error: {e}")
 
-    # 20. Systematic Dashboard Generator
-    print("\n[20/21] Updating Systematic Dashboard (results/systematic_dashboard.md)...")
+    # 21. Systematic Dashboard Generator
+    print("\n[21/22] Updating Systematic Dashboard (results/systematic_dashboard.md)...")
     try:
         import systematic_report
         dash_path = systematic_report.generate_systematic_dashboard()
@@ -226,8 +236,8 @@ def run_complete_suite():
     except Exception as e:
         print(f" -> Systematic Dashboard Error: {e}")
 
-    # 21. Voice Coach Audio Alert
-    print("\n[21/21] Activating Interactive Hinglish Voice Coach...")
+    # 22. Voice Coach Audio Alert
+    print("\n[22/22] Activating Interactive Hinglish Voice Coach...")
     try:
         import voice_coach
         voice_coach.run_voice_summary()
@@ -235,7 +245,7 @@ def run_complete_suite():
         print(f" -> Voice Coach Error: {e}")
 
     print("\n==================================================================")
-    print("✅ MASTER ORCHESTRATION COMPLETE — ALL 30 QUANT ENGINES ONLINE!")
+    print("✅ MASTER ORCHESTRATION COMPLETE — ALL 31 QUANT ENGINES ONLINE!")
     print("==================================================================")
 
 
