@@ -2,7 +2,7 @@
 
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-green.svg)
-![Build Status](https://img.shields.io/badge/tests-16%2F16%20PASSED-brightgreen.svg)
+![Build Status](https://img.shields.io/badge/tests-17%2F17%20PASSED-brightgreen.svg)
 ![Institutional Grade](https://img.shields.io/badge/institutional-grade-gold.svg)
 ![LangGraph & Swarm](https://img.shields.io/badge/architecture-LangGraph%20%2B%20Swarm-purple.svg)
 
@@ -10,7 +10,7 @@
 
 ## 📌 Executive Overview
 
-**NIFTY-RESEARCH** is an institutional-grade, multi-asset quantitative trading platform designed specifically for the **National Stock Exchange of India (NSE)** and **MCX Commodities**. Built with strict capital preservation rules, multi-model machine learning ensembles (XGBoost, LightGBM, Random Forest, Deep Learning LSTM), options Greeks calculus ($\Delta, \Gamma, \Theta, \text{Vega}$), Value-at-Risk (VaR), Swarm Dynamic Delta-Hedging, and real-time streaming services.
+**NIFTY-RESEARCH** is an institutional-grade, multi-asset quantitative trading platform designed specifically for the **National Stock Exchange of India (NSE)** and **MCX Commodities**. Built with strict capital preservation rules, multi-model machine learning ensembles (XGBoost, LightGBM, Random Forest, Deep Learning LSTM), options Greeks calculus ($\Delta, \Gamma, \Theta, \text{Vega}$), Value-at-Risk (VaR), Swarm Dynamic Delta-Hedging, Internet Outage Resilience, and real-time streaming services.
 
 ---
 
@@ -19,7 +19,9 @@
 ```mermaid
 graph TD
     A[Live Market Ticks / Angel One Websocket] --> B(Live Ticker Service)
-    B --> C{Capital Guard Safety Audit}
+    B --> ConnectionGuard{Connection Resilience Ping}
+    ConnectionGuard -->|ONLINE| C{Capital Guard Safety Audit}
+    ConnectionGuard -->|OFFLINE| R[Auto-Reconnect Loop & Broker SL-M]
     C -->|APPROVED| D[LangGraph 6-Node Agentic State Graph]
     C -->|REJECTED| K[Kill-Switch Lockout]
     D --> E[Multi-Timeframe Alignment 5m/15m/1h/1D]
@@ -39,6 +41,7 @@ graph TD
 | Engine Module | Key Quantitative Function | Source Origin |
 |---|---|---|
 | [`capital_guard.py`](file:///home/mohit/Desktop/nifty-research/capital_guard.py) | Daily 3% Stop-Loss, 1% Risk Sizer & Drawdown De-risking | `nifty option` |
+| [`connection_resilience.py`](file:///home/mohit/Desktop/nifty-research/connection_resilience.py) | Internet Disconnection Outage Guard & Auto-Reconnect | Custom Enterprise Guard |
 | [`delta_hedging_guard.py`](file:///home/mohit/Desktop/nifty-research/delta_hedging_guard.py) | Dynamic Delta Neutral Hedging ($|\Delta_{\text{Net}}| > 500$) | `updated trading_bot` |
 | [`agent_workflow_graph.py`](file:///home/mohit/Desktop/nifty-research/agent_workflow_graph.py) | LangGraph 6-Node Sequential DAG State Graph Workflow | `ai-trading-agents` |
 | [`token_lookup.py`](file:///home/mohit/Desktop/nifty-research/token_lookup.py) | Official Angel One OpenAPIScripMaster.json Token Engine | `trading` |
@@ -61,7 +64,7 @@ graph TD
 python3 control_center.py
 ```
 
-### 2. Master Orchestrator (Run All 32 Engines)
+### 2. Master Orchestrator (Run All 33 Engines)
 ```bash
 python3 run_all.py
 ```
