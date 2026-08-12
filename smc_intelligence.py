@@ -12,19 +12,40 @@ import numpy as np
 import pandas as pd
 
 
+def _load_real_ohlc():
+    """Load real NIFTY daily OHLC (last 60 sessions) from data cache."""
+    path = os.path.join("data", "nifty_history.csv")
+    if not os.path.exists(path):
+        return None
+    try:
+        df = pd.read_csv(path)
+        for col in ("open", "high", "low", "close"):
+            if col not in df.columns:
+                return None
+        df = df[pd.notna(df["close"])].tail(60).reset_index(drop=True)
+        return df if len(df) >= 3 else None
+    except Exception:
+        return None
+
+
 def analyze_smc_structure(df=None):
     """Analyze Smart Money Concepts (FVG, Order Blocks, CHoCH) on price action dataframe."""
+    source = "caller_df"
     if df is None or df.empty:
-        # Generate clean OHLC synthetic structure for audit if no DF passed
-        dates = pd.date_range(end=pd.Timestamp.now(), periods=30, freq="D")
-        closes = 24000 + np.cumsum(np.random.randn(30) * 80)
-        df = pd.DataFrame({
-            "date": dates,
-            "open": closes - 20,
-            "high": closes + 40,
-            "low": closes - 40,
-            "close": closes
-        })
+        # Real NIFTY history from cache - never random synthetic data.
+        df = _load_real_ohlc()
+        source = "real_nifty_history"
+        if df is None:
+            return {
+                "smc_status": "INSUFFICIENT_DATA",
+                "reason": "No df passed and data/nifty_history.csv unavailable.",
+                "latest_spot": None,
+                "smc_market_structure": "N/A",
+                "active_fair_value_gaps": [],
+                "institutional_order_blocks": {"bullish_demand_ob": None,
+                                               "bearish_supply_ob": None},
+                "smc_trading_insight": "Run build_data.py to populate the data cache.",
+            }
 
     df = df.copy().reset_index(drop=True)
     n = len(df)
@@ -71,6 +92,8 @@ def analyze_smc_structure(df=None):
     choch_bias = "BULLISH_REVERSAL" if latest_close > df["high"].tail(10).mean() else ("BEARISH_REVERSAL" if latest_close < df["low"].tail(10).mean() else "CONSOLIDATING")
 
     return {
+        "smc_status": "ANALYZED",
+        "data_source": source,
         "latest_spot": round(latest_close, 2),
         "smc_market_structure": choch_bias,
         "active_fair_value_gaps": fvg_list[-3:] if fvg_list else [],

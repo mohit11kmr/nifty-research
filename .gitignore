@@ -3,6 +3,9 @@ __pycache__/
 .playwright-mcp/
 .env
 data/research.db
+data/research.db-wal
+data/research.db-shm
 data/*.log
 *.mp3
 .DS_Store
+.venv/

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIFTY Live — nifty-research</title>
+<style>
+  :root { --bg:#0b0e14; --panel:#11161f; --border:#1f2937; --txt:#e5e7eb; --dim:#8b93a3;
+          --green:#22c55e; --red:#ef4444; --yellow:#eab308; --blue:#3b82f6; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--txt); font:14px/1.4 ui-monospace,Menlo,Consolas,monospace; padding:12px; }
+  .hdr { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:12px; }
+  .spot { font-size:44px; font-weight:700; letter-spacing:-1px; }
+  .chg { font-size:20px; }
+  .tag { font-size:11px; padding:2px 8px; border-radius:10px; border:1px solid var(--border); color:var(--dim); }
+  .tag.live { color:var(--green); border-color:var(--green); animation:pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity:.4; } }
+  .panels { display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:12px; }
+  @media (max-width:900px){ .panels{ grid-template-columns:1fr; } }
+  .panel { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .panel h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--dim); margin-bottom:8px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th,td { padding:3px 6px; text-align:right; white-space:nowrap; }
+  th { color:var(--dim); font-weight:400; border-bottom:1px solid var(--border); }
+  td:first-child, th:first-child { text-align:left; }
+  .atm td { background:rgba(59,130,246,.12); font-weight:700; }
+  .green { color:var(--green); } .red { color:var(--red); } .dim { color:var(--dim); }
+  .kpis { display:flex; gap:18px; flex-wrap:wrap; }
+  .kpi .v { font-size:22px; font-weight:700; }
+  .kpi .l { font-size:10px; color:var(--dim); text-transform:uppercase; }
+  .tickline { font-size:11px; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div>
+    <div class="spot" id="spot">---</div>
+    <div class="chg" id="chg"></div>
+  </div>
+  <div class="tag" id="live">...</div>
+  <div class="kpis" style="margin-left:auto">
+    <div class="kpi"><div class="v" id="k_pcr">-</div><div class="l">PCR (OI)</div></div>
+    <div class="kpi"><div class="v" id="k_ce">-</div><div class="l">CE OI</div></div>
+    <div class="kpi"><div class="v" id="k_pe">-</div><div class="l">PE OI</div></div>
+    <div class="kpi"><div class="v" id="k_ticks">-</div><div class="l">Ticks today</div></div>
+    <div class="kpi"><div class="v" id="k_spot">-</div><div class="l">Spot rows</div></div>
+  </div>
+</div>
+
+<div class="panels">
+  <div class="panel">
+    <h3>CE / PE — strikes around spot (LTP · OI · OI chg · Vol)</h3>
+    <table id="chain">
+      <thead><tr><th>Strike</th><th>CE LTP</th><th>CE OI</th><th>CE ΔOI</th><th>CE Vol</th>
+              <th>PE LTP</th><th>PE OI</th><th>PE ΔOI</th><th>PE Vol</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="panel">
+    <h3>Latest quotes — live tick-by-tick (ms)</h3>
+    <table id="ticks">
+      <thead><tr><th>Time</th><th>Strike</th><th>Side</th><th>LTP</th><th>Δ</th><th>OI</th><th>Vol</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="tickline" id="err" style="margin-top:6px"></div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = (v,d=0) => v==null?'-':(typeof v==='number'?v.toLocaleString('en-IN',{maximumFractionDigits:d,minimumFractionDigits:d}):v);
+const cls = v => v>0?'green':v<0?'red':'dim';
+let prevLtp = {};
+function paint(ts){ if(!ts) return; const dt=new Date(ts.replace('T',' ')); const n=new Date();
+  return (Math.abs(n-dt)<60000)?`<span class="green">${ts.slice(11)}</span>`:`<span class="dim">${ts.slice(11)}</span>`; }
+
+async function refresh(){
+  try{
+    const [spot,chain,ticks,st] = await Promise.all([
+      fetch('/api/spot').then(r=>r.json()),
+      fetch('/api/chain').then(r=>r.json()),
+      fetch('/api/ticks?n=15').then(r=>r.json()),
+      fetch('/api/status').then(r=>r.json()),
+    ]);
+    if(spot.ok){
+      $('spot').textContent = fmt(spot.value);
+      $('chg').innerHTML = spot.pct_chg==null?'':`<span class="${cls(spot.pct_chg)}">${spot.pct_chg>0?'▲':'▼'} ${Math.abs(spot.pct_chg).toFixed(2)}%</span>`;
+      const live = spot.is_live;
+      const t=$('live'); t.textContent = live?'● LIVE':'● STALE'; t.className = 'tag'+(live?' live':'');
+    }
+    if(chain.ok){
+      $('k_pcr').textContent = chain.pcr_oi??'-';
+      const body = $('chain').querySelector('tbody'); body.innerHTML='';
+      chain.chain.forEach(c=>{
+        const tr=document.createElement('tr');
+        const near = Math.abs(c.strike - chain.spot) < 25;
+        if(near) tr.className='atm';
+        tr.innerHTML = `<td>${c.strike}</td>
+          <td>${fmt(c.ce_ltp,1)}</td><td>${fmt(c.ce_oi)}</td>
+          <td class="${cls(c.ce_oi_chg)}">${fmt(c.ce_oi_chg)}</td><td>${fmt(c.ce_vol)}</td>
+          <td>${fmt(c.pe_ltp,1)}</td><td>${fmt(c.pe_oi)}</td>
+          <td class="${cls(c.pe_oi_chg)}">${fmt(c.pe_oi_chg)}</td><td>${fmt(c.pe_vol)}</td>`;
+        body.appendChild(tr);
+      });
+      let ce=0,pe=0;
+      chain.chain.forEach(c=>{ ce+=(c.ce_oi||0); pe+=(c.pe_oi||0); });
+      $('k_ce').textContent=fmt(ce); $('k_pe').textContent=fmt(pe);
+    }
+const tb=$('ticks').querySelector('tbody'); tb.innerHTML='';
+ticks.forEach(t=>{
+  const tr=document.createElement('tr');
+  const key=t.strike+'_'+t.side;
+  const d = prevLtp[key]!=null ? (t.ltp - prevLtp[key]) : null;
+  prevLtp[key]=t.ltp;
+  const dCell = d==null ? '<td class="dim">-</td>' : `<td class="${cls(d)}">${d>0?'+':''}${d.toFixed(1)}</td>`;
+  tr.innerHTML=`<td>${t.recv_ts.slice(11)}</td><td>${t.strike}</td><td>${t.side}</td>
+    <td>${fmt(t.ltp,1)}</td>${dCell}
+    <td class="${cls(t.oi_chg)}">${fmt(t.oi)}</td><td>${fmt(t.volume)}</td>`;
+  tb.appendChild(tr);
+});
+    $('k_ticks').textContent = fmt(st.today_ticks); $('k_spot').textContent = fmt(st.today_spot);
+    $('err').textContent = `recorder pid ${st.recorder_pid}`;
+  }catch(e){
+    $('err').textContent = 'API error: '+e.message;
+  }
+}
+refresh();
+setInterval(refresh, 1000);
+</script>
+</body>
+</html>

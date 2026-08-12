@@ -68,11 +68,19 @@ def _fetch_spot(prev_close):
            f"?period1={p1}&period2={p2}&interval=1m")
     r = requests.get(url, headers={"User-Agent": UA}, timeout=20)
     r.raise_for_status()
-    res = r.json()["chart"]["result"][0]
-    closes = [c for c in res["indicators"]["quote"][0]["close"] if c is not None]
-    if not closes:
+    chart = r.json().get("chart", {})
+    results = chart.get("result") or []
+    if not results:
         return None, None
-    val = float(closes[-1])
+    res = results[0]
+    closes = []
+    quote = (res.get("indicators", {}).get("quote") or [{}])[0] or {}
+    if quote:
+        closes = [c for c in quote.get("close") or [] if c is not None]
+    meta = res.get("meta") or {}
+    val = float(closes[-1]) if closes else float(meta.get("regularMarketPrice") or 0.0)
+    if not val:
+        return None, None
     pct = ((val / prev_close) - 1) * 100 if prev_close else None
     return val, pct
 
@@ -89,7 +97,7 @@ def _parse_tick(q, symbol, expiry):
         if not d:
             continue
         rows.append((
-            dt.datetime.now().isoformat(timespec="seconds"), ts, symbol,
+            dt.datetime.now().isoformat(timespec="milliseconds"), ts, symbol,
             expiry, strike, side,
             d.get("lastPrice"), d.get("buyPrice1"), d.get("buyQty1"),
             d.get("sellPrice1"), d.get("sellQty1"), d.get("openInterest"),
@@ -159,7 +167,8 @@ def run(symbol="NIFTY", max_seconds=None):
                     val, pct = _fetch_spot(prev_close)
                     if val is not None:
                         con.execute("INSERT INTO spot (recv_ts, value, pct_chg) VALUES (?,?,?)",
-                                    (dt.datetime.now().isoformat(timespec="seconds"), val, pct))
+                                    (dt.datetime.now().isoformat(timespec="milliseconds"), val, pct))
+                        con.commit()
                         print(f"  spot {val:,.1f} ({pct:+.2f}%)")
                         last_spot = now
                 except Exception as e:

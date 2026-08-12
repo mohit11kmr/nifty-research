@@ -1,0 +1,11 @@
+services:
+  nifty-research:
+    build: .
+    container_name: nifty-research
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./results:/app/results
+    env_file:
+      - .env.example
+    command: ["python", "test_all.py"]

@@ -9,7 +9,24 @@ Calculates:
 import os
 import json
 import numpy as np
+import pandas as pd
 import datetime as dt
+
+
+def _realized_daily_vol(sessions=30):
+    """Realized daily volatility (%) from real NIFTY daily closes."""
+    path = os.path.join("data", "nifty_history.csv")
+    if not os.path.exists(path):
+        return None
+    try:
+        df = pd.read_csv(path)
+        close = df["close"].dropna()
+        if len(close) < sessions + 2:
+            return None
+        rets = close.pct_change().dropna().tail(sessions)
+        return float(rets.std(ddof=1))
+    except Exception:
+        return None
 
 
 class ValueAtRiskManager:
@@ -19,8 +36,24 @@ class ValueAtRiskManager:
         self.confidence_level = confidence_level
         self.horizon_days = horizon_days
 
-    def compute_value_at_risk(self, capital=100000.0, daily_volatility=0.015):
-        """Calculate 95% and 99% 1-day Value-at-Risk (VaR)."""
+    def compute_value_at_risk(self, capital=100000.0, daily_volatility=None):
+        """Calculate 95% and 99% 1-day Value-at-Risk (VaR).
+
+        daily_volatility defaults to REALIZED daily vol from real NIFTY
+        history (last 30 sessions); a constant is used only if no history
+        exists and none was passed.
+        """
+        vol_source = "realized_hv"
+        if daily_volatility is None:
+            daily_volatility = _realized_daily_vol()
+            if daily_volatility is None:
+                daily_volatility = 0.015  # last-resort constant
+                vol_source = "constant_fallback"
+            else:
+                daily_volatility = max(daily_volatility, 0.002)  # floor 0.2%
+        else:
+            vol_source = "caller"
+
         # Z-scores: 95% = 1.645, 99% = 2.326
         z_95 = 1.645
         z_99 = 2.326
@@ -33,6 +66,8 @@ class ValueAtRiskManager:
             "var_95_confidence_pct": round((var_95_rupees / capital) * 100, 2),
             "var_99_confidence_rupees": round(var_99_rupees, 2),
             "var_99_confidence_pct": round((var_99_rupees / capital) * 100, 2),
+            "daily_volatility_used_pct": round(daily_volatility * 100, 3),
+            "vol_source": vol_source,
             "var_status": "APPROVED (VaR within 3% daily safety threshold)" if var_95_rupees <= (capital * 0.03) else "HIGH_RISK_WARNING"
         }
 

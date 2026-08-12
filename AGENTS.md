@@ -74,6 +74,32 @@ strategy research/backtest pipeline.
   the socket connects then NSE closes it (0 messages is normal). NOT a
   fallback for snapshots - use `nse_live.fetch_option_chain_live` for that.
   Old `wss://webstream.nseindia.com` is DEAD (DNS gone) - do not use.
+- `capital_guard.py`  — SEBI loss-prevention: 3% daily kill-switch, 0DTE expiry
+  trap (>13:30 IST = no naked buying), event-risk filter, drawdown de-risking,
+  strict 1% position sizer.
+- `precision_signals.py` — 6-layer confluence signal (regime + capital guard +
+  technicals + OI/skew + institutional + ML). Only A+ grade signals; else NO_SIGNAL.
+- `gamma_flip.py`     — market-maker net GEX + gamma flip strike (long gamma =
+  stabilizing, short gamma = accelerating). NOTE: returns `gamma_flip_strike`
+  (None on no-data/error) — consumers read that key.
+- `live_trader_brain.py` — master synthesis: psychology + SMC + Monte Carlo +
+  super-AI ML + capital guard -> RECOMMENDED_* or STAND_BY_NO_TRADE.
+- `super_ai_ml.py`    — XGBoost/LightGBM/RF ensemble. CONTEXT ONLY (~51% vs 52%
+  baseline, no standalone edge).
+- `mcp_nifty.py`      — **trading MCP server** (stdio, FastMCP): exposes every
+  engine as an MCP tool (`market_snapshot`, `regime_trade_plan`, `vix_intel`,
+  `option_chain_intel`, `gamma_flip_intel`, `institutional_flow`,
+  `technical_consensus`, `precision_signal`, `capital_guard_audit`,
+  `stock_scan`, `super_ai_ml_context`, `expiry_status`, `expected_move`,
+  `broker_status`, `recent_ticks`, `full_daily_report`). Run via
+  `.venv/bin/python mcp_nifty.py`. Register in opencode.json under `nifty-trader`.
+- `.opencode/`        — opencode agents (`quant-researcher`, `risk-officer`,
+  `nifty-analyst`) + slash commands (`/trade-setup`, `/market-snapshot`,
+  `/oi-intel`, `/regime-gate`, `/risk-audit`, `/broker`, `/stock-flow`,
+  `/institutional`, `/deep-research`, `/auto-enhance`, `/backtest`).
+- `.opencode/skills/` — project skills (`nifty-analysis`, `oi-intel`,
+  `trade-setup`), registered via opencode.json `skills.paths`. Prefer
+  `nifty-trader` MCP tools over `python -c` one-liners.
 
 ## Entry points
 - `python build_data.py` — build/refresh full data cache.
@@ -86,6 +112,28 @@ strategy research/backtest pipeline.
 - Option chain live test: `python nse_live.py`
 - Live ticks (market hours only): `python live_feed.py NIFTY 60`
 - Open blog: `blog/index.html` (or `python -m http.server 8765 --directory blog`)
+
+## OpenCode CLI (trading power-up)
+Project `opencode.json` registers `nifty-trader` (runs `.venv/bin/python
+mcp_nifty.py`, venv = system-site-packages + `mcp<2.0`) and `git-nifty`
+(`uvx --with "mcp<2.0" mcp-server-git`). Global `~/.config/opencode/opencode.json`
+registers `memory`, `sqlite-nifty`, `filesystem-nifty`, `fetch`, `playwright`.
+Skills live in `.opencode/skills/` (moved from `~/.opencode/skills`, now
+version-controlled). Agents in `.opencode/agent/`, commands in `.opencode/command/`.
+
+- GOTCHA: reference MCP servers (`mcp-server-sqlite`, `mcp-server-fetch`,
+  `mcp-server-git`) use the mcp 1.x API. `uvx` alone pulls mcp 2.x and they
+  crash at boot (`list_resources` / `McpError` errors). ALWAYS run them as
+  `uvx --with "mcp<2.0" mcp-server-<name>`. Fixed + verified 2026-08-12.
+- Custom `nifty-trader` needs `mcp<2.0` too (same reason) - venv pins it.
+- No trading-specific opencode plugin exists in the ecosystem; project "plugin"
+  layer = skills + slash commands + agents (markdown, version-controlled).
+- Config changes (opencode.json, agents, commands, skills) need an opencode
+  restart to take effect.
+- If `nifty-trader` MCP tools are unavailable, fall back to
+  `python -c "import ..."` (same cached data).
+- Rebuild the MCP venv if broken: `python3 -m venv --system-site-packages .venv
+  && .venv/bin/pip install "mcp>=1.8,<2.0"`.
 
 ## Automated pipeline (Hermes cron)
 - Job `6005919dce97` `nifty-daily-report`: weekdays 16:30 IST, runs
@@ -140,3 +188,33 @@ strategy research/backtest pipeline.
 - GitHub refs: buzzsubash/algo_trading_strategies_india (short straddle/
   strangle/iron-fly, Zerodha), Aditya0049/NIFTY-OPTIONS-TRADING-AI (sell when
   daily move <1%, ~61% win), maddy1852005-DS regime-switch ML bot.
+
+## IV Skew & Microstructure findings (deep-research 2026-08-12, from
+research.db tick data 11-Aug-2026 expiry + web research; do not re-run daily)
+- Expiry-day surface is a two-layer structure: DEEP OTM wings = permanent put
+  smirk (put IV rich), but ATM/near-ATM = regime-sensitive and often
+  CALL-SKEWED on expiry days (reconstructed RR ~ -3 to -4 vol pts, i.e. OTM
+  call IV 3-4 pts ABOVE OTM put IV; skew ratio 0.93-0.97 all day). Retail
+  call-lottery flow + call-heavy gamma is the driver. Treat as microstructure
+  noise, NOT a reliable stand-alone edge.
+- Butterfly convexity: 0 mid-price violations in ATM band on expiry day =>
+  static no-arb holds; convexity arb dead after costs.
+- Put-call parity: implied F consistent across strikes within 0.2-0.3 pts
+  (std of F); NIFTY futures basis F-spot ~ +10 to +14 pts (positive carry) ->
+  box/conversion arb dead net of costs.
+- Spreads blow out as expiry approaches: avg rel spread 8% (10:00) -> 27%
+  (13:00); OTM strikes (>2% OTM) trade at min-tick with rel spreads 10-59% =>
+  only ATM +/-1.5% is economically tradeable. Execution cost hurdle for any
+  multi-leg skew trade ~ 5-15 pts/lot.
+- Expiry-day pinning worked: spot 24447 vs max pain 24450 (within 3 pts);
+  24500 CE wall +379K OI (+615%, 440K total) capped the move; PCR 0.749 &
+  falling (call heavy) + Murarkar "watch cap".
+- VPIN/toxicity: use as flow descriptor only (Andersen-Bondarenko critique).
+- Tradeable verdict on NIFTY weeklies (post-2025 SEBI cost regime, lot=75):
+  VIX/IV-rank-gated premium selling > put-skew z-score credit spreads >
+  calendar skew > risk-reversal carry (thin). NOT tradeable: box/parity,
+  naked butterfly, dispersion, guaranteed 25d skew carry. Expiry-day
+  call-skew academic proof is scarce - keep as noise.
+- IV field in research.db `ticks` is always NULL (NSE streamer doesn't send
+  it) -> reconstruct via BS Newton/bisection from mid (vectorized; expiry-day
+  absolute IV unstable, RELATIVE skew structure is the signal).

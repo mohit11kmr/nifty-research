@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
+  "mcp": {
+    "nifty-trader": {
+      "type": "local",
+      "command": [
+        "/home/mohit/Desktop/nifty-research/.venv/bin/python",
+        "/home/mohit/Desktop/nifty-research/mcp_nifty.py"
+      ],
+      "enabled": true
+    },
+    "git-nifty": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--with",
+        "mcp<2.0",
+        "mcp-server-git"
+      ],
+      "enabled": true
+    }
+  },
+  "tool_output": {
+    "max_lines": 250,
+    "max_bytes": 12000
+  },
+  "permission": {
+    "bash": "allow",
+    "external_directory": "allow"
+  }
+}

@@ -124,9 +124,21 @@ class TestNiftyQuantPlatform(unittest.TestCase):
         self.assertIn("forecasted_annualized_volatility_pct", fc)
 
 
+def _discover_tests():
+    """Load the focused unit suites from the tests/ package."""
+    from tests.test_greeks import TestGreeks
+    from tests.test_multi_leg import TestMultiLeg
+    from tests.test_smart_strike import TestSmartStrikeSelector
+    return [TestGreeks, TestMultiLeg, TestSmartStrikeSelector]
+
+
 if __name__ == "__main__":
     print("==================================================================")
     print("🧪 ENTERPRISE QUANTITATIVE PLATFORM AUTOMATED TEST SUITE")
     print(f"Time: {dt.datetime.now().strftime('%d %b %Y | %H:%M:%S IST')}")
     print("==================================================================")
-    unittest.main(verbosity=2)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestNiftyQuantPlatform)
+    for cls in _discover_tests():
+        suite.addTests(unittest.TestLoader().loadTestsFromTestCase(cls))
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    sys.exit(0 if result.wasSuccessful() else 1)

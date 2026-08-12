@@ -35,10 +35,12 @@ def run_agentic_workflow_graph(spot_price=24403.10):
     # Node 3: Strategy Decision Node
     print(" -> [Node 3/6] Strategy Decision Node: Selecting Optimal Strategy...")
     action = sig.get("signal_action", "STAY_OUT")
+    entry_premium = None
     if "BUY" in action:
         import smart_strike_selector
         best_strike = smart_strike_selector.strike_selector.select_best_strike(spot_price=spot_price)
         state["strategy"] = {"type": "DIRECTIONAL_BUY", "strike": best_strike.get("best_strike")}
+        entry_premium = best_strike.get("best_strike_premium")
     else:
         import multi_leg_options
         condor = multi_leg_options.construct_multi_leg_strategy(spot_price=spot_price)
@@ -55,7 +57,8 @@ def run_agentic_workflow_graph(spot_price=24403.10):
     print(" -> [Node 5/6] Execution Node: Dispatching to Paper Trading Engine...")
     import paper_trader
     if state["should_trade"] and "BUY" in action:
-        res = paper_trader.paper_engine.execute_paper_order(symbol="NIFTY", entry_price=140.0)
+        res = paper_trader.paper_engine.execute_paper_order(
+            symbol="NIFTY", entry_price=float(entry_premium or 0) or 140.0)
         state["execution"] = res.get("status")
     else:
         state["execution"] = "STAND_DOWN_NO_TRADE"

@@ -2,7 +2,7 @@
 
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-green.svg)
-![Build Status](https://img.shields.io/badge/tests-17%2F17%20PASSED-brightgreen.svg)
+![Build Status](https://img.shields.io/badge/tests-29%2F29%20PASSED-brightgreen.svg)
 ![Institutional Grade](https://img.shields.io/badge/institutional-grade-gold.svg)
 ![LangGraph & Swarm](https://img.shields.io/badge/architecture-LangGraph%20%2B%20Swarm-purple.svg)
 
@@ -73,6 +73,68 @@ python3 run_all.py
 ```bash
 python3 test_all.py
 ```
+> 29/29 tests passing. Focused unit suites live in `tests/`
+> (`test_greeks.py`, `test_multi_leg.py`); also runnable via
+> `python3 -m unittest discover -s tests -v`.
+
+### 4. Containerized & CI
+```bash
+docker compose up --build   # builds image, runs test suite
+```
+> GitHub Actions CI (`.github/workflows/ci.yml`) runs the full suite on
+> Python 3.11/3.12 for every push/PR.
+
+---
+
+## 🧠 Options Math Upgrades (2026-08-12)
+
+- **Real multi-leg pricing** — `multi_leg_options.py` now prices every leg
+  from live OI-snapshot LTPs with Black-Scholes fallback. No hardcoded
+  premiums. Legacy hardcoded values (`approx_premium: 140.0`) removed.
+- **Probability of Profit** — `greeks.probability_of_profit()` computes PoP
+  for single barriers (debit spreads) and bands (credit spreads / strangles).
+- **What-if Greeks** — `greeks.what_if_greeks()` scenario grid: price/delta/
+  vega across spot % shifts × IV point shifts.
+- **Rho** added to `bs_price_and_greeks()` (per 1% rate move).
+- **Breakevens** — every strategy returns `breakevens.lower/upper`.
+- **Stale-data honesty** — engine flags `stale_snapshot: true` when the only
+  cached chain has already expired (run `python oi_refresh.py` for fresh
+  data).
+
+## 🩺 Fake-Data Audit (2026-08-12)
+
+Fixed glitches found by repo-wide scan (formulas were inventing numbers):
+
+- **`smart_strike_selector.py` — rebuilt data-driven.** Old version
+  fabricated OI (`150000 - offset*300`), premium (`spot*0.006-offset*0.5`)
+  and delta. Now every strike uses real chain LTP + Black-Scholes delta +
+  real OI. Experiment (`experiments/strike_selector_upgrade_experiment.py`)
+  showed old selector quoted **₹146.62 fake premium vs ₹21.6 real** — a
+  6.8x inflated paper entry price.
+- **`auto_paper_runner.py` / `agent_workflow_graph.py`** — paper orders now
+  use the *real selected-strike premium* instead of hardcoded `entry_price=140.0`.
+- **`multi_leg_options.py`** — hardcoded `approx_premium` removed (see
+  Options Math Upgrades above).
+
+Second audit pass (2026-08-12) — all remaining glitches fixed:
+- **`anti_spoofing.py`** — no-args calls now read REAL CE/PE OI pct-change from
+  the latest snapshot instead of hardcoded defaults (fabricated spoof verdicts
+  removed from the swarm).
+- **`equity_quant.sector_rotation_heatmap()`** — computes REAL sector momentum
+  from its own ETF data (yfinance, cached); empty/hardcoded ranking removed.
+- **`lob_microstructure.compute_lob_microstructure()`** — bare calls now load
+  the REAL per-strike book + ATM quote from `research.db` ticks. NSE stream
+  carries no bid/ask qty, so rupee depth is honestly reported as price-level
+  counts (`depth_note`), never a made-up 5-level book.
+- **`smc_intelligence.analyze_smc_structure()`** — no-dataframe path loads REAL
+  NIFTY OHLC from `data/nifty_history.csv`; `np.random.randn` synthetic candles
+  removed. Honest `INSUFFICIENT_DATA` if cache missing.
+- **`var_risk_manager`** — `daily_volatility` defaults to REALIZED HV (30-session
+  daily vol from real NIFTY history), labeled `vol_source: realized_hv`;
+  constant only as a flagged last resort.
+- **`precision_signals`** — strikes now come from REAL OI walls
+  (`oi_walls.nearest_resistance/nearest_support`) instead of `spot*1.01` crude
+  formulas; spot±1% is only the no-snapshot fallback.
 
 ---
 

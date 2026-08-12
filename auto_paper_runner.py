@@ -68,10 +68,13 @@ def run_auto_paper_trader():
     best_strike = strike_res.get("best_strike", 24450)
 
     # 7. Calculate Custom Entry, SL, Target & Trailing SL
-    entry_premium = 140.0
-    atr_volatility = 30.0  # Option ATR
-    sl_premium = round(max(10.0, entry_premium - (1.5 * atr_volatility)), 2)  # SL = Entry - 1.5x ATR
-    risk_per_share = entry_premium - sl_premium
+    # Entry = REAL selected-strike premium (LTP or BS), not a hardcoded 140.0
+    entry_premium = float(strike_res.get("best_strike_premium", 0) or 0)
+    if entry_premium <= 0:
+        entry_premium = round(spot * 0.006, 2)  # safe ~0.6% fallback
+    atr_volatility = max(10.0, entry_premium * 0.25)  # Option ATR ~25% of premium
+    sl_premium = round(max(2.0, entry_premium - (1.5 * atr_volatility)), 2)  # SL = Entry - 1.5x ATR
+    risk_per_share = max(entry_premium - sl_premium, 1.0)
     target_premium = round(entry_premium + (2.0 * risk_per_share), 2)         # Target = 1:2.0 RRR
 
     # Dynamic Trailing SL Calculation

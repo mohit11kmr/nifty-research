@@ -19,7 +19,7 @@ def calculate_gamma_exposure(chain, spot=None):
     Put GEX = Put_OI * Put_Gamma * Spot * 100
     """
     if chain is None or chain.empty:
-        return {"gamma_flip_level": None, "gex_status": "NO_DATA"}
+        return {"gamma_flip_strike": None, "gex_status": "NO_DATA"}
 
     df = chain.copy()
     if not spot:
@@ -78,7 +78,7 @@ def calculate_gamma_exposure(chain, spot=None):
             "trader_guidance": f"Above Gamma Flip ({gamma_flip_strike:.0f}): Market Makers stabilize market. Below {gamma_flip_strike:.0f}: Short Gamma accelerates moves!"
         }
     except Exception as e:
-        return {"gamma_flip_level": None, "error": str(e)}
+        return {"gamma_flip_strike": None, "error": str(e)}
 
 
 if __name__ == "__main__":

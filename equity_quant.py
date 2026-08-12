@@ -82,21 +82,99 @@ def scan_equity_outperformers(top_n=10):
     return df.sort_values("mrs_score", ascending=False).head(top_n).to_dict(orient="records")
 
 
+# Sector ETF first; if delisted/offline, build an equal-weight basket from
+# the cached Nifty-50 constituent CSVs in data/stocks/ (real data, offline).
+SECTOR_TICKERS = {
+    "BANK": ("BANKBEES.NS", ["HDFCBANK", "ICICIBANK", "KOTAKBANK", "AXISBANK", "SBIN"]),
+    "IT": ("ITBEES.NS", ["TCS", "INFY", "WIPRO", "HCLTECH", "TECHM"]),
+    "AUTO": ("AUTOBEES.NS", ["M&M", "MARUTI", "TATAMOTORS", "EICHERMOT", "BAJAJ-AUTO"]),
+    "PHARMA": ("PHARMABEES.NS", ["SUNPHARMA", "CIPLA", "DRREDDY", "DIVISLAB"]),
+    "METAL": ("NETFMETAL.NS", ["TATASTEEL", "JSWSTEEL", "HINDALCO"]),
+    "FMCG": ("NETFFMCG.NS", ["ITC", "HINDUNILVR", "NESTLEIND", "BRITANNIA", "TATACONSUM"]),
+}
+SECTOR_DIR = os.path.join(DATA_DIR, "sectors")
+STOCKS_DIR = os.path.join(DATA_DIR, "stocks")
+
+
+def _etf_or_basket(sector, ticker, constituents):
+    """Cached ETF close series, else cached stock-basket close series."""
+    cache = os.path.join(SECTOR_DIR, f"{sector}.csv")
+    if os.path.exists(cache):
+        df = pd.read_csv(cache)
+        df["date"] = pd.to_datetime(df["date"])
+        df = df[df["close"].notna()]
+        if len(df) >= 21:
+            return df
+
+    # 1) live ETF fetch (only save when non-empty)
+    try:
+        import yfinance as yf
+        etf = yf.Ticker(ticker).history(period="3mo")
+        if etf is not None and not etf.empty:
+            out = pd.DataFrame({"date": pd.to_datetime(etf.index),
+                                "close": etf["Close"].astype(float)}).dropna()
+            if len(out) >= 21:
+                os.makedirs(SECTOR_DIR, exist_ok=True)
+                out.to_csv(cache, index=False)
+                return out
+    except Exception:
+        pass
+
+    # 2) offline equal-weight basket from cached Nifty-50 constituents
+    closes = {}
+    for sym in constituents:
+        p = os.path.join(STOCKS_DIR, f"{sym}.csv")
+        if not os.path.exists(p):
+            continue
+        df = pd.read_csv(p, usecols=["date", "close"])
+        df["date"] = pd.to_datetime(df["date"])
+        df = df[pd.notna(df["close"])]
+        closes[sym] = df.set_index("date")["close"]
+    if not closes:
+        return None
+    basket = pd.DataFrame(closes).mean(axis=1).reset_index()
+    basket.columns = ["date", "close"]
+    os.makedirs(SECTOR_DIR, exist_ok=True)
+    basket.to_csv(cache, index=False)
+    return basket
+
+
 def sector_rotation_heatmap():
-    """Rank Sectoral Index ETFs/proxies for momentum rotation."""
-    sectors = {
-        "BANK": "BANKBEES.NS",
-        "IT": "ITBEES.NS",
-        "AUTO": "AUTOBEES.NS",
-        "PHARMA": "PHARMABEES.NS",
-        "METAL": "NETFMETAL.NS",
-        "FMCG": "NETFFMCG.NS",
-    }
-    # Return placeholder ranking structure based on cached stock scan
+    """Rank sectoral ETFs for momentum rotation using REAL (cached) data."""
+    rankings = []
+    for sector, (ticker, constituents) in SECTOR_TICKERS.items():
+        df = _etf_or_basket(sector, ticker, constituents)
+        if df is None:
+            continue
+        closes = df["close"].dropna().reset_index(drop=True)
+        if len(closes) < 21:
+            continue
+        ret_1m = (closes.iloc[-1] / closes.iloc[-21] - 1) * 100
+        ret_3m = (closes.iloc[-1] / closes.iloc[0] - 1) * 100 if len(closes) >= 60 else None
+        rankings.append({
+            "sector": sector,
+            "ticker": ticker,
+            "ret_1m_pct": round(ret_1m, 2),
+            "ret_3m_pct": round(ret_3m, 2) if ret_3m is not None else None,
+        })
+
+    if not rankings:
+        return {
+            "status": "NO_DATA",
+            "leading_sectors": [],
+            "weak_sectors": [],
+            "sector_rankings": [],
+            "recommendation": "No sector data available (offline + no cache). Run with network to populate data/sectors/.",
+        }
+
+    rankings.sort(key=lambda r: r["ret_1m_pct"], reverse=True)
+    best, worst = rankings[0]["sector"], rankings[-1]["sector"]
     return {
-        "leading_sectors": ["IT", "AUTO"],
-        "weak_sectors": ["FMCG", "METAL"],
-        "recommendation": "Rotate capital into IT & AUTO swing setups",
+        "status": "OK",
+        "leading_sectors": [r["sector"] for r in rankings[:2]],
+        "weak_sectors": [r["sector"] for r in rankings[-2:]],
+        "sector_rankings": rankings,
+        "recommendation": f"Rotate capital toward {best} momentum; avoid {worst}.",
     }
 
 

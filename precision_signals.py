@@ -104,9 +104,9 @@ def generate_precision_signal():
             oi_passed = (pcr > 1.2 and tech_bias == "CALL") or (pcr < 0.8 and tech_bias == "PUT") or (vix > 16.0)
             if oi_passed:
                 confluence_score += 1
-                checks["options_layer"] = {"status": "PASSED", "pcr": pcr, "max_pain": max_pain, "skew_bias": skew_data.get("bias")}
+                checks["options_layer"] = {"status": "PASSED", "pcr": pcr, "max_pain": max_pain, "skew_bias": skew_data.get("bias"), "walls": walls}
             else:
-                checks["options_layer"] = {"status": "MIXED", "pcr": pcr, "max_pain": max_pain}
+                checks["options_layer"] = {"status": "MIXED", "pcr": pcr, "max_pain": max_pain, "walls": walls}
         else:
             checks["options_layer"] = {"status": "NO_SNAPSHOT"}
     except Exception as e:
@@ -158,8 +158,17 @@ def generate_precision_signal():
 
 
     # Exact Strikes & Risk Levels Calculation
-    ce_strike = round((spot * 1.01) / 50) * 50
-    pe_strike = round((spot * 0.99) / 50) * 50
+    # Prefer REAL OI walls (nearest resistance/support from the live chain);
+    # fall back to spot±1% only when the options layer had no snapshot.
+    walls = checks.get("options_layer", {}).get("walls") or {}
+    if walls.get("nearest_resistance"):
+        ce_strike = round(walls["nearest_resistance"] / 50) * 50
+    else:
+        ce_strike = round((spot * 1.01) / 50) * 50
+    if walls.get("nearest_support"):
+        pe_strike = round(walls["nearest_support"] / 50) * 50
+    else:
+        pe_strike = round((spot * 0.99) / 50) * 50
     sl_points = round(spot * 0.008, 1)  # 0.8% index SL
     tgt_points = round(sl_points * 2.0, 1) # 1:2 Risk-Reward
 

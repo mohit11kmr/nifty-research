@@ -1,11 +1,16 @@
 ---
-description: Run an exhaustive 2026 Deep Quantitative Research Sweep on any market topic using all MCP servers.
+description: Run an exhaustive Deep Quantitative Research Sweep on any market topic using all MCP servers.
 agent: build
 ---
 
 Perform an exhaustive quantitative research sweep on: $ARGUMENTS
 
-1. Use the `fetch` and `playwright` MCP servers to scrape latest live market options data & headlines.
-2. Query `data/research.db` via `sqlite-nifty` MCP to analyze historical tick patterns.
-3. Run `python3 /home/mohit/Desktop/nifty-research/live_trader_brain.py` to obtain master quantitative verdict.
-4. Output a detailed 500-line Deep Research Report with mathematical equations, risk rules, and trade levels.
+1. Use `nifty-trader` MCP tools (`market_snapshot`, `option_chain_intel`,
+   `gamma_flip_intel`, `technical_consensus`, `institutional_flow`,
+   `super_ai_ml_context`) for project data.
+2. Use `fetch` and `playwright` MCP servers to scrape live market data & headlines.
+3. Query `data/research.db` via `sqlite-nifty` MCP for historical tick patterns.
+4. Run `python3 live_trader_brain.py` for the master quantitative verdict.
+5. Output a detailed research report with equations, risk rules and trade levels.
+
+Honesty: report ML accuracy AND baseline AND edge (no standalone ML edge exists).
