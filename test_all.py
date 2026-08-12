@@ -1,6 +1,6 @@
 """Enterprise Automated Test & Verification Suite for NIFTY Research.
 
-Verifies 100% operational readiness across all 33 Quantitative & Risk Modules.
+Verifies 100% operational readiness across all 34 Quantitative & Risk Modules.
 """
 import os
 import sys
@@ -116,6 +116,12 @@ class TestNiftyQuantPlatform(unittest.TestCase):
         import connection_resilience
         res = connection_resilience.connection_guard.auto_reconnect_loop(max_retries=1, initial_backoff_sec=1)
         self.assertIn(res.get("status"), ["ONLINE", "RECONNECTED", "OFFLINE_SAFETY_LOCKED"])
+
+    def test_18_volatility_forecaster(self):
+        """Test Institutional GARCH(1,1) Volatility & Return Forecaster."""
+        import volatility_forecaster
+        fc = volatility_forecaster.quant_forecaster.forecast_intraday_volatility()
+        self.assertIn("forecasted_annualized_volatility_pct", fc)
 
 
 if __name__ == "__main__":
