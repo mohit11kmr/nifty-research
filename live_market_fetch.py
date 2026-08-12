@@ -71,6 +71,10 @@ def update_live_market_cache():
         df.to_csv(p, index=False)
         print(f"✅ [Live Market Fetch] Updated {p} with LIVE SPOT: ₹{spot:,.2f}")
 
+        # Permanently log tick to historical audit database for backtesting
+        import history_logger
+        history_logger.log_market_tick(spot)
+
     return live
 
 
