@@ -1,6 +1,6 @@
 """Enterprise Automated Test & Verification Suite for NIFTY Research.
 
-Verifies 100% operational readiness across all 18 Quantitative & Risk Modules.
+Verifies 100% operational readiness across all 32 Quantitative & Risk Modules.
 """
 import os
 import sys
@@ -69,11 +69,47 @@ class TestNiftyQuantPlatform(unittest.TestCase):
         res = pattern_recognition.run_pattern_recognition_analysis()
         self.assertIn("candlestick_patterns_detected", res)
 
-    def test_10_super_ai_ml(self):
-        """Test Super-AI ML Ensemble."""
-        import super_ai_ml
-        ml = super_ai_ml.train_super_ai_ensemble()
-        self.assertIsNotNone(ml)
+    def test_10_var_risk_manager(self):
+        """Test Value-at-Risk (VaR) & Crash Stress Testing."""
+        import var_risk_manager
+        var_res = var_risk_manager.var_engine.compute_value_at_risk()
+        self.assertIn("var_95_confidence_rupees", var_res)
+
+    def test_11_lstm_neural_engine(self):
+        """Test Deep Learning LSTM Sequence Engine."""
+        import lstm_neural_engine
+        lstm = lstm_neural_engine.predict_lstm_sequence()
+        self.assertIn("lstm_verdict", lstm)
+
+    def test_12_volume_analytics(self):
+        """Test Volume Surge & Pocket Pivot Engine."""
+        import volume_analytics_engine
+        vol = volume_analytics_engine.compute_volume_analytics()
+        self.assertIn("volume_surge_ratio", vol)
+
+    def test_13_token_lookup(self):
+        """Test Angel One Scrip Master Token Lookup."""
+        import token_lookup
+        token_info = token_lookup.get_token_for_symbol(symbol_name="NIFTY", strike=24500)
+        self.assertIn("token", token_info)
+
+    def test_14_agent_workflow_graph(self):
+        """Test LangGraph 6-Node Agentic Workflow Graph."""
+        import agent_workflow_graph
+        graph_res = agent_workflow_graph.run_agentic_workflow_graph()
+        self.assertIn("execution", graph_res)
+
+    def test_15_delta_hedging_guard(self):
+        """Test Swarm Dynamic Delta-Hedging Guard."""
+        import delta_hedging_guard
+        dh = delta_hedging_guard.delta_guard.evaluate_portfolio_delta()
+        self.assertIn("guard_status", dh)
+
+    def test_16_notifications_system(self):
+        """Test Multi-Channel Telegram Notification Dispatcher."""
+        import notifications_system
+        notif = notifications_system.notifier.notify_trade_signal()
+        self.assertEqual(notif.get("status"), "NOTIFIED")
 
 
 if __name__ == "__main__":
