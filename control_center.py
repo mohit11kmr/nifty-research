@@ -23,6 +23,7 @@ def display_menu():
     print(" [6] 🌐 Open Live Visual Terminal (http://127.0.0.1:8766/)")
     print(" [7] 📜 View Historical Audit & Permanent Backtest Log Summary")
     print(" [8] ⚡ Run One-Click Master Orchestrator (All Engines)")
+    print(" [9] ⚙️ PID Background Quant Daemon (Start / Status / Stop)")
     print(" [0] ❌ Exit Control Center")
     print("="*66)
 
@@ -30,7 +31,7 @@ def display_menu():
 def run_control_center():
     while True:
         display_menu()
-        choice = input("Enter choice [0-8]: ").strip()
+        choice = input("Enter choice [0-9]: ").strip()
 
         if choice == "1":
             import live_ticker_service
@@ -68,6 +69,16 @@ def run_control_center():
         elif choice == "8":
             import run_all
             run_all.run_complete_suite()
+
+        elif choice == "9":
+            import quant_daemon
+            pid = quant_daemon.is_daemon_running()
+            if pid:
+                print(f"🟢 Daemon running on PID {pid}. Stopping...")
+                quant_daemon.stop_daemon()
+            else:
+                print("🔴 Daemon stopped. Check status:")
+                os.system("python3 quant_daemon.py --status")
 
         elif choice == "0":
             print("Goodbye Mohit bhai!")
