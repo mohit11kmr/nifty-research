@@ -1,25 +1,25 @@
 <div align="center">
 
-# ⚡ NIFTY Multi-Asset Quant Platform & Live Paper Trading Engine
+# ⚡ NIFTY Multi-Asset Quant Platform & Append-Only Audit Logger
 
 **An Institutional-Grade, Local-First Quantitative Trading & Autonomous AI Swarm System for Nifty 50, Bank Nifty, FinNifty, Equities & MCX Commodities.**
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Market: NSE & MCX](https://img.shields.io/badge/Market-NSE%20%7C%20MCX-orange.svg)](https://www.nseindia.com/)
-[![Broker: Angel One SmartAPI](https://img.shields.io/badge/Broker-Angel%20One%20SmartAPI-green.svg)](https://smartapi.angelone.in/)
-[![Paper Trading: Active](https://img.shields.io/badge/Paper%20Trading-Active%20%E2%82%B91L-brightgreen.svg)]()
-[![AI Swarm: 2026 Active](https://img.shields.io/badge/AI%20Swarm-2026%20Active-blue.svg)]()
+[![Audit Logger: SQLite Active](https://img.shields.io/badge/Audit%20Logger-SQLite%20Active-brightgreen.svg)]()
+[![Paper Trading: Active](https://img.shields.io/badge/Paper%20Trading-Active%20%E2%82%B91L-blue.svg)]()
+[![AI Swarm: 2026 Active](https://img.shields.io/badge/AI%20Swarm-2026%20Active-green.svg)]()
 [![Auto-Enhancer: RL Active](https://img.shields.io/badge/Auto--Enhancer-RL%20Active-purple.svg)]()
 [![Capital Guard: 100% Secure](https://img.shields.io/badge/Capital%20Guard-100%25%20Secure-red.svg)]()
 
-[Architecture](#-system-architecture) • [Paper Trading](#-live-paper-trading-simulation) • [Auto-Enhancer](#-continuous-auto-enhancement-engine) • [AI Swarm](#-2026-autonomous-ai-trading-swarm) • [Capital Protection](#-prop-desk-capital-preservation) • [Backtest Proof](#-46-year-multi-decade-backtest-proof) • [Quick Start](#-quick-start)
+[Architecture](#-system-architecture) • [Audit Logger](#-permanent-append-only-audit-logger) • [Paper Trading](#-live-paper-trading-simulation) • [Auto-Enhancer](#-continuous-auto-enhancement-engine) • [Backtest Proof](#-46-year-multi-decade-backtest-proof) • [Quick Start](#-quick-start)
 
 ---
 
 </div>
 
-> 🛑 **Capital Protection & Live Simulation First**: SEBI FY26 data shows retail traders lost ₹91,685 Crore in F&O. This platform incorporates a **Live Paper Trading Simulation Engine (`paper_trader.py`)** with ₹1,00,000 virtual equity, 3% daily kill-switches, positive expected value (+EV) risk models, and a **Continuous Reinforcement-Learning Auto-Enhancer**.
+> 🛑 **Capital Protection & Permanent Audit Logging First**: SEBI FY26 data shows retail traders lost ₹91,685 Crore in F&O. This platform incorporates an **Append-Only Historical Record & Audit Logger (`history_logger.py`)** that stores every live market tick, trade signal, and paper execution permanently in SQLite (`data/historical_audit.db`) for backtest accuracy verification.
 
 ---
 
@@ -27,11 +27,11 @@
 
 ```mermaid
 flowchart TD
-    subgraph Data Layer
+    subgraph Data & Audit Layer
         A1[Live Market Tick Stream live_market_fetch.py]
-        A2[NSE Playwright Live Option Chain]
-        A3[Yahoo Finance Global Cues]
-        A4[SQLite Tick DB data/research.db]
+        A2[Permanent Append-Only SQLite DB history_logger.py]
+        A3[NSE Playwright Live Option Chain]
+        A4[Yahoo Finance Global Cues]
     end
 
     subgraph 2026 Intelligence & Auto-Enhancer
@@ -62,37 +62,25 @@ flowchart TD
 
 ---
 
+## 🗄️ Permanent Append-Only Audit Logger (`history_logger.py`)
+
+- **SQLite Database (`data/historical_audit.db`):** Stores live market ticks, VIX, PCR, Max Pain, and signal history permanently without overwriting past records.
+- **Signal Accuracy Tracking (`data/signal_history.csv`):** Logs every generated A+ signal to track signal win rate and performance over time.
+- **Trade Journal (`data/paper_trade_journal.csv`):** Keeps a complete trade log of paper trade entries, exits, realized PnL, and win rate.
+
+---
+
 ## 📝 Live Paper Trading Simulation (`paper_trader.py`, `auto_paper_runner.py`)
 
 - **Virtual Capital Ledger (`data/paper_account.json`):** Starts with ₹1,00,000 virtual capital to test trading strategies in real time without financial risk.
-- **Automated Virtual Order Placement:** When Precision Signals generate A+ Grade setups, `auto_paper_runner.py` places virtual paper orders, tracking real-time entry, stop loss, target, and MTM PnL.
-- **Real-Time Market Tick Sync (`live_market_fetch.py`):** Streams live 1-minute intraday market spot ticks to evaluate virtual paper trade progress dynamically.
+- **Automated Virtual Order Placement:** Automatically executes virtual paper orders when A+ Grade signals occur.
 
 ---
 
 ## 🔄 Continuous Auto-Enhancement Engine (`auto_enhancer.py`)
 
-- **RL Adaptive Weights (`adaptive_weights.py`):** Uses Q-learning feedback to adjust indicator weights based on 20-bar historical accuracy. Accurate indicators get boosted weights (e.g. SuperTrend `1.35`, ML `1.30`); failing indicators get reduced weights (e.g. RSI `0.85`).
-- **Volume Profile POC & Value Area (`volume_profile.py`):** Dynamically calculates Point of Control (POC), Value Area High (VAH), and Value Area Low (VAL) to track institutional accumulation zones.
-
----
-
-## 🤖 2026 Autonomous AI Trading Swarm (`multi_agent_swarm.py`)
-
-- **🧠 Agent 1: Macro Intelligence Subagent** — Scans USD/INR, DXY, Gold, Crude Oil, and FII/DII net flows.
-- **⚡ Agent 2: Microstructure & Order Book Subagent** — Measures Limit Order Book (LOB) Imbalance & VPIN Toxicity.
-- **🛡️ Agent 3: Capital Guard & Risk Protection Subagent** — Enforces 3% daily stop-loss limit and 1% risk rules.
-- **🎯 Agent 4: Executive Swarm Leader** — Merges subagent votes into a unified high-confluence decision.
-
----
-
-## 🛡️ Prop-Desk Capital Preservation (`capital_guard.py`)
-
-1. **🛑 Daily Loss Kill-Switch**: Max 3.0% daily account loss limit. If hit → LOCK TRADING for the day.
-2. **⏳ 0DTE Expiry Trap Filter**: Block naked Call/Put buying after 13:30 IST on Expiry Days (95% expire worthless).
-3. **📅 Event Risk Protection**: Block naked option buying 24h before RBI Policy / Budget / FED rate decisions.
-4. **📉 Drawdown De-risking Matrix**: Cut position size by 50% at 5% drawdown, 75% at 10% drawdown.
-5. **🧮 Fixed 1% Capital Risk**: Maximum loss per trade strictly ≤ 1% of account capital.
+- **RL Adaptive Weights (`adaptive_weights.py`):** Uses Q-learning feedback to adjust indicator weights based on 20-bar historical accuracy.
+- **Volume Profile POC & Value Area (`volume_profile.py`):** Dynamically calculates Point of Control (POC), Value Area High (VAH), and Value Area Low (VAL).
 
 ---
 
@@ -105,7 +93,6 @@ Tested across **46 Years of Real Historical Market Data (1980 - 2026 | 11,747 Da
 | **S&P 500 Benchmark** | **Daily (`1D`)** | **1980 – 2026 (46.6 Yrs)** | **122** | **`83.61%`** | **`3.60`** | **`-20.91%`** | 🟢 **ULTRA_ROBUST** |
 | **S&P 500 Benchmark** | **Weekly (`1W`)** | **1980 – 2026 (46.6 Yrs)** | **21** | **`90.48%`** | **`4.45`** | **`-33.70%`** | 🟡 **HIGH_ACCURACY** |
 | **BSE Sensex Benchmark** | **Daily (`1D`)** | **1997 – 2026 (29.1 Yrs)** | **66** | **`65.15%`** | **`1.98`** | **`-22.96%`** | 🟢 **ULTRA_ROBUST** |
-| **BSE Sensex Benchmark** | **Weekly (`1W`)** | **1997 – 2026 (29.1 Yrs)** | **16** | **`75.00%`** | **`3.11`** | **`-30.85%`** | 🟡 **STABLE** |
 
 ---
 
@@ -124,9 +111,9 @@ playwright install chrome
 python3 run_all.py
 ```
 
-### 3. Run Live Paper Trader
+### 3. View Historical Audit Summary
 ```bash
-python3 auto_paper_runner.py
+python3 history_logger.py
 ```
 
 ---
@@ -134,6 +121,7 @@ python3 auto_paper_runner.py
 ## 🗂️ Module Map
 
 - `run_all.py` — One-Click Master Launcher Script
+- `history_logger.py` — Permanent Append-Only SQLite Audit Database & Signal Tracker
 - `paper_trader.py` — Live Paper Trading Simulation Engine & Virtual Ledger
 - `auto_paper_runner.py` — Autonomous Auto Paper Order Execution System
 - `live_market_fetch.py` — Real-Time Intraday Market Spot Tick Fetcher
