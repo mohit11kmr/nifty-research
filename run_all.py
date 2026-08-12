@@ -71,7 +71,11 @@ def run_complete_suite():
     print("\n[4/23] Running Angel One SmartAPI Scrip Master Token Lookup (token_lookup.py)...")
     try:
         import token_lookup
-        token_info = token_lookup.get_token_for_symbol(symbol_name="NIFTY", strike=24500, option_type="CE")
+        import regime_filter
+        plan = regime_filter.trade_plan()
+        real_spot = plan.get("close")
+        atm_strike = int(round(real_spot / 50.0) * 50) if real_spot else 24500
+        token_info = token_lookup.get_token_for_symbol(symbol_name="NIFTY", strike=atm_strike, option_type="CE")
         print(f" -> Scrip Token: {token_info.get('token')} | Symbol: {token_info.get('symbol')} | Expiry: {token_info.get('expiry')}")
     except Exception as e:
         print(f" -> Token Lookup Error: {e}")
@@ -223,8 +227,24 @@ def run_complete_suite():
     print("\n[20/23] Running Multi-Channel Telegram Notification Dispatcher (notifications_system.py)...")
     try:
         import notifications_system
-        notif_res = notifications_system.notifier.notify_trade_signal()
-        print(f" -> Notification Dispatcher Status: {notif_res.get('status')}")
+        import precision_signals
+        sig = precision_signals.generate_precision_signal()
+        action = sig.get("signal_action", "STAY_OUT")
+        if action in ("STAY_OUT", "NO_SIGNAL") or "STAY_OUT" in str(sig.get("signal_grade", "")):
+            notif_res = notifications_system.notifier.notify_trade_signal()
+            print(f" -> Notification Dispatcher Status: {notif_res.get('status')} (no real signal - no fabricated alert)")
+        else:
+            levels = sig.get("precise_trade_levels", {})
+            notif_res = notifications_system.notifier.notify_trade_signal(
+                symbol="NIFTY",
+                action=action,
+                strike=levels.get("recommended_call_strike") or levels.get("recommended_put_strike"),
+                entry=levels.get("entry_premium") or sig.get("entry_premium"),
+                sl=levels.get("stop_loss_points"),
+                target=levels.get("target_1_points"),
+                grade=sig.get("signal_grade"),
+            )
+            print(f" -> Notification Dispatcher Status: {notif_res.get('status')}")
     except Exception as e:
         print(f" -> Notification Error: {e}")
 
@@ -255,7 +275,7 @@ def run_complete_suite():
         print(f" -> Voice Coach Error: {e}")
 
     print("\n==================================================================")
-    print("✅ MASTER ORCHESTRATION COMPLETE — ALL 32 QUANT ENGINES ONLINE!")
+    print("✅ MASTER ORCHESTRATION COMPLETE — ALL 23 QUANT ENGINES EXECUTED")
     print("==================================================================")
 
 

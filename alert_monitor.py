@@ -20,9 +20,6 @@ DASH = "http://127.0.0.1:8766"
 POLL_SEC = int(os.environ.get("ALERT_POLL_SEC", "30"))
 REGIME_POLL_SEC = 180
 
-RES_LEVELS = [24500, 24550, 24600]      # CE walls (resistance above spot)
-SUP_LEVELS = [24450, 24400, 24350]      # PE walls (support below spot)
-
 
 def _notify(title, body, urgent=False):
     try:
@@ -72,21 +69,51 @@ def _regime_state():
         return None
 
 
+def _oi_levels(spot):
+    """Dynamic support/resistance from real OI walls; spot-relative fallback.
+
+    Uses the freshest option chain snapshot (real OI). If no snapshot exists,
+    falls back to spot-relative bands (nearest strikes) instead of stale
+    hardcoded 2025-era levels.
+    """
+    try:
+        import glob
+        import oi_intel
+        import pandas as pd
+        snaps = sorted(glob.glob(os.path.join("data", "oi_snapshots", "NIFTY_*.csv")))
+        if snaps:
+            cdf = pd.read_csv(snaps[-1])
+            walls = oi_intel.oi_walls(cdf, spot=spot)
+            res = [int(s) for s in walls.get("resistance_oi", []) if int(s) > spot]
+            sup = [int(s) for s in walls.get("support_oi", []) if int(s) < spot]
+            if res or sup:
+                return res or [], sup or []
+    except Exception as e:
+        print(f"  oi-levels err: {e}", flush=True)
+
+    # spot-relative fallback (nearest 50 strikes around spot)
+    base = int(round(spot / 50.0) * 50)
+    res = [base + 50, base + 100, base + 150]
+    sup = [base - 50, base - 100, base - 150]
+    return res, sup
+
+
 def main():
-    print(f"alert_monitor: poll {POLL_SEC}s | levels R{list(map(str,RES_LEVELS))} S{list(map(str,SUP_LEVELS))}", flush=True)
+    print("alert_monitor: poll {}s | dynamic OI-wall levels (spot-relative fallback)".format(POLL_SEC), flush=True)
     state = {"regime": None, "zone": None, "above": None, "below": None}
     last_regime_check = 0.0
     while True:
         spot, ts = _live_spot()
         if spot is not None:
+            res_levels, sup_levels = _oi_levels(spot)
             # breakout/resistance logic
-            for lvl in RES_LEVELS:
+            for lvl in res_levels:
                 crossed = state["above"]
                 if spot > lvl and crossed is not None and crossed < lvl:
                     _notify(f"BREAKOUT ABOVE {lvl}", f"NIFTY {spot:,.0f} crossed {lvl} (live). Opportunity check!", urgent=True)
                 elif spot < lvl and crossed is not None and crossed > lvl:
                     _notify(f"RECLAIMED BELOW {lvl}", f"NIFTY {spot:,.0f} fell back under {lvl}. Stand by.", urgent=True)
-            for lvl in SUP_LEVELS:
+            for lvl in sup_levels:
                 crossed = state["below"]
                 if spot < lvl and crossed is not None and crossed > lvl:
                     _notify(f"BREAKDOWN BELOW {lvl}", f"NIFTY {spot:,.0f} broke {lvl} (live). Opportunity check!", urgent=True)

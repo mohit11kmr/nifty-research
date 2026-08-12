@@ -1,5 +1,5 @@
 # 📈 NIFTY 50 SYSTEMATIC TRADING DASHBOARD
-_Generated: 12 Aug 2026 | 11:38 IST_
+_Generated: 12 Aug 2026 | 22:21 IST_
 
 ---
 
@@ -15,12 +15,12 @@ _Generated: 12 Aug 2026 | 11:38 IST_
 ## 📊 2. LIVE MARKET & OPTION CHAIN METRICS
 | Metric | Value | Market Interpretation |
 |---|---|---|
-| **Nifty Spot** | 24,293.90 | Current Index Level |
+| **Nifty Spot** | 24,435.95 | Current Index Level |
 | **India VIX** | 0.00 | Options Premium Pricing Gauge |
-| **Put-Call Ratio (PCR)** | 0.749 | Bearish (<0.8) |
-| **Max Pain Level** | 24450 | Option Buyers Max Loss Strike |
-| **Call Wall (Resistance)** | 24500, 24600, 24450 | Heavy CE OI Ceiling |
-| **Put Wall (Support)** | 24450, 24400, 24500 | Heavy PE OI Floor |
+| **Put-Call Ratio (PCR)** | 0.754 | Bearish (<0.8) |
+| **Max Pain Level** | 24400 | Option Buyers Max Loss Strike |
+| **Call Wall (Resistance)** | 25000, 24500, 25500 | Heavy CE OI Ceiling |
+| **Put Wall (Support)** | 24000, 24300, 23500 | Heavy PE OI Floor |
 
 ---
 ## 🌍 3. GLOBAL & SENTIMENT SNAPSHOT
@@ -33,7 +33,7 @@ _Generated: 12 Aug 2026 | 11:38 IST_
 | **Gold** | 4,383.00 | +0.49% |
 | **Silver** | 64.77 | -0.52% |
 | **Crude Oil** | 83.20 | +1.30% |
-| **Bitcoin** | 63,910.59 | -1.44% |
+| **Bitcoin** | 63,551.88 | -0.56% |
 | **USDINR** | 95.40 | +0.20% |
 | **Nikkei** | 66,970.22 | +2.08% |
 | **SGX Nifty** | 24,471.70 | -0.46% |
@@ -42,16 +42,16 @@ _Generated: 12 Aug 2026 | 11:38 IST_
 ## 📰 4. LIVE MARKET HEADLINES
 
 ### NIFTY Headlines:
-- 🔹 Nifty 50, Sensex prediction today: Check how Indian stock market is expected to trade on 12 August - livemint.com
-- 🔹 Stock Market Today: Gift Nifty To Crude Oil Prices — Five Key Factors That May Drive Sensex, Nifty 50 on August 12 - NDTV Profit
-- 🔹 BSE to replace Wipro in India's benchmark Nifty 50 index - Reuters
-- 🔹 Nifty 50 Inclusion May Boost Flows Into BSE - Bloomberg.com
+- 🔹 Sensex Today | Nifty 50 | Stock Market Highlights: Sensex settles 188 pts lower, Nifty below 24,450; Adan... - economictimes.com
+- 🔹 Sensex, Nifty 50 extend losses for second consecutive session; 5 key factors behind stock market downtrend explained - livemint.com
+- 🔹 Stock Market Today Highlights: Dalal Street ends flat; BSE Sensex up 40 points, NSE Nifty50 closes flat - The Times of India
+- 🔹 Stock Market Today Highlights, Aug 11: Sensex drops 388 pts, Nifty slips to 24,471 on surging crude oil prices - BusinessLine
 
 ### GLOBAL Headlines:
-- 🔹 Rupee gains 6 paise against US dollar - bfsi.economictimes.indiatimes.com
-- 🔹 Rupee flat at 95.33 against dollar: What to watch next for the currency - CNBC TV18
+- 🔹 News by CNBC TV18 on TradingView, 2026-08-04 — cnbctv:6b7dd981e094b:0 - TradingView
+- 🔹 Indian rupee to track merchant flows, dollar; bonds await foreign buying cues - Reuters
 - 🔹 INR vs USD, April 17: Indian rupee strengthens to 92.6 against US dollar amid positive global cues - Upstox
-- 🔹 Rupee Strengthens as Falling Crude Oil Prices and Positive Global Cues Lift Market Sentiment - boldnewsonline.com
+- 🔹 Rupee slips 10 paise as stronger dollar and geopolitical jitters outweigh positive cues - The Times of India
 
 ### FII Headlines:
 - 🔹 How to Read an FII/DII Data Report (With Examples) - NiftyTrader

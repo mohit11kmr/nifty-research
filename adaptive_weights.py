@@ -35,19 +35,21 @@ def load_adaptive_weights():
 
 
 def update_adaptive_weights(trade_outcomes=None):
-    """Auto-enhance indicator weights using Q-learning reward feedback."""
+    """Auto-enhance indicator weights using Q-learning reward feedback.
+
+    Only applies updates when REAL trade outcomes are supplied. Without real
+    outcomes no weights are changed (no fabricated RL rewards).
+    """
     weights = load_adaptive_weights()
     lr = weights.get("learning_rate", 0.05)
 
     if not trade_outcomes:
-        # Default self-optimization loop based on recent 20 bars prediction accuracy
-        trade_outcomes = [
-            {"indicator": "supertrend", "correct": True},
-            {"indicator": "ml_engine", "correct": True},
-            {"indicator": "pcr", "correct": True},
-            {"indicator": "rsi", "correct": False},
-            {"indicator": "skew", "correct": True},
-        ]
+        # No real outcome data -> honest no-op instead of invented rewards.
+        weights["last_updated"] = pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open(WEIGHTS_FILE, "w") as f:
+            json.dump(weights, f, indent=2)
+        print(f"⚠️ [Auto-Enhancer] No real trade outcomes - weights unchanged (no fabricated RL update).")
+        return weights
 
     updates_made = []
     for item in trade_outcomes:

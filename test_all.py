@@ -108,8 +108,14 @@ class TestNiftyQuantPlatform(unittest.TestCase):
     def test_16_notifications_system(self):
         """Test Multi-Channel Telegram Notification Dispatcher."""
         import notifications_system
+        # Without real signal data -> honest skip, no fabricated alert.
         notif = notifications_system.notifier.notify_trade_signal()
-        self.assertEqual(notif.get("status"), "NOTIFIED")
+        self.assertEqual(notif.get("status"), "SKIPPED_NO_SIGNAL")
+        # With real signal data -> dispatched.
+        notif2 = notifications_system.notifier.notify_trade_signal(
+            symbol="NIFTY", action="BUY_CALL", strike=24450, entry=140.0,
+            sl=90.0, target=240.0, grade="A+ GRADE", option_type="CE")
+        self.assertEqual(notif2.get("status"), "NOTIFIED")
 
     def test_17_connection_resilience(self):
         """Test Connection Resilience & Outage Guard."""

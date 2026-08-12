@@ -38,18 +38,31 @@ class MultiChannelNotifier:
             print(f"⚠️ [Telegram Notifier] Error: {e}")
             return False
 
-    def notify_trade_signal(self, symbol="NIFTY", action="BUY_CALL", strike=24500, entry=140.0, sl=90.0, target=240.0, grade="A+ GRADE"):
-        """Dispatch high-precision trade signal alert."""
+    def notify_trade_signal(self, symbol=None, action=None, strike=None, entry=None, sl=None, target=None, grade=None, option_type=None):
+        """Dispatch a REAL high-precision trade signal alert.
+
+        Requires actual signal values. If action/strike/entry are not supplied
+        the dispatch is skipped with an honest status - a fabricated alert is
+        never sent.
+        """
+        if not action or not strike or not entry:
+            print("ℹ️ [Notification Dispatcher] No real signal data - alert skipped (no fabricated signal).")
+            return {"status": "SKIPPED_NO_SIGNAL", "reason": "action/strike/entry not supplied"}
+        option_type = option_type or ("CE" if "CALL" in action.upper() else "PE")
         emoji = "🟢" if "CALL" in action or "BUY" in action else "🔴"
+        grade = grade or "NO_GRADE"
+        entry_txt = f"₹{entry:.2f}"
+        sl_txt = f"₹{sl:.2f}" if sl is not None else "N/A"
+        target_txt = f"₹{target:.2f}" if target is not None else "N/A"
         msg = f"""
 {emoji} **NIFTY QUANT SIGNAL ALERT ({grade})**
 
-📊 **Symbol:** {symbol}
+📊 **Symbol:** {symbol or "NIFTY"}
 📈 **Action:** {action}
-🎯 **Strike:** {strike} CE
-💰 **Entry Price:** ₹{entry:.2f}
-🛑 **Stop Loss:** ₹{sl:.2f}
-🎯 **Target 1:** ₹{target:.2f}
+🎯 **Strike:** {strike} {option_type}
+💰 **Entry Price:** {entry_txt}
+🛑 **Stop Loss:** {sl_txt}
+🎯 **Target 1:** {target_txt}
 ⭐ **Risk/Reward:** 1 : 2.0
 ⏰ **Timestamp:** {dt.datetime.now().strftime('%d %b %Y | %H:%M:%S IST')}
 
@@ -57,7 +70,7 @@ class MultiChannelNotifier:
 """
         print(msg)
         self.send_telegram_message(msg)
-        return {"status": "NOTIFIED", "action": action, "symbol": symbol}
+        return {"status": "NOTIFIED", "action": action, "symbol": symbol or "NIFTY"}
 
     def notify_risk_alert(self, warning_message="Daily Loss Limit Warning!"):
         """Dispatch critical risk alert."""

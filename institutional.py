@@ -134,6 +134,14 @@ def institutional_scan(df=None):
     if pcr > 0:
         signals.append(f"FII option PCR {pcr:.2f} ({'>1 bullish' if pcr > 1 else '<1 bearish'})")
 
+    # Directional stance: BULLISH/BEARISH/NEUTRAL from real cash + 5d flows
+    if fii_net > 0 and fii_5d > 0:
+        fii_sentiment = "BULLISH"
+    elif fii_net < 0 and fii_5d < 0:
+        fii_sentiment = "BEARISH"
+    else:
+        fii_sentiment = "NEUTRAL"
+
     # Client vs smart money divergence (if client data present)
     if "client_idx_fut_net" in df.columns:
         cli = float(last.get("client_idx_fut_net") or 0)
@@ -150,7 +158,7 @@ def institutional_scan(df=None):
         "ce_short_chg": ce_short_chg, "pe_short_chg": pe_short_chg,
         "ce_long": ce_long, "pe_long": pe_long,
         "ce_long_chg": ce_long_chg, "pe_long_chg": pe_long_chg,
-        "pcr": pcr, "sentiment": sentiment,
+        "pcr": pcr, "sentiment": sentiment, "fii_sentiment": fii_sentiment,
         "signals": signals,
     }
 

@@ -16,7 +16,11 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 
 def fetch_live_market_spot():
-    """Fetch exact live real-time Nifty 50 spot price with zero-fail fallback."""
+    """Fetch live real-time Nifty 50 spot price.
+
+    Returns spot=None with status UNAVAILABLE on any failure - never a
+    fabricated price. Callers must treat None as no-live-data and stand down.
+    """
     try:
         ticker = yf.Ticker("^NSEI")
         df = ticker.history(period="1d", interval="1m")
@@ -40,23 +44,48 @@ def fetch_live_market_spot():
         print(f"[Live Fetch Handled Gracefully] {e}")
 
     return {
-        "status": "CACHED_EOD",
+        "status": "UNAVAILABLE",
         "timestamp": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S IST"),
-        "spot": 24583.80,
-        "open": 24583.80,
-        "high": 24620.00,
-        "low": 24550.00,
+        "spot": None,
+        "open": None,
+        "high": None,
+        "low": None,
         "is_live": False
     }
 
 
-def update_live_market_cache():
-    """Sync live market spot price into nifty_history.csv cache."""
-    live = fetch_live_market_spot()
-    if not isinstance(live, dict):
-        live = {"status": "CACHED_EOD", "spot": 24583.80, "is_live": False}
+def _last_real_spot():
+    """Last real spot from the live_dash DB (never a hardcoded value)."""
+    try:
+        import sqlite3
+        db = os.path.join("data", "research.db")
+        if os.path.exists(db):
+            con = sqlite3.connect(db)
+            row = con.execute(
+                "SELECT value, recv_ts FROM spot ORDER BY recv_ts DESC LIMIT 1").fetchone()
+            con.close()
+            if row and row[0]:
+                return {"spot": float(row[0]), "recv_ts": row[1], "is_live": False}
+    except Exception:
+        pass
+    return None
 
-    spot = live.get("spot", 24583.80)
+
+def update_live_market_cache():
+    """Sync live market spot price into nifty_history.csv cache.
+
+    Only writes rows/logs when a real live (or last-recorded real) spot is
+    available. Never fabricates a price.
+    """
+    live = fetch_live_market_spot()
+    if not isinstance(live, dict) or not live.get("spot"):
+        live = _last_real_spot() or {"status": "UNAVAILABLE", "spot": None,
+                                     "open": None, "high": None, "low": None, "is_live": False}
+
+    spot = live.get("spot")
+    if spot is None:
+        print("⚠️ [Live Market Fetch] No live or cached spot available - standing down (no fabricated price).")
+        return live
 
     p = os.path.join("data", "nifty_history.csv")
     os.makedirs("data", exist_ok=True)

@@ -71,10 +71,46 @@ def _init_sqlite_db():
     conn.close()
 
 
-def log_market_tick(spot_price, vix=12.0, pcr=0.85, max_pain=24500):
-    """Permanently log every live market tick (Append-Only)."""
+def _real_market_context(spot_price):
+    """Derive real vix / pcr / max_pain when not supplied - never fabricated."""
+    vix = None
+    pcr = None
+    max_pain = None
+    try:
+        import regime_filter
+        vs = regime_filter.vix_snapshot(nifty_close=spot_price)
+        if vs and vs.get("level") is not None:
+            vix = float(vs["level"])
+    except Exception:
+        pass
+    try:
+        import glob
+        import oi_intel
+        snaps = sorted(glob.glob(os.path.join("data", "oi_snapshots", "NIFTY_*.csv")))
+        if snaps:
+            cdf = pd.read_csv(snaps[-1])
+            pp = oi_intel.pcr_and_pain(cdf, spot=spot_price)
+            pcr = float(pp["pcr"]) if pp.get("pcr") is not None else None
+            max_pain = float(pp["max_pain"]) if pp.get("max_pain") is not None else None
+    except Exception:
+        pass
+    return vix, pcr, max_pain
+
+
+def log_market_tick(spot_price, vix=None, pcr=None, max_pain=None):
+    """Permanently log every live market tick (Append-Only).
+
+    vix/pcr/max_pain default to None and are derived from real market context
+    when omitted - no fabricated values are ever written to the audit trail.
+    """
     _init_sqlite_db()
     now_str = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S IST")
+
+    if vix is None or pcr is None or max_pain is None:
+        real_vix, real_pcr, real_pain = _real_market_context(spot_price)
+        vix = vix if vix is not None else real_vix
+        pcr = pcr if pcr is not None else real_pcr
+        max_pain = max_pain if max_pain is not None else real_pain
 
     # 1. Save to SQLite
     conn = sqlite3.connect(DB_FILE)
@@ -161,6 +197,6 @@ def get_historical_audit_summary():
 
 if __name__ == "__main__":
     print("=== TESTING HISTORICAL RECORD & TRADE JOURNAL LOGGER ===")
-    log_market_tick(24403.10)
+    log_market_tick(24400.0, vix=13.5, pcr=0.95, max_pain=24450)
     summary = get_historical_audit_summary()
     print(json.dumps(summary, indent=2))

@@ -61,9 +61,18 @@ class CapitalGuard:
         return {"status": "SAFE", "rule": "Before 13:30 IST cutoff", "allow_naked_options": True}
 
     def check_event_risk(self, upcoming_events=None):
-        """Check for major high-impact events in next 24 hours (RBI Policy, Budget, FED)."""
+        """Check for major high-impact events in next 24 hours (RBI Policy, Budget, FED).
+
+        Pass real upcoming events to get a real verdict. With no event calendar
+        configured this reports NO_EVENT_DATA (honest) - it does not pretend a
+        risk scan ran.
+        """
         if not upcoming_events:
-            upcoming_events = []
+            return {
+                "status": "NO_EVENT_DATA",
+                "note": "No event calendar configured - event risk not scanned",
+                "allow_option_buying": True,
+            }
 
         high_impact = [e for e in upcoming_events if e.get("impact") == "HIGH"]
         if high_impact:
@@ -108,12 +117,42 @@ class CapitalGuard:
             "is_risk_compliant": actual_risk <= self.max_trade_risk_amount,
         }
 
-    def full_capital_safety_audit(self, daily_pnl=0.0, is_expiry=False, drawdown_pct=0.0):
-        """Run complete 5-point Prop-Desk Capital Safety Audit."""
+    def full_capital_safety_audit(self, daily_pnl=0.0, is_expiry=False, drawdown_pct=0.0,
+                                 entry_price=None, stop_loss_price=None):
+        """Run complete 5-point Prop-Desk Capital Safety Audit.
+
+        Position sizing uses REAL option premium when supplied (or derived
+        from the live chain). Without real prices, sizing reports NOT_COMPUTED
+        instead of a fabricated number.
+        """
         kill_switch = self.check_daily_kill_switch(daily_pnl)
         expiry_guard = self.check_expiry_0dte_trap(is_expiry)
         event_guard = self.check_event_risk()
-        sizing = self.compute_position_size(entry_price=150, stop_loss_price=100, drawdown_pct=drawdown_pct)
+
+        # Real position sizing: accept caller values, else derive from the live chain.
+        if not entry_price or not stop_loss_price:
+            try:
+                import regime_filter
+                plan = regime_filter.trade_plan()
+                real_spot = plan.get("close")
+                import smart_strike_selector
+                strike_res = smart_strike_selector.strike_selector.select_best_strike(
+                    spot_price=real_spot if real_spot else None)
+                entry_price = float(strike_res.get("best_strike_premium") or 0)
+                stop_loss_price = entry_price * 0.5 if entry_price else None
+            except Exception:
+                entry_price, stop_loss_price = None, None
+
+        if entry_price and stop_loss_price and entry_price > 0:
+            sizing = self.compute_position_size(entry_price, stop_loss_price, drawdown_pct=drawdown_pct)
+        else:
+            sizing = {
+                "computed": False,
+                "reason": "no real option premium available",
+                "account_capital": self.capital,
+                "max_allowed_risk_1pct": round(self.max_trade_risk_amount, 2),
+                "is_risk_compliant": None,
+            }
 
         all_clear = (
             not kill_switch["is_kill_switch_active"]
@@ -127,7 +166,7 @@ class CapitalGuard:
             "expiry_guard": expiry_guard,
             "event_guard": event_guard,
             "position_sizing": sizing,
-            "capital_preservation_score": "100% SECURE" if all_clear else "DERISKED",
+            "capital_preservation_score": "RISK_AUDIT_PASSED" if all_clear else "DERISKED",
         }
 
 

@@ -26,9 +26,13 @@ def run_multi_agent_swarm():
         import global_data, institutional
         macro_cues = global_data.fetch_global_snapshot()
         inst_cues = institutional.institutional_scan()
-
-
-        agent_1_vote = "BULLISH" if inst_cues.get("fii_sentiment") == "BULLISH" else "NEUTRAL"
+        sent = (inst_cues or {}).get("fii_sentiment", "NEUTRAL")
+        if sent == "BULLISH":
+            agent_1_vote = "BULLISH"
+        elif sent == "BEARISH":
+            agent_1_vote = "BEARISH"
+        else:
+            agent_1_vote = "NEUTRAL"
         agent_1_status = "ACTIVE"
     except Exception as e:
         agent_1_vote = "NEUTRAL"
@@ -40,7 +44,13 @@ def run_multi_agent_swarm():
         import lob_microstructure, anti_spoofing
         lob_data = lob_microstructure.compute_lob_microstructure()
         spoof_data = anti_spoofing.detect_spoofing_and_fake_walls()
-        agent_2_vote = "BULLISH" if lob_data.get("lob_imbalance_ratio", 0) > 0.2 else "NEUTRAL"
+        lob_imb = lob_data.get("lob_imbalance_ratio", 0) or 0
+        if lob_imb > 0.2:
+            agent_2_vote = "BULLISH"
+        elif lob_imb < -0.2:
+            agent_2_vote = "BEARISH"
+        else:
+            agent_2_vote = "NEUTRAL"
         agent_2_status = "ACTIVE"
     except Exception as e:
         agent_2_vote = "NEUTRAL"
@@ -62,21 +72,32 @@ def run_multi_agent_swarm():
 
     votes = [agent_1_vote, agent_2_vote]
     bull_count = votes.count("BULLISH")
+    bear_count = votes.count("BEARISH")
     risk_cleared = agent_3_vote == "APPROVED"
+    active_agents = sum(1 for v in votes if v in ("BULLISH", "BEARISH"))
 
-    if bull_count >= 2 and risk_cleared:
+    if bear_count >= 2 and risk_cleared:
+        swarm_decision = "HIGH_CONVICTION_SWARM_SHORT"
+        confidence = f"{int(100 * bear_count / 2)}% swarm bearish - risk cleared"
+    elif bull_count >= 2 and risk_cleared:
         swarm_decision = "HIGH_CONVICTION_SWARM_BUY"
-        confidence = "100% MULTI-AGENT SWARM CONFLUENCE"
+        confidence = f"{int(100 * bull_count / 2)}% swarm bullish - risk cleared"
     elif bull_count == 1 and risk_cleared:
         swarm_decision = "MODERATE_SWARM_ACCUMULATE"
-        confidence = "50% MULTI-AGENT SWARM CONFLUENCE"
+        confidence = "50% swarm bullish - partial confluence"
+    elif bear_count == 1 and risk_cleared:
+        swarm_decision = "MODERATE_SWARM_DISTRIBUTE"
+        confidence = "50% swarm bearish - partial confluence"
+    elif not risk_cleared:
+        swarm_decision = "SWARM_BLOCKED"
+        confidence = "RISK GUARD BLOCKED"
     else:
         swarm_decision = "SWARM_STAND_BY_NO_TRADE"
-        confidence = "RISK GUARD OR CONFLUENCE HOLD"
+        confidence = "LOW OR MIXED CONFLUENCE"
 
     swarm_report = {
         "timestamp": dt.datetime.now().strftime("%d %b %Y %H:%M IST"),
-        "multi_agent_framework": "2026 AUTONOMOUS TRADING SWARM",
+        "multi_agent_framework": "AUTONOMOUS TRADING SWARM",
         "swarm_decision": swarm_decision,
         "swarm_confidence": confidence,
         "subagent_votes": {
@@ -84,7 +105,7 @@ def run_multi_agent_swarm():
             "agent_2_microstructure": {"status": agent_2_status, "vote": agent_2_vote},
             "agent_3_capital_guard": {"status": agent_3_status, "vote": agent_3_vote},
         },
-        "executive_summary": "All 4 AI Subagents executed successfully with zero conflicts."
+        "executive_summary": f"{active_agents}/2 directional agents active - votes: {votes}.",
     }
 
     print("\n" + json.dumps(swarm_report, indent=2))

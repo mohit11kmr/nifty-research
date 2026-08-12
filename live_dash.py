@@ -177,7 +177,11 @@ class Handler(BaseHTTPRequestHandler):
             return self._send_json(_api_spot())
         if u.path == "/api/ticks":
             q = parse_qs(u.query)
-            n = int(q.get("n", ["8"])[0])
+            try:
+                n = int(q.get("n", ["8"])[0])
+            except (TypeError, ValueError):
+                n = 8
+            n = max(1, min(n, 200))
             return self._send_json(_api_ticks(n))
         if u.path == "/api/chain":
             return self._send_json(_api_chain())

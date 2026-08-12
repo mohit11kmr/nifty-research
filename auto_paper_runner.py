@@ -33,9 +33,12 @@ def run_auto_paper_trader():
     print(f"Time: {dt.datetime.now().strftime('%d %b %Y | %H:%M:%S IST')}")
     print("==================================================================")
 
-    # 1. Sync live market spot
+    # 1. Sync live market spot (never fabricate a price - stand down if none)
     live_tick = live_market_fetch.update_live_market_cache()
-    spot = live_tick.get("spot", 24403.10)
+    spot = live_tick.get("spot")
+    if not spot:
+        print(" 🛑 [Auto Paper Trader] No live/cached spot available - standing down (no fabricated trade).")
+        return {"status": "STAND_DOWN", "reason": "no live or cached spot"}
 
     # 2. Audit Capital Guard Risk & VaR
     cg = capital_guard.CapitalGuard().full_capital_safety_audit()
@@ -52,7 +55,7 @@ def run_auto_paper_trader():
 
     # 4. Volume Surge & Pocket Pivot Check
     vol_res = volume_analytics_engine.compute_volume_analytics(spot_price=spot)
-    vol_surge = vol_res.get("volume_surge_ratio", 1.0)
+    vol_surge = vol_res.get("volume_surge_ratio")
     pocket_pivot = vol_res.get("pocket_pivot_detected", False)
 
     # 5. Generate 6-Layer Precision Signal
@@ -60,14 +63,19 @@ def run_auto_paper_trader():
     grade = sig.get("signal_grade", "NO_SIGNAL")
     action = sig.get("signal_action", "STAY_OUT")
 
-    print(f" -> Spot: ₹{spot:,.2f} | MTF: {mtf_status} | Vol Surge: {vol_surge}x | Signal: {action} ({grade})")
+    print(f" -> Spot: ₹{spot:,.2f} | MTF: {mtf_status} | Vol Surge: {vol_surge} | Signal: {action} ({grade})")
 
-    # 6. Select Strike via Smart Strike Selector (Delta Sweet Spot 0.30 - 0.55)
+    # 6. Gate on the signal - STAY_OUT / NO_SIGNAL means NO trade at all
+    if action in ("STAY_OUT", "NO_SIGNAL") or "STAY_OUT" in str(grade):
+        print(f" ⏸️ [Auto Paper Trader] Signal is {action} ({grade}) - standing down, no trade placed.")
+        return {"status": "STAND_DOWN", "reason": f"signal {action} ({grade})", "spot": spot}
+
+    # 7. Select Strike via Smart Strike Selector (Delta Sweet Spot 0.30 - 0.55)
     option_type = "CE" if ("BUY_CALL" in action or "BULLISH" in action) else "PE"
     strike_res = smart_strike_selector.strike_selector.select_best_strike(spot_price=spot, option_type=option_type)
-    best_strike = strike_res.get("best_strike", 24450)
+    best_strike = strike_res.get("best_strike") or int(round(spot / 50.0) * 50)
 
-    # 7. Calculate Custom Entry, SL, Target & Trailing SL
+    # 8. Calculate Custom Entry, SL, Target & Trailing SL
     # Entry = REAL selected-strike premium (LTP or BS), not a hardcoded 140.0
     entry_premium = float(strike_res.get("best_strike_premium", 0) or 0)
     if entry_premium <= 0:
@@ -77,10 +85,10 @@ def run_auto_paper_trader():
     risk_per_share = max(entry_premium - sl_premium, 1.0)
     target_premium = round(entry_premium + (2.0 * risk_per_share), 2)         # Target = 1:2.0 RRR
 
-    # Dynamic Trailing SL Calculation
+    # Dynamic Trailing SL Calculation (honest: no move has happened yet)
     trailing_res = dynamic_trailing.compute_trailing_stops(
         entry_price=entry_premium,
-        current_price=entry_premium + 25.0,  # Simulated favorable move
+        current_price=entry_premium,  # fresh position, no fabricated favorable move
         atr=atr_volatility,
         side="CALL" if option_type == "CE" else "PUT",
         initial_sl=sl_premium
@@ -89,7 +97,7 @@ def run_auto_paper_trader():
 
     print(f" 🎯 [Custom Setup Calculated] Strike: {best_strike} {option_type} | Entry: ₹{entry_premium} | SL: ₹{sl_premium} | Target: ₹{target_premium} | Trailing SL: ₹{trailing_sl}")
 
-    # 8. Execute Order in Paper Trading Ledger
+    # 9. Execute Order in Paper Trading Ledger
     res = paper_trader.paper_engine.execute_paper_order(
         symbol="NIFTY",
         side="BUY",

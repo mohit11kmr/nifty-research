@@ -29,13 +29,13 @@ def generate_live_terminal_html(out_path="blog/live_terminal.html"):
         import regime_filter
         regime_data = regime_filter.trade_plan()
     except Exception:
-        regime_data = {"regime": "RANGE_LV", "gate": "NO_TRADE", "close": 24583.8, "vix": 12.02}
+        regime_data = {"regime": "NO_DATA", "gate": "NO_TRADE", "close": None, "vix": None}
 
     try:
         import precision_signals
         sig = precision_signals.generate_precision_signal()
     except Exception:
-        sig = {"signal_grade": "NO_SIGNAL", "confluence_score": "1/5"}
+        sig = {"signal_grade": "NO_SIGNAL", "confluence_score": "N/A"}
 
     try:
         import gamma_flip
@@ -44,15 +44,43 @@ def generate_live_terminal_html(out_path="blog/live_terminal.html"):
             cdf = pd.read_csv(snaps[-1])
             gex_data = gamma_flip.calculate_gamma_exposure(cdf)
         else:
-            gex_data = {"gamma_flip_strike": 24500, "market_maker_regime": "NEUTRAL"}
+            gex_data = {"gamma_flip_strike": None, "market_maker_regime": "NO_DATA (no OI snapshot)"}
     except Exception:
-        gex_data = {"gamma_flip_strike": 24500, "market_maker_regime": "NEUTRAL"}
+        gex_data = {"gamma_flip_strike": None, "market_maker_regime": "NO_DATA (error reading snapshot)"}
 
-    spot = _to_float(regime_data.get("close"), 24583.8)
-    regime = regime_data.get("regime", "RANGE_LV")
+    # Real capital guard status (honest label)
+    try:
+        import capital_guard
+        cg_audit = capital_guard.CapitalGuard().full_capital_safety_audit()
+        guard_score = cg_audit.get("capital_preservation_score", "N/A")
+        guard_status = cg_audit.get("safety_status", "N/A")
+    except Exception:
+        guard_score = "N/A"
+        guard_status = "N/A"
+
+    # Real broker session status (honest - no fake "Connected")
+    broker_line = "Not Connected (check .env credentials)"
+    broker_connected = False
+    try:
+        import angel_one_client
+        profile = angel_one_client.manager.get_profile()
+        if profile:
+            broker_connected = True
+            broker_line = "Connected (Angel One SmartAPI)"
+    except Exception:
+        pass
+
+    spot = _to_float(regime_data.get("close"), None)
+    spot_txt = f"{spot:,.2f}" if spot else "N/A"
+    regime = regime_data.get("regime", "NO_DATA")
     gate = regime_data.get("gate", "NO_TRADE")
-    vix = _to_float(regime_data.get("vix"), 12.02)
+    vix = _to_float(regime_data.get("vix"), None)
+    vix_txt = f"{vix:.2f}" if vix else "N/A"
     signal_grade = sig.get("signal_grade", "NO_SIGNAL")
+    gex_strike = gex_data.get("gamma_flip_strike")
+    gex_strike_txt = f"{int(gex_strike)}" if gex_strike else "N/A"
+    gex_regime_txt = gex_data.get("market_maker_regime", "N/A")
+    broker_badge = "Connected ✅" if broker_connected else "Not Connected ⚠️"
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -106,7 +134,7 @@ def generate_live_terminal_html(out_path="blog/live_terminal.html"):
     <div class="header">
         <div>
             <div class="title">⚡ NIFTY QUANT TERMINAL & CAPITAL GUARD</div>
-            <div style="color: var(--text-dim); font-size: 14px;">Broker: Angel One SmartAPI Connected ✅</div>
+            <div style="color: var(--text-dim); font-size: 14px;">Broker: Angel One SmartAPI {broker_badge} <span style="color: var(--text-dim);">({broker_line})</span></div>
         </div>
         <div class="badge">LIVE: {now}</div>
     </div>
@@ -114,7 +142,7 @@ def generate_live_terminal_html(out_path="blog/live_terminal.html"):
     <div class="grid">
         <div class="card">
             <div class="card-title">NIFTY 50 Index Spot</div>
-            <div class="card-value" style="color: var(--accent-blue);">{spot:,.2f}</div>
+            <div class="card-value" style="color: var(--accent-blue);">{spot_txt}</div>
             <div class="sub-text">Live Closing / Intraday Benchmark</div>
         </div>
 
@@ -126,7 +154,7 @@ def generate_live_terminal_html(out_path="blog/live_terminal.html"):
 
         <div class="card">
             <div class="card-title">India VIX & Premium Zone</div>
-            <div class="card-value" style="color: var(--accent-purple);">{vix:.2f}</div>
+            <div class="card-value" style="color: var(--accent-purple);">{vix_txt}</div>
             <div class="sub-text">Zone: Normal (Defined-Risk Spreads)</div>
         </div>
 
@@ -138,21 +166,21 @@ def generate_live_terminal_html(out_path="blog/live_terminal.html"):
 
         <div class="card">
             <div class="card-title">Market Maker Gamma Flip</div>
-            <div class="card-value" style="color: var(--accent-green);">{gex_data.get('gamma_flip_strike', 24500)}</div>
-            <div class="sub-text">{gex_data.get('market_maker_regime', 'Long Gamma')}</div>
+            <div class="card-value" style="color: var(--accent-green);">{gex_strike_txt}</div>
+            <div class="sub-text">{gex_regime_txt}</div>
         </div>
 
         <div class="card">
             <div class="card-title">Capital Preservation Guard</div>
-            <div class="card-value" style="color: var(--accent-green);">100% SECURE</div>
-            <div class="sub-text">3% Daily Kill-Switch Active</div>
+            <div class="card-value" style="color: var(--accent-green);">{guard_score}</div>
+            <div class="sub-text">Capital Guard: {guard_status} | 3% Daily Kill-Switch Active</div>
         </div>
     </div>
 
     <div class="terminal-box">
-        <div>> System Status: All 14 Multi-Asset Quant Engines Operational</div>
+        <div>> System Status: Core Quant Engines Operational (see run_all.py)</div>
         <div>> SQLite Tick DB: data/research.db (WAL Mode) Active</div>
-        <div>> SmartAPI Session: Connected to NSE F&O, NSE Cash, MCX F&O</div>
+        <div>> SmartAPI Session: {broker_line}</div>
         <div>> Voice Coach: voice_coach.py Enabled</div>
     </div>
 
