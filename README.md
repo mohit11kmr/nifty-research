@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ NIFTY Multi-Asset Quant Platform & Continuous Auto-Enhancement Engine
+# ⚡ NIFTY Multi-Asset Quant Platform & Live Paper Trading Engine
 
 **An Institutional-Grade, Local-First Quantitative Trading & Autonomous AI Swarm System for Nifty 50, Bank Nifty, FinNifty, Equities & MCX Commodities.**
 
@@ -8,17 +8,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Market: NSE & MCX](https://img.shields.io/badge/Market-NSE%20%7C%20MCX-orange.svg)](https://www.nseindia.com/)
 [![Broker: Angel One SmartAPI](https://img.shields.io/badge/Broker-Angel%20One%20SmartAPI-green.svg)](https://smartapi.angelone.in/)
-[![AI Swarm: 2026 Active](https://img.shields.io/badge/AI%20Swarm-2026%20Active-brightgreen.svg)]()
+[![Paper Trading: Active](https://img.shields.io/badge/Paper%20Trading-Active%20%E2%82%B91L-brightgreen.svg)]()
+[![AI Swarm: 2026 Active](https://img.shields.io/badge/AI%20Swarm-2026%20Active-blue.svg)]()
 [![Auto-Enhancer: RL Active](https://img.shields.io/badge/Auto--Enhancer-RL%20Active-purple.svg)]()
 [![Capital Guard: 100% Secure](https://img.shields.io/badge/Capital%20Guard-100%25%20Secure-red.svg)]()
 
-[Architecture](#-system-architecture) • [Auto-Enhancer](#-continuous-auto-enhancement-engine) • [AI Swarm](#-2026-autonomous-ai-trading-swarm) • [Capital Protection](#-prop-desk-capital-preservation) • [Profit Engine](#-profit-generation-engine) • [Backtest Proof](#-46-year-multi-decade-backtest-proof) • [Quick Start](#-quick-start)
+[Architecture](#-system-architecture) • [Paper Trading](#-live-paper-trading-simulation) • [Auto-Enhancer](#-continuous-auto-enhancement-engine) • [AI Swarm](#-2026-autonomous-ai-trading-swarm) • [Capital Protection](#-prop-desk-capital-preservation) • [Backtest Proof](#-46-year-multi-decade-backtest-proof) • [Quick Start](#-quick-start)
 
 ---
 
 </div>
 
-> 🛑 **Capital Protection & Self-Optimization First**: SEBI FY26 data shows retail traders lost ₹91,685 Crore in F&O. This platform uses 3% daily kill-switches, positive expected value (+EV) risk models, and a **Continuous Reinforcement-Learning Auto-Enhancer** that dynamically upgrades indicator weights and volume profile zones after every session.
+> 🛑 **Capital Protection & Live Simulation First**: SEBI FY26 data shows retail traders lost ₹91,685 Crore in F&O. This platform incorporates a **Live Paper Trading Simulation Engine (`paper_trader.py`)** with ₹1,00,000 virtual equity, 3% daily kill-switches, positive expected value (+EV) risk models, and a **Continuous Reinforcement-Learning Auto-Enhancer**.
 
 ---
 
@@ -27,9 +28,9 @@
 ```mermaid
 flowchart TD
     subgraph Data Layer
-        A1[NSE Playwright Live Option Chain]
-        A2[Yahoo Finance Global Cues]
-        A3[Angel One SmartWebSocketV2]
+        A1[Live Market Tick Stream live_market_fetch.py]
+        A2[NSE Playwright Live Option Chain]
+        A3[Yahoo Finance Global Cues]
         A4[SQLite Tick DB data/research.db]
     end
 
@@ -40,10 +41,10 @@ flowchart TD
         B4[Reinforcement Learning Auto-Enhancer adaptive_weights.py]
     end
 
-    subgraph Capital & Risk Defense
+    subgraph Capital & Paper Execution
         C1[Capital Guard 3% Daily Kill-Switch]
         C2[0DTE Expiry Trap Filter]
-        C3[Trader Psychology Tilt Guard]
+        C3[Live Paper Trading Engine paper_trader.py]
         C4[Monte Carlo 10k Survival Matrix]
     end
 
@@ -61,19 +62,22 @@ flowchart TD
 
 ---
 
+## 📝 Live Paper Trading Simulation (`paper_trader.py`, `auto_paper_runner.py`)
+
+- **Virtual Capital Ledger (`data/paper_account.json`):** Starts with ₹1,00,000 virtual capital to test trading strategies in real time without financial risk.
+- **Automated Virtual Order Placement:** When Precision Signals generate A+ Grade setups, `auto_paper_runner.py` places virtual paper orders, tracking real-time entry, stop loss, target, and MTM PnL.
+- **Real-Time Market Tick Sync (`live_market_fetch.py`):** Streams live 1-minute intraday market spot ticks to evaluate virtual paper trade progress dynamically.
+
+---
+
 ## 🔄 Continuous Auto-Enhancement Engine (`auto_enhancer.py`)
 
-The platform includes an **Autonomous Reinforcement-Learning Self-Optimization Loop**:
-
-- **RL Adaptive Weights (`adaptive_weights.py`):** Uses Q-learning feedback to adjust indicator weights based on 20-bar historical accuracy. Accurate indicators get boosted weights (e.g. SuperTrend `1.25`, ML `1.30`); failing indicators get reduced weights (e.g. RSI `0.95`).
+- **RL Adaptive Weights (`adaptive_weights.py`):** Uses Q-learning feedback to adjust indicator weights based on 20-bar historical accuracy. Accurate indicators get boosted weights (e.g. SuperTrend `1.35`, ML `1.30`); failing indicators get reduced weights (e.g. RSI `0.85`).
 - **Volume Profile POC & Value Area (`volume_profile.py`):** Dynamically calculates Point of Control (POC), Value Area High (VAH), and Value Area Low (VAL) to track institutional accumulation zones.
-- **Automatic Parameter Evolution:** Re-calibrates risk limits and strategy parameters after every market run, logging evolution to `data/enhancement_log.json`.
 
 ---
 
 ## 🤖 2026 Autonomous AI Trading Swarm (`multi_agent_swarm.py`)
-
-Deploys **4 Collaborative Subagent Roles**:
 
 - **🧠 Agent 1: Macro Intelligence Subagent** — Scans USD/INR, DXY, Gold, Crude Oil, and FII/DII net flows.
 - **⚡ Agent 2: Microstructure & Order Book Subagent** — Measures Limit Order Book (LOB) Imbalance & VPIN Toxicity.
@@ -89,14 +93,6 @@ Deploys **4 Collaborative Subagent Roles**:
 3. **📅 Event Risk Protection**: Block naked option buying 24h before RBI Policy / Budget / FED rate decisions.
 4. **📉 Drawdown De-risking Matrix**: Cut position size by 50% at 5% drawdown, 75% at 10% drawdown.
 5. **🧮 Fixed 1% Capital Risk**: Maximum loss per trade strictly ≤ 1% of account capital.
-
----
-
-## 💰 Profit-Generation Engine (`profit_engine.py`)
-
-- **Mathematical Expected Value (+EV)**: Calculates expected profit per ₹1,000 risked. Blocks negative EV setups.
-- **Minimum 1:2.0 Risk-Reward Ratio**: Risks ₹1,000 to make ₹2,000 to ₹3,000. Profitable even with a 40% win rate!
-- **Dynamic 2.5x ATR Chandelier Exit**: Locks +50% profit at 1:1 RRR and +150% profit at 1:2 RRR.
 
 ---
 
@@ -123,14 +119,14 @@ pip install -r requirements.txt
 playwright install chrome
 ```
 
-### 2. One-Click Master Launcher Execution
+### 2. Run Live Master Launcher
 ```bash
 python3 run_all.py
 ```
 
-### 3. Run Manual Auto-Enhancement Cycle
+### 3. Run Live Paper Trader
 ```bash
-python3 auto_enhancer.py
+python3 auto_paper_runner.py
 ```
 
 ---
@@ -138,6 +134,9 @@ python3 auto_enhancer.py
 ## 🗂️ Module Map
 
 - `run_all.py` — One-Click Master Launcher Script
+- `paper_trader.py` — Live Paper Trading Simulation Engine & Virtual Ledger
+- `auto_paper_runner.py` — Autonomous Auto Paper Order Execution System
+- `live_market_fetch.py` — Real-Time Intraday Market Spot Tick Fetcher
 - `auto_enhancer.py` — Autonomous Reinforcement Learning Self-Optimization Engine
 - `adaptive_weights.py` — Dynamic RL Indicator Weight Recalibration Engine
 - `volume_profile.py` — Volume Profile Point of Control (POC) & Value Area Engine
