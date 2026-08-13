@@ -179,16 +179,21 @@ def pcr_and_pain(chain, spot=None):
         band = chain[chain["strike"].between(spot * 0.92, spot * 1.08)]
     if band.empty:
         band = chain
-    best, pain_best = None, None
-    for _, row in band.iterrows():
-        payout = 0.0
-        for s, oi in zip(band["strike"], band["ce_oi"].fillna(0)):
-            payout += max(0.0, row["strike"] - s) * oi
-        for s, oi in zip(band["strike"], band["pe_oi"].fillna(0)):
-            payout += max(0.0, s - row["strike"]) * oi
-        # Max pain = settlement strike with the LEAST total payout to buyers.
-        if pain_best is None or payout < pain_best:
-            pain_best, best = payout, row["strike"]
+
+    # Vectorized max pain (PERFORMANCE-AUDIT PF-M3): payout per candidate
+    # strike K = sum over settlement S of max(0, K-S)*ce_oi[S] +
+    # max(0, S-K)*pe_oi[S]. Equivalent to the previous O(n^2) nested loop but
+    # computed as two matrix products over the band.
+    strikes = band["strike"].to_numpy(dtype=float)
+    if strikes.size == 0:
+        best = None
+    else:
+        ce_oi = band["ce_oi"].fillna(0).to_numpy(dtype=float)
+        pe_oi = band["pe_oi"].fillna(0).to_numpy(dtype=float)
+        k = strikes[:, None]
+        s = strikes[None, :]
+        payout = np.maximum(k - s, 0.0) @ ce_oi + np.maximum(s - k, 0.0) @ pe_oi
+        best = strikes[int(np.argmin(payout))]
 
     return {
         "pcr": round(pcr, 3) if pcr else None,

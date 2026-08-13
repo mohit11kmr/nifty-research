@@ -20,7 +20,15 @@ PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8766
 def _connect():
     con = sqlite3.connect(DB_PATH, timeout=5)
     con.row_factory = sqlite3.Row
+    con.execute("CREATE INDEX IF NOT EXISTS idx_ticks_ts ON ticks(recv_ts)")
+    con.commit()
     return con
+
+
+def _today_range():
+    """(start, end) ISO bounds for today, so queries stay sargable on recv_ts."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    return f"{today}T00:00:00", f"{today}T23:59:59.999"
 
 
 def _api_spot():
@@ -74,17 +82,19 @@ def _load_snapshot_oi():
 
 
 def _api_ticks(limit=15):
+    lo, hi = _today_range()
     con = _connect()
     rows = con.execute(
         "SELECT recv_ts, strike, side, ltp, bid, ask, oi, oi_chg, volume "
-        "FROM ticks WHERE date(recv_ts)=date('now','localtime') "
-        "ORDER BY recv_ts DESC LIMIT ?", (limit,)).fetchall()
+        "FROM ticks WHERE recv_ts >= ? AND recv_ts < ? "
+        "ORDER BY recv_ts DESC LIMIT ?", (lo, hi, limit)).fetchall()
     con.close()
     return [dict(r) for r in rows]
 
 
 def _api_chain(atm_radius=400):
     """Latest CE/PE quotes for strikes around current spot (OI walls + LTP)."""
+    lo_ts, hi_ts = _today_range()
     con = _connect()
     spot_row = con.execute("SELECT value FROM spot ORDER BY recv_ts DESC LIMIT 1").fetchone()
     if not spot_row:
@@ -92,26 +102,21 @@ def _api_chain(atm_radius=400):
         return {"ok": False, "error": "no spot"}
     spot = spot_row["value"]
     lo, hi = spot - atm_radius, spot + atm_radius
+    # single range query on recv_ts (indexed); dedupe to latest per (strike, side)
     rows = con.execute(
         "SELECT strike, side, ltp, bid, ask, oi, oi_chg, volume, pct_chg, recv_ts "
-        "FROM ticks WHERE date(recv_ts)=date('now','localtime') AND strike BETWEEN ? AND ? "
-        "ORDER BY recv_ts, strike, side", (lo, hi)).fetchall()
-    oi_rows = con.execute(
-        "SELECT strike, side, oi, oi_chg, recv_ts FROM ticks "
-        "WHERE date(recv_ts)=date('now','localtime') AND strike BETWEEN ? AND ? AND oi IS NOT NULL "
-        "ORDER BY recv_ts, strike, side", (lo, hi)).fetchall()
+        "FROM ticks WHERE recv_ts >= ? AND recv_ts < ? AND strike BETWEEN ? AND ? "
+        "ORDER BY recv_ts, strike, side", (lo_ts, hi_ts, lo, hi)).fetchall()
     con.close()
     latest = {}
+    oi_latest = {}
     for r in rows:
         key = (r["strike"], r["side"])
         if key not in latest or r["recv_ts"] >= latest[key]["recv_ts"]:
             latest[key] = dict(r)
-    oi_latest = {}
-    for r in oi_rows:
-        key = (r["strike"], r["side"])
-        if key not in oi_latest or r["recv_ts"] >= oi_latest[key]["recv_ts"]:
+        if r["oi"] is not None and (key not in oi_latest or r["recv_ts"] >= oi_latest[key]["recv_ts"]):
             oi_latest[key] = dict(r)
-    strikes = sorted({k[0] for k in latest} | {k[0] for k in oi_latest})
+    strikes = sorted({k[0] for k in latest})
     snap_oi, snap_meta = _load_snapshot_oi()
     chain = []
     for s in strikes:
@@ -139,16 +144,18 @@ def _api_chain(atm_radius=400):
 
 def _api_status():
     pid = os.path.exists("/tmp/opencode/recorder.pid") and open("/tmp/opencode/recorder.pid").read().strip() or "?"
+    lo, hi = _today_range()
     con = _connect()
-    n_spot = con.execute("SELECT COUNT(*) FROM spot WHERE date(recv_ts)=date('now','localtime')").fetchone()[0]
-    n_ticks = con.execute("SELECT COUNT(*) FROM ticks WHERE date(recv_ts)=date('now','localtime')").fetchone()[0]
+    n_spot = con.execute("SELECT COUNT(*) FROM spot WHERE recv_ts >= ? AND recv_ts < ?", (lo, hi)).fetchone()[0]
+    n_ticks = con.execute("SELECT COUNT(*) FROM ticks WHERE recv_ts >= ? AND recv_ts < ?", (lo, hi)).fetchone()[0]
     con.close()
     return {"recorder_pid": pid, "today_spot": n_spot, "today_ticks": n_ticks}
 
 
 class Handler(BaseHTTPRequestHandler):
-    def log_message(self, *a):
-        pass
+    def log_message(self, fmt, *a):
+        # Access log (R15): request line + client + response status.
+        print(f"[live_dash] {self.address_string()} {fmt % a}", file=sys.stderr, flush=True)
 
     def _send_json(self, obj):
         body = json.dumps(obj).encode()

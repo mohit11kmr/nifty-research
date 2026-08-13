@@ -86,12 +86,29 @@ class CapitalGuard:
         return {"status": "NO_EVENT_RISK", "allow_option_buying": True}
 
     def compute_position_size(self, entry_price, stop_loss_price, lot_size=75, drawdown_pct=0.0):
-        """Compute exact position size & lot count to NEVER exceed 1% risk limit."""
-        if entry_price <= 0 or stop_loss_price <= 0 or entry_price <= stop_loss_price:
-            risk_per_unit = max(entry_price * 0.5, 10.0)  # Default 50% premium risk if SL invalid
-        else:
-            risk_per_unit = entry_price - stop_loss_price
+        """Compute exact position size & lot count to NEVER exceed 1% risk limit.
 
+        A lot is only allowed when the remaining risk cap fully covers one lot.
+        No 1-lot floor: if the cap is smaller than one lot of risk the sizing
+        returns 0 lots + status TRADE_BLOCKED. An invalid stop-loss also blocks
+        sizing instead of fabricating a default risk.
+        """
+        if entry_price <= 0 or stop_loss_price <= 0 or entry_price <= stop_loss_price:
+            return {
+                "account_capital": self.capital,
+                "max_allowed_risk_1pct": round(self.max_trade_risk_amount, 2),
+                "drawdown_pct": drawdown_pct,
+                "size_multiplier": 1.0,
+                "adjusted_risk_cap": round(self.max_trade_risk_amount, 2),
+                "risk_per_lot": None,
+                "allowed_lots": 0,
+                "actual_risk_amount": 0.0,
+                "is_risk_compliant": True,
+                "status": "TRADE_BLOCKED",
+                "reason": "invalid stop_loss_price (must be < entry_price and > 0)",
+            }
+
+        risk_per_unit = entry_price - stop_loss_price
         risk_per_lot = risk_per_unit * lot_size
 
         # Apply Drawdown De-risking Multiplier
@@ -102,8 +119,15 @@ class CapitalGuard:
             size_multiplier = 0.50
 
         adjusted_risk_cap = self.max_trade_risk_amount * size_multiplier
-        allowed_lots = max(int(adjusted_risk_cap / max(risk_per_lot, 1.0)), 1)
+        allowed_lots = int(adjusted_risk_cap / max(risk_per_lot, 1.0))
         actual_risk = allowed_lots * risk_per_lot
+        is_compliant = actual_risk <= self.max_trade_risk_amount
+        if allowed_lots < 1:
+            status = "TRADE_BLOCKED"
+        elif is_compliant:
+            status = "SIZED"
+        else:
+            status = "REDUCED"
 
         return {
             "account_capital": self.capital,
@@ -114,7 +138,8 @@ class CapitalGuard:
             "risk_per_lot": round(risk_per_lot, 2),
             "allowed_lots": allowed_lots,
             "actual_risk_amount": round(actual_risk, 2),
-            "is_risk_compliant": actual_risk <= self.max_trade_risk_amount,
+            "is_risk_compliant": is_compliant,
+            "status": status,
         }
 
     def full_capital_safety_audit(self, daily_pnl=0.0, is_expiry=False, drawdown_pct=0.0,
@@ -122,25 +147,35 @@ class CapitalGuard:
         """Run complete 5-point Prop-Desk Capital Safety Audit.
 
         Position sizing uses REAL option premium when supplied (or derived
-        from the live chain). Without real prices, sizing reports NOT_COMPUTED
-        instead of a fabricated number.
+        from the live chain). The structure stop is 1.5x ATR (owner rule) mapped
+        to premium space via an ATM delta ~0.5 approximation. Without real
+        prices, sizing reports NOT_COMPUTED and any derivation failure is
+        surfaced (never silently swallowed).
         """
         kill_switch = self.check_daily_kill_switch(daily_pnl)
         expiry_guard = self.check_expiry_0dte_trap(is_expiry)
         event_guard = self.check_event_risk()
 
         # Real position sizing: accept caller values, else derive from the live chain.
+        derivation_error = None
         if not entry_price or not stop_loss_price:
             try:
                 import regime_filter
                 plan = regime_filter.trade_plan()
                 real_spot = plan.get("close")
+                stop_dist = plan.get("stop_dist")  # 1.5x ATR (index points)
                 import smart_strike_selector
                 strike_res = smart_strike_selector.strike_selector.select_best_strike(
                     spot_price=real_spot if real_spot else None)
                 entry_price = float(strike_res.get("best_strike_premium") or 0)
-                stop_loss_price = entry_price * 0.5 if entry_price else None
-            except Exception:
+                if entry_price and stop_dist:
+                    stop_loss_price = max(entry_price - 0.5 * stop_dist, 0.01)
+                elif entry_price:
+                    stop_loss_price = entry_price * 0.5
+                else:
+                    entry_price, stop_loss_price = None, None
+            except Exception as e:
+                derivation_error = str(e)
                 entry_price, stop_loss_price = None, None
 
         if entry_price and stop_loss_price and entry_price > 0:
@@ -149,6 +184,7 @@ class CapitalGuard:
             sizing = {
                 "computed": False,
                 "reason": "no real option premium available",
+                "derivation_error": derivation_error,
                 "account_capital": self.capital,
                 "max_allowed_risk_1pct": round(self.max_trade_risk_amount, 2),
                 "is_risk_compliant": None,

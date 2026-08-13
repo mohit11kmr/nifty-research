@@ -279,7 +279,10 @@ def expected_move() -> dict:
 def broker_status(area: str = "profile") -> dict:
     """Angel One broker account status. area: 'profile' (account), 'holdings'
     (equity holdings), 'positions' (open F&O positions). Live API - rate limited,
-    don't call repeatedly."""
+    don't call repeatedly. DISABLED unless BROKER_MCP_ENABLED=1 is set in .env."""
+    if os.environ.get("BROKER_MCP_ENABLED") != "1":
+        return {"ok": False,
+                "error": "broker_status disabled - set BROKER_MCP_ENABLED=1 in .env to expose live broker data to MCP"}
     if area not in ("profile", "holdings", "positions"):
         return {"ok": False, "error": "area must be profile | holdings | positions"}
     from angel_one_client import manager
@@ -297,7 +300,8 @@ def recent_ticks(symbol: str = "NIFTY", limit: int = 20) -> dict:
     try:
         conn = sqlite3.connect(db_path)
         rows = conn.execute(
-            "SELECT * FROM ticks WHERE symbol=? ORDER BY ts DESC LIMIT ?", (symbol, limit)
+            "SELECT * FROM ticks WHERE symbol=? AND recv_ts >= datetime('now','localtime','-1 day') "
+            "ORDER BY recv_ts DESC LIMIT ?", (symbol, limit)
         ).fetchall()
         cols = [c[0] for c in conn.execute("SELECT * FROM ticks LIMIT 0").description]
         conn.close()

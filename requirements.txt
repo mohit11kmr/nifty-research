@@ -12,9 +12,10 @@ ta>=0.10.0
 
 # Market Data & Web Scraping
 yfinance>=0.2.30
-requests>=2.31.0
+requests>=2.32.0
 playwright>=1.40.0
 websocket-client>=1.6.0
+python-dotenv>=1.0.0
 
 # Broker & Security Integration
 smartapi-python>=1.4.0

@@ -184,32 +184,19 @@ def fetch_option_chain(symbol="NIFTY", expiry=None, out_json=None):
 
 
 def compute_chain_metrics(chain):
-    """Compute OI-concentration, PCR and max-pain from an option chain."""
+    """Compute OI-concentration, PCR and max-pain from an option chain.
+
+    PCR + max pain are delegated to the single owner `oi_intel.pcr_and_pain`
+    (REMEDIATION R8) so the two historical implementations can never drift.
+    """
     if chain.empty:
         return None
     atm = chain.loc[(chain["ce_oi"].fillna(0) + chain["pe_oi"].fillna(0)).idxmax(), "strike"]
 
-    pe_oi_total = chain["pe_oi"].fillna(0).sum()
-    ce_oi_total = chain["ce_oi"].fillna(0).sum()
-    pcr = pe_oi_total / ce_oi_total if ce_oi_total else 0.0
-
-    # Max pain on liquid ATM band (spot ±8%) to avoid far-OTM OI distortion
-    band = chain[chain["strike"].between(atm * 0.92, atm * 1.08)]
-    if band.empty:
-        band = chain
-    max_pain = None
-    best = None
-    for _, row in band.iterrows():
-        payout = 0.0
-        # Calls pay max(0, S - K), puts pay max(0, K - S); max pain = strike
-        # with the LEAST total payout to buyers (argmin), not the most.
-        for strike, oi in zip(band["strike"], band["ce_oi"].fillna(0)):
-            payout += max(0.0, row["strike"] - strike) * oi
-        for strike, oi in zip(band["strike"], band["pe_oi"].fillna(0)):
-            payout += max(0.0, strike - row["strike"]) * oi
-        if best is None or payout < best:
-            best = payout
-            max_pain = row["strike"]
+    from oi_intel import pcr_and_pain
+    pain = pcr_and_pain(chain, spot=atm)
+    pcr = round(pain.get("pcr") or 0.0, 3)
+    max_pain = pain.get("max_pain")
 
     top_oi = chain.sort_values("ce_oi", ascending=False).head(5)
     resistance = top_oi["strike"].tolist()
@@ -218,7 +205,7 @@ def compute_chain_metrics(chain):
 
     return {
         "atm": atm,
-        "pcr": round(pcr, 3),
+        "pcr": pcr,
         "max_pain": max_pain,
         "support_oi": support,
         "resistance_oi": resistance,

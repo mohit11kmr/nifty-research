@@ -32,11 +32,27 @@ CREATE TABLE IF NOT EXISTS ticks (
     oi REAL, oi_chg REAL, iv REAL, volume REAL, pct_chg REAL
 );
 CREATE INDEX IF NOT EXISTS idx_ticks_key ON ticks(symbol, side, strike, recv_ts);
+CREATE INDEX IF NOT EXISTS idx_ticks_ts ON ticks(recv_ts);
 CREATE TABLE IF NOT EXISTS spot (
     recv_ts TEXT, value REAL, pct_chg REAL
 );
 CREATE INDEX IF NOT EXISTS idx_spot_ts ON spot(recv_ts);
 """
+
+DEFAULT_KEEP_DAYS = 30
+
+
+def _purge_old_ticks(con, keep_days=DEFAULT_KEEP_DAYS):
+    """Delete tick rows older than keep_days (retention - keeps research.db bounded)."""
+    cutoff = (dt.datetime.now() - dt.timedelta(days=keep_days)).strftime("%Y-%m-%dT00:00:00")
+    cur = con.cursor()
+    cur.execute("DELETE FROM ticks WHERE recv_ts < ?", (cutoff,))
+    deleted = cur.rowcount
+    cur.execute("DELETE FROM spot WHERE recv_ts < ?", (cutoff,))
+    con.commit()
+    if deleted:
+        print(f"  retention: purged {deleted:,} tick-rows older than {keep_days} days")
+    return deleted
 
 
 def _connect(db_path):
@@ -116,12 +132,13 @@ def _market_close_delay():
     return int((close - now).total_seconds())
 
 
-def run(symbol="NIFTY", max_seconds=None):
+def run(symbol="NIFTY", max_seconds=None, keep_days=DEFAULT_KEEP_DAYS):
     expiry = _current_expiry(symbol)
     if not expiry:
         expiry = "expiry"
     print(f"recorder: {symbol} ({expiry}) -> {DB_PATH}")
     con = _connect(DB_PATH)
+    _purge_old_ticks(con, keep_days=keep_days)
     prev_close = _prev_close()
     batch = []
     total = 0
@@ -226,5 +243,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("symbol", nargs="?", default="NIFTY")
     ap.add_argument("--seconds", type=int, default=0)
+    ap.add_argument("--keep-days", type=int, default=DEFAULT_KEEP_DAYS)
     args = ap.parse_args()
-    run(symbol=args.symbol, max_seconds=args.seconds or None)
+    run(symbol=args.symbol, max_seconds=args.seconds or None, keep_days=args.keep_days)

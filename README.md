@@ -2,7 +2,7 @@
 
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-green.svg)
-![Build Status](https://img.shields.io/badge/tests-29%2F29%20PASSED-brightgreen.svg)
+![Build Status](https://img.shields.io/badge/tests-34%2F34%20PASSED-brightgreen.svg)
 ![Institutional Grade](https://img.shields.io/badge/institutional-grade-gold.svg)
 ![LangGraph & Swarm](https://img.shields.io/badge/architecture-LangGraph%20%2B%20Swarm-purple.svg)
 
@@ -73,8 +73,9 @@ python3 run_all.py
 ```bash
 python3 test_all.py
 ```
-> 29/29 tests passing. Focused unit suites live in `tests/`
-> (`test_greeks.py`, `test_multi_leg.py`); also runnable via
+> 34/34 tests passing. Focused unit suites live in `tests/`
+> (`test_greeks.py`, `test_multi_leg.py`, `test_smart_strike.py`,
+> `test_fix_verification.py`); also runnable via
 > `python3 -m unittest discover -s tests -v`.
 
 ### 4. Containerized & CI
