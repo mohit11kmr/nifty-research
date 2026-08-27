@@ -1,0 +1,446 @@
+{
+  "by_regime": {
+    "REGIME_A": {
+      "net": -19190.2,
+      "trades": 12,
+      "winrate": 0.4167
+    },
+    "REGIME_B": {
+      "net": -19970.11,
+      "trades": 7,
+      "winrate": 0.4286
+    }
+  },
+  "concentration": {
+    "best_month": "2024-09",
+    "best_month_pct": -58.23,
+    "best_trade_pct": -58.23,
+    "concentration_flag": "BALANCED",
+    "top2_pct": -103.81,
+    "top3_pct": -142.63
+  },
+  "evaluation_vector": {
+    "complexity": {
+      "instrument_kinds": [
+        "CE"
+      ],
+      "n_trades": 19
+    },
+    "data_quality": "UNIFIED_FULL",
+    "drawdown": {
+      "max_drawdown": -53952.74,
+      "max_drawdown_pct": null
+    },
+    "edge_quality": {
+      "expectancy": -2061.07,
+      "net_pnl": -39160.31,
+      "profit_factor": 0.7142
+    },
+    "execution_realism": {
+      "cost_model": "canonical (40/order, 1.5% slippage)",
+      "fees": 1520.0,
+      "slippage": 7595.31
+    },
+    "oos_quality": {
+      "development": {
+        "net": -42798.62,
+        "trades": 16
+      },
+      "out_of_sample": {
+        "net": 3638.31,
+        "trades": 3,
+        "winrate": 0.6667
+      },
+      "verdict": "OOS_INSUFFICIENT"
+    },
+    "profit_concentration": {
+      "best_trade_pct": -58.2,
+      "n_trades": 19,
+      "top5_pct": -199.5
+    },
+    "regime_robustness": {
+      "REGIME_A": {
+        "net": -19190.2,
+        "trades": 12,
+        "winrate": 0.4167
+      },
+      "REGIME_B": {
+        "net": -19970.11,
+        "trades": 7,
+        "winrate": 0.4286
+      }
+    },
+    "risk_validity": "DECLARED_OK",
+    "sample_size": 19,
+    "stability": {
+      "status": "NOT_RELIABLE",
+      "sufficient": false,
+      "win_rate": 0.4211
+    },
+    "trade_frequency": 0.0294
+  },
+  "family": "INSTITUTIONAL_FLOW",
+  "metrics": {
+    "avg_days_held": 6.0,
+    "expectancy": -2061.07,
+    "fees": 1520.0,
+    "gross": -30045.0,
+    "max_drawdown": -53952.74,
+    "max_drawdown_pct": null,
+    "net_pnl": -39160.31,
+    "profit_factor": 0.7142,
+    "slippage": 7595.31,
+    "status": "NOT_RELIABLE",
+    "trade_count": 19,
+    "trade_frequency": 0.0294,
+    "win_rate": 0.4211
+  },
+  "n_trades": 19,
+  "oos": {
+    "development_until_2026_02_28": {
+      "net": -42798.62,
+      "trades": 16
+    },
+    "out_of_sample_from_2026_03_01": {
+      "net": 3638.31,
+      "trades": 3,
+      "winrate": 0.6667
+    },
+    "verdict": "OOS_INSUFFICIENT"
+  },
+  "proposal_id": "PK-RQ-09",
+  "regime_robustness": {
+    "by_regime": {
+      "REGIME_A": {
+        "net": -19190.2,
+        "trades": 12,
+        "winrate": 0.4167
+      },
+      "REGIME_B": {
+        "net": -19970.11,
+        "trades": 7,
+        "winrate": 0.4286
+      }
+    },
+    "flag": "MULTI_REGIME",
+    "positive_regimes": []
+  },
+  "reproducibility": {
+    "hash_a": "ec91846033aa1fe8a4818a2ca07afa60b4b9829da154b3e1c092a9dd6398a24e",
+    "hash_b": "ec91846033aa1fe8a4818a2ca07afa60b4b9829da154b3e1c092a9dd6398a24e",
+    "reproducible": true
+  },
+  "result_hash": "ec91846033aa1fe8a4818a2ca07afa60b4b9829da154b3e1c092a9dd6398a24e",
+  "sample_buckets": {
+    "1_5": 0,
+    "20_49": 0,
+    "50_plus": 0,
+    "6_19": 1
+  },
+  "trades": [
+    {
+      "days_held": 6,
+      "entry_date": "2024-05-31",
+      "exit_date": "2024-06-06",
+      "fees": 80.0,
+      "gross": -15296.25,
+      "mae": -27371.25,
+      "mfe": 26662.5,
+      "n_legs": 1,
+      "net_pnl": -16182.71,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_B",
+      "slippage": 806.46,
+      "strike": 22550.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2024-07-19",
+      "exit_date": "2024-07-25",
+      "fees": 80.0,
+      "gross": -16650.0,
+      "mae": -16650.0,
+      "mfe": 0.0,
+      "n_legs": 1,
+      "net_pnl": -16980.09,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 250.09,
+      "strike": 24550.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2024-09-20",
+      "exit_date": "2024-09-26",
+      "fees": 80.0,
+      "gross": 23497.5,
+      "mae": 0.0,
+      "mfe": 23497.5,
+      "n_legs": 1,
+      "net_pnl": 22804.94,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 612.56,
+      "strike": 25800.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2024-10-25",
+      "exit_date": "2024-10-31",
+      "fees": 80.0,
+      "gross": -10687.5,
+      "mae": -10687.5,
+      "mfe": 11163.75,
+      "n_legs": 1,
+      "net_pnl": -10939.96,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_B",
+      "slippage": 172.46,
+      "strike": 24200.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2024-12-27",
+      "exit_date": "2025-01-02",
+      "fees": 80.0,
+      "gross": 15926.25,
+      "mae": -7248.75,
+      "mfe": 15926.25,
+      "n_legs": 1,
+      "net_pnl": 15204.04,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 642.21,
+      "strike": 23800.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-01-31",
+      "exit_date": "2025-02-06",
+      "fees": 80.0,
+      "gross": -14021.25,
+      "mae": -16545.0,
+      "mfe": 0.0,
+      "n_legs": 1,
+      "net_pnl": -14524.19,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_B",
+      "slippage": 422.94,
+      "strike": 23500.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-02-28",
+      "exit_date": "2025-03-06",
+      "fees": 80.0,
+      "gross": 18648.75,
+      "mae": -8328.75,
+      "mfe": 18648.75,
+      "n_legs": 1,
+      "net_pnl": 17846.33,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_B",
+      "slippage": 722.42,
+      "strike": 22100.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-03-28",
+      "exit_date": "2025-04-03",
+      "fees": 80.0,
+      "gross": -10552.5,
+      "mae": -10552.5,
+      "mfe": 0.0,
+      "n_legs": 1,
+      "net_pnl": -10791.01,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 158.51,
+      "strike": 23500.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-06-27",
+      "exit_date": "2025-07-03",
+      "fees": 80.0,
+      "gross": -10687.5,
+      "mae": -10687.5,
+      "mfe": 0.0,
+      "n_legs": 1,
+      "net_pnl": -10928.26,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 160.76,
+      "strike": 25650.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-08-01",
+      "exit_date": "2025-08-07",
+      "fees": 80.0,
+      "gross": -9933.75,
+      "mae": -9933.75,
+      "mfe": 5475.0,
+      "n_legs": 1,
+      "net_pnl": -10226.54,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 212.79,
+      "strike": 24550.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-09-03",
+      "exit_date": "2025-09-09",
+      "fees": 80.0,
+      "gross": 2748.75,
+      "mae": -326.25,
+      "mfe": 2748.75,
+      "n_legs": 1,
+      "net_pnl": 2338.39,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 330.36,
+      "strike": 24700.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-10-01",
+      "exit_date": "2025-10-07",
+      "fees": 80.0,
+      "gross": 11610.0,
+      "mae": 0.0,
+      "mfe": 11610.0,
+      "n_legs": 1,
+      "net_pnl": 11116.68,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 413.32,
+      "strike": 24850.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-10-29",
+      "exit_date": "2025-11-04",
+      "fees": 80.0,
+      "gross": -14220.0,
+      "mae": -14220.0,
+      "mfe": 0.0,
+      "n_legs": 1,
+      "net_pnl": -14513.75,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 213.75,
+      "strike": 26050.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-11-26",
+      "exit_date": "2025-12-02",
+      "fees": 80.0,
+      "gross": -10968.75,
+      "mae": -10968.75,
+      "mfe": 0.0,
+      "n_legs": 1,
+      "net_pnl": -11213.62,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 164.87,
+      "strike": 26200.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2025-12-31",
+      "exit_date": "2026-01-06",
+      "fees": 80.0,
+      "gross": -6723.75,
+      "mae": -6723.75,
+      "mfe": 5726.25,
+      "n_legs": 1,
+      "net_pnl": -6962.99,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 159.24,
+      "strike": 26150.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-01-28",
+      "exit_date": "2026-02-03",
+      "fees": 80.0,
+      "gross": 11906.25,
+      "mae": -15423.75,
+      "mfe": 11906.25,
+      "n_legs": 1,
+      "net_pnl": 11154.12,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_B",
+      "slippage": 672.13,
+      "strike": 25350.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-04-07",
+      "fees": 80.0,
+      "gross": 7338.75,
+      "mae": -3641.25,
+      "mfe": 7338.75,
+      "n_legs": 1,
+      "net_pnl": 6432.38,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_B",
+      "slippage": 826.37,
+      "strike": 22700.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-05-27",
+      "exit_date": "2026-06-02",
+      "fees": 80.0,
+      "gross": -13473.75,
+      "mae": -13473.75,
+      "mfe": 0.0,
+      "n_legs": 1,
+      "net_pnl": -13756.08,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_B",
+      "slippage": 202.33,
+      "strike": 23900.0
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-07-29",
+      "exit_date": "2026-08-04",
+      "fees": 80.0,
+      "gross": 11493.75,
+      "mae": 0.0,
+      "mfe": 15405.0,
+      "n_legs": 1,
+      "net_pnl": 10962.01,
+      "option_type": "CE",
+      "reason": "EXIT_HORIZON",
+      "regime": "REGIME_A",
+      "slippage": 451.74,
+      "strike": 24250.0
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+Validating against the DSL and feature registry:
+```yaml
+proposal:
+  proposal_id: PK-RQ-05
+  title: 'Oversold bounce mean reversion: long ATM call after a sharp 5-session NIFTY
+    decline'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T18:20:00+05:30'
+  parent_strategy_id: null
+  hypothesis: 'Sharp 5-session declines in NIFTY (trailing 5-session spot return <=
+    -2%) tend to revert upward over the following week: the observed forward 5-session
+    mean return is +0.58% vs +0.11% baseline (hit rate 58.3%), consistent with oversold
+    mean reversion rather than continued drift. A long ATM call entered on such a
+    trigger and held 5 sessions should capture the rebound net of theta bleed and
+    canonical costs.
+
+    '
+  research_question: PK-RQ-05
+  expected_failure_modes:
+  - 'Falling regime persists: in stressed/high-vol regimes (REGIME_B/C) a sharp decline
+    is often the start of a sustained slide that outlasts the 5-session window, so
+    the bounce never materializes and the long call bleeds theta.'
+  - 'Gap risk on entry: EOD entry after the decline leaves the position exposed to
+    overnight gaps; a further down-gap at the next open crushes the ATM call before
+    any reversion can pay.'
+  - 'Sample includes 2024-2025 stress: the observed +0.47pp edge over baseline may
+    be driven by liquidity/regime-news rebounds in the stress episodes rather than
+    a repeatable structural mean-reversion effect, so out-of-sample frequency may
+    fall well below the 13% observed.'
+  - 'Cost + theta drag: 5-session ATM-call holding pays theta every session and the
+    canonical cost model (40/order, 1.5% slippage); combined drag may consume the
+    small observed edge (fwd_5d_mean +0.58%).'
+  candidate_family: MEAN_REVERSION
+strategy:
+  entry:
+    conditions:
+    - field: nifty_ret_5d
+      op: <=
+      value: -2.0
+    - field: expiry_day
+      op: ==
+      value: 0
+    - field: dte
+      op: '>='
+      value: 2
+    - field: vix_close
+      op: <=
+      value: 25.0
+    direction: LONG
+    instrument: CALL
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+    stop_pct: 0.5
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - nifty_ret_5d
+  - expiry_day
+  - dte
+  - vix_close
+  regime:
+    allowed: null
+```

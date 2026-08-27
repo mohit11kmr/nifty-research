@@ -1,0 +1,68 @@
+Let me check the existing proposal schema/examples to match the exact format.
+Let me read an existing proposal to match the exact schema format.
+Let me check if there's panel data or a discovery report that reveals a sensible literal threshold for the 80th-percentile OI growth trigger.
+```yaml
+proposal:
+  proposal_id: PK-RQ-11
+  title: 'OI_BUILDUP: long ATM call after sharp 5-session total option-OI build-up
+    (>=9%), 5-session horizon'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T18:30:00+05:30'
+  parent_strategy_id: null
+  hypothesis: Sessions where total option OI grew sharply over the trailing 5 sessions
+    (build-up, approximating the observed >80th-percentile trigger with a literal
+    >=9% threshold) precede slightly above-average 5-session NIFTY drift (observed
+    fwd_5d mean +0.296% vs +0.113% baseline, 54.3% hit rate). A long ATM call entered
+    at the close of such a session and held 5 sessions captures that drift while keeping
+    risk defined at the premium paid.
+  research_question: PK-RQ-11
+  expected_failure_modes:
+  - 'OI build-up is lagging flow: the OI increase is a byproduct of an already-realized
+    move rather than a leading signal, so the +0.296% forward drift is a weak echo
+    (+0.183% edge over baseline, only ~54% hit rate) that can vanish after canonical
+    costs (40/order, 1.5% slippage) and theta bleed on a decaying ATM call.'
+  - 'Expiry-roll artefacts: total OI across all expiries can jump from roll-over of
+    positions into the next weekly expiry rather than genuine new build-up, inflating
+    oi_total_growth_5d without any directional information; the dte/expiry_day gates
+    mitigate but do not eliminate this.'
+  - 'Regime/VIX dependence: build-up clusters in elevated-VIX stress periods where
+    buying premium is punitive and drift can turn negative; with no regime restriction
+    the long-call exposure is unprotected in high-vol drawdown regimes.'
+  candidate_family: OI_BUILDUP
+strategy:
+  entry:
+    conditions:
+    - field: oi_total_growth_5d
+      op: '>='
+      value: 9.0
+    - field: dte
+      op: '>='
+      value: 2
+    - field: expiry_day
+      op: ==
+      value: 0
+    - field: vix_rank_252
+      op: '<'
+      value: 90
+    direction: LONG
+    instrument: CALL
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+    stop_pct: 0.5
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - oi_total_growth_5d
+  - dte
+  - expiry_day
+  - vix_rank_252
+  regime:
+    allowed: null
+```

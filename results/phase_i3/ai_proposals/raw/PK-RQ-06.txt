@@ -1,0 +1,50 @@
+Let me check the existing proposal schema and a sample proposal to match the exact structure.
+```yaml
+proposal:
+  proposal_id: PK-RQ-06
+  title: "Cheap-VIX (<12) long ATM straddle — vol-expansion capture over 5 sessions"
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: "2026-08-16T23:20:24+05:30"
+  parent_strategy_id: null
+  hypothesis: >
+    Cheap-VIX (<12) periods show below-average next-week drift (observed fwd_5d
+    mean -0.0028 vs baseline +0.0011, 42% hit rate). Very low implied volatility
+    states are complacent and tend to mean-revert toward expansion, which usually
+    accompanies outsized index moves. Buying an ATM straddle when VIX is cheap
+    should harvest that expansion over a 5-session horizon.
+  research_question: PK-RQ-06
+  expected_failure_modes:
+    - "Low drift / weak vol-expansion is a weak effect; 42% hit rate and small delta_vs_baseline mean the edge may not survive costs"
+    - "VIX can compress further before expanding; theta bleed on a long straddle accelerates if the move does not arrive within the 5-session horizon"
+    - "Entry slippage (1.5%) plus 40/order costs on a 2-leg straddle erode the thin premium edge"
+  candidate_family: VOL_EXPANSION
+
+strategy:
+  entry:
+    conditions:
+      - field: vix_close
+        op: <
+        value: 12
+      - field: dte
+        op: ">="
+        value: 5
+    direction: LONG
+    instrument: STRADDLE
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+    stop_pct: 0.5
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+    - vix_close
+    - dte
+  regime:
+    allowed: null
+```

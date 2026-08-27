@@ -1,0 +1,63 @@
+Let me check the Phase I.3 proposal schema and any existing examples.
+I have everything I need. Here is the proposal:
+
+```yaml
+proposal:
+  proposal_id: PK-RQ-07
+  title: 'GAP_BOUNCE: long ATM call when NIFTY opens up >= +0.5% (positive gap), held 5 sessions'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T18:05:00+05:30'
+  parent_strategy_id: null
+  hypothesis: Positive opening gaps (nifty_gap_pct > +0.5%, ~10.2% of sessions) continue
+    modestly over the next week: the observed 5-session forward mean is +0.469% vs a
+    +0.113% baseline (hit rate 59.1%, delta +0.356%). A long ATM call entered at the
+    EOD close of such a gap-up session and held 5 sessions captures that continuation
+    while keeping risk defined at the premium paid.
+  research_question: PK-RQ-07
+  expected_failure_modes:
+  - 'The gap is stale information by the close: by EOD the +0.5% open move is already
+    priced, and the observed +0.469% forward mean rests on a ~59% hit rate (fat-tailed
+    up-sessions); if the edge is real continuation it may be gone after the first
+    session.'
+  - 'Costs dominate a small edge: buying an ATM call pays the canonical 40/order + 1.5%
+    slippage on entry and exit while theta bleeds daily over the 5-session horizon;
+    a +0.356% spot-drift delta vs baseline can be fully consumed by the option premia
+    and execution frictions.'
+  - 'No regime decomposition was provided: the 66-signal evidence spans a calm-heavy
+    mix (REGIME_A 377 / REGIME_B 175 / REGIME_C 94), and gap continuation may live
+    only in one regime while the un-gated long-call exposure is unprotected in
+    high-vol drawdown sessions.'
+  candidate_family: GAP_BOUNCE
+strategy:
+  entry:
+    conditions:
+    - field: nifty_gap_pct
+      op: '>'
+      value: 0.5
+    - field: expiry_day
+      op: ==
+      value: 0
+    - field: dte
+      op: '>='
+      value: 2
+    direction: LONG
+    instrument: CALL
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+    stop_pct: 0.5
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - nifty_gap_pct
+  - expiry_day
+  - dte
+  regime:
+    allowed: null
+```

@@ -1,0 +1,58 @@
+packet_id: PK-RQ-09
+question_id: RQ-09
+candidate_family: INSTITUTIONAL_FLOW
+observed:
+  n_sessions: 103
+  frequency: 0.1594
+  confidence: MEDIUM
+  fwd_5d_mean: 0.00382
+  fwd_5d_hit_rate: 0.5922
+  baseline_fwd_5d_mean: 0.00113
+  delta_vs_baseline: 0.00269
+inferred: The INSTITUTIONAL_FLOW family is the most plausible explanation for the
+  observed 15.9% frequency behaviour ('FII participant-OI share rose >1pp over 5 sessions')
+  with confidence MEDIUM.
+hypothesis: Rising 5-session FII participant-OI share precedes above-average 5d drift.
+market_context:
+  mix:
+    REGIME_A: 377
+    REGIME_B: 175
+    REGIME_C: 94
+  note: regime mix over the observation window (A=calm, B=stressed, C=high-vol)
+required_data:
+- dte
+- expiry_day
+- fii_oi_share
+- fii_oi_share_chg_5d
+- nifty_20d_hv
+- nifty_close
+- nifty_ret_5d
+- pcr_oi
+- vix_close
+- vix_rank_252
+expected_failure_modes:
+- aggregate EQ OI only (no futures/options split)
+- participant data is end-of-day
+gates:
+  point_in_time_safe: true
+  features_registered:
+  - dte
+  - expiry_day
+  - fii_oi_share
+  - fii_oi_share_chg_5d
+  - nifty_20d_hv
+  - nifty_close
+  - nifty_ret_5d
+  - pcr_oi
+  - vix_close
+  - vix_rank_252
+  execution_family_supported: true
+  cost_model: canonical (40/order, 1.5% slippage)
+  resolution: EOD
+  defined_risk: true
+generation_instructions: 'Operationalize this hypothesis as a deterministic EOD strategy
+  proposal in the Phase I.3 YAML schema. Entry conditions must use ONLY the registered
+  feature ids in required_data. Direction and instrument must map to one of: OPTION_LONG
+  (CALL/PUT/STRADDLE) or OPTION_IRON_CONDOR. Never reference unregistered features.
+  Declare risk (defined risk for shorts), expiry handling, expected failure modes
+  and a testable research question.'

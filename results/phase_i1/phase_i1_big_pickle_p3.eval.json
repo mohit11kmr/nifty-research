@@ -1,0 +1,31 @@
+{
+  "backtest_status": "NOT_RUN",
+  "classification": "UNIQUE",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "dev_oos_cut": "2026-03-01",
+  "duplicate_of": null,
+  "evidence": "no deterministic engine for strategy_id 'maxpain_brokenwing_condor_v1' (engine-registered: current_control_v1, directional_spread_v1, range_hv_iron_condor_v1)",
+  "expected_failure_modes": [
+    "Trend continuation in TREND_HV drives spot through the short strikes at expiry; the wide insurance wing is breached for near its full width and such losses cluster on the highest-credit entries.",
+    "The entry gate is too restrictive (TREND_HV + VIX >= 16 + PCR <= 0.95), yielding fewer than 20 trades in the window and classifying the result NOT_RELIABLE.",
+    "Execution cost drag (40 per order across 8 legs round trip + 1.5% slippage per fill) exceeds the collected credit in normal-rich zones, leaving no net edge even when pinning behaves as hypothesized.",
+    "EOD single-timestamp OI walls diverge from settlement-week wall evolution, so the max-pain anchor drifts and the pinning advantage disappears."
+  ],
+  "experiment_id": "phase_i1_controlled_multi_model_v1",
+  "failure_code": "EXECUTION_UNSUPPORTED",
+  "fingerprint": "4216bae4ab44cb71bc273cc2da285bf1d2ce67ff2d21551685d6b980a89ab95c",
+  "hypothesis": "NIFTY weekly settlement gravitates toward max pain and heavy OI walls (documented pinning: spot closes within a few points of max pain and OI walls cap the move). A defined-risk broken-wing condor whose short legs are anchored to the max-pain strike and the nearest OI walls, instead of a symmetric spot-based grid, sits on the settlement magnet rather than the mid. Entering only when the regime gate reports TREND_HV with India VIX >= 16 (rich-to-high premium zone) pays the seller for high-volatility premium while OI gravity pulls spot back toward the anchor over the weekly horizon. The asymmetric wing design caps tail risk on the trend-away side at a declared width while the premium-collecting side hugs the dense wall. It may fail because TREND_HV is a trending regime: the same flow that builds the walls can blow through them at expiry, and EOD single-timestamp walls may not represent settlement-week dynamics. No profitability claim is made here; the frozen engine, the canonical expiry calendar and the canonical cost model decide.\n",
+  "model_id": "big_pickle",
+  "model_version": "opencode/big-pickle",
+  "proposal_hash": "b7c1874e6dab877be6271fef1174afdce3520af1fdd39d97bd75b27a7db55e55",
+  "proposal_id": "phase_i1_big_pickle_p3",
+  "research_question": "On the frozen window, for NIFTY weeklies, does a broken-wing condor with short legs anchored to max pain and OI walls, entered only when REGIME == TREND_HV, VIX >= 16 and PCR <= 0.95, deliver positive mean net P&L per trade after the canonical 40 per order and 1.5% per-fill slippage cost model over at least 20 trades, and is its worst-trade loss bounded by the declared wide-wing maximum loss on every entry?\n",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "2ab3dfa8ba02ba20cc44cf033d72f63ce3ea016f21dd1c7b21935ba3492ed8f1",
+  "status": "REVIEW",
+  "strategy_id": "maxpain_brokenwing_condor_v1",
+  "title": "Max-pain and OI-wall anchored broken-wing condor, gated on TREND_HV with VIX >= 16 and call-heavy PCR",
+  "validation_status": "VALIDATED",
+  "window_end": "2026-08-13",
+  "window_start": "2025-08-13"
+}

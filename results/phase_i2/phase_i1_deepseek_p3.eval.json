@@ -1,0 +1,18 @@
+{
+  "backtest_status": "NOT_RUN",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "experiment_id": "phase_i2_generic_execution_v1",
+  "failure_code": "POSITION_CONSTRUCTION_UNSUPPORTED",
+  "failure_reason": "asymmetric / broken-wing / anchored condor - not the symmetric four-leg structure the deterministic family supports",
+  "fingerprint": "b6feea425508497d9d79a8d989ec922db9e4bcdb12a042fefcb3b4ba7221d24d",
+  "granularity_issue": false,
+  "proposal_hash": "6225d8cea5a7e150fade774d40d23c8c8356bda20ec41bc9934f0b0436a00d76",
+  "proposal_id": "phase_i1_deepseek_p3",
+  "resolved_family": null,
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "deef2890dabcb319bc5cfb106e52676be6c28b6c98ae0bbf3fd5cc900ec6891b",
+  "status": "REJECTED",
+  "strategy_id": "trend_breakout_condor_v1",
+  "title": "Trend Breakout Iron Condor with VIX Filter",
+  "validation_status": "VALIDATED"
+}

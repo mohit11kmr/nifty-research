@@ -1,0 +1,51 @@
+proposal:
+  proposal_id: PK-RQ-02
+  title: 'Expiry-cycle null test: long ATM straddle on early-cycle sessions (>=6 days
+    to weekly expiry)'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T17:45:00+05:30'
+  parent_strategy_id: null
+  hypothesis: 'Early-cycle sessions (6+ days to weekly expiry) behave near baseline:
+    the observed 5-session forward mean (+0.127%) exceeds baseline (+0.113%) by only
+    ~0.014% with a 51.97% hit rate, i.e. within noise. If the null holds, a long ATM
+    straddle bought at the EOD close of early-cycle sessions and held 5 sessions should
+    not beat the canonical cost model.'
+  research_question: PK-RQ-02
+  expected_failure_modes:
+  - 'Cycle effects are weak: the fwd_5d delta vs baseline (+0.00014) is within noise,
+    and a long straddle pays 2 legs (4 orders round-trip) under the canonical cost
+    model (40/order + 1.5% slippage), which can consume the entire edge.'
+  - 'Theta bleed dominates the horizon: an ATM straddle decays daily, so over 5 sessions
+    the premium cost can exceed the captured move even when realised vol matches the
+    early-cycle forward expectation.'
+  - 'Weekly expiry structure is recent: the 39.6% early-cycle population depends on
+    the modern weekly-expiry calendar; the cycle structure may not persist or the
+    observed behaviour may be an artifact of a short structural history.'
+  candidate_family: EXPIRY_CYCLE
+strategy:
+  entry:
+    conditions:
+    - field: dte
+      op: '>='
+      value: 6
+    - field: expiry_day
+      op: ==
+      value: 0
+    direction: LONG
+    instrument: STRADDLE
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - dte
+  - expiry_day
+  regime:
+    allowed: null

@@ -1,0 +1,30 @@
+{
+  "backtest_status": "NOT_RUN",
+  "classification": "UNIQUE",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "dev_oos_cut": "2026-03-01",
+  "duplicate_of": null,
+  "evidence": "no deterministic engine for strategy_id 'range_fade_stretch_v1' (engine-registered: current_control_v1, directional_spread_v1, range_hv_iron_condor_v1)",
+  "expected_failure_modes": [
+    "Regime lag: RANGE_HV at the signal close transitions to TREND_HV in the following sessions, the fade is counter-trend, and the short call is exercised to the wing-width maximum loss.",
+    "Gap risk: an overnight gap beyond the sold strike removes the reversion window, and the spread realizes its maximum loss on the entry session.",
+    "Cost and theta drag: four orders per round trip at the canonical cost model plus slippage exceed the average reversion credit, and shallow stretches revert only partially, leaving no edge at the minimum sample size."
+  ],
+  "experiment_id": "phase_i1_controlled_multi_model_v1",
+  "failure_code": "EXECUTION_UNSUPPORTED",
+  "fingerprint": "688fdefe22e599d296d5b6d8c7c7ac59f16d39f79f4acc25d09ae04b9e25e609",
+  "hypothesis": "In a RANGE_HV regime NIFTY prints wide, mean-reverting swings rather than sustained runs. When the daily close stretches beyond the VIX-implied expected-move band while RSI reads 72 or above, the impulse is typically locally exhausted and price tends to revert toward the band center and the heavy OI / max-pain zone. Entering a defined-risk call credit spread at that stretch expresses the reversion with a capped wing-width loss while theta decays the short leg in the seller's favour. The regime gate and VIX window keep the fade out of fresh trends and out of a too-cheap premium tape. It might fail because RANGE_HV classification lags the close: a range that is actually breaking into a trend produces follow-through instead of reversion, and because the thin credit net of a four-order cost model may not cover the losing trades.\n",
+  "model_id": "big_pickle",
+  "model_version": "opencode/big-pickle",
+  "proposal_hash": "94d29b7d24fb1f54483d86c12e7e7068e4151473d278f42208b50e405e683e65",
+  "proposal_id": "phase_i1_big_pickle_p2",
+  "research_question": "Over the frozen window with the dev/OOS split at 2026-03-01, does entering one NIFTY call credit spread per signal (REGIME equals RANGE_HV, RSI at or above 72, VIX between 16 and 25) that targets reversion to the VIX-implied expected-move band and the max-pain zone produce at least 20 trades and a win rate and profit factor on both splits that exceed current_control_v1 under the canonical cost model?\n",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "189259e9cfbeb0f3b22fe250bbbff01498b115b5ba87e76850e24dc8053754a1",
+  "status": "REVIEW",
+  "strategy_id": "range_fade_stretch_v1",
+  "title": "RANGE_HV overbought-stretch fade: defined-risk NIFTY call credit spread reverting to the VIX band and max pain",
+  "validation_status": "VALIDATED",
+  "window_end": "2026-08-13",
+  "window_start": "2025-08-13"
+}

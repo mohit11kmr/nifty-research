@@ -1,0 +1,54 @@
+{
+  "corrected": {
+    "avg_days_held": 3.53,
+    "expectancy": 908.41,
+    "fees": 3440.0,
+    "gross": 58068.5,
+    "max_drawdown": -61988.45,
+    "max_drawdown_pct": -66.75,
+    "net_pnl": 39061.84,
+    "profit_factor": 1.1781,
+    "result_hash": "ee3b44e8959dc38292b42342067dcafaf037f817e80fe255ea871a106d1b5587",
+    "slippage": 15566.66,
+    "status": "RELIABLE",
+    "trade_count": 43,
+    "trade_frequency": 0.0666,
+    "trades": 43,
+    "win_rate": 0.3721
+  },
+  "delta": {
+    "changed_trades": 43,
+    "fees": 0.0,
+    "gross": 11992.25,
+    "max_drawdown": 21085.46,
+    "net_pnl": 15470.35,
+    "profit_factor": 0.1054,
+    "slippage": -3478.1,
+    "trades": 0,
+    "win_rate": -0.0232
+  },
+  "exit_reasons": {
+    "EXIT_EXPIRY": 21,
+    "EXIT_STOP": 22
+  },
+  "orig_exit_reasons": {
+    "EXIT_HORIZON": 43
+  },
+  "original": {
+    "avg_days_held": 4.72,
+    "expectancy": 548.64,
+    "fees": 3440.0,
+    "gross": 46076.25,
+    "max_drawdown": -83073.91,
+    "max_drawdown_pct": -81.88,
+    "net_pnl": 23591.49,
+    "profit_factor": 1.0727,
+    "result_hash": "f11b794e902e464374b99578ab53e1158b2e9eb972139d7f93ad74cfa17605e0",
+    "slippage": 19044.76,
+    "status": "RELIABLE",
+    "trade_count": 43,
+    "trade_frequency": 0.0666,
+    "trades": 43,
+    "win_rate": 0.3953
+  }
+}

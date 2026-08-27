@@ -1,0 +1,70 @@
+{
+  "backtest_status": "BACKTESTED",
+  "baseline": {
+    "control": "current_control_v1",
+    "dataset": {
+      "calendar_hash": null,
+      "manifest_hash": null
+    },
+    "dimensions": {
+      "expectancy": {
+        "control": 39.72,
+        "proposal": -85.62
+      },
+      "fees": {
+        "control": 3840.0,
+        "proposal": 3840.0
+      },
+      "max_drawdown": {
+        "control": -51746.8,
+        "proposal": -8797.75
+      },
+      "net_pnl": {
+        "control": 1906.43,
+        "proposal": -1027.5
+      },
+      "profit_factor": {
+        "control": 1.011,
+        "proposal": 0.892
+      },
+      "sample_size": {
+        "control": 48,
+        "proposal": 12
+      },
+      "slippage": {
+        "control": 10554.82,
+        "proposal": 3207.75
+      },
+      "win_rate": {
+        "control": 33.3,
+        "proposal": 66.7
+      }
+    },
+    "verdict": "NOT_RELIABLE"
+  },
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "execution_family": "IRON_CONDOR",
+  "experiment_id": "phase_i2_generic_execution_v1",
+  "failure_code": null,
+  "fingerprint": "851d905711d18d8d2c7fe7276096db83eebec49106760b550bfddcd182820b1f",
+  "max_drawdown": -8797.75,
+  "net_pnl": -1027.5,
+  "oos_trades": 0,
+  "oos_verdict": "OOS_INSUFFICIENT",
+  "profit_factor": 0.892,
+  "proposal_hash": "e096dd349726d10819c68d0c9fd586325e641b007e6d3d4be04070b849e29e10",
+  "proposal_id": "phase_i1_deepseek_p2",
+  "registered": true,
+  "reliable": false,
+  "reproducible": true,
+  "resolved_family": "IRON_CONDOR",
+  "result_hash": "1fead351009084490accfe78696ee016b3cbf27f9bd01ba22dcf39837c35ff3f",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "d64d0d3fd5100b72dc2374c2a9db31942e61b43058a08438f03aaf02869fd664",
+  "status": "REVIEW",
+  "strategy_id": "range_hv_condor_v1",
+  "title": "Range HV Iron Condor Strategy",
+  "trades": 12,
+  "validation_status": "VALIDATED",
+  "win_rate": 66.7
+}

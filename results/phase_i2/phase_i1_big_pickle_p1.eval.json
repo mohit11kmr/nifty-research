@@ -1,0 +1,70 @@
+{
+  "backtest_status": "BACKTESTED",
+  "baseline": {
+    "control": "current_control_v1",
+    "dataset": {
+      "calendar_hash": null,
+      "manifest_hash": null
+    },
+    "dimensions": {
+      "expectancy": {
+        "control": 39.72,
+        "proposal": 0.0
+      },
+      "fees": {
+        "control": 3840.0,
+        "proposal": 0.0
+      },
+      "max_drawdown": {
+        "control": -51746.8,
+        "proposal": 0.0
+      },
+      "net_pnl": {
+        "control": 1906.43,
+        "proposal": 0.0
+      },
+      "profit_factor": {
+        "control": 1.011,
+        "proposal": 0.0
+      },
+      "sample_size": {
+        "control": 48,
+        "proposal": 0
+      },
+      "slippage": {
+        "control": 10554.82,
+        "proposal": 0.0
+      },
+      "win_rate": {
+        "control": 33.3,
+        "proposal": 0.0
+      }
+    },
+    "verdict": "NOT_RELIABLE"
+  },
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "execution_family": "OPTION_BUY",
+  "experiment_id": "phase_i2_generic_execution_v1",
+  "failure_code": null,
+  "fingerprint": "d0764eed099798ff11bb5312f685af27b1d342aee1773c3f9e04755671424ada",
+  "max_drawdown": 0.0,
+  "net_pnl": 0.0,
+  "oos_trades": 0,
+  "oos_verdict": "OOS_INSUFFICIENT",
+  "profit_factor": 0.0,
+  "proposal_hash": "9c7bcf2148384c0743783a508e68fe8221161d133a01c902d7ab98261e85f3b1",
+  "proposal_id": "phase_i1_big_pickle_p1",
+  "registered": true,
+  "reliable": false,
+  "reproducible": true,
+  "resolved_family": "OPTION_BUY",
+  "result_hash": "47addd20e139c6940ceff3e59aec7e3a03f2c8828e2b166ca1d4511099e2245a",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "2229d751ba503e6b6364a8092306d48e71fba62d922dffbd64b4cbaa0121d713",
+  "status": "REVIEW",
+  "strategy_id": "trend_pullback_call_v1",
+  "title": "Trend-persistence pullback long call (TREND_HV, VIX-capped)",
+  "trades": 0,
+  "validation_status": "VALIDATED",
+  "win_rate": 0.0
+}

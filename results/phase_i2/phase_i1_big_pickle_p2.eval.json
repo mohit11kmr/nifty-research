@@ -1,0 +1,70 @@
+{
+  "backtest_status": "BACKTESTED",
+  "baseline": {
+    "control": "current_control_v1",
+    "dataset": {
+      "calendar_hash": null,
+      "manifest_hash": null
+    },
+    "dimensions": {
+      "expectancy": {
+        "control": 39.72,
+        "proposal": 0.0
+      },
+      "fees": {
+        "control": 3840.0,
+        "proposal": 0.0
+      },
+      "max_drawdown": {
+        "control": -51746.8,
+        "proposal": 0.0
+      },
+      "net_pnl": {
+        "control": 1906.43,
+        "proposal": 0.0
+      },
+      "profit_factor": {
+        "control": 1.011,
+        "proposal": 0.0
+      },
+      "sample_size": {
+        "control": 48,
+        "proposal": 0
+      },
+      "slippage": {
+        "control": 10554.82,
+        "proposal": 0.0
+      },
+      "win_rate": {
+        "control": 33.3,
+        "proposal": 0.0
+      }
+    },
+    "verdict": "NOT_RELIABLE"
+  },
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "execution_family": "CALL_CREDIT_SPREAD",
+  "experiment_id": "phase_i2_generic_execution_v1",
+  "failure_code": null,
+  "fingerprint": "688fdefe22e599d296d5b6d8c7c7ac59f16d39f79f4acc25d09ae04b9e25e609",
+  "max_drawdown": 0.0,
+  "net_pnl": 0.0,
+  "oos_trades": 0,
+  "oos_verdict": "OOS_INSUFFICIENT",
+  "profit_factor": 0.0,
+  "proposal_hash": "94d29b7d24fb1f54483d86c12e7e7068e4151473d278f42208b50e405e683e65",
+  "proposal_id": "phase_i1_big_pickle_p2",
+  "registered": true,
+  "reliable": false,
+  "reproducible": true,
+  "resolved_family": "CALL_CREDIT_SPREAD",
+  "result_hash": "a2102d50cc2bfd1986a87437ed2243ddf7f5402039f0f5da959952cc4dea0ee4",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "189259e9cfbeb0f3b22fe250bbbff01498b115b5ba87e76850e24dc8053754a1",
+  "status": "REVIEW",
+  "strategy_id": "range_fade_stretch_v1",
+  "title": "RANGE_HV overbought-stretch fade: defined-risk NIFTY call credit spread reverting to the VIX band and max pain",
+  "trades": 0,
+  "validation_status": "VALIDATED",
+  "win_rate": 0.0
+}

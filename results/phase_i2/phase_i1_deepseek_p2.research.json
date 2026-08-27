@@ -1,0 +1,454 @@
+{
+  "baseline": {
+    "control": "current_control_v1",
+    "dataset": {
+      "calendar_hash": null,
+      "manifest_hash": null
+    },
+    "dimensions": {
+      "expectancy": {
+        "control": 39.72,
+        "proposal": -85.62
+      },
+      "fees": {
+        "control": 3840.0,
+        "proposal": 3840.0
+      },
+      "max_drawdown": {
+        "control": -51746.8,
+        "proposal": -8797.75
+      },
+      "net_pnl": {
+        "control": 1906.43,
+        "proposal": -1027.5
+      },
+      "profit_factor": {
+        "control": 1.011,
+        "proposal": 0.892
+      },
+      "sample_size": {
+        "control": 48,
+        "proposal": 12
+      },
+      "slippage": {
+        "control": 10554.82,
+        "proposal": 3207.75
+      },
+      "win_rate": {
+        "control": 33.3,
+        "proposal": 66.7
+      }
+    },
+    "verdict": "NOT_RELIABLE"
+  },
+  "by_regime": {
+    "RANGE_HV": {
+      "net": -1027.5,
+      "trades": 12,
+      "winrate": 66.7
+    }
+  },
+  "dataset": {
+    "dev_oos_cut": "2026-03-01",
+    "end_date": "2026-08-13",
+    "manifest_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+    "start_date": "2025-08-13"
+  },
+  "evaluation_vector": {
+    "complexity": {
+      "instrument_kinds": [
+        "IRON_CONDOR"
+      ],
+      "n_trades": 12
+    },
+    "data_quality": "UNIFIED_FULL",
+    "drawdown": {
+      "max_drawdown": -8797.75,
+      "max_drawdown_pct": -8.8
+    },
+    "edge_quality": {
+      "expectancy": -85.62,
+      "net_pnl": -1027.5,
+      "profit_factor": 0.892
+    },
+    "execution_realism": {
+      "cost_model": "canonical (40/order, 1.5% slippage)",
+      "fees": 3840.0,
+      "slippage": 3207.75
+    },
+    "oos_quality": {
+      "development": {
+        "net": 425.0,
+        "trades": 2,
+        "winrate": 100.0
+      },
+      "out_of_sample": {
+        "net": -1452.5,
+        "trades": 10,
+        "winrate": 60.0
+      },
+      "verdict": "OOS_INSUFFICIENT"
+    },
+    "profit_concentration": {
+      "best_trade_pct": -219.6,
+      "n_trades": 12,
+      "top5_pct": -783.0
+    },
+    "regime_robustness": {
+      "RANGE_HV": {
+        "net": -1027.5,
+        "trades": 12,
+        "winrate": 66.7
+      }
+    },
+    "risk_validity": "DECLARED_OK",
+    "sample_size": 12,
+    "stability": {
+      "status": "INSUFFICIENT_SAMPLE",
+      "sufficient": false,
+      "win_rate": 66.7
+    },
+    "trade_frequency": {
+      "avg_days_between_trades": 22.3,
+      "trades_per_month": 1.0,
+      "trades_per_year": 12
+    }
+  },
+  "fingerprints": {
+    "dataset_composite_hash": "23b3fa4f21ee2cb93b6e51f96bb80979a14852899614d8bd33028c7b0d9314f0",
+    "expiry_calendar": {
+      "sha256": "3abbe4ccb003d9f9228d9bdfaf73041403dae5ed4a43f30e223bc9fc6b426ad2",
+      "size": 9141
+    },
+    "fii_dii_history": {
+      "sha256": "6c9d76f8e2a4ccc35099c7d392df11de63a7adff47852ac13c4f48bda3948cc7",
+      "size": 8585
+    },
+    "india_vix": {
+      "sha256": "aa17e990a6f6cc5f865cf0cfab0ee3e854e06e6db11d530a17a8515f7ac7aa95",
+      "size": 20589
+    },
+    "ml_features": {
+      "sha256": "6e1225dfce06ca1135eba7c38c62fbacfcad6bcdae188d98c25735a1ddc14cbd",
+      "size": 128924
+    },
+    "nifty_history": {
+      "sha256": "0939bbc2230f7ee320afc8dc32eb23be07f9ece6ae68b0a3dcae60ca010725b7",
+      "size": 37171
+    },
+    "oi_snapshots_dir": {
+      "files": 254,
+      "sha256": "78317b81ebb349cdada6bad9bc4b8cf3184921a6a43d70f1d9044d0e3278e521"
+    }
+  },
+  "generated_at": "2026-08-16T10:43:46.877699+00:00",
+  "metrics": {
+    "average_hold": 4.75,
+    "average_loss": -2379.12,
+    "average_trade": -85.62,
+    "average_win": 1061.12,
+    "breakeven_count": 0,
+    "calmar": null,
+    "candidate": "IRON_CONDOR",
+    "expectancy": -85.62,
+    "fees": 3840.0,
+    "gross_pnl": 6020.25,
+    "loss_count": 4,
+    "mae": -1065.62,
+    "max_drawdown": -8797.75,
+    "max_drawdown_pct": -8.8,
+    "median_trade": 212.5,
+    "mfe": 1194.06,
+    "net_pnl": -1027.5,
+    "profit_factor": 0.892,
+    "sharpe": null,
+    "slippage": 3207.75,
+    "sortino": null,
+    "status": "INSUFFICIENT_SAMPLE",
+    "trade_count": 12,
+    "trade_frequency": {
+      "avg_days_between_trades": 22.3,
+      "trades_per_month": 1.0,
+      "trades_per_year": 12
+    },
+    "win_count": 8,
+    "win_rate": 66.7
+  },
+  "monthly": {
+    "2025-10": {
+      "net": 79.75,
+      "trades": 1,
+      "winrate": 100.0
+    },
+    "2026-01": {
+      "net": 345.25,
+      "trades": 1,
+      "winrate": 100.0
+    },
+    "2026-03": {
+      "net": -131.75,
+      "trades": 1,
+      "winrate": 0.0
+    },
+    "2026-04": {
+      "net": 3109.5,
+      "trades": 3,
+      "winrate": 66.7
+    },
+    "2026-05": {
+      "net": 3270.5,
+      "trades": 2,
+      "winrate": 100.0
+    },
+    "2026-06": {
+      "net": 1097.0,
+      "trades": 2,
+      "winrate": 100.0
+    },
+    "2026-07": {
+      "net": -8797.75,
+      "trades": 2,
+      "winrate": 0.0
+    }
+  },
+  "proposal": {
+    "author_model": "deepseek",
+    "author_type": "AI",
+    "fingerprint": "851d905711d18d8d2c7fe7276096db83eebec49106760b550bfddcd182820b1f",
+    "parent_strategy_id": "current_control_v1",
+    "proposal_hash": "e096dd349726d10819c68d0c9fd586325e641b007e6d3d4be04070b849e29e10",
+    "proposal_id": "phase_i1_deepseek_p2",
+    "research": {
+      "dataset_manifest_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+      "dev_oos_cut": "2026-03-01",
+      "end_date": "2026-08-13",
+      "min_required_trades": 20,
+      "note": "fixed window; frozen before evaluation",
+      "start_date": "2025-08-13"
+    },
+    "spec_hash": "d64d0d3fd5100b72dc2374c2a9db31942e61b43058a08438f03aaf02869fd664",
+    "strategy_id": "range_hv_condor_v1",
+    "title": "Range HV Iron Condor Strategy"
+  },
+  "result_hash": "1fead351009084490accfe78696ee016b3cbf27f9bd01ba22dcf39837c35ff3f",
+  "spec_hash": "d64d0d3fd5100b72dc2374c2a9db31942e61b43058a08438f03aaf02869fd664",
+  "strategy_id": "range_hv_condor_v1",
+  "trades": [
+    {
+      "days_held": 3,
+      "entry_date": "2025-10-21",
+      "entry_premium": 26.7,
+      "exit_date": "2025-10-24",
+      "fees": 320.0,
+      "grade": "A",
+      "mae": 0.0,
+      "mfe": 468.75,
+      "net_pnl": 79.75,
+      "option_type": "IRON_CONDOR",
+      "reason": "TARGET",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 69.13,
+      "spread_width": null,
+      "strike": "26550/26400-25350/25200"
+    },
+    {
+      "days_held": 5,
+      "entry_date": "2026-01-22",
+      "entry_premium": 27.1,
+      "exit_date": "2026-01-27",
+      "fees": 320.0,
+      "grade": "A",
+      "mae": -461.25,
+      "mfe": 705.0,
+      "net_pnl": 345.25,
+      "option_type": "IRON_CONDOR",
+      "reason": "EXPIRY",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 40.27,
+      "spread_width": null,
+      "strike": "25950/25800-24800/24650"
+    },
+    {
+      "days_held": 5,
+      "entry_date": "2026-03-04",
+      "entry_premium": 167.3,
+      "exit_date": "2026-03-09",
+      "fees": 320.0,
+      "grade": "A",
+      "mae": 0.0,
+      "mfe": 1728.75,
+      "net_pnl": -131.75,
+      "option_type": "IRON_CONDOR",
+      "reason": "TIME",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 892.12,
+      "spread_width": null,
+      "strike": "25100/24950-24000/23850"
+    },
+    {
+      "days_held": 5,
+      "entry_date": "2026-04-08",
+      "entry_premium": 37.3,
+      "exit_date": "2026-04-13",
+      "fees": 320.0,
+      "grade": "NO_SIGNAL",
+      "mae": -97.5,
+      "mfe": 2793.75,
+      "net_pnl": 2256.25,
+      "option_type": "IRON_CONDOR",
+      "reason": "EXPIRY",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 217.52,
+      "spread_width": null,
+      "strike": "24650/24500-23500/23350"
+    },
+    {
+      "days_held": 5,
+      "entry_date": "2026-04-15",
+      "entry_premium": 45.5,
+      "exit_date": "2026-04-20",
+      "fees": 320.0,
+      "grade": "NO_SIGNAL",
+      "mae": 0.0,
+      "mfe": 2047.5,
+      "net_pnl": 1440.25,
+      "option_type": "IRON_CONDOR",
+      "reason": "TARGET",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 286.65,
+      "spread_width": null,
+      "strike": "24850/24700-23750/23600"
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-04-21",
+      "entry_premium": 223.55,
+      "exit_date": "2026-04-27",
+      "fees": 320.0,
+      "grade": "A",
+      "mae": -2970.0,
+      "mfe": 183.75,
+      "net_pnl": -587.0,
+      "option_type": "IRON_CONDOR",
+      "reason": "TIME",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 424.57,
+      "spread_width": null,
+      "strike": "25200/25050-24100/23950"
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-04-28",
+      "entry_premium": 39.55,
+      "exit_date": "2026-05-04",
+      "fees": 320.0,
+      "grade": "NO_SIGNAL",
+      "mae": 0.0,
+      "mfe": 2032.5,
+      "net_pnl": 1483.75,
+      "option_type": "IRON_CONDOR",
+      "reason": "TARGET",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 229.05,
+      "spread_width": null,
+      "strike": "24650/24500-23500/23350"
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-05-05",
+      "entry_premium": 42.45,
+      "exit_date": "2026-05-11",
+      "fees": 320.0,
+      "grade": "NO_SIGNAL",
+      "mae": -1552.5,
+      "mfe": 2332.5,
+      "net_pnl": 1786.75,
+      "option_type": "IRON_CONDOR",
+      "reason": "TARGET",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 226.24,
+      "spread_width": null,
+      "strike": "24650/24500-23550/23400"
+    },
+    {
+      "days_held": 3,
+      "entry_date": "2026-06-19",
+      "entry_premium": 85.95,
+      "exit_date": "2026-06-22",
+      "fees": 320.0,
+      "grade": "A",
+      "mae": 0.0,
+      "mfe": 375.0,
+      "net_pnl": 19.0,
+      "option_type": "IRON_CONDOR",
+      "reason": "TARGET",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 35.77,
+      "spread_width": null,
+      "strike": "24650/24500-23550/23400"
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-06-23",
+      "entry_premium": 138.6,
+      "exit_date": "2026-06-29",
+      "fees": 320.0,
+      "grade": "A",
+      "mae": -217.5,
+      "mfe": 1515.0,
+      "net_pnl": 1078.0,
+      "option_type": "IRON_CONDOR",
+      "reason": "TARGET",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 116.89,
+      "spread_width": null,
+      "strike": "24450/24300-23350/23200"
+    },
+    {
+      "days_held": 6,
+      "entry_date": "2026-06-30",
+      "entry_premium": 120.1,
+      "exit_date": "2026-07-06",
+      "fees": 320.0,
+      "grade": "A+",
+      "mae": -3615.0,
+      "mfe": 146.25,
+      "net_pnl": -4174.25,
+      "option_type": "IRON_CONDOR",
+      "reason": "STOP",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 239.17,
+      "spread_width": null,
+      "strike": "24500/24350-23400/23250"
+    },
+    {
+      "days_held": 1,
+      "entry_date": "2026-07-07",
+      "entry_premium": 114.0,
+      "exit_date": "2026-07-08",
+      "fees": 320.0,
+      "grade": "A+",
+      "mae": -3873.75,
+      "mfe": 0.0,
+      "net_pnl": -4623.5,
+      "option_type": "IRON_CONDOR",
+      "reason": "STOP",
+      "regime": "RANGE_HV",
+      "short_strike": null,
+      "slippage": 430.37,
+      "spread_width": null,
+      "strike": "25050/24900-23900/23750"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+proposal:
+  proposal_id: PK-RQ-01
+  title: 'Max-pain reversion null test: short defined-risk vol when spot is far from
+    the max-pain strike'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T17:38:41+05:30'
+  parent_strategy_id: null
+  hypothesis: 'When NIFTY spot closes more than 0.5% away from the max-pain strike
+    with at least two sessions to weekly expiry, spot does not reliably revert toward
+    max pain within the next week (observed 5-session forward mean edge vs baseline
+    is only ~0.00026, near noise). If the null holds, a defined-risk iron condor sold
+    around the current spot in that state collects premium while spot lingers.
+
+    '
+  research_question: PK-RQ-01
+  expected_failure_modes:
+  - 'Max pain is a settlement-day phenomenon: the reversion effect concentrates on
+    expiry day, which the expiry_day==0 gate excludes, leaving no exploitable edge
+    in the far-from-max-pain window.'
+  - 'Drift occurs intraday on expiry: EOD resolution cannot capture the intraday microstructure
+    drift, so any reversion signal is invisible to a daily-horizon trade.'
+  - 'Signal too weak for costs: the observed fwd_5d delta vs baseline (+0.00026) is
+    small; the canonical cost model (40/order, 1.5% slippage) on an 8-order iron condor
+    may consume the entire collected premium.'
+  candidate_family: MAX_PAIN_REVERT
+strategy:
+  entry:
+    conditions:
+    - field: max_pain_dist_pct
+      op: '>='
+      value: 0.5
+    - field: expiry_day
+      op: ==
+      value: 0
+    - field: dte
+      op: '>='
+      value: 2
+    - field: vix_close
+      op: <=
+      value: 25.0
+    direction: NEUTRAL
+    instrument: IRON_CONDOR
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - max_pain_dist_pct
+  - expiry_day
+  - dte
+  - vix_close
+  regime:
+    allowed: null

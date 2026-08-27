@@ -1,0 +1,29 @@
+{
+  "backtest_status": "NOT_RUN",
+  "classification": "UNIQUE",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "dev_oos_cut": "2026-03-01",
+  "duplicate_of": null,
+  "evidence": "no deterministic engine for strategy_id 'trend_breakout_condor_v1' (engine-registered: current_control_v1, directional_spread_v1, range_hv_iron_condor_v1)",
+  "expected_failure_modes": [
+    "VIX 16-25 filter may miss profitable trades during panic regimes",
+    "Wider wings may reduce fill probability due to low liquidity"
+  ],
+  "experiment_id": "phase_i1_controlled_multi_model_v1",
+  "failure_code": "EXECUTION_UNSUPPORTED",
+  "fingerprint": "b6feea425508497d9d79a8d989ec922db9e4bcdb12a042fefcb3b4ba7221d24d",
+  "hypothesis": "In TREND_HV regimes, an iron condor placed beyond expected daily move with VIX 16-25 filter may capture gamma acceleration while limiting risk.\n",
+  "model_id": "deepseek",
+  "model_version": "deepseek-chat",
+  "proposal_hash": "6225d8cea5a7e150fade774d40d23c8c8356bda20ec41bc9934f0b0436a00d76",
+  "proposal_id": "phase_i1_deepseek_p3",
+  "research_question": "Does a VIX-gated iron condor outperform baseline in TREND_HV regimes when placed at 1.5x expected daily move?\n",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "deef2890dabcb319bc5cfb106e52676be6c28b6c98ae0bbf3fd5cc900ec6891b",
+  "status": "REVIEW",
+  "strategy_id": "trend_breakout_condor_v1",
+  "title": "Trend Breakout Iron Condor with VIX Filter",
+  "validation_status": "VALIDATED",
+  "window_end": "2026-08-13",
+  "window_start": "2025-08-13"
+}

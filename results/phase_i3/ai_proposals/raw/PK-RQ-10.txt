@@ -1,0 +1,60 @@
+Let me check existing proposal examples to match the schema style.
+```yaml
+proposal:
+  proposal_id: PK-RQ-10
+  title: 'TREND_FADING: long ATM put when 5-session return is a strong uptrend (>=+2%), 5-session horizon'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T17:58:19+05:30'
+  parent_strategy_id: null
+  hypothesis: Sustained 5-session NIFTY gains do not persist: after a session where
+    the recent strong trend (nifty_ret_5d >= +2%) is present, forward 5-session spot
+    drift is negative (-0.145% vs +0.113% baseline). A long ATM put entered at the
+    close of such a strong-trend session and held 5 sessions captures the fade while
+    keeping risk defined at the premium paid.
+  research_question: PK-RQ-10
+  expected_failure_modes:
+  - 'Regime-dependent persistence: the fade is estimated over a window mixed across
+    REGIME_A (377) / REGIME_B (175) / REGIME_C (94); in elevated-volatility stretches
+    (REGIME_C) strong trends may persist rather than reverse, so the negative forward
+    drift may not hold within single regimes.'
+  - 'Overlapping 5-session forward windows overstate the signal: adjacent fade observations
+    share 4 of 5 sessions, inflating effective sample size and making the -0.145% mean
+    and ~51% hit rate look stronger than the true independent count (~16 trades).'
+  - 'Costs and theta erode a small edge: with only a ~51% hit rate and -0.145% mean
+    drift, the canonical cost model (40/order, 1.5% slippage) plus theta bleed on a
+    decaying ATM put can consume the entire fade edge; EOD entry also misses intraday
+    reversals of the trend.'
+  candidate_family: TREND_FOLLOWING
+strategy:
+  entry:
+    conditions:
+    - field: nifty_ret_5d
+      op: '>='
+      value: 2.0
+    - field: dte
+      op: '>='
+      value: 2
+    - field: expiry_day
+      op: ==
+      value: 0
+    direction: LONG
+    instrument: PUT
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+    stop_pct: 0.5
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - nifty_ret_5d
+  - dte
+  - expiry_day
+  regime:
+    allowed: null
+```

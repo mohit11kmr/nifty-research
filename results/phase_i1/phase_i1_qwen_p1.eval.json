@@ -1,0 +1,13 @@
+{
+  "backtest_status": "NOT_RUN",
+  "classification": "N/A",
+  "evidence": "model could not be reached within the research budget",
+  "experiment_id": "phase_i1_controlled_multi_model_v1",
+  "failure_code": "MODEL_UNAVAILABLE",
+  "model_id": "qwen",
+  "model_version": "qwen3-coder",
+  "proposal_id": "phase_i1_qwen_p1",
+  "review_status": "PENDING_REVIEW",
+  "status": "REJECTED",
+  "validation_status": "REJECTED"
+}

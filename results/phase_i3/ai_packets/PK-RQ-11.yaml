@@ -1,0 +1,60 @@
+packet_id: PK-RQ-11
+question_id: RQ-11
+candidate_family: OI_BUILDUP
+observed:
+  n_sessions: 129
+  frequency: 0.1997
+  confidence: MEDIUM
+  fwd_5d_mean: 0.00296
+  fwd_5d_hit_rate: 0.5426
+  baseline_fwd_5d_mean: 0.00113
+  delta_vs_baseline: 0.00183
+inferred: The OI_BUILDUP family is the most plausible explanation for the observed
+  20.0% frequency behaviour ('total option OI grew >80th percentile over 5 sessions
+  (build-up)') with confidence MEDIUM.
+hypothesis: Sharp 5-session option-OI build-up precedes slightly above-average 5d
+  drift.
+market_context:
+  mix:
+    REGIME_A: 377
+    REGIME_B: 175
+    REGIME_C: 94
+  note: regime mix over the observation window (A=calm, B=stressed, C=high-vol)
+required_data:
+- dte
+- expiry_day
+- nifty_20d_hv
+- nifty_close
+- nifty_ret_5d
+- oi_total
+- oi_total_growth_5d
+- pcr_oi
+- vix_close
+- vix_rank_252
+expected_failure_modes:
+- OI build-up is lagging flow
+- expiry-roll artefacts
+- weak delta vs baseline
+gates:
+  point_in_time_safe: true
+  features_registered:
+  - dte
+  - expiry_day
+  - nifty_20d_hv
+  - nifty_close
+  - nifty_ret_5d
+  - oi_total
+  - oi_total_growth_5d
+  - pcr_oi
+  - vix_close
+  - vix_rank_252
+  execution_family_supported: true
+  cost_model: canonical (40/order, 1.5% slippage)
+  resolution: EOD
+  defined_risk: true
+generation_instructions: 'Operationalize this hypothesis as a deterministic EOD strategy
+  proposal in the Phase I.3 YAML schema. Entry conditions must use ONLY the registered
+  feature ids in required_data. Direction and instrument must map to one of: OPTION_LONG
+  (CALL/PUT/STRADDLE) or OPTION_IRON_CONDOR. Never reference unregistered features.
+  Declare risk (defined risk for shorts), expiry handling, expected failure modes
+  and a testable research question.'

@@ -1,0 +1,179 @@
+{
+  "baseline": {
+    "control": "current_control_v1",
+    "dataset": {
+      "calendar_hash": null,
+      "manifest_hash": null
+    },
+    "dimensions": {
+      "expectancy": {
+        "control": 39.72,
+        "proposal": 0.0
+      },
+      "fees": {
+        "control": 3840.0,
+        "proposal": 0.0
+      },
+      "max_drawdown": {
+        "control": -51746.8,
+        "proposal": 0.0
+      },
+      "net_pnl": {
+        "control": 1906.43,
+        "proposal": 0.0
+      },
+      "profit_factor": {
+        "control": 1.011,
+        "proposal": 0.0
+      },
+      "sample_size": {
+        "control": 48,
+        "proposal": 0
+      },
+      "slippage": {
+        "control": 10554.82,
+        "proposal": 0.0
+      },
+      "win_rate": {
+        "control": 33.3,
+        "proposal": 0.0
+      }
+    },
+    "verdict": "NOT_RELIABLE"
+  },
+  "by_regime": {},
+  "dataset": {
+    "dev_oos_cut": "2026-03-01",
+    "end_date": "2026-08-13",
+    "manifest_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+    "start_date": "2025-08-13"
+  },
+  "evaluation_vector": {
+    "complexity": {
+      "instrument_kinds": [],
+      "n_trades": 0
+    },
+    "data_quality": "UNIFIED_FULL",
+    "drawdown": {
+      "max_drawdown": 0.0,
+      "max_drawdown_pct": 0.0
+    },
+    "edge_quality": {
+      "expectancy": 0.0,
+      "net_pnl": 0.0,
+      "profit_factor": 0.0
+    },
+    "execution_realism": {
+      "cost_model": "canonical (40/order, 1.5% slippage)",
+      "fees": 0.0,
+      "slippage": 0.0
+    },
+    "oos_quality": {
+      "development": {
+        "net": 0.0,
+        "trades": 0
+      },
+      "out_of_sample": {
+        "net": 0.0,
+        "trades": 0
+      },
+      "verdict": "OOS_INSUFFICIENT"
+    },
+    "profit_concentration": {
+      "best_trade_pct": null,
+      "top5_pct": null
+    },
+    "regime_robustness": {},
+    "risk_validity": "DECLARED_OK",
+    "sample_size": 0,
+    "stability": {
+      "status": "INSUFFICIENT_DATA",
+      "sufficient": false,
+      "win_rate": 0.0
+    },
+    "trade_frequency": 0.0
+  },
+  "fingerprints": {
+    "dataset_composite_hash": "23b3fa4f21ee2cb93b6e51f96bb80979a14852899614d8bd33028c7b0d9314f0",
+    "expiry_calendar": {
+      "sha256": "3abbe4ccb003d9f9228d9bdfaf73041403dae5ed4a43f30e223bc9fc6b426ad2",
+      "size": 9141
+    },
+    "fii_dii_history": {
+      "sha256": "6c9d76f8e2a4ccc35099c7d392df11de63a7adff47852ac13c4f48bda3948cc7",
+      "size": 8585
+    },
+    "india_vix": {
+      "sha256": "aa17e990a6f6cc5f865cf0cfab0ee3e854e06e6db11d530a17a8515f7ac7aa95",
+      "size": 20589
+    },
+    "ml_features": {
+      "sha256": "6e1225dfce06ca1135eba7c38c62fbacfcad6bcdae188d98c25735a1ddc14cbd",
+      "size": 128924
+    },
+    "nifty_history": {
+      "sha256": "0939bbc2230f7ee320afc8dc32eb23be07f9ece6ae68b0a3dcae60ca010725b7",
+      "size": 37171
+    },
+    "oi_snapshots_dir": {
+      "files": 254,
+      "sha256": "78317b81ebb349cdada6bad9bc4b8cf3184921a6a43d70f1d9044d0e3278e521"
+    }
+  },
+  "generated_at": "2026-08-16T10:43:45.515942+00:00",
+  "metrics": {
+    "average_hold": 0.0,
+    "average_loss": 0.0,
+    "average_trade": 0.0,
+    "average_win": 0.0,
+    "avg_days_between_trades": null,
+    "breakeven_count": 0.0,
+    "calmar": null,
+    "candidate": "OPTION_BUY",
+    "expectancy": 0.0,
+    "fees": 0.0,
+    "gross_pnl": 0.0,
+    "loss_count": 0.0,
+    "mae": 0.0,
+    "max_drawdown": 0.0,
+    "max_drawdown_pct": 0.0,
+    "median_trade": 0.0,
+    "mfe": 0.0,
+    "net_pnl": 0.0,
+    "profit_factor": 0.0,
+    "sharpe": null,
+    "slippage": 0.0,
+    "sortino": null,
+    "status": "INSUFFICIENT_DATA",
+    "trade_count": 0,
+    "trade_frequency": 0.0,
+    "trades_per_month": 0.0,
+    "trades_per_year": 0.0,
+    "win_count": 0.0,
+    "win_rate": 0.0
+  },
+  "monthly": {},
+  "proposal": {
+    "author_model": "big_pickle",
+    "author_type": "AI",
+    "fingerprint": "d0764eed099798ff11bb5312f685af27b1d342aee1773c3f9e04755671424ada",
+    "parent_strategy_id": "current_control_v1",
+    "proposal_hash": "9c7bcf2148384c0743783a508e68fe8221161d133a01c902d7ab98261e85f3b1",
+    "proposal_id": "phase_i1_big_pickle_p1",
+    "research": {
+      "dataset_manifest_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+      "dev_oos_cut": "2026-03-01",
+      "end_date": "2026-08-13",
+      "min_required_trades": 20,
+      "note": "fixed window; frozen before evaluation",
+      "start_date": "2025-08-13"
+    },
+    "spec_hash": "2229d751ba503e6b6364a8092306d48e71fba62d922dffbd64b4cbaa0121d713",
+    "strategy_id": "trend_pullback_call_v1",
+    "title": "Trend-persistence pullback long call (TREND_HV, VIX-capped)"
+  },
+  "result_hash": "47addd20e139c6940ceff3e59aec7e3a03f2c8828e2b166ca1d4511099e2245a",
+  "spec_hash": "2229d751ba503e6b6364a8092306d48e71fba62d922dffbd64b4cbaa0121d713",
+  "strategy_id": "trend_pullback_call_v1",
+  "trades": []
+}

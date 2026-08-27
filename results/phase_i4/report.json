@@ -1,0 +1,178 @@
+{
+  "accounting": {
+    "aggregate": {
+      "check": 1,
+      "fees": 3440.0,
+      "gross": 58068.5,
+      "identity": "net == gross - fees - slippage",
+      "net": 39061.84,
+      "slippage": 15566.66,
+      "trades": 43
+    },
+    "aggregate_check": 1,
+    "trade_level_net_equals_gross_fees_slippage": true
+  },
+  "by_regime_corrected": {
+    "REGIME_A": {
+      "net": 21961.54,
+      "trades": 13,
+      "winrate": 0.3846
+    },
+    "REGIME_B": {
+      "net": -60711.28,
+      "trades": 25,
+      "winrate": 0.32
+    },
+    "REGIME_C": {
+      "net": 77811.58,
+      "trades": 5,
+      "winrate": 0.6
+    }
+  },
+  "concentration": {
+    "best_month": "2025-05",
+    "best_month_pct": 157.71,
+    "best_trade_pct": 157.71,
+    "flag": "HIGH_CONCENTRATION",
+    "net_without_top1": -22543.67,
+    "net_without_top3": -81100.2,
+    "top2_pct": 238.84,
+    "top3_pct": 307.62
+  },
+  "costs": {
+    "aggregate_identity_ok": 1,
+    "cost_per_order": 40,
+    "slippage_pct": 0.015,
+    "trade_level_identity_ok": true
+  },
+  "development": {
+    "concentration": {
+      "top1_pct": 77.13,
+      "top2_pct": 116.81,
+      "top3_pct": 149.74
+    },
+    "max_drawdown": -27797.81,
+    "net": 79868.16,
+    "pf": 1.7435,
+    "trades": 27,
+    "win_rate": 0.4074
+  },
+  "execution_realism": {
+    "classification": "EXECUTION_REALISM_LIMITED",
+    "detail": "entry = bhavcopy SttlmPric (volume-weighted settlement price) of the exact (expiry, strike, CE) contract row",
+    "entry_price_model": "HISTORICAL_SETTLEMENT",
+    "note": "no historical intraday bid/ask exists in the frozen EOD dataset; bid/ask fills are NOT fabricated. Gap observed at the open but option entry occurs at EOD close."
+  },
+  "f2_lot_size": {
+    "lots_used": [
+      25,
+      50,
+      65,
+      75
+    ],
+    "model": "point-in-time market lot of the exact entry contract (bhavcopy NewBrdLotQty / lot_size column)",
+    "no_current_lot_fallback": true,
+    "status": "PASS"
+  },
+  "f4_regime": {
+    "detail": "retrospective global k-means labels kept for descriptive analysis only; no regime filter applied to PK-RQ-03",
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  "f6_expiry": {
+    "detail": "chain-derived near expiry equals canonical calendar on all 246 overlap dates (0 mismatches); 2024 trades use the same near expiry the calendar would have produced",
+    "status": "NO_PK_RQ03_IMPACT"
+  },
+  "f7_forward_boundary": {
+    "detail": "forward-5d targets dropna-incomplete windows (EXCLUDE); strategy trades require sessions[i+5] to exist",
+    "status": "PASS"
+  },
+  "final_classification": "HOLD",
+  "generated_at": "2026-08-16 19:33:11.477680",
+  "hypothesis_mismatch": [],
+  "hypothesis_preserved": true,
+  "oos": {
+    "concentration": {
+      "top1_pct": -65.84,
+      "top2_pct": -127.04,
+      "top3_pct": -156.35
+    },
+    "max_drawdown": -48986.71,
+    "net": -40806.32,
+    "pf": 0.6354,
+    "trades": 16,
+    "verdict": "OOS_INSUFFICIENT",
+    "win_rate": 0.3125
+  },
+  "production_isolation": {
+    "after": {
+      "data/ground_truth.db": "ddc9ed2a9abde941",
+      "paper_account.json": null
+    },
+    "before": {
+      "data/ground_truth.db": "ddc9ed2a9abde941",
+      "paper_account.json": null
+    },
+    "protected_untouched": true
+  },
+  "regime_gap_analysis": {
+    "ALL": {
+      "mean_fwd5d": 0.7493,
+      "median": 0.7442,
+      "sample": 59,
+      "win_rate": 0.6102
+    },
+    "REGIME_A": {
+      "fwd_available": 19,
+      "mean_fwd5d": 0.2887,
+      "median": 0.1136,
+      "sample": 19,
+      "win_rate": 0.5789
+    },
+    "REGIME_B": {
+      "fwd_available": 34,
+      "mean_fwd5d": 0.818,
+      "median": 0.8226,
+      "sample": 34,
+      "win_rate": 0.5882
+    },
+    "REGIME_C": {
+      "fwd_available": 6,
+      "mean_fwd5d": 1.8186,
+      "median": 2.5665,
+      "sample": 6,
+      "win_rate": 0.8333
+    },
+    "_n_down_gap_sessions": 59
+  },
+  "reproducibility": {
+    "hash": "ee3b44e8959dc38292b42342067dcafaf037f817e80fe255ea871a106d1b5587",
+    "same_hash": true,
+    "same_metrics": true,
+    "same_trades": true
+  },
+  "risk": {
+    "capital_at_risk_per_trade": {
+      "max": 24371.25,
+      "median": 11197.5,
+      "min": 2832.5
+    },
+    "defined_risk": true,
+    "max_drawdown": -61988.45,
+    "max_drawdown_pct": -66.75,
+    "max_theoretical_loss": 24371.25,
+    "worst_realized_loss": -18224.75
+  },
+  "verdict_checks": {
+    "all_critical_defects_fixed": true,
+    "concentration_acceptable": false,
+    "correct_historical_lot": true,
+    "execution_limits_documented": true,
+    "no_lookahead": true,
+    "oos_adequate": false,
+    "oos_not_contradicted": true,
+    "production_isolation": true,
+    "reproducibility": true,
+    "risk_semantics_valid": true,
+    "stop_implemented": true
+  }
+}

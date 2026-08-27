@@ -1,0 +1,63 @@
+```yaml
+proposal:
+  proposal_id: PK-RQ-08
+  title: 'VOL_EXPANSION: long ATM straddle when 20d realized HV exceeds the VIX level, 5-session horizon'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T17:55:38+05:30'
+  parent_strategy_id: null
+  hypothesis: When 20-session realized HV exceeds the India VIX level, options are
+    priced below the realized-vol regime being experienced; realized volatility then
+    normalizes down toward implied, so a long ATM straddle entered at the close of
+    such a session captures that re-pricing drift over the following 5 sessions (observed
+    22.8% frequency, fwd-5d mean +0.386% vs +0.113% baseline, 64.6% hit rate, MEDIUM
+    confidence).
+  research_question: PK-RQ-08
+  expected_failure_modes:
+  - 'HV vs VIX comparison is approximate: the DSL cannot compare two fields directly,
+    so the trigger is approximated with literal thresholds (nifty_20d_hv >= 0.14 and
+    vix_close <= 25.0), which capture only ~84% of the exact HV>VIX sessions and admit
+    near-miss sessions where the edge is weaker.'
+  - 'No clean entry timing: EOD close entry can miss the vol-expansion move itself,
+    and if normalization happens as premium compression rather than a spot move, the
+    long straddle bleeds theta on both legs (4 orders round-trip under the canonical
+    40/order + 1.5% slippage cost model) and the whole edge can be consumed.'
+  - 'Expiry interaction: the 5-session hold is capped at the nearest weekly expiry,
+    so late-dte entries can be exited into expiry-day pinning near max pain, where
+    both straddle legs decay toward zero delta regardless of direction.'
+  candidate_family: VOL_EXPANSION
+strategy:
+  entry:
+    conditions:
+    - field: nifty_20d_hv
+      op: '>='
+      value: 0.14
+    - field: vix_close
+      op: '<='
+      value: 25.0
+    - field: dte
+      op: '>='
+      value: 2
+    - field: expiry_day
+      op: ==
+      value: 0
+    direction: LONG
+    instrument: STRADDLE
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - nifty_20d_hv
+  - vix_close
+  - dte
+  - expiry_day
+  regime:
+    allowed: null
+```

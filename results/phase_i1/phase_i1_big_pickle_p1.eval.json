@@ -1,0 +1,31 @@
+{
+  "backtest_status": "NOT_RUN",
+  "classification": "UNIQUE",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "dev_oos_cut": "2026-03-01",
+  "duplicate_of": null,
+  "evidence": "no deterministic engine for strategy_id 'trend_pullback_call_v1' (engine-registered: current_control_v1, directional_spread_v1, range_hv_iron_condor_v1)",
+  "expected_failure_modes": [
+    "Regime flip immediately after entry: TREND_HV can decay into RANGE_HV or RANGE_LV within days, turning a momentum continuation into a theta bleed or a repeated-stop chop.",
+    "The pullback is actually the start of a reversal; repeated 1% structure-based stop-outs accumulate faster than the occasional winner, producing negative expectancy.",
+    "The VIX premium cap excludes too many valid trending setups, collapsing the trade count below the 20-trade minimum and forcing a NOT_RELIABLE classification.",
+    "ADX in high-volatility regimes is lagging and noisy, admitting entries that look like strong trends but immediately mean-revert."
+  ],
+  "experiment_id": "phase_i1_controlled_multi_model_v1",
+  "failure_code": "EXECUTION_UNSUPPORTED",
+  "fingerprint": "d0764eed099798ff11bb5312f685af27b1d342aee1773c3f9e04755671424ada",
+  "hypothesis": "In TREND_HV regimes, high-volatility trending markets show momentum persistence; continuation moves after a controlled pullback are more reliable than breakout entries, which suffer from false breakouts and poor fills. Buying an ATM call on a pullback to the 20-EMA while the uptrend structure stays intact (spot above EMA50, EMA20 above EMA50, ADX confirming trend strength, RSI cooled into a neutral band) prices the entry closer to support, reducing the distance to the structure- based stop. Capping the VIX premium zone below RICH/HIGH/PANIC keeps long-premium theta bleed manageable, since expensive implied vol typically reverts and damages long premium even if spot moves in the direction of the trade.\n",
+  "model_id": "big_pickle",
+  "model_version": "opencode/big-pickle",
+  "proposal_hash": "9c7bcf2148384c0743783a508e68fe8221161d133a01c902d7ab98261e85f3b1",
+  "proposal_id": "phase_i1_big_pickle_p1",
+  "research_question": "Over the frozen window (2025-08-13..2026-08-13), does a TREND_HV-only pullback long call on NIFTY - defined as spot above EMA50, EMA20 above EMA50, ADX > 25, RSI in 45..55, VIX_ZONE not RICH/HIGH/PANIC and PCR <= 1.1 - produce a positive net expectancy with at least 20 trades on the out-of-sample slice (exits on/after 2026-03-01), and does it differ materially from the current_control_v1 baseline?\n",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "2229d751ba503e6b6364a8092306d48e71fba62d922dffbd64b4cbaa0121d713",
+  "status": "REVIEW",
+  "strategy_id": "trend_pullback_call_v1",
+  "title": "Trend-persistence pullback long call (TREND_HV, VIX-capped)",
+  "validation_status": "VALIDATED",
+  "window_end": "2026-08-13",
+  "window_start": "2025-08-13"
+}

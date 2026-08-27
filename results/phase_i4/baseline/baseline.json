@@ -1,0 +1,79 @@
+{
+  "captured_at": "2026-08-16 19:24:11.383566",
+  "dataset_manifest_self_hash": "3690ea52d2fe43ec67c98a4348cda32b99927f5f656a300680c76b7dc794828d",
+  "git": {
+    "branch": "master",
+    "head": "cf132ca"
+  },
+  "git_status_modified": [
+    "AGENTS.md",
+    "auto_enhancer.py",
+    "auto_paper_runner.py",
+    "blog/index.html",
+    "blog/live_terminal.html",
+    "daily_report.py",
+    "data/fii_dii_history.csv",
+    "mcp_nifty.py",
+    "main.py",
+    "paper_trader.py",
+    "tick_recorder.py"
+  ],
+  "original_by_regime": {
+    "REGIME_A": {
+      "net": 31351.04,
+      "trades": 13,
+      "winrate": 0.3846
+    },
+    "REGIME_B": {
+      "net": -98921.2,
+      "trades": 25,
+      "winrate": 0.36
+    },
+    "REGIME_C": {
+      "net": 91161.65,
+      "trades": 5,
+      "winrate": 0.6
+    }
+  },
+  "original_concentration": {
+    "best_month": "2025-05",
+    "best_month_pct": 261.13,
+    "best_trade_pct": 261.13,
+    "concentration_flag": "HIGH_CONCENTRATION",
+    "top2_pct": 399.82,
+    "top3_pct": 534.16
+  },
+  "original_metrics": {
+    "avg_days_held": 4.72,
+    "expectancy": 548.64,
+    "fees": 3440.0,
+    "gross": 46076.25,
+    "max_drawdown": -83073.91,
+    "max_drawdown_pct": -81.88,
+    "net_pnl": 23591.49,
+    "profit_factor": 1.0727,
+    "slippage": 19044.76,
+    "status": "RELIABLE",
+    "trade_count": 43,
+    "trade_frequency": 0.0666,
+    "win_rate": 0.3953
+  },
+  "original_oos": {
+    "development_until_2026_02_28": {
+      "net": 101458.28,
+      "trades": 27
+    },
+    "out_of_sample_from_2026_03_01": {
+      "net": -77866.79,
+      "trades": 16,
+      "winrate": 0.3125
+    },
+    "verdict": "OOS_INSUFFICIENT"
+  },
+  "original_result_hash": "f11b794e902e464374b99578ab53e1158b2e9eb972139d7f93ad74cfa17605e0",
+  "original_trade_count": 43,
+  "phase": "I.4",
+  "pk_rq03_spec": "results/phase_i3/ai_proposals/PK-RQ-03.yaml",
+  "pk_rq03_spec_sha256": "8bbc095f31ce33d2cda1f6025420883c422eccde95722286f5bad3128d8afb5b",
+  "sessions": 646
+}

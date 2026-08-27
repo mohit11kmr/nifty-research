@@ -1,0 +1,19 @@
+{
+  "backtest_status": "NOT_RUN",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "experiment_id": "phase_i2_generic_execution_v1",
+  "failure_code": "DATA_FIELD_UNSUPPORTED",
+  "failure_reason": "condition 'oi_wall_break' compares a strike-typed field (OI_WALL) against a vacuous sub-1000 constant",
+  "fingerprint": "f7a94312a7cc1260a1d7ed0e3550e5b75af031c29cb9d5554cd2abd9a16f7d45",
+  "granularity_issue": false,
+  "proposal_hash": "42e95f7be6cf0913b9d333e9b32f8915debfe0093c24e70c22a9a4780ea813cb",
+  "proposal_id": "phase_i1_deepseek_p1",
+  "registered": true,
+  "resolved_family": "OPTION_BUY",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "e1f5ac9b2d6655a2bf4a7fb11c156be6a3853d0f62a38040f7081c24c2bb5901",
+  "status": "REJECTED",
+  "strategy_id": "trend_breakout_v2",
+  "title": "High-Volatility Trend Breakout with OI Confirmation",
+  "validation_status": "VALIDATED"
+}

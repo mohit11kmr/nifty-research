@@ -1,0 +1,1673 @@
+{
+  "feature_version": "a94081d2e9e505d5",
+  "generated_at": "2026-08-16T17:15:51+05:30",
+  "n_behaviors": 19,
+  "n_questions": 12,
+  "n_sessions": 646,
+  "questions": [
+    {
+      "candidate_family": "MAX_PAIN_REVERT",
+      "confidence": "HIGH",
+      "expected_failure_modes": [
+        "max pain is a settlement-day phenomenon",
+        "drift often occurs intraday on expiry"
+      ],
+      "hypothesis": "Spot far from max pain does not reliably drift toward it within a week.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "spot >0.5% away from max-pain strike",
+      "observed_frequency": 0.7183,
+      "observed_n": 464,
+      "question_id": "RQ-01",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "max_pain_dist_pct",
+        "max_pain_strike",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    },
+    {
+      "candidate_family": "EXPIRY_CYCLE",
+      "confidence": "HIGH",
+      "expected_failure_modes": [
+        "weekday/cycle effects are weak",
+        "weekly expiry structure is recent"
+      ],
+      "hypothesis": "Early-cycle sessions (6+ days to expiry) behave near baseline.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "6+ days to weekly expiry (early cycle)",
+      "observed_frequency": 0.3963,
+      "observed_n": 256,
+      "question_id": "RQ-02",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    },
+    {
+      "candidate_family": "GAP_BOUNCE",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "gap is stale information by close",
+        "falling regimes can gap down repeatedly"
+      ],
+      "hypothesis": "Negative opening gaps (<-0.5%) reverse upward over the next week.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "opening gap < -0.5%",
+      "observed_frequency": 0.0913,
+      "observed_n": 59,
+      "question_id": "RQ-03",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_gap_pct",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    },
+    {
+      "candidate_family": "VOL_CONTRACTION",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "premium proxy is not true IV",
+        "spot drift is not premium P&L"
+      ],
+      "hypothesis": "Expensive near-ATM premium proxy precedes above-average 5d spot drift.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "near-ATM option premium proxy in top quintile (vol expensive)",
+      "observed_frequency": 0.2012,
+      "observed_n": 130,
+      "question_id": "RQ-04",
+      "required_data": [
+        "atm_premium_pct",
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252",
+        "vix_zone"
+      ]
+    },
+    {
+      "candidate_family": "MEAN_REVERSION",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "falling regimes persist longer than the window",
+        "gap risk on entry",
+        "sample includes 2024-2025 stress"
+      ],
+      "hypothesis": "Sharp 5-session declines tend to rebound over the following week.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "5-session return < -2% (recent sharp decline)",
+      "observed_frequency": 0.13,
+      "observed_n": 84,
+      "question_id": "RQ-05",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_20d",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    },
+    {
+      "candidate_family": "VOL_EXPANSION",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "low drift is a weak effect",
+        "VIX can compress further before expanding"
+      ],
+      "hypothesis": "Cheap-VIX (<12) periods show below-average next-week drift.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "VIX < 12 (cheap premium)",
+      "observed_frequency": 0.209,
+      "observed_n": 135,
+      "question_id": "RQ-06",
+      "required_data": [
+        "atm_premium_pct",
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252",
+        "vix_zone"
+      ]
+    },
+    {
+      "candidate_family": "GAP_BOUNCE",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "gap is stale information by close",
+        "costs dominate a small edge"
+      ],
+      "hypothesis": "Positive opening gaps (>+0.5%) continue modestly over the next week.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "opening gap > +0.5% (continuation/reversal probe)",
+      "observed_frequency": 0.1022,
+      "observed_n": 66,
+      "question_id": "RQ-07",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_gap_pct",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    },
+    {
+      "candidate_family": "VOL_EXPANSION",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "HV vs VIX comparison is approximate",
+        "no clean entry timing"
+      ],
+      "hypothesis": "When realized HV exceeds the VIX level, realized volatility normalizes down.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "20d realized HV (annualized) above VIX level",
+      "observed_frequency": 0.2276,
+      "observed_n": 147,
+      "question_id": "RQ-08",
+      "required_data": [
+        "atm_premium_pct",
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252",
+        "vix_zone"
+      ]
+    },
+    {
+      "candidate_family": "INSTITUTIONAL_FLOW",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "aggregate EQ OI only (no futures/options split)",
+        "participant data is end-of-day"
+      ],
+      "hypothesis": "Rising 5-session FII participant-OI share precedes above-average 5d drift.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "FII participant-OI share rose >1pp over 5 sessions",
+      "observed_frequency": 0.1594,
+      "observed_n": 103,
+      "question_id": "RQ-09",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "fii_oi_share",
+        "fii_oi_share_chg_5d",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    },
+    {
+      "candidate_family": "TREND_FOLLOWING",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "regime-dependent persistence",
+        "overlapping windows overstate signal",
+        "costs erode small edges"
+      ],
+      "hypothesis": "Sustained 5-session gains do NOT persist; continuation fades next week.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "5-session return > +2% (recent strong trend)",
+      "observed_frequency": 0.1238,
+      "observed_n": 80,
+      "question_id": "RQ-10",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_20d",
+        "nifty_ret_5d",
+        "nifty_trend_20d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    },
+    {
+      "candidate_family": "OI_BUILDUP",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "OI build-up is lagging flow",
+        "expiry-roll artefacts",
+        "weak delta vs baseline"
+      ],
+      "hypothesis": "Sharp 5-session option-OI build-up precedes slightly above-average 5d drift.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "total option OI grew >80th percentile over 5 sessions (build-up)",
+      "observed_frequency": 0.1997,
+      "observed_n": 129,
+      "question_id": "RQ-11",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_5d",
+        "oi_total",
+        "oi_total_growth_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    },
+    {
+      "candidate_family": "EXPIRY_CYCLE",
+      "confidence": "MEDIUM",
+      "expected_failure_modes": [
+        "expiry mechanics change post-2025 (Tuesday weeklies)",
+        "small effect"
+      ],
+      "hypothesis": "Expiry sessions carry mildly above-average next-week drift.",
+      "market_context": {
+        "mix": {
+          "REGIME_A": 377,
+          "REGIME_B": 175,
+          "REGIME_C": 94
+        },
+        "note": "regime mix over the observation window (A=calm, B=stressed, C=high-vol)"
+      },
+      "n_hypotheses_budget": 2,
+      "observation": "option expiry session",
+      "observed_frequency": 0.2121,
+      "observed_n": 137,
+      "question_id": "RQ-12",
+      "required_data": [
+        "dte",
+        "expiry_day",
+        "nifty_20d_hv",
+        "nifty_close",
+        "nifty_ret_5d",
+        "pcr_oi",
+        "vix_close",
+        "vix_rank_252"
+      ]
+    }
+  ],
+  "regime_interpretation": {
+    "REGIME_A": {
+      "mean_atm_premium_pct": 0.4626419098143236,
+      "mean_hv20": 0.10156735165172885,
+      "mean_pcr": 0.9345116710875332,
+      "mean_ret_20d": 0.01122915463011419,
+      "mean_vix": 12.529151193633952,
+      "n": 377
+    },
+    "REGIME_B": {
+      "mean_atm_premium_pct": 0.7287857142857143,
+      "mean_hv20": 0.1389249868176627,
+      "mean_pcr": 0.7546034285714287,
+      "mean_ret_20d": -0.027995525740414886,
+      "mean_vix": 16.945085714285717,
+      "n": 175
+    },
+    "REGIME_C": {
+      "mean_atm_premium_pct": 0.6397563829787234,
+      "mean_hv20": 0.20986930106724355,
+      "mean_pcr": 0.9677936170212766,
+      "mean_ret_20d": 0.036441565825858696,
+      "mean_vix": 17.07638297872341,
+      "n": 94
+    }
+  },
+  "regime_stability": {
+    "REGIME_A": {
+      "by_month": {
+        "2024-01": 16,
+        "2024-02": 7,
+        "2024-03": 17,
+        "2024-04": 20,
+        "2024-05": 1,
+        "2024-06": 0,
+        "2024-07": 20,
+        "2024-08": 13,
+        "2024-09": 20,
+        "2024-10": 7,
+        "2024-11": 3,
+        "2024-12": 12,
+        "2025-01": 3,
+        "2025-02": 9,
+        "2025-03": 17,
+        "2025-04": 4,
+        "2025-05": 0,
+        "2025-06": 15,
+        "2025-07": 23,
+        "2025-08": 19,
+        "2025-09": 22,
+        "2025-10": 21,
+        "2025-11": 19,
+        "2025-12": 22,
+        "2026-01": 13,
+        "2026-02": 15,
+        "2026-03": 0,
+        "2026-04": 0,
+        "2026-05": 0,
+        "2026-06": 11,
+        "2026-07": 19,
+        "2026-08": 9
+      },
+      "by_year": {
+        "2024": 136,
+        "2025": 174,
+        "2026": 67
+      },
+      "frequency": 0.5836,
+      "return_distribution": {
+        "down_days": 160,
+        "mean": 0.0011,
+        "p10": -0.00642,
+        "p50": 0.00082,
+        "p90": 0.00843,
+        "std": 0.00623,
+        "up_days": 216
+      },
+      "run_duration": {
+        "avg": 9.92,
+        "max": 149,
+        "median": 3.0
+      },
+      "sessions": 377,
+      "vix_distribution": {
+        "mean": 12.53,
+        "p10": 10.53,
+        "p50": 12.59,
+        "p90": 14.32,
+        "std": 1.41
+      }
+    },
+    "REGIME_B": {
+      "by_month": {
+        "2024-01": 4,
+        "2024-02": 7,
+        "2024-03": 1,
+        "2024-04": 0,
+        "2024-05": 12,
+        "2024-06": 1,
+        "2024-07": 0,
+        "2024-08": 8,
+        "2024-09": 1,
+        "2024-10": 15,
+        "2024-11": 14,
+        "2024-12": 5,
+        "2025-01": 20,
+        "2025-02": 11,
+        "2025-03": 2,
+        "2025-04": 4,
+        "2025-05": 2,
+        "2025-06": 4,
+        "2025-07": 0,
+        "2025-08": 0,
+        "2025-09": 0,
+        "2025-10": 0,
+        "2025-11": 0,
+        "2025-12": 0,
+        "2026-01": 7,
+        "2026-02": 5,
+        "2026-03": 19,
+        "2026-04": 5,
+        "2026-05": 14,
+        "2026-06": 10,
+        "2026-07": 4,
+        "2026-08": 0
+      },
+      "by_year": {
+        "2024": 68,
+        "2025": 43,
+        "2026": 64
+      },
+      "frequency": 0.2709,
+      "return_distribution": {
+        "down_days": 116,
+        "mean": -0.0039,
+        "p10": -0.01536,
+        "p50": -0.00297,
+        "p90": 0.00795,
+        "std": 0.01054,
+        "up_days": 58
+      },
+      "run_duration": {
+        "avg": 4.27,
+        "max": 24,
+        "median": 1.0
+      },
+      "sessions": 175,
+      "vix_distribution": {
+        "mean": 16.95,
+        "p10": 13.89,
+        "p50": 15.81,
+        "p90": 22.23,
+        "std": 3.32
+      }
+    },
+    "REGIME_C": {
+      "by_month": {
+        "2024-01": 1,
+        "2024-02": 7,
+        "2024-03": 0,
+        "2024-04": 0,
+        "2024-05": 8,
+        "2024-06": 18,
+        "2024-07": 2,
+        "2024-08": 0,
+        "2024-09": 0,
+        "2024-10": 0,
+        "2024-11": 2,
+        "2024-12": 4,
+        "2025-01": 0,
+        "2025-02": 0,
+        "2025-03": 0,
+        "2025-04": 11,
+        "2025-05": 19,
+        "2025-06": 2,
+        "2025-07": 0,
+        "2025-08": 0,
+        "2025-09": 0,
+        "2025-10": 0,
+        "2025-11": 0,
+        "2025-12": 0,
+        "2026-01": 0,
+        "2026-02": 0,
+        "2026-03": 0,
+        "2026-04": 15,
+        "2026-05": 5,
+        "2026-06": 0,
+        "2026-07": 0,
+        "2026-08": 0
+      },
+      "by_year": {
+        "2024": 42,
+        "2025": 32,
+        "2026": 20
+      },
+      "frequency": 0.1455,
+      "return_distribution": {
+        "down_days": 32,
+        "mean": 0.00435,
+        "p10": -0.00731,
+        "p50": 0.00327,
+        "p90": 0.01517,
+        "std": 0.00981,
+        "up_days": 62
+      },
+      "run_duration": {
+        "avg": 5.88,
+        "max": 25,
+        "median": 2.0
+      },
+      "sessions": 94,
+      "vix_distribution": {
+        "mean": 17.08,
+        "p10": 14.05,
+        "p50": 16.91,
+        "p90": 20.48,
+        "std": 2.46
+      }
+    },
+    "transition_probability_matrix": {
+      "REGIME_A": {
+        "REGIME_A": 0.9016,
+        "REGIME_B": 0.0878,
+        "REGIME_C": 0.0106
+      },
+      "REGIME_B": {
+        "REGIME_A": 0.1657,
+        "REGIME_B": 0.7657,
+        "REGIME_C": 0.0686
+      },
+      "REGIME_C": {
+        "REGIME_A": 0.0851,
+        "REGIME_B": 0.0851,
+        "REGIME_C": 0.8298
+      }
+    }
+  },
+  "regime_transitions": {
+    "after_transition": {
+      "REGIME_A": {
+        "REGIME_A": {
+          "after_transition_avg_fwd_1d": null,
+          "after_transition_avg_fwd_5d": null,
+          "count": 0,
+          "median_fwd_5d": null,
+          "samples": []
+        },
+        "REGIME_B": {
+          "after_transition_avg_fwd_1d": 0.00177,
+          "after_transition_avg_fwd_5d": 0.00499,
+          "count": 33,
+          "median_fwd_5d": 0.00823,
+          "samples": [
+            {
+              "date": "2024-01-18",
+              "fwd_1d": 0.007461938985893868,
+              "fwd_5d": 0.012829502964507356
+            },
+            {
+              "date": "2024-01-23",
+              "fwd_1d": 0.010130045011959243,
+              "fwd_5d": 0.02292502401265617
+            },
+            {
+              "date": "2024-01-25",
+              "fwd_1d": 0.01803059112239258,
+              "fwd_5d": 0.023472551352060167
+            },
+            {
+              "date": "2024-01-30",
+              "fwd_1d": 0.00946004339725226,
+              "fwd_5d": 0.01892473318124166
+            },
+            {
+              "date": "2024-02-08",
+              "fwd_1d": 0.0029721958103781088,
+              "fwd_5d": 0.008877449298851925
+            },
+            {
+              "date": "2024-02-28",
+              "fwd_1d": 0.0014418378991531977,
+              "fwd_5d": 0.023821075433405392
+            },
+            {
+              "date": "2024-03-19",
+              "fwd_1d": 0.0009923249508994036,
+              "fwd_5d": 0.014034637411796558
+            },
+            {
+              "date": "2024-05-03",
+              "fwd_1d": -0.0014749164102803025,
+              "fwd_5d": -0.018715643679771743
+            },
+            {
+              "date": "2024-08-05",
+              "fwd_1d": -0.0026210113237665755,
+              "fwd_5d": 0.012113603485259139
+            },
+            {
+              "date": "2024-09-06",
+              "fwd_1d": 0.003390048748297403,
+              "fwd_5d": 0.02029401882734483
+            },
+            {
+              "date": "2024-10-03",
+              "fwd_1d": -0.009326695735858426,
+              "fwd_5d": -0.009966297163179427
+            },
+            {
+              "date": "2024-10-17",
+              "fwd_1d": 0.0042101265260194864,
+              "fwd_5d": -0.014159681775849031
+            },
+            {
+              "date": "2024-10-21",
+              "fwd_1d": -0.01246918014131737,
+              "fwd_5d": -0.017834155868787005
+            },
+            {
+              "date": "2024-11-07",
+              "fwd_1d": -0.0021136931363857636,
+              "fwd_5d": -0.02754826059377624
+            },
+            {
+              "date": "2024-11-28",
+              "fwd_1d": 0.009072034757664271,
+              "fwd_5d": 0.033212554073634326
+            },
+            {
+              "date": "2024-12-19",
+              "fwd_1d": -0.015205601272561098,
+              "fwd_5d": -0.005774120417339823
+            },
+            {
+              "date": "2024-12-26",
+              "fwd_1d": 0.0026610302229033156,
+              "fwd_5d": 0.01846089717139221
+            },
+            {
+              "date": "2024-12-31",
+              "fwd_1d": 0.004148903775883062,
+              "fwd_5d": 0.002668662877250094
+            },
+            {
+              "date": "2025-01-06",
+              "fwd_1d": 0.003889304096154955,
+              "fwd_5d": -0.022446598817329688
+            },
+            {
+              "date": "2025-02-11",
+              "fwd_1d": -0.0011507554677138154,
+              "fwd_5d": -0.005482883866885113
+            },
+            {
+              "date": "2025-02-28",
+              "fwd_1d": -0.00024407110604895976,
+              "fwd_5d": 0.019335855401429125
+            },
+            {
+              "date": "2025-04-07",
+              "fwd_1d": 0.0168873186051548,
+              "fwd_5d": 0.05755902100931354
+            },
+            {
+              "date": "2025-06-13",
+              "fwd_1d": 0.009219777819132302,
+              "fwd_5d": 0.01593132297136579
+            },
+            {
+              "date": "2026-01-20",
+              "fwd_1d": -0.0029723570791637677,
+              "fwd_5d": 0.004369364906370743
+            },
+            {
+              "date": "2026-01-30",
+              "fwd_1d": -0.009172355370024032,
+              "fwd_5d": 0.014733034104574605
+            },
+            {
+              "date": "2026-02-13",
+              "fwd_1d": 0.008309417339651626,
+              "fwd_5d": 0.003931907141819568
+            },
+            {
+              "date": "2026-02-19",
+              "fwd_1d": 0.004592535264110076,
+              "fwd_5d": 0.001657869872929485
+            },
+            {
+              "date": "2026-02-24",
+              "fwd_1d": 0.002275350889786143,
+              "fwd_5d": -0.03713522113382095
+            },
+            {
+              "date": "2026-02-27",
+              "fwd_1d": -0.012429181072059148,
+              "fwd_5d": -0.04569744605052306
+            },
+            {
+              "date": "2026-06-23",
+              "fwd_1d": 0.008292023623138078,
+              "fwd_5d": 0.007628829630500267
+            },
+            {
+              "date": "2026-07-08",
+              "fwd_1d": 0.0033812005250806187,
+              "fwd_5d": 0.008225843258849341
+            },
+            {
+              "date": "2026-07-14",
+              "fwd_1d": 0.0010996983625095602,
+              "fwd_5d": 0.005639851904515547
+            },
+            {
+              "date": "2026-07-23",
+              "fwd_1d": -0.004279501960652743,
+              "fwd_5d": 0.018749790528538535
+            }
+          ]
+        },
+        "REGIME_C": {
+          "after_transition_avg_fwd_1d": 0.0021,
+          "after_transition_avg_fwd_5d": 0.0046,
+          "count": 4,
+          "median_fwd_5d": 0.00537,
+          "samples": [
+            {
+              "date": "2024-02-02",
+              "fwd_1d": -0.003756783717248191,
+              "fwd_5d": -0.0032625904876955047
+            },
+            {
+              "date": "2024-02-15",
+              "fwd_1d": 0.005930878678274354,
+              "fwd_5d": 0.013997695195280935
+            },
+            {
+              "date": "2024-12-02",
+              "fwd_1d": 0.0074600274756395635,
+              "fwd_5d": 0.014127092339981218
+            },
+            {
+              "date": "2024-12-05",
+              "fwd_1d": -0.0012384452251057443,
+              "fwd_5d": -0.006463388968933725
+            }
+          ]
+        }
+      },
+      "REGIME_B": {
+        "REGIME_A": {
+          "after_transition_avg_fwd_1d": 0.00094,
+          "after_transition_avg_fwd_5d": 0.00228,
+          "count": 29,
+          "median_fwd_5d": 0.00331,
+          "samples": [
+            {
+              "date": "2024-01-19",
+              "fwd_1d": -0.01774086132899222,
+              "fwd_5d": -0.0046387080065118935
+            },
+            {
+              "date": "2024-01-24",
+              "fwd_1d": -0.00472407179097567,
+              "fwd_5d": 0.01134989127876218
+            },
+            {
+              "date": "2024-01-29",
+              "fwd_1d": -0.00991369792433383,
+              "fwd_5d": 0.0015687104372148486
+            },
+            {
+              "date": "2024-02-14",
+              "fwd_1d": 0.0032371720760713263,
+              "fwd_5d": 0.009844299807005852
+            },
+            {
+              "date": "2024-03-01",
+              "fwd_1d": 0.0029925577751663823,
+              "fwd_5d": -0.00027306809915494945
+            },
+            {
+              "date": "2024-03-20",
+              "fwd_1d": 0.007914703444739102,
+              "fwd_5d": 0.022336085278239715
+            },
+            {
+              "date": "2024-08-16",
+              "fwd_1d": 0.001283558431450782,
+              "fwd_5d": 0.011490904052988471
+            },
+            {
+              "date": "2024-09-09",
+              "fwd_1d": 0.00419868144559743,
+              "fwd_5d": 0.017939638440191752
+            },
+            {
+              "date": "2024-10-10",
+              "fwd_1d": -0.0013680848212589414,
+              "fwd_5d": -0.009944616566227138
+            },
+            {
+              "date": "2024-10-18",
+              "fwd_1d": -0.0029351353199982277,
+              "fwd_5d": -0.02708814056461628
+            },
+            {
+              "date": "2024-11-06",
+              "fwd_1d": -0.011627978214388546,
+              "fwd_5d": -0.037779697394834555
+            },
+            {
+              "date": "2024-11-29",
+              "fwd_1d": 0.006006771344862161,
+              "fwd_5d": 0.022655411481449228
+            },
+            {
+              "date": "2024-12-24",
+              "fwd_1d": 0.000950368030546711,
+              "fwd_5d": 0.0006427100871768676
+            },
+            {
+              "date": "2024-12-27",
+              "fwd_1d": -0.0070758480519371725,
+              "fwd_5d": 0.008035391838208783
+            },
+            {
+              "date": "2025-01-01",
+              "fwd_1d": 0.0187740335005413,
+              "fwd_5d": -0.0022722582329876007
+            },
+            {
+              "date": "2025-02-01",
+              "fwd_1d": -0.0051571086974575575,
+              "fwd_5d": 0.003313154885732361
+            },
+            {
+              "date": "2025-02-25",
+              "fwd_1d": -0.00011087679149179852,
+              "fwd_5d": -0.009324738164456892
+            },
+            {
+              "date": "2025-03-05",
+              "fwd_1d": 0.009284918051868374,
+              "fwd_5d": 0.00596311998316712
+            },
+            {
+              "date": "2025-06-16",
+              "fwd_1d": -0.0037319864510051426,
+              "fwd_5d": 0.0010181789028520516
+            },
+            {
+              "date": "2026-01-29",
+              "fwd_1d": -0.00386523413680373,
+              "fwd_5d": 0.00880840634331137
+            },
+            {
+              "date": "2026-02-02",
+              "fwd_1d": 0.02547591715693298,
+              "fwd_5d": 0.031046220564085347
+            },
+            {
+              "date": "2026-02-16",
+              "fwd_1d": 0.0016606477110123752,
+              "fwd_5d": 0.0011778333706475852
+            },
+            {
+              "date": "2026-02-20",
+              "fwd_1d": 0.00554333479982394,
+              "fwd_5d": -0.015353179840641329
+            },
+            {
+              "date": "2026-02-26",
+              "fwd_1d": -0.012468353561560175,
+              "fwd_5d": -0.041029080404995866
+            },
+            {
+              "date": "2026-06-12",
+              "fwd_1d": 0.009778646990843631,
+              "fwd_5d": 0.016517870371546062
+            },
+            {
+              "date": "2026-06-24",
+              "fwd_1d": 0.0014299600568652426,
+              "fwd_5d": 0.006412964971182156
+            },
+            {
+              "date": "2026-07-09",
+              "fwd_1d": 0.010186622598360895,
+              "fwd_5d": 0.004588361961039622
+            },
+            {
+              "date": "2026-07-15",
+              "fwd_1d": -0.00023880225097083763,
+              "fwd_5d": -0.003415910459538596
+            },
+            {
+              "date": "2026-07-27",
+              "fwd_1d": -0.000441741210496005,
+              "fwd_5d": 0.032436723697123915
+            }
+          ]
+        },
+        "REGIME_B": {
+          "after_transition_avg_fwd_1d": null,
+          "after_transition_avg_fwd_5d": null,
+          "count": 0,
+          "median_fwd_5d": null,
+          "samples": []
+        },
+        "REGIME_C": {
+          "after_transition_avg_fwd_1d": -0.00424,
+          "after_transition_avg_fwd_5d": 0.00789,
+          "count": 12,
+          "median_fwd_5d": 0.00585,
+          "samples": [
+            {
+              "date": "2024-01-31",
+              "fwd_1d": -0.0013003033273956133,
+              "fwd_5d": 0.009426623768163944
+            },
+            {
+              "date": "2024-02-06",
+              "fwd_1d": 5.0160971116319786e-05,
+              "fwd_5d": -0.008488604339380035
+            },
+            {
+              "date": "2024-05-16",
+              "fwd_1d": 0.002778540295529597,
+              "fwd_5d": 0.024694416361473515
+            },
+            {
+              "date": "2024-06-03",
+              "fwd_1d": -0.05929358362097503,
+              "fwd_5d": -0.00020202975425442915
+            },
+            {
+              "date": "2024-06-05",
+              "fwd_1d": 0.008888014553267487,
+              "fwd_5d": 0.03106052735700393
+            },
+            {
+              "date": "2024-11-25",
+              "fwd_1d": -0.0011312077087264338,
+              "fwd_5d": 0.0022355801980851187
+            },
+            {
+              "date": "2025-04-15",
+              "fwd_1d": 0.004657383335012311,
+              "fwd_5d": 0.04288307674501857
+            },
+            {
+              "date": "2025-05-23",
+              "fwd_1d": 0.005954979549875894,
+              "fwd_5d": -0.00412221388435674
+            },
+            {
+              "date": "2025-06-05",
+              "fwd_1d": 0.010187508333030282,
+              "fwd_5d": 0.0055472730284555904
+            },
+            {
+              "date": "2026-04-08",
+              "fwd_1d": -0.00926143928392098,
+              "fwd_5d": 0.008309250813110625
+            },
+            {
+              "date": "2026-04-29",
+              "fwd_1d": -0.007449028338155417,
+              "fwd_5d": 0.0061627163930324524
+            },
+            {
+              "date": "2026-05-25",
+              "fwd_1d": -0.004910181135749814,
+              "fwd_5d": -0.022809455843739834
+            }
+          ]
+        }
+      },
+      "REGIME_C": {
+        "REGIME_A": {
+          "after_transition_avg_fwd_1d": -0.00092,
+          "after_transition_avg_fwd_5d": -0.00017,
+          "count": 8,
+          "median_fwd_5d": 0.00125,
+          "samples": [
+            {
+              "date": "2024-02-01",
+              "fwd_1d": 0.007205915902559923,
+              "fwd_5d": 0.0009448114870640456
+            },
+            {
+              "date": "2024-02-07",
+              "fwd_1d": -0.009691981486970147,
+              "fwd_5d": -0.0041243929686966
+            },
+            {
+              "date": "2024-02-22",
+              "fwd_1d": -0.0002137959126722322,
+              "fwd_5d": -0.010561518086009025
+            },
+            {
+              "date": "2024-07-03",
+              "fwd_1d": 0.0006443909167646034,
+              "fwd_5d": 0.00156259650423074
+            },
+            {
+              "date": "2024-11-27",
+              "fwd_1d": -0.014861029293632533,
+              "fwd_5d": 0.0079320615120968
+            },
+            {
+              "date": "2024-12-04",
+              "fwd_1d": 0.009847777353177323,
+              "fwd_5d": 0.007125793656470147
+            },
+            {
+              "date": "2024-12-09",
+              "fwd_1d": -0.0003635403550104055,
+              "fwd_5d": 0.00200048742840897
+            },
+            {
+              "date": "2025-06-09",
+              "fwd_1d": 4.182733675395234e-05,
+              "fwd_5d": -0.006242232066031472
+            }
+          ]
+        },
+        "REGIME_B": {
+          "after_transition_avg_fwd_1d": 0.00403,
+          "after_transition_avg_fwd_5d": 0.00527,
+          "count": 8,
+          "median_fwd_5d": 0.00269,
+          "samples": [
+            {
+              "date": "2024-02-05",
+              "fwd_1d": 0.007243348016002349,
+              "fwd_5d": -0.007149189084913021
+            },
+            {
+              "date": "2024-05-29",
+              "fwd_1d": -0.009515650944518117,
+              "fwd_5d": -0.0037150898272164667
+            },
+            {
+              "date": "2024-06-04",
+              "fwd_1d": 0.03362425460942675,
+              "fwd_5d": 0.06307432200872753
+            },
+            {
+              "date": "2025-05-22",
+              "fwd_1d": 0.009892440785543855,
+              "fwd_5d": 0.009098038578284173
+            },
+            {
+              "date": "2025-05-30",
+              "fwd_1d": -0.0013777388114276645,
+              "fwd_5d": 0.010195671233540704
+            },
+            {
+              "date": "2026-04-28",
+              "fwd_1d": 0.0075826085506986995,
+              "fwd_5d": 0.013971253182861965
+            },
+            {
+              "date": "2026-05-08",
+              "fwd_1d": -0.014903117328441629,
+              "fwd_5d": -0.02203204397722558
+            },
+            {
+              "date": "2026-05-26",
+              "fwd_1d": -0.0002739015710658821,
+              "fwd_5d": -0.021247234848643326
+            }
+          ]
+        },
+        "REGIME_C": {
+          "after_transition_avg_fwd_1d": null,
+          "after_transition_avg_fwd_5d": null,
+          "count": 0,
+          "median_fwd_5d": null,
+          "samples": []
+        }
+      }
+    },
+    "events": [
+      {
+        "date": "2024-01-18",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-01-19",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-01-23",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-01-24",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-01-25",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-01-29",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-01-30",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-01-31",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-02-01",
+        "from": "REGIME_C",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-02-02",
+        "from": "REGIME_A",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-02-05",
+        "from": "REGIME_C",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-02-06",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-02-07",
+        "from": "REGIME_C",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-02-08",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-02-14",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-02-15",
+        "from": "REGIME_A",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-02-22",
+        "from": "REGIME_C",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-02-28",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-03-01",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-03-19",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-03-20",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-05-03",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-05-16",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-05-29",
+        "from": "REGIME_C",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-06-03",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-06-04",
+        "from": "REGIME_C",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-06-05",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-07-03",
+        "from": "REGIME_C",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-08-05",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-08-16",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-09-06",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-09-09",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-10-03",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-10-10",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-10-17",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-10-18",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-10-21",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-11-06",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-11-07",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-11-25",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-11-27",
+        "from": "REGIME_C",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-11-28",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-11-29",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-12-02",
+        "from": "REGIME_A",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-12-04",
+        "from": "REGIME_C",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-12-05",
+        "from": "REGIME_A",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2024-12-09",
+        "from": "REGIME_C",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-12-19",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-12-24",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-12-26",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2024-12-27",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2024-12-31",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2025-01-01",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2025-01-06",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2025-02-01",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2025-02-11",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2025-02-25",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2025-02-28",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2025-03-05",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2025-04-07",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2025-04-15",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2025-05-22",
+        "from": "REGIME_C",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2025-05-23",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2025-05-30",
+        "from": "REGIME_C",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2025-06-05",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2025-06-09",
+        "from": "REGIME_C",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2025-06-13",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2025-06-16",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-01-20",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-01-29",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-01-30",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-02-02",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-02-13",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-02-16",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-02-19",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-02-20",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-02-24",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-02-26",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-02-27",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-04-08",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2026-04-28",
+        "from": "REGIME_C",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-04-29",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2026-05-08",
+        "from": "REGIME_C",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-05-25",
+        "from": "REGIME_B",
+        "to": "REGIME_C"
+      },
+      {
+        "date": "2026-05-26",
+        "from": "REGIME_C",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-06-12",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-06-23",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-06-24",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-07-08",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-07-09",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-07-14",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-07-15",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      },
+      {
+        "date": "2026-07-23",
+        "from": "REGIME_A",
+        "to": "REGIME_B"
+      },
+      {
+        "date": "2026-07-27",
+        "from": "REGIME_B",
+        "to": "REGIME_A"
+      }
+    ],
+    "n_transitions": 94
+  },
+  "stage": 1
+}

@@ -1,0 +1,52 @@
+proposal:
+  proposal_id: PK-RQ-03
+  title: 'GAP_BOUNCE: buy ATM call after opening gap <-0.5%, 5-session horizon'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: 2026-08-16 09:30:00+05:30
+  parent_strategy_id: null
+  hypothesis: 'Sessions that open with a negative gap below -0.5% against the prior
+    close tend to mean-revert upward over the following week (observed 5-session mean
+    forward return +0.75% vs +0.11% baseline, 61% hit rate). The oversold open pressure
+    is absorbed and reverses, so buying an ATM call on the close of the gap session
+    captures the bounce.
+
+    '
+  research_question: PK-RQ-03
+  expected_failure_modes:
+  - 'gap is stale information by close: the reversal may already have happened intraday,
+    leaving no edge for an EOD entry'
+  - 'falling regimes can gap down repeatedly: negative gaps cluster in downtrends
+    where momentum overrides mean reversion'
+  - ATM call theta decay over the 5-day horizon erodes premium before the bounce completes
+  candidate_family: GAP_BOUNCE
+strategy:
+  entry:
+    conditions:
+    - field: nifty_gap_pct
+      op: <
+      value: -0.5
+    - field: dte
+      op: '>'
+      value: 1
+    - field: vix_close
+      op: <
+      value: 25
+    direction: LONG
+    instrument: CALL
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+    stop_pct: 0.5
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - nifty_gap_pct
+  - dte
+  - vix_close
+  regime: null

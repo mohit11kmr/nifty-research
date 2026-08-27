@@ -1,0 +1,50 @@
+proposal:
+  proposal_id: PK-RQ-12
+  title: 'Expiry-cycle test: long ATM straddle entered on the option-expiry session,
+    held 5 sessions'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T11:30:00+05:30'
+  parent_strategy_id: null
+  hypothesis: Expiry sessions carry mildly above-average next-week drift (observed
+    fwd_5d mean +0.203% vs +0.113% baseline, ~51.5% hit rate). If the effect is real,
+    a long ATM straddle entered at the EOD close of an expiry session and held 5 sessions
+    captures the drift in either direction; if it is within noise, the 2-leg cost
+    and theta bleed should make it lose to the canonical cost model.
+  research_question: PK-RQ-12
+  expected_failure_modes:
+  - 'Expiry mechanics changed post-2025 (Tuesday weeklies from Sep 2025): the drift
+    may be an artifact of the older Thursday-weekly calendar and fail to transfer
+    to the new expiry cycle.'
+  - 'Small effect: the fwd_5d delta vs baseline is only +0.0009 (~9 bps) with a 51.5%
+    hit rate, i.e. near noise; the canonical cost model (40/order + 1.5% slippage)
+    on a 2-leg straddle (4 orders round-trip) can consume the entire edge.'
+  - 'Theta bleed + expiry-day premium: an ATM straddle bought at expiry-day close
+    pays elevated premium that decays daily, so over 5 sessions the decay may exceed
+    the captured move even when realised vol matches the forward expectation.'
+  - 'EOD resolution may miss the drift: if the expiry-day edge is mostly intraday
+    microstructure, a daily-horizon trade is invisible to it and the effect shows
+    up as nothing.'
+  candidate_family: EXPIRY_CYCLE
+strategy:
+  entry:
+    conditions:
+    - field: expiry_day
+      op: ==
+      value: 1
+    direction: LONG
+    instrument: STRADDLE
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - expiry_day
+  regime:
+    allowed: null

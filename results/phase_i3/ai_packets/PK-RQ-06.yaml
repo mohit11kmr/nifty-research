@@ -1,0 +1,57 @@
+packet_id: PK-RQ-06
+question_id: RQ-06
+candidate_family: VOL_EXPANSION
+observed:
+  n_sessions: 135
+  frequency: 0.209
+  confidence: MEDIUM
+  fwd_5d_mean: -0.0028
+  fwd_5d_hit_rate: 0.4242
+  baseline_fwd_5d_mean: 0.00113
+  delta_vs_baseline: -0.00393
+inferred: The VOL_EXPANSION family is the most plausible explanation for the observed
+  20.9% frequency behaviour ('VIX < 12 (cheap premium)') with confidence MEDIUM.
+hypothesis: Cheap-VIX (<12) periods show below-average next-week drift.
+market_context:
+  mix:
+    REGIME_A: 377
+    REGIME_B: 175
+    REGIME_C: 94
+  note: regime mix over the observation window (A=calm, B=stressed, C=high-vol)
+required_data:
+- atm_premium_pct
+- dte
+- expiry_day
+- nifty_20d_hv
+- nifty_close
+- nifty_ret_5d
+- pcr_oi
+- vix_close
+- vix_rank_252
+- vix_zone
+expected_failure_modes:
+- low drift is a weak effect
+- VIX can compress further before expanding
+gates:
+  point_in_time_safe: true
+  features_registered:
+  - atm_premium_pct
+  - dte
+  - expiry_day
+  - nifty_20d_hv
+  - nifty_close
+  - nifty_ret_5d
+  - pcr_oi
+  - vix_close
+  - vix_rank_252
+  - vix_zone
+  execution_family_supported: true
+  cost_model: canonical (40/order, 1.5% slippage)
+  resolution: EOD
+  defined_risk: false
+generation_instructions: 'Operationalize this hypothesis as a deterministic EOD strategy
+  proposal in the Phase I.3 YAML schema. Entry conditions must use ONLY the registered
+  feature ids in required_data. Direction and instrument must map to one of: OPTION_LONG
+  (CALL/PUT/STRADDLE) or OPTION_IRON_CONDOR. Never reference unregistered features.
+  Declare risk (defined risk for shorts), expiry handling, expected failure modes
+  and a testable research question.'

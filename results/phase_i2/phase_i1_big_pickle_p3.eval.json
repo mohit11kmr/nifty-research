@@ -1,0 +1,18 @@
+{
+  "backtest_status": "NOT_RUN",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "experiment_id": "phase_i2_generic_execution_v1",
+  "failure_code": "POSITION_CONSTRUCTION_UNSUPPORTED",
+  "failure_reason": "asymmetric / broken-wing / anchored condor - not the symmetric four-leg structure the deterministic family supports",
+  "fingerprint": "4216bae4ab44cb71bc273cc2da285bf1d2ce67ff2d21551685d6b980a89ab95c",
+  "granularity_issue": false,
+  "proposal_hash": "b7c1874e6dab877be6271fef1174afdce3520af1fdd39d97bd75b27a7db55e55",
+  "proposal_id": "phase_i1_big_pickle_p3",
+  "resolved_family": null,
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "2ab3dfa8ba02ba20cc44cf033d72f63ce3ea016f21dd1c7b21935ba3492ed8f1",
+  "status": "REJECTED",
+  "strategy_id": "maxpain_brokenwing_condor_v1",
+  "title": "Max-pain and OI-wall anchored broken-wing condor, gated on TREND_HV with VIX >= 16 and call-heavy PCR",
+  "validation_status": "VALIDATED"
+}

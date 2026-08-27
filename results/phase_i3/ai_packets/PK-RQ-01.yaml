@@ -1,0 +1,58 @@
+packet_id: PK-RQ-01
+question_id: RQ-01
+candidate_family: MAX_PAIN_REVERT
+observed:
+  n_sessions: 464
+  frequency: 0.7183
+  confidence: HIGH
+  fwd_5d_mean: 0.00139
+  fwd_5d_hit_rate: 0.5348
+  baseline_fwd_5d_mean: 0.00113
+  delta_vs_baseline: 0.00026
+inferred: The MAX_PAIN_REVERT family is the most plausible explanation for the observed
+  71.8% frequency behaviour ('spot >0.5% away from max-pain strike') with confidence
+  HIGH.
+hypothesis: Spot far from max pain does not reliably drift toward it within a week.
+market_context:
+  mix:
+    REGIME_A: 377
+    REGIME_B: 175
+    REGIME_C: 94
+  note: regime mix over the observation window (A=calm, B=stressed, C=high-vol)
+required_data:
+- dte
+- expiry_day
+- max_pain_dist_pct
+- max_pain_strike
+- nifty_20d_hv
+- nifty_close
+- nifty_ret_5d
+- pcr_oi
+- vix_close
+- vix_rank_252
+expected_failure_modes:
+- max pain is a settlement-day phenomenon
+- drift often occurs intraday on expiry
+gates:
+  point_in_time_safe: true
+  features_registered:
+  - dte
+  - expiry_day
+  - max_pain_dist_pct
+  - max_pain_strike
+  - nifty_20d_hv
+  - nifty_close
+  - nifty_ret_5d
+  - pcr_oi
+  - vix_close
+  - vix_rank_252
+  execution_family_supported: true
+  cost_model: canonical (40/order, 1.5% slippage)
+  resolution: EOD
+  defined_risk: true
+generation_instructions: 'Operationalize this hypothesis as a deterministic EOD strategy
+  proposal in the Phase I.3 YAML schema. Entry conditions must use ONLY the registered
+  feature ids in required_data. Direction and instrument must map to one of: OPTION_LONG
+  (CALL/PUT/STRADDLE) or OPTION_IRON_CONDOR. Never reference unregistered features.
+  Declare risk (defined risk for shorts), expiry handling, expected failure modes
+  and a testable research question.'

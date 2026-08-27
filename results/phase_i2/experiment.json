@@ -1,0 +1,274 @@
+{
+  "control_strategy": "current_control_v1 (engine-backed, computed once)",
+  "experiment_id": "phase_i2_generic_execution_v1",
+  "generated_at": "2026-08-16T10:43:47.715018+00:00",
+  "phase": "I.2",
+  "records": [
+    {
+      "backtest_status": "BACKTESTED",
+      "baseline": {
+        "control": "current_control_v1",
+        "dataset": {
+          "calendar_hash": null,
+          "manifest_hash": null
+        },
+        "dimensions": {
+          "expectancy": {
+            "control": 39.72,
+            "proposal": 0.0
+          },
+          "fees": {
+            "control": 3840.0,
+            "proposal": 0.0
+          },
+          "max_drawdown": {
+            "control": -51746.8,
+            "proposal": 0.0
+          },
+          "net_pnl": {
+            "control": 1906.43,
+            "proposal": 0.0
+          },
+          "profit_factor": {
+            "control": 1.011,
+            "proposal": 0.0
+          },
+          "sample_size": {
+            "control": 48,
+            "proposal": 0
+          },
+          "slippage": {
+            "control": 10554.82,
+            "proposal": 0.0
+          },
+          "win_rate": {
+            "control": 33.3,
+            "proposal": 0.0
+          }
+        },
+        "verdict": "NOT_RELIABLE"
+      },
+      "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+      "execution_family": "OPTION_BUY",
+      "experiment_id": "phase_i2_generic_execution_v1",
+      "failure_code": null,
+      "fingerprint": "d0764eed099798ff11bb5312f685af27b1d342aee1773c3f9e04755671424ada",
+      "max_drawdown": 0.0,
+      "net_pnl": 0.0,
+      "oos_trades": 0,
+      "oos_verdict": "OOS_INSUFFICIENT",
+      "profit_factor": 0.0,
+      "proposal_hash": "9c7bcf2148384c0743783a508e68fe8221161d133a01c902d7ab98261e85f3b1",
+      "proposal_id": "phase_i1_big_pickle_p1",
+      "registered": true,
+      "reliable": false,
+      "reproducible": true,
+      "resolved_family": "OPTION_BUY",
+      "result_hash": "47addd20e139c6940ceff3e59aec7e3a03f2c8828e2b166ca1d4511099e2245a",
+      "review_status": "PENDING_REVIEW",
+      "spec_hash": "2229d751ba503e6b6364a8092306d48e71fba62d922dffbd64b4cbaa0121d713",
+      "status": "REVIEW",
+      "strategy_id": "trend_pullback_call_v1",
+      "title": "Trend-persistence pullback long call (TREND_HV, VIX-capped)",
+      "trades": 0,
+      "validation_status": "VALIDATED",
+      "win_rate": 0.0
+    },
+    {
+      "backtest_status": "BACKTESTED",
+      "baseline": {
+        "control": "current_control_v1",
+        "dataset": {
+          "calendar_hash": null,
+          "manifest_hash": null
+        },
+        "dimensions": {
+          "expectancy": {
+            "control": 39.72,
+            "proposal": 0.0
+          },
+          "fees": {
+            "control": 3840.0,
+            "proposal": 0.0
+          },
+          "max_drawdown": {
+            "control": -51746.8,
+            "proposal": 0.0
+          },
+          "net_pnl": {
+            "control": 1906.43,
+            "proposal": 0.0
+          },
+          "profit_factor": {
+            "control": 1.011,
+            "proposal": 0.0
+          },
+          "sample_size": {
+            "control": 48,
+            "proposal": 0
+          },
+          "slippage": {
+            "control": 10554.82,
+            "proposal": 0.0
+          },
+          "win_rate": {
+            "control": 33.3,
+            "proposal": 0.0
+          }
+        },
+        "verdict": "NOT_RELIABLE"
+      },
+      "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+      "execution_family": "CALL_CREDIT_SPREAD",
+      "experiment_id": "phase_i2_generic_execution_v1",
+      "failure_code": null,
+      "fingerprint": "688fdefe22e599d296d5b6d8c7c7ac59f16d39f79f4acc25d09ae04b9e25e609",
+      "max_drawdown": 0.0,
+      "net_pnl": 0.0,
+      "oos_trades": 0,
+      "oos_verdict": "OOS_INSUFFICIENT",
+      "profit_factor": 0.0,
+      "proposal_hash": "94d29b7d24fb1f54483d86c12e7e7068e4151473d278f42208b50e405e683e65",
+      "proposal_id": "phase_i1_big_pickle_p2",
+      "registered": true,
+      "reliable": false,
+      "reproducible": true,
+      "resolved_family": "CALL_CREDIT_SPREAD",
+      "result_hash": "a2102d50cc2bfd1986a87437ed2243ddf7f5402039f0f5da959952cc4dea0ee4",
+      "review_status": "PENDING_REVIEW",
+      "spec_hash": "189259e9cfbeb0f3b22fe250bbbff01498b115b5ba87e76850e24dc8053754a1",
+      "status": "REVIEW",
+      "strategy_id": "range_fade_stretch_v1",
+      "title": "RANGE_HV overbought-stretch fade: defined-risk NIFTY call credit spread reverting to the VIX band and max pain",
+      "trades": 0,
+      "validation_status": "VALIDATED",
+      "win_rate": 0.0
+    },
+    {
+      "backtest_status": "NOT_RUN",
+      "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+      "experiment_id": "phase_i2_generic_execution_v1",
+      "failure_code": "POSITION_CONSTRUCTION_UNSUPPORTED",
+      "failure_reason": "asymmetric / broken-wing / anchored condor - not the symmetric four-leg structure the deterministic family supports",
+      "fingerprint": "4216bae4ab44cb71bc273cc2da285bf1d2ce67ff2d21551685d6b980a89ab95c",
+      "granularity_issue": false,
+      "proposal_hash": "b7c1874e6dab877be6271fef1174afdce3520af1fdd39d97bd75b27a7db55e55",
+      "proposal_id": "phase_i1_big_pickle_p3",
+      "resolved_family": null,
+      "review_status": "PENDING_REVIEW",
+      "spec_hash": "2ab3dfa8ba02ba20cc44cf033d72f63ce3ea016f21dd1c7b21935ba3492ed8f1",
+      "status": "REJECTED",
+      "strategy_id": "maxpain_brokenwing_condor_v1",
+      "title": "Max-pain and OI-wall anchored broken-wing condor, gated on TREND_HV with VIX >= 16 and call-heavy PCR",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "backtest_status": "NOT_RUN",
+      "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+      "experiment_id": "phase_i2_generic_execution_v1",
+      "failure_code": "DATA_FIELD_UNSUPPORTED",
+      "failure_reason": "condition 'oi_wall_break' compares a strike-typed field (OI_WALL) against a vacuous sub-1000 constant",
+      "fingerprint": "f7a94312a7cc1260a1d7ed0e3550e5b75af031c29cb9d5554cd2abd9a16f7d45",
+      "granularity_issue": false,
+      "proposal_hash": "42e95f7be6cf0913b9d333e9b32f8915debfe0093c24e70c22a9a4780ea813cb",
+      "proposal_id": "phase_i1_deepseek_p1",
+      "registered": true,
+      "resolved_family": "OPTION_BUY",
+      "review_status": "PENDING_REVIEW",
+      "spec_hash": "e1f5ac9b2d6655a2bf4a7fb11c156be6a3853d0f62a38040f7081c24c2bb5901",
+      "status": "REJECTED",
+      "strategy_id": "trend_breakout_v2",
+      "title": "High-Volatility Trend Breakout with OI Confirmation",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "backtest_status": "BACKTESTED",
+      "baseline": {
+        "control": "current_control_v1",
+        "dataset": {
+          "calendar_hash": null,
+          "manifest_hash": null
+        },
+        "dimensions": {
+          "expectancy": {
+            "control": 39.72,
+            "proposal": -85.62
+          },
+          "fees": {
+            "control": 3840.0,
+            "proposal": 3840.0
+          },
+          "max_drawdown": {
+            "control": -51746.8,
+            "proposal": -8797.75
+          },
+          "net_pnl": {
+            "control": 1906.43,
+            "proposal": -1027.5
+          },
+          "profit_factor": {
+            "control": 1.011,
+            "proposal": 0.892
+          },
+          "sample_size": {
+            "control": 48,
+            "proposal": 12
+          },
+          "slippage": {
+            "control": 10554.82,
+            "proposal": 3207.75
+          },
+          "win_rate": {
+            "control": 33.3,
+            "proposal": 66.7
+          }
+        },
+        "verdict": "NOT_RELIABLE"
+      },
+      "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+      "execution_family": "IRON_CONDOR",
+      "experiment_id": "phase_i2_generic_execution_v1",
+      "failure_code": null,
+      "fingerprint": "851d905711d18d8d2c7fe7276096db83eebec49106760b550bfddcd182820b1f",
+      "max_drawdown": -8797.75,
+      "net_pnl": -1027.5,
+      "oos_trades": 0,
+      "oos_verdict": "OOS_INSUFFICIENT",
+      "profit_factor": 0.892,
+      "proposal_hash": "e096dd349726d10819c68d0c9fd586325e641b007e6d3d4be04070b849e29e10",
+      "proposal_id": "phase_i1_deepseek_p2",
+      "registered": true,
+      "reliable": false,
+      "reproducible": true,
+      "resolved_family": "IRON_CONDOR",
+      "result_hash": "1fead351009084490accfe78696ee016b3cbf27f9bd01ba22dcf39837c35ff3f",
+      "review_status": "PENDING_REVIEW",
+      "spec_hash": "d64d0d3fd5100b72dc2374c2a9db31942e61b43058a08438f03aaf02869fd664",
+      "status": "REVIEW",
+      "strategy_id": "range_hv_condor_v1",
+      "title": "Range HV Iron Condor Strategy",
+      "trades": 12,
+      "validation_status": "VALIDATED",
+      "win_rate": 66.7
+    },
+    {
+      "backtest_status": "NOT_RUN",
+      "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+      "experiment_id": "phase_i2_generic_execution_v1",
+      "failure_code": "POSITION_CONSTRUCTION_UNSUPPORTED",
+      "failure_reason": "asymmetric / broken-wing / anchored condor - not the symmetric four-leg structure the deterministic family supports",
+      "fingerprint": "b6feea425508497d9d79a8d989ec922db9e4bcdb12a042fefcb3b4ba7221d24d",
+      "granularity_issue": false,
+      "proposal_hash": "6225d8cea5a7e150fade774d40d23c8c8356bda20ec41bc9934f0b0436a00d76",
+      "proposal_id": "phase_i1_deepseek_p3",
+      "resolved_family": null,
+      "review_status": "PENDING_REVIEW",
+      "spec_hash": "deef2890dabcb319bc5cfb106e52676be6c28b6c98ae0bbf3fd5cc900ec6891b",
+      "status": "REJECTED",
+      "strategy_id": "trend_breakout_condor_v1",
+      "title": "Trend Breakout Iron Condor with VIX Filter",
+      "validation_status": "VALIDATED"
+    }
+  ],
+  "source": "frozen phase_i1 proposals (results/phase_i1 untouched)"
+}

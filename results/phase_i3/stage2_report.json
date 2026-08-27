@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-08-16T17:17:20+05:30",
+  "n_packets": 12,
+  "packets": [
+    "results/phase_i3/ai_packets/PK-RQ-01.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-02.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-03.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-04.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-05.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-06.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-07.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-08.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-09.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-10.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-11.yaml",
+    "results/phase_i3/ai_packets/PK-RQ-12.yaml"
+  ],
+  "stage": 2
+}

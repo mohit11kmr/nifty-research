@@ -1,0 +1,47 @@
+```yaml
+proposal:
+  proposal_id: PK-RQ-04
+  title: 'VOL_CONTRACTION: long ATM call when near-ATM premium is expensive (>=0.7% of spot), 5-session horizon'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T17:47:34+05:30'
+  parent_strategy_id: null
+  hypothesis: 'Sessions where the near-ATM option premium proxy closes in the expensive tail (atm_premium_pct >= 0.7% of spot, ~top quintile) precede above-average 5-session NIFTY drift (observed fwd_5d mean +0.584% vs +0.113% baseline, 59.2% hit rate). A long ATM call entered at the close of such a session and held 5 sessions captures that drift while keeping risk defined at the premium paid.'
+  research_question: PK-RQ-04
+  expected_failure_modes:
+  - 'atm_premium_pct is not true IV and is dte-confounded: it is the raw near-ATM settle as % of spot with no time-normalization, so high values concentrate at long-dated sessions (dte 6-8); the observed forward drift may be an expiry-cycle artifact rather than a genuine vol-contraction effect.'
+  - 'Spot drift does not equal option P&L: the +0.584% forward mean rests on only a ~59% hit rate (fat-tailed up-sessions), and theta bleed plus the canonical cost model (40/order, 1.5% slippage) on a decaying ATM call can consume the entire edge; EOD entry also misses same-session gap-outs.'
+  - 'Expensive-premium states cluster in elevated-VIX periods (vix_zone 3-5) where vol often contracts and drift can turn negative; with no regime gate this long-call exposure is unprotected in high-vol drawdown regimes.'
+  candidate_family: VOL_CONTRACTION
+strategy:
+  entry:
+    conditions:
+    - field: atm_premium_pct
+      op: '>='
+      value: 0.7
+    - field: dte
+      op: '>='
+      value: 2
+    - field: expiry_day
+      op: ==
+      value: 0
+    direction: LONG
+    instrument: CALL
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+    stop_pct: 0.5
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - atm_premium_pct
+  - dte
+  - expiry_day
+  regime:
+    allowed: null
+```

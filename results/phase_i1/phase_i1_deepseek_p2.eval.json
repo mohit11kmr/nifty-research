@@ -1,0 +1,29 @@
+{
+  "backtest_status": "NOT_RUN",
+  "classification": "UNIQUE",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "dev_oos_cut": "2026-03-01",
+  "duplicate_of": null,
+  "evidence": "no deterministic engine for strategy_id 'range_hv_condor_v1' (engine-registered: current_control_v1, directional_spread_v1, range_hv_iron_condor_v1)",
+  "expected_failure_modes": [
+    "Premature stop-loss triggers due to increased volatility.",
+    "Insufficient premium collection if market breaks trend abruptly."
+  ],
+  "experiment_id": "phase_i1_controlled_multi_model_v1",
+  "failure_code": "EXECUTION_UNSUPPORTED",
+  "fingerprint": "851d905711d18d8d2c7fe7276096db83eebec49106760b550bfddcd182820b1f",
+  "hypothesis": "In high-volatility range-bound markets, iron condors can capitalize on mean-reversion tendencies, collecting premium while limiting risk.\n",
+  "model_id": "deepseek",
+  "model_version": "deepseek-chat",
+  "proposal_hash": "e096dd349726d10819c68d0c9fd586325e641b007e6d3d4be04070b849e29e10",
+  "proposal_id": "phase_i1_deepseek_p2",
+  "research_question": "Does a structured iron condor strategy outperform the control in RANGE_HV regimes?\n",
+  "review_status": "PENDING_REVIEW",
+  "spec_hash": "d64d0d3fd5100b72dc2374c2a9db31942e61b43058a08438f03aaf02869fd664",
+  "status": "REVIEW",
+  "strategy_id": "range_hv_condor_v1",
+  "title": "Range HV Iron Condor Strategy",
+  "validation_status": "VALIDATED",
+  "window_end": "2026-08-13",
+  "window_start": "2025-08-13"
+}

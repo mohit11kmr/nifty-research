@@ -1,0 +1,55 @@
+packet_id: PK-RQ-03
+question_id: RQ-03
+candidate_family: GAP_BOUNCE
+observed:
+  n_sessions: 59
+  frequency: 0.0913
+  confidence: MEDIUM
+  fwd_5d_mean: 0.00749
+  fwd_5d_hit_rate: 0.6102
+  baseline_fwd_5d_mean: 0.00113
+  delta_vs_baseline: 0.00636
+inferred: The GAP_BOUNCE family is the most plausible explanation for the observed
+  9.1% frequency behaviour ('opening gap < -0.5%') with confidence MEDIUM.
+hypothesis: Negative opening gaps (<-0.5%) reverse upward over the next week.
+market_context:
+  mix:
+    REGIME_A: 377
+    REGIME_B: 175
+    REGIME_C: 94
+  note: regime mix over the observation window (A=calm, B=stressed, C=high-vol)
+required_data:
+- dte
+- expiry_day
+- nifty_20d_hv
+- nifty_close
+- nifty_gap_pct
+- nifty_ret_5d
+- pcr_oi
+- vix_close
+- vix_rank_252
+expected_failure_modes:
+- gap is stale information by close
+- falling regimes can gap down repeatedly
+gates:
+  point_in_time_safe: true
+  features_registered:
+  - dte
+  - expiry_day
+  - nifty_20d_hv
+  - nifty_close
+  - nifty_gap_pct
+  - nifty_ret_5d
+  - pcr_oi
+  - vix_close
+  - vix_rank_252
+  execution_family_supported: true
+  cost_model: canonical (40/order, 1.5% slippage)
+  resolution: EOD
+  defined_risk: true
+generation_instructions: 'Operationalize this hypothesis as a deterministic EOD strategy
+  proposal in the Phase I.3 YAML schema. Entry conditions must use ONLY the registered
+  feature ids in required_data. Direction and instrument must map to one of: OPTION_LONG
+  (CALL/PUT/STRADDLE) or OPTION_IRON_CONDOR. Never reference unregistered features.
+  Declare risk (defined risk for shorts), expiry handling, expected failure modes
+  and a testable research question.'

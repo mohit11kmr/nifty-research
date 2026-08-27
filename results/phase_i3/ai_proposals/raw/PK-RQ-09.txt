@@ -1,0 +1,57 @@
+```yaml
+proposal:
+  proposal_id: PK-RQ-09
+  title: 'FII participant-OI share accumulation -> long ATM call (5-session drift capture)'
+  author_type: AI
+  author_model: opencode/big-pickle
+  created_at: '2026-08-16T17:57:17+05:30'
+  parent_strategy_id: null
+  hypothesis: 'When FII participant-OI share rises >1pp over 5 sessions, NIFTY shows
+    above-average 5-session forward drift (observed mean +0.38% vs +0.11% baseline,
+    59% hit rate, ~16% signal frequency). Buying an ATM call at the EOD close of such
+    a signal and holding 5 sessions captures the drift; the long call harvests the
+    positive drift with delta while risk stays defined to the premium paid.'
+  research_question: PK-RQ-09
+  expected_failure_modes:
+  - 'Aggregate EQ participant OI only (no futures/options split): the FII share rise
+    may reflect hedging or financing flow rather than directional equity accumulation,
+    making the forward-drift link spurious.'
+  - 'Participant data is end-of-day and the 5-session share change is a lagging read:
+    FII positioning may already be reversing by the entry close, so the signal decays
+    before the 5-session horizon pays out.'
+  - 'Buy-side option economics: an ATM weekly call decays theta daily and the canonical
+    cost model (40/order, 1.5% slippage) applies on entry and exit; the ~0.27pp
+    fwd_5d delta vs baseline can be consumed when the drift arrives late or is slow.'
+  candidate_family: INSTITUTIONAL_FLOW
+strategy:
+  entry:
+    conditions:
+    - field: fii_oi_share_chg_5d
+      op: '>'
+      value: 1
+    - field: expiry_day
+      op: ==
+      value: 0
+    - field: dte
+      op: '>='
+      value: 6
+    direction: LONG
+    instrument: CALL
+    strike_selection: ATM
+  exit:
+    type: HORIZON
+    horizon_sessions: 5
+  risk:
+    defined_risk: true
+    stop_pct: 0.5
+  execution:
+    cost_model: canonical
+    resolution: EOD
+    lot_size: 75
+  required_features:
+  - fii_oi_share_chg_5d
+  - expiry_day
+  - dte
+  regime:
+    allowed: null
+```
