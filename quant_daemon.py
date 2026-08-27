@@ -78,7 +78,9 @@ def run_daemon_loop():
                 import auto_enhancer
                 auto_enhancer.run_auto_enhancement_cycle()
 
-            msg = f"[{now_str}] Cycle #{tick_count} | Spot: ₹{live.get('spot', 0.0):,.2f} | Paper Equity: ₹{paper_sum.get('current_equity', 0.0):,.2f}\n"
+            live_spot = live.get("spot")
+            live_str = f"{live_spot:,.2f}" if live_spot is not None else "N/A"
+            msg = f"[{now_str}] Cycle #{tick_count} | Spot: ₹{live_str} | Paper Equity: ₹{paper_sum.get('current_equity', 0.0):,.2f}\n"
             with open(LOG_FILE, "a") as f:
                 f.write(msg)
 

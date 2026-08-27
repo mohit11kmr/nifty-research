@@ -168,9 +168,9 @@ def trade_timing_logic(day_date):
     lines.append("  - 13:00-14:30: Lunch lull, avoid fresh entries")
     lines.append("  - 14:30-15:15: Power hour, directional push before close")
     lines.append("  - 15:15-15:30: Avoid new positions, square off")
-    dow = day_date.weekday()
-    if dow == 3:  # Thursday
-        lines.append("  -> TODAY is WEEKLY EXPIRY (Thu): high OI churn, big IV swings - reduce size")
+    import expiry_calendar  # canonical single-owner weekly-expiry service
+    if expiry_calendar.is_expiry_day(day_date):
+        lines.append("  -> TODAY is WEEKLY EXPIRY: high OI churn, big IV swings - reduce size")
     return lines
 
 

@@ -36,6 +36,21 @@ def run_auto_paper_trader():
     # 1. Sync live market spot (never fabricate a price - stand down if none)
     live_tick = live_market_fetch.update_live_market_cache()
     spot = live_tick.get("spot")
+
+    # 1.5 Exit Management for OPEN paper positions (ADOPT-04). Runs before the
+    # signal gate so exits still happen on STAY_OUT days. Never aborts the loop.
+    try:
+        exit_report = paper_trader.paper_engine.run_exit_checks()
+        if exit_report.get("closed"):
+            for c in exit_report["closed"]:
+                print(f" 🚪 [Auto Exit] {c['position_ref']} {c['reason']} "
+                      f"@ ₹{c['exit_price']} net ₹{c['realized_net']:+,.2f}")
+        if exit_report.get("errors"):
+            for err in exit_report["errors"]:
+                print(f" ⚠️ [Auto Exit] error closing {err['position_ref']}: {err['error']}")
+    except Exception as exit_err:
+        print(f" ⚠️ [Auto Exit] exit management skipped: {exit_err}")
+
     if not spot:
         print(" 🛑 [Auto Paper Trader] No live/cached spot available - standing down (no fabricated trade).")
         return {"status": "STAND_DOWN", "reason": "no live or cached spot"}

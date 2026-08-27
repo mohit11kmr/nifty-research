@@ -1,0 +1,169 @@
+proposal:
+  proposal_id: phase_i1_big_pickle_p1
+  title: Trend-persistence pullback long call (TREND_HV, VIX-capped)
+  author_type: AI
+  author_model: big_pickle
+  created_at: '2026-08-16T00:00:00+05:30'
+  parent_strategy_id: current_control_v1
+  hypothesis: 'In TREND_HV regimes, high-volatility trending markets show momentum
+    persistence; continuation moves after a controlled pullback are more reliable
+    than breakout entries, which suffer from false breakouts and poor fills. Buying
+    an ATM call on a pullback to the 20-EMA while the uptrend structure stays intact
+    (spot above EMA50, EMA20 above EMA50, ADX confirming trend strength, RSI cooled
+    into a neutral band) prices the entry closer to support, reducing the distance
+    to the structure- based stop. Capping the VIX premium zone below RICH/HIGH/PANIC
+    keeps long-premium theta bleed manageable, since expensive implied vol typically
+    reverts and damages long premium even if spot moves in the direction of the trade.
+
+    '
+  research_question: 'Over the frozen window (2025-08-13..2026-08-13), does a TREND_HV-only
+    pullback long call on NIFTY - defined as spot above EMA50, EMA20 above EMA50,
+    ADX > 25, RSI in 45..55, VIX_ZONE not RICH/HIGH/PANIC and PCR <= 1.1 - produce
+    a positive net expectancy with at least 20 trades on the out-of-sample slice (exits
+    on/after 2026-03-01), and does it differ materially from the current_control_v1
+    baseline?
+
+    '
+  expected_failure_modes:
+  - 'Regime flip immediately after entry: TREND_HV can decay into RANGE_HV or RANGE_LV
+    within days, turning a momentum continuation into a theta bleed or a repeated-stop
+    chop.'
+  - The pullback is actually the start of a reversal; repeated 1% structure-based
+    stop-outs accumulate faster than the occasional winner, producing negative expectancy.
+  - The VIX premium cap excludes too many valid trending setups, collapsing the trade
+    count below the 20-trade minimum and forcing a NOT_RELIABLE classification.
+  - ADX in high-volatility regimes is lagging and noisy, admitting entries that look
+    like strong trends but immediately mean-revert.
+strategy:
+  schema_version: '1.0'
+  strategy:
+    id: trend_pullback_call_v1
+    name: Trend-persistence pullback long call
+    version: 1
+    classification: RESEARCH_HYPOTHESIS
+  description: 'A directional trend-following hypothesis that buys ATM calls on NIFTY
+    only during TREND_HV regimes and only on a controlled pullback, never on the breakout.
+    Uptrend structure must be intact (spot above EMA50, EMA20 above EMA50), trend
+    strength confirmed by ADX > 25, momentum cooled into the neutral RSI 45..55 band,
+    and premium cost capped by requiring VIX_ZONE not in RICH/HIGH/PANIC. Sentiment
+    must not be heavily put-hedged (PCR <= 1.1). This is a naked long option: maximum
+    loss is capped at the premium paid, fully defined by the platform''s option premium
+    accounting.
+
+    '
+  market:
+    underlying: NIFTY
+  regime:
+    allowed:
+    - TREND_HV
+  entry:
+    conditions:
+      all:
+      - id: regime
+        field: REGIME
+        operator: ==
+        value: TREND_HV
+      - id: regime_gate
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.regime_gate_at
+      - id: trend_structure_above_ema50
+        field: SPOT
+        operator: '>'
+        value: EMA50
+      - id: ema_alignment
+        field: EMA20
+        operator: '>'
+        value: EMA50
+      - id: trend_strength
+        field: ADX
+        operator: '>'
+        value: 25
+      - id: pullback_cooled_lower
+        field: RSI
+        operator: '>='
+        value: 45
+      - id: pullback_cooled_upper
+        field: RSI
+        operator: <=
+        value: 55
+      - id: premium_cap_not_rich
+        field: VIX_ZONE
+        operator: '!='
+        value: RICH
+      - id: premium_cap_not_high
+        field: VIX_ZONE
+        operator: '!='
+        value: HIGH
+      - id: premium_cap_not_panic
+        field: VIX_ZONE
+        operator: '!='
+        value: PANIC
+      - id: sentiment_not_put_heavy
+        field: PCR
+        operator: <=
+        value: 1.1
+  direction:
+    mode: DIRECTIONAL
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.run_candidate_a
+  instrument:
+    type: NAKED_OPTION
+    option_side:
+    - CE
+    lot_size: 75
+  strike_selection:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.evaluate_day
+  risk:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.simulate_trade
+    capital_basis: 100000
+    position_size:
+      lots: 1
+      lot_size: 75
+    max_risk_pct: 1.0
+    note: 'Maximum loss = premium paid on the single long call, capped at 1% of capital
+      (1000 on a 100000 basis). Single-leg naked option; no credit or wing-width semantics
+      apply.
+
+      '
+  exit:
+    stop:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    target:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    expiry:
+      rule: CANONICAL_EXPIRY
+    allowed_reasons:
+    - TARGET
+    - STOP
+    - TIME
+    - EXPIRY
+    - EOD
+  execution:
+    cost_model:
+      cost_per_order: 40.0
+      orders_per_round_trip: 2
+    slippage_pct: 0.015
+  data_requirements:
+  - NIFTY
+  - VIX
+  - OPTIONS
+  - OI
+  - EXPIRY_CALENDAR
+  state:
+    lifecycle: DRAFT
+    classification: RESEARCH_HYPOTHESIS
+    promoted: false
+  references:
+    parent_strategy: current_control_v1
+    note: research hypothesis
+research:
+  dataset_manifest_hash: ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a
+  start_date: '2025-08-13'
+  end_date: '2026-08-13'
+  dev_oos_cut: '2026-03-01'
+  min_required_trades: 20
+  note: fixed window; frozen before evaluation

@@ -1,0 +1,13 @@
+{
+ "coverage_end": "2026-08-13",
+ "coverage_start": "2024-01-01",
+ "dataset": "vix_expanded",
+ "format": "csv",
+ "granularity": "EOD",
+ "provenance": "REAL",
+ "quality": "A",
+ "retrieved_at": "2026-08-14T18:44:09+05:30",
+ "sha256": "d13ae27428734d25272ef53d333b211b95dde1554088e95296fb3e36b49801fe",
+ "source": "NSE_IND_CLOSE_ALL",
+ "source_url": "https://nsearchives.nseindia.com/content/indices/ind_close_all_{DDMMYYYY}.csv"
+}

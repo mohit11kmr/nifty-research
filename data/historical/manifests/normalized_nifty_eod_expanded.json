@@ -1,0 +1,13 @@
+{
+ "coverage_end": "2026-08-13",
+ "coverage_start": "2024-01-01",
+ "dataset": "nifty_eod_expanded",
+ "format": "csv",
+ "granularity": "EOD",
+ "provenance": "REAL",
+ "quality": "A",
+ "retrieved_at": "2026-08-14T18:44:18+05:30",
+ "sha256": "69df81c1a20b369bbd36e73f5eb015f4c2ac395e9336443398775c5a71e85f4a",
+ "source": "NSE_IND_CLOSE_ALL",
+ "source_url": "https://nsearchives.nseindia.com/content/indices/ind_close_all_{DDMMYYYY}.csv"
+}

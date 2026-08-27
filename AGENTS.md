@@ -35,6 +35,11 @@ strategy research/backtest pipeline.
 - `data/nifty_history.csv` — Nifty 50 daily history.
 - `data/india_vix.csv` — India VIX daily history (Yahoo ^INDIAVIX, ~1yr).
   Feeds regime_filter premium side + expected move.
+- `data/historical/` — Phase F EOD options research dataset for the frozen
+  replay window (2025-08-13..2026-08-13) from NSE FO bhavcopy archive:
+  `fo_raw/NIFTY_<date>.csv` (raw rows), `manifest.json` (source URL + zip
+  sha256 per day), `coverage.csv` (per-day per-layer availability). Generated
+  by `collect_historical_data.py`; NEVER re-download (manifest-hash resumable).
 - `data/research.db` — SQLite research DB built by `tick_recorder.py` during
   market hours: tables `ticks` (per-strike CE/PE quotes: ltp/bid/ask/oi/iv/
   volume, every stream update) and `spot` (index sampled every 60s). Grows
@@ -56,9 +61,54 @@ strategy research/backtest pipeline.
 - `regime_filter.py` — 4-regime market gate (TREND/RANGE x HV/LV) + India VIX
   premium regime (CHEAP/NORMAL/RICH/HIGH/PANIC). RANGE_LV = NO_TRADE.
   VIX PANIC + low conf = hard no-trade. Expected daily move from VIX.
+- `backtest_frozen.py` — frozen-strategy historical replay (Phase E/F/F2,
+  MEASUREMENT ONLY). Replays the exact frozen decision logic day-by-day over
+  the evaluable window with strict no-lookahead data windowing. Reads only
+  data/* caches, writes to --out dir; never touches ground_truth.db /
+  paper_account.json. Phases E/F used a fixed next-Thursday expiry; Phase F2
+  (`--phase F2`) uses the historically correct expiry from
+  data/historical/expiry_calendar.csv (Thursday weeklies through 2025-08-28,
+  Tuesdays from 2025-09-02 after the SEBI change; Monday weeklies on holiday
+  Tuesdays). Contract marked ONLY from its exact (expiry, strike, side) row in
+  the day's chain; otherwise CONTRACT_UNAVAILABLE (no trade). NOTE: live
+  production modules (exit_evaluator.py / paper_execution.py) still use the
+  Thursday convention - documented limitation, F2 does not touch live code.
+- `historical_expiry.py` — derives the historical weekly-expiry calendar
+  (NIFTY) from the Phase F bhavcopy manifest: data/historical/expiry_calendar.csv
+  (246 rows, observation_date -> expiry_date/weekday/days_to_expiry/available).
+  Reads only data/historical/manifest.json; writes the calendar + audit doc.
+- `collect_historical_data.py` — Phase F NSE FO bhavcopy collector. Downloads
+  the daily FO bhavcopy for every window trading day, writes data/historical/
+  (raw + manifest + coverage) AND frozen-schema snapshots into
+  data/oi_snapshots/NIFTY_<date>.csv so the existing backtest_frozen.py consumes
+  them unchanged. EOD resolution only - NO bid/ask depth, NO IV (those cols are
+  NaN; skew returns honest NEUTRAL). Existing live snapshot files are never
+  overwritten. Resumable: already-collected days are skipped by manifest hash.
 - `premium_seller.py` — defined-risk option SELLING backtest (iron condor),
   gated on VIX 16-25 + sane regime. Backtest: 72.5% win, PF 2.6 (matches
   research 60-75%). Research edge: sellers collect theta, buyers bleed.
+- `multi_strategy_backtest.py` — Phase H multi-strategy engines
+  (A_CURRENT_CONTROL, B_DIRECTIONAL_SPREAD, C_RANGE_HV_IRON_CONDOR); the
+  authoritative frozen engines used by the research pipeline.
+- `backtest_adapter.py` — thin adapter that runs a CompiledStrategy inside
+  the frozen engines and cross-checks every trade against the compiled spec.
+- `strategy_proposal_schema.py` — Phase I proposal schema (YAML): gates for
+  lookahead/point-in-time fields, arbitrary-code (subprocess/pickle/import)
+  tokens, data requirements, risk/capital rules, and canonical expiry tokens.
+- `strategy_proposal_validator.py` — Phase I proposal gate (errors => no
+  backtest), including the unified data manifest (data/historical/manifest.json)
+  coverage gate. Warnings do not block.
+- `strategy_proposal_compiler.py` — validate-then-compile a proposal into a
+  strategy spec usable by the existing strategy compiler.
+- `strategy_proposal_registry.py` — proposal provenance registry
+  (strategy_proposals/*.json): idempotent registration, immutable on content
+  hash collision, human decision audit trail.
+- `ai_strategy_research.py` — Phase I research pipeline: deterministic
+  backtest via BacktestAdapter, evaluation VECTOR (never a single opaque
+  score; NOT_RELIABLE below 20 trades), baseline comparison vs
+  current_control_v1, deterministic result_hash.
+- `ai_strategy_lab.py` — Phase I CLI:
+  `validate|compile|inspect|research|compare|review|list`.
 - `blog_post.py`     — auto-generates dated HTML blog post from daily report +
   regime gate + AI-trading setup guide; regenerates `blog/index.html`.
 - `build_data.py`    — fetch all data once into cache.
@@ -103,6 +153,13 @@ strategy research/backtest pipeline.
 
 ## Entry points
 - `python build_data.py` — build/refresh full data cache.
+- `.venv/bin/python ai_strategy_lab.py <validate|compile|inspect|research|compare|review|list> <proposal.yaml|proposal_id>` —
+  Phase I AI research pipeline. Proposal files: `strategy_proposals/*.yaml`
+  (two EXAMPLE_ONLY examples committed). Gates must pass before any backtest;
+  `review` only records human decisions (REJECT / REQUEST_MORE_DATA /
+  RUN_CONTROLLED_PAPER_TEST).
+- `.venv/bin/python -m unittest tests.test_phase_i_research` — research
+  pipeline tests (fast unit tests + slow frozen-equivalence suite).
 - `python tick_recorder.py NIFTY` — record whole market day into data/research.db
   (background: PTY / `nohup`). `--seconds N` for a short test run.
 - `python daily_report.py` — combined daily report (uses cache, refreshes

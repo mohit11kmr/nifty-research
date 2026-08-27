@@ -27,7 +27,6 @@ from greeks import bs_price_and_greeks
 
 LOT_SIZE = 75
 SNAP_DIR = os.path.join("data", "oi_snapshots")
-DEFAULT_SPOT = 24403.10
 DEFAULT_SIGMA = 0.15
 R = 0.06
 
@@ -113,10 +112,29 @@ class SmartStrikeSelector:
     # ------------------------------------------------------------------
     # Core selection
     # ------------------------------------------------------------------
-    def select_best_strike(self, spot_price=24403.10, option_type="CE"):
-        """Rank strikes from real chain data; return the best buy candidate."""
+    def select_best_strike(self, spot_price=None, option_type="CE"):
+        """Rank strikes from real chain data; return the best buy candidate.
+
+        Truth-layer (Phase 3): a real spot price is REQUIRED. No spot
+        (None) yields an honest MISSING_SPOT result instead of substituting
+        a hardcoded market value.
+        """
+        if not spot_price:
+            return {
+                "selector_status": "MISSING_SPOT",
+                "status": "MISSING",
+                "spot_price": None,
+                "option_type": option_type.upper(),
+                "best_strike": None,
+                "best_strike_delta": None,
+                "best_strike_premium": None,
+                "candidates_evaluated": 0,
+                "selection_rationale": "No real spot price available - no strike "
+                                       "selected (honest stand-down, no hardcoded fallback).",
+                "candidates": [],
+            }
         chain, snapshot, stale = self._chain()
-        spot = float(spot_price) if spot_price else DEFAULT_SPOT
+        spot = float(spot_price)
         t_days = max(int((self._expiry(chain) - dt.date.today()).days), 1) \
             if self._expiry(chain) else 20
         qmap = self._quote_map(chain)
@@ -198,5 +216,10 @@ strike_selector = SmartStrikeSelector()
 
 if __name__ == "__main__":
     print("=== TESTING SMART STRIKE SELECTOR ENGINE (DATA-DRIVEN) ===")
-    res = strike_selector.select_best_strike(spot_price=24435.95, option_type="CE")
+    try:
+        import regime_filter
+        real_spot = regime_filter.trade_plan().get("close")
+    except Exception:
+        real_spot = None
+    res = strike_selector.select_best_strike(spot_price=real_spot, option_type="CE")
     print(json.dumps({k: v for k, v in res.items() if k != "candidates"}, indent=2))

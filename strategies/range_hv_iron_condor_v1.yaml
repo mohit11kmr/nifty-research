@@ -1,0 +1,115 @@
+schema_version: "1.0"
+
+strategy:
+  id: range_hv_iron_condor_v1
+  name: RANGE-HV Iron Condor (premium_seller structure)
+  version: 1
+  classification: PROMISING_BUT_INSUFFICIENT
+
+description: >
+  Formal, versioned representation of the EXACT frozen Phase H candidate C
+  (multi_strategy_backtest.py run_candidate_c / premium_seller.py structure).
+  Defined-risk market-neutral credit collection: short 2% OTM strangle with
+  150-pt wings, entered only on RANGE_HV days with 16 <= VIX < 25, sized 1 lot,
+  closed at target/stop/time/canonical expiry. NOT promoted (n=6, all OOS).
+
+market:
+  underlying: NIFTY
+
+regime:
+  allowed:
+    - RANGE_HV
+  note: >
+    Narrower than premium_seller's original gate (which also allowed RANGE_LV /
+    TREND_LV). Frozen for Phase H - do not widen.
+
+entry:
+  conditions:
+    all:
+      - id: regime_range_hv
+        field: REGIME
+        operator: "=="
+        value: RANGE_HV
+      - id: vix_floor
+        field: VIX
+        operator: ">="
+        value: 16.0
+      - id: vix_ceiling
+        field: VIX
+        operator: "<"
+        value: 25.0
+      - id: structure
+        rule: EXISTING_PROJECT_RULE
+        project_ref: premium_seller.sell_ok
+        note: premium rich + sane regime - selling window open
+
+direction:
+  mode: NEUTRAL
+  note: market-neutral credit collection (no directional bias)
+
+instrument:
+  type: DEFINED_RISK_RANGE
+  option_side: [CE, PE]
+  lot_size: 75
+
+strike_selection:
+  rule: EXISTING_PROJECT_RULE
+  project_ref: multi_strategy_backtest.build_condor
+  note: >
+    short call Kc = round(spot*1.02/50)*50; short put Kp = round(spot*0.98/50)*50;
+    wings = nearest listed strike to Kc+150 / Kp-150. Skip if any leg unlisted
+    or credit <= 0 (CONTRACT_UNAVAILABLE).
+
+risk:
+  rule: EXISTING_PROJECT_RULE
+  project_ref: multi_strategy_backtest.simulate_condor
+  position_size:
+    lots: 1
+    lot_size: 75
+  max_risk_pct: 1.0
+  note: >
+    Defined risk: max loss = wing width (150 pts) - net credit. Entry credit =
+    (short legs) - (wing legs) from chain LTP else BS(sigma=0.15). 8 orders
+    round-trip, slippage 1.5% adverse per fill.
+
+exit:
+  stop:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.simulate_condor
+    note: cut when cur_credit >= 2.0 * entry_credit
+  target:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.simulate_condor
+    note: book when cur_credit <= 0.5 * entry_credit
+  expiry:
+    rule: CANONICAL_EXPIRY
+  allowed_reasons: [TARGET, STOP, TIME, EXPIRY, EOD]
+  note: >
+    TIME = force close when days_since_entry >= DTE - 2; EXPIRY at the contract's
+    real expiry; EOD force close at last evaluated day.
+
+execution:
+  cost_model: {cost_per_order: 40.0, orders_per_round_trip: 8}
+  slippage_pct: 0.015
+
+data_requirements:
+  - NIFTY
+  - VIX
+  - OPTIONS
+  - OI
+  - EXPIRY_CALENDAR
+
+state:
+  lifecycle: BACKTESTED
+  classification: PROMISING_BUT_INSUFFICIENT
+  promoted: false
+  note: >
+    Phase H evidence: 6 trades, win 66.7%, PF 9.693, net +6248.25, maxDD -587.00
+    (all OOS). Only 19 RANGE_HV days in the frozen window satisfy the VIX gate.
+    Do NOT promote - insufficient sample.
+
+references:
+  frozen_source: premium_seller.py + multi_strategy_backtest.py run_candidate_c
+  evidence: >
+    Phase H result_hash c1d3a044e5744343bfa5796a8ea2c9f978b890d32f041fe627c37040ab3f6146
+    (candidate C: 6/66.7%/9.693/+6248.25/-587.00).

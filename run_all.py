@@ -30,7 +30,20 @@ import sys
 import json
 import datetime as dt
 
+import truth
+
 sys.path.insert(0, os.path.dirname(__file__))
+
+
+def _get_real_spot():
+    """Last real NIFTY spot from the cache (never a hardcoded value)."""
+    try:
+        import regime_filter
+        plan = regime_filter.trade_plan()
+        return plan.get("close")
+    except Exception as e:
+        print(f" -> Real Spot Fetch Error: {e}")
+        return None
 
 
 def run_complete_suite():
@@ -38,6 +51,21 @@ def run_complete_suite():
     print("⚡ NIFTY MULTI-ASSET QUANT PLATFORM — MASTER ORCHESTRATOR")
     print(f"Time: {dt.datetime.now().strftime('%d %b %Y | %H:%M:%S IST')}")
     print("==================================================================")
+
+    # 0. Truth & Provenance preamble (Phase 3)
+    print("\n[0] Truth & Provenance check...")
+    try:
+        import truth
+        real_spot = _get_real_spot()
+        print(f" -> Real spot (cache): ₹{real_spot:,.2f}" if real_spot else
+              " -> Real spot: MISSING (no cached spot - engines requiring it will stand down)")
+        for entry in truth.asset_freshness_report():
+            if entry.get("status") != "REAL":
+                print(f" -> {entry.get('path')}: {entry.get('status')} "
+                      f"(age {entry.get('age_h')}h / budget {entry.get('budget_h')}h)")
+    except Exception as e:
+        real_spot = None
+        print(f" -> Truth check error: {e}")
 
     # 1. Capital Guard
     print("\n[1/23] Running Capital Guard Risk Audit...")
@@ -74,9 +102,12 @@ def run_complete_suite():
         import regime_filter
         plan = regime_filter.trade_plan()
         real_spot = plan.get("close")
-        atm_strike = int(round(real_spot / 50.0) * 50) if real_spot else 24500
-        token_info = token_lookup.get_token_for_symbol(symbol_name="NIFTY", strike=atm_strike, option_type="CE")
-        print(f" -> Scrip Token: {token_info.get('token')} | Symbol: {token_info.get('symbol')} | Expiry: {token_info.get('expiry')}")
+        if real_spot:
+            atm_strike = int(round(real_spot / 50.0) * 50)
+            token_info = token_lookup.get_token_for_symbol(symbol_name="NIFTY", strike=atm_strike, option_type="CE")
+            print(f" -> Scrip Token: {token_info.get('token')} | Symbol: {token_info.get('symbol')} | Expiry: {token_info.get('expiry')}")
+        else:
+            print(" -> MISSING: no real spot - token lookup skipped (no fabricated strike).")
     except Exception as e:
         print(f" -> Token Lookup Error: {e}")
 
@@ -85,16 +116,16 @@ def run_complete_suite():
     try:
         import var_risk_manager
         var_res = var_risk_manager.var_engine.compute_value_at_risk()
-        print(f" -> 95% VaR: ₹{var_res.get('var_95_confidence_rupees')} ({var_res.get('var_95_confidence_pct')}%) | Status: {var_res.get('var_status')}")
+        print(f" -> 95% VaR: ₹{var_res.get('var_95_confidence_rupees')} ({var_res.get('var_95_confidence_pct')}%) | Status: {var_res.get('var_status')} | Method: {var_res.get('evaluation_method')}")
     except Exception as e:
         print(f" -> VaR Engine Error: {e}")
 
-    # 6. Deep Learning LSTM Engine
+    # 6. Deep Learning LSTM Engine (SIMULATED - see provenance tag)
     print("\n[6/23] Running Deep Learning LSTM Neural Sequence Engine (lstm_neural_engine.py)...")
     try:
         import lstm_neural_engine
-        lstm = lstm_neural_engine.predict_lstm_sequence()
-        print(f" -> LSTM Verdict: {lstm.get('lstm_verdict')} (Bullish Prob: {lstm.get('lstm_bullish_probability')*100:.1f}%)")
+        lstm = lstm_neural_engine.predict_lstm_sequence(spot_price=real_spot)
+        print(f" -> LSTM Verdict: {lstm.get('lstm_verdict')} (Bullish Prob: {lstm.get('lstm_bullish_probability')*100:.1f}%) | {lstm.get('status')} - {lstm.get('evaluation_method')}")
     except Exception as e:
         print(f" -> LSTM Engine Error: {e}")
 
@@ -151,7 +182,12 @@ def run_complete_suite():
         print(f" -> Action: {sig.get('signal_action')}")
 
         import history_logger
-        history_logger.log_generated_signal(sig)
+        history_logger.log_generated_signal(sig, provenance={
+            "status": "REAL" if sig.get("signal_action") in ("BUY_CE", "BUY_PE") else "UNKNOWN",
+            "source": "precision_signals",
+            "evaluation_method": "6_layer_confluence",
+            "signal_version": truth.hash_version(sig.get("confluence_checks") or {}),
+        })
     except Exception as e:
         print(f" -> Precision Signal Error: {e}")
 
@@ -159,8 +195,12 @@ def run_complete_suite():
     print("\n[13/23] Running Smart Strike Price Selector (smart_strike_selector.py)...")
     try:
         import smart_strike_selector
-        best_strike = smart_strike_selector.strike_selector.select_best_strike(spot_price=24403.10, option_type="CE")
-        print(f" -> Best Strike: {best_strike.get('best_strike')} {best_strike.get('best_strike_moneyness')} | Score: {best_strike.get('rank_score')}")
+        if real_spot:
+            best_strike = smart_strike_selector.strike_selector.select_best_strike(spot_price=real_spot, option_type="CE")
+            print(f" -> Best Strike: {best_strike.get('best_strike')} {best_strike.get('best_strike_moneyness')} | Score: {best_strike.get('rank_score')} | Spot: ₹{best_strike.get('spot_price')}")
+        else:
+            best_strike = smart_strike_selector.strike_selector.select_best_strike(spot_price=None, option_type="CE")
+            print(f" -> {best_strike.get('selector_status')} ({best_strike.get('status')}): {best_strike.get('selection_rationale')}")
     except Exception as e:
         print(f" -> Strike Selector Error: {e}")
 
@@ -200,10 +240,25 @@ def run_complete_suite():
     # 17. Multi-Asset Analytics (Skew, Equity RS, MCX)
     print("\n[17/23] Running Multi-Asset Analytics (Options Skew, Equity RS, MCX)...")
     try:
-        import skew, equity_quant, mcx_intel
-        print(" -> Options Skew, Mansfield Relative Strength & MCX Intelligence Executed.")
+        import skew
+        skew_res = skew.multi_index_scan()
+        skew_count = len(skew_res)
+        print(f" -> IV Skew scan: {skew_count} indices evaluated ({', '.join(list(skew_res.keys())[:3])}).")
     except Exception as e:
-        print(f" -> Multi-Asset Error: {e}")
+        print(f" -> Skew Error: {e}")
+    try:
+        import equity_quant
+        rs_res = equity_quant.scan_equity_outperformers(top_n=5)
+        rs_rows = len(rs_res) if isinstance(rs_res, list) else (rs_res.get("outperformers") if isinstance(rs_res, dict) else 0)
+        print(f" -> Mansfield RS scan: {rs_rows} outperformers evaluated.")
+    except Exception as e:
+        print(f" -> Equity Quant Error: {e}")
+    try:
+        import mcx_intel
+        mcx_res = mcx_intel.analyze_mcx_commodities()
+        print(f" -> MCX scan: {mcx_res.get('recommendation', 'completed')}.")
+    except Exception as e:
+        print(f" -> MCX Intelligence Error: {e}")
 
     # 18. Autonomous Auto-Enhancement Loop
     print("\n[18/23] Running Autonomous Self-Enhancement Loop (RL Weights & Volume Profile)...")

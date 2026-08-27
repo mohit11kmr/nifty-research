@@ -1,0 +1,13 @@
+{
+ "coverage_end": "2026-08-13",
+ "coverage_start": "2024-01-01",
+ "dataset": "options_eod_expanded",
+ "format": "csv",
+ "granularity": "EOD",
+ "provenance": "REAL",
+ "quality": "A",
+ "retrieved_at": "2026-08-14T16:09:03+05:30",
+ "sha256": "bc6a3f1af6f486402a08a142fdc5d8dc7ea3957e45529543edc5a376bd043386",
+ "source": "NSE_UDiFF_BHAVCOPY",
+ "source_url": "https://nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_{YYYYMMDD}_F_0000.csv.zip"
+}

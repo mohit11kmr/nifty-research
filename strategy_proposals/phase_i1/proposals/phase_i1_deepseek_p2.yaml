@@ -1,0 +1,108 @@
+proposal:
+  proposal_id: phase_i1_deepseek_p2
+  title: Range HV Iron Condor Strategy
+  author_type: AI
+  author_model: deepseek
+  created_at: '2026-08-16T00:00:00+05:30'
+  parent_strategy_id: current_control_v1
+  hypothesis: 'In high-volatility range-bound markets, iron condors can capitalize
+    on mean-reversion tendencies, collecting premium while limiting risk.
+
+    '
+  research_question: 'Does a structured iron condor strategy outperform the control
+    in RANGE_HV regimes?
+
+    '
+  expected_failure_modes:
+  - Premature stop-loss triggers due to increased volatility.
+  - Insufficient premium collection if market breaks trend abruptly.
+strategy:
+  schema_version: '1.0'
+  strategy:
+    id: range_hv_condor_v1
+    name: Range HV Iron Condor
+    version: 1
+    classification: RESEARCH_HYPOTHESIS
+  description: 'A mean-reversion strategy using iron condors in high-volatility range-bound
+    markets, targeting premium collection with defined risk.
+
+    '
+  market:
+    underlying: NIFTY
+  regime:
+    allowed:
+    - RANGE_HV
+  entry:
+    conditions:
+      all:
+      - id: regime
+        field: REGIME
+        operator: ==
+        value: RANGE_HV
+      - id: gate
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.regime_gate_at
+  direction:
+    mode: NEUTRAL
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.build_condor
+  instrument:
+    type: DEFINED_RISK_RANGE
+    option_side:
+    - CE
+    - PE
+    lot_size: 75
+  strike_selection:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.options_layer_at
+  risk:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.simulate_condor
+    capital_basis: 100000
+    position_size:
+      lots: 1
+      lot_size: 75
+    max_risk_pct: 1.0
+    note: 'Maximum loss = wing width - net credit.
+
+      '
+  exit:
+    stop:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    target:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    expiry:
+      rule: CANONICAL_EXPIRY
+    allowed_reasons:
+    - TARGET
+    - STOP
+    - TIME
+    - EXPIRY
+    - EOD
+  execution:
+    cost_model:
+      cost_per_order: 40.0
+      orders_per_round_trip: 8
+    slippage_pct: 0.015
+  data_requirements:
+  - NIFTY
+  - VIX
+  - OPTIONS
+  - OI
+  - EXPIRY_CALENDAR
+  state:
+    lifecycle: DRAFT
+    classification: RESEARCH_HYPOTHESIS
+    promoted: false
+  references:
+    parent_strategy: current_control_v1
+    note: research hypothesis
+research:
+  dataset_manifest_hash: ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a
+  start_date: '2025-08-13'
+  end_date: '2026-08-13'
+  dev_oos_cut: '2026-03-01'
+  min_required_trades: 20
+  note: fixed window; frozen before evaluation

@@ -1,0 +1,47 @@
+{
+ "_taken_at": "2026-08-14T14:36:46.108941",
+ "fii_dii_history.csv": {
+  "sha256": "6c9d76f8e2a4ccc35099c7d392df11de63a7adff47852ac13c4f48bda3948cc7",
+  "size": 8585
+ },
+ "ground_truth.db": {
+  "sha256": "0841cde08651872f0dc48f069eed7a4a34b5167f8c122c3b18411d35124e6357",
+  "size": 2424832
+ },
+ "historical/coverage.csv": {
+  "sha256": "d7a371daad984681e0311f594a032d9af28d4a07f6f472191bb43b132c440a6d",
+  "size": 11934
+ },
+ "historical/expiry_calendar.csv": {
+  "sha256": "3abbe4ccb003d9f9228d9bdfaf73041403dae5ed4a43f30e223bc9fc6b426ad2",
+  "size": 9141
+ },
+ "historical/manifest.json": {
+  "sha256": "29bb5bf8d5a36191ee730d985daf04d5221f996b69486afcc7d20df71ac79ffc",
+  "size": 190530
+ },
+ "india_vix.csv": {
+  "sha256": "9bd5c22a45d1636751d4453053c26cfdb5da0df02add577c64dea2207175c0e3",
+  "size": 20590
+ },
+ "ml_features.csv": {
+  "sha256": "6e1225dfce06ca1135eba7c38c62fbacfcad6bcdae188d98c25735a1ddc14cbd",
+  "size": 128924
+ },
+ "nifty_history.csv": {
+  "sha256": "bbee930e50f895e1490c9677bf885f6d99a2ebc92529d83816b206128a0cf0ad",
+  "size": 37172
+ },
+ "oi_snapshots_dir": {
+  "files": 252,
+  "sha256": "bbbb94e0dd96fa7b6274f16315a3b820696bda59c793721373db2ccbe231d7ce"
+ },
+ "paper_account.json": {
+  "sha256": "76503cf6247a8f6dbf1eeef08af756abd3e80492e459e82c30eb21b9ed6561fc",
+  "size": 3869
+ },
+ "research.db": {
+  "sha256": "7c3ee3ce84368ff68e93f397f9c848c4953d02202a3185d26c78169306976d6c",
+  "size": 395235328
+ }
+}

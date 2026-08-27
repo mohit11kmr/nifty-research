@@ -15,9 +15,12 @@ Data comes from cache (data/nifty_history.csv, data/fii_dii_history.csv) -
 nothing is re-downloaded. Run `python build_data.py` first if cache is stale.
 """
 import os
+import datetime as dt
 
 import numpy as np
 import pandas as pd
+
+import truth
 
 try:
     from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
@@ -30,6 +33,22 @@ except ImportError:
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 FEATURE_CACHE = os.path.join(DATA, "ml_features.csv")
+FEATURE_BUDGET_H = truth.DAILY_CACHE_FRESHNESS_H
+
+
+def feature_cache_status():
+    """Truth-layer freshness of the feature cache (P-06)."""
+    return truth.file_freshness(FEATURE_CACHE, FEATURE_BUDGET_H)
+
+
+def _source_freshness():
+    """Freshness of the underlying cache files the features are built from."""
+    return {
+        "nifty_history": truth.file_freshness(
+            os.path.join(DATA, "nifty_history.csv"), truth.DAILY_CACHE_FRESHNESS_H).get("status"),
+        "fii_dii_history": truth.file_freshness(
+            os.path.join(DATA, "fii_dii_history.csv"), truth.FII_DII_FRESHNESS_H).get("status"),
+    }
 
 
 # --------------------------------------------------------------------------
@@ -96,14 +115,8 @@ def _inst_features(df):
     return out
 
 
-def build_features(force=False):
-    """Merge technical + institutional features, add next-day direction target.
-    Cached to data/ml_features.csv so it builds once."""
-    if os.path.exists(FEATURE_CACHE) and not force:
-        df = pd.read_csv(FEATURE_CACHE)
-        df["date"] = pd.to_datetime(df["date"])
-        return df
-
+def _build_features_from_source():
+    """Build feature cache from the real source caches and write it out."""
     nifty = _load_nifty()
     nifty = indicators_add(nifty)
     tech = _tech_features(nifty)
@@ -124,6 +137,56 @@ def build_features(force=False):
     os.makedirs(DATA, exist_ok=True)
     tech.to_csv(FEATURE_CACHE, index=False)
     return tech
+
+
+def build_features(force=False):
+    """Merge technical + institutional features, add next-day direction target.
+
+    Cached to data/ml_features.csv so it builds once. P-06 (Phase 4A):
+    a STALE / MISSING / INVALID cache is rebuilt from the real source pipeline
+    (nifty_history.csv + fii_dii_history.csv) instead of being read as fresh.
+    A rebuild failure returns (None, meta) and the cache is left STALE/MISSING
+    - no fabricated data, no timestamp touching. Returns (df, meta).
+    """
+    meta = {
+        "path": FEATURE_CACHE,
+        "budget_h": FEATURE_BUDGET_H,
+        "rebuilt": False,
+        "discarded_corrupt": False,
+        "error": None,
+        "source_freshness": _source_freshness(),
+    }
+    st = feature_cache_status()
+    meta["previous_status"] = st["status"]
+    meta["age_h"] = st["age_h"]
+
+    if os.path.exists(FEATURE_CACHE) and not force and st["status"] == truth.REAL:
+        df = pd.read_csv(FEATURE_CACHE)
+        df["date"] = pd.to_datetime(df["date"])
+        meta.update(status=truth.REAL, age_h=st["age_h"])
+        return df, meta
+
+    if os.path.exists(FEATURE_CACHE) and st["status"] == truth.INVALID:
+        try:
+            os.remove(FEATURE_CACHE)
+            meta["discarded_corrupt"] = True
+        except OSError:
+            pass
+
+    try:
+        df = _build_features_from_source()
+        meta["rebuilt"] = True
+        st2 = feature_cache_status()
+        meta["source_freshness"] = _source_freshness()
+        final_status = st2["status"]
+        if meta["source_freshness"].get("nifty_history") != truth.REAL:
+            final_status = truth.STALE  # built from stale underlying data
+        meta.update(status=final_status, age_h=st2["age_h"])
+        return df, meta
+    except Exception as e:
+        meta["status"] = truth.MISSING if not os.path.exists(FEATURE_CACHE) else st["status"]
+        meta["error"] = str(e)[:160]
+        return None, meta
 
 
 def indicators_add(df):
@@ -242,21 +305,35 @@ def meta_blender(train_days=200, step=20, model_kind="logit"):
     last = df.iloc[-1]
     agree_call = int((df[sig_cols].iloc[-1] == 1).sum())
     agree_put = int((df[sig_cols].iloc[-1] == 0).sum())
-    return {
+    res = {
         "walk_forward": res,
         "n_strategies": len(sig_cols),
         "today": str(df.index[-1].date()),
         "call_agree": agree_call,
         "put_agree": agree_put,
         "close": round(float(last["close"]), 2),
-    }, None
+    }
+    nf = truth.file_freshness(os.path.join(DATA, "nifty_history.csv"),
+                              truth.DAILY_CACHE_FRESHNESS_H)
+    res = truth.envelope(
+        res,
+        status=nf["status"],
+        source="cache:nifty_history.csv",
+        data_freshness=nf["status"],
+        evaluation_method="walk_forward",
+        feature_cache_age_h=nf["age_h"],
+        feature_cache_budget_h=truth.DAILY_CACHE_FRESHNESS_H,
+    )
+    return res, None
 
 
 def direction_forecast(model_kind="gbm", train_days=180, step=20):
     """Next-day NIFTY direction from technical + institutional features."""
     if not HAS_SKLEARN:
         return None, "sklearn missing"
-    feats = build_features()
+    feats, meta = build_features()
+    if feats is None:
+        return None, f"feature cache unavailable ({meta.get('status')}): {meta.get('error')}"
     cols = [c for c in feats.columns
             if c not in ("date", "close", "target_up") and feats[c].notna().sum() > len(feats) * 0.6]
     res, err = walk_forward_eval(feats, cols, _make(model_kind), train_days, step)
@@ -271,7 +348,24 @@ def direction_forecast(model_kind="gbm", train_days=180, step=20):
     if err:
         return None, err
     res.pop("pred_df")
-    return res, None
+    fstat = feature_cache_status()
+    try:
+        data_ts = dt.datetime.fromtimestamp(os.path.getmtime(FEATURE_CACHE), tz=dt.timezone.utc
+                                            ).strftime("%Y-%m-%dT%H:%M:%SZ")
+    except OSError:
+        data_ts = None
+    return truth.envelope(
+        res,
+        status=meta.get("status", fstat["status"]),
+        source="cache:ml_features.csv",
+        data_timestamp=data_ts,
+        data_freshness=fstat["status"],
+        evaluation_method="walk_forward",
+        feature_version=truth.hash_version(cols),
+        feature_cache_age_h=fstat["age_h"],
+        feature_cache_budget_h=FEATURE_BUDGET_H,
+        rebuilt=meta.get("rebuilt"),
+    ), None
 
 
 def format_ml(res):
@@ -284,6 +378,9 @@ def format_ml(res):
         f"Today {res['today']} close {res['close']}: CALL agreement {res['call_agree']}/{res['n_strategies']}, "
         f"PUT agreement {res['put_agree']}/{res['n_strategies']}",
     ]
+    if res.get("data_freshness"):
+        lines.append(f"Data freshness: {res['data_freshness']} "
+                     f"(age {res.get('feature_cache_age_h')}h / budget {res.get('feature_cache_budget_h')}h)")
     return lines
 
 

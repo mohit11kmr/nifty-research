@@ -1,0 +1,152 @@
+proposal:
+  proposal_id: phase_i1_big_pickle_p3
+  title: Max-pain and OI-wall anchored broken-wing condor, gated on TREND_HV with
+    VIX >= 16 and call-heavy PCR
+  author_type: AI
+  author_model: big_pickle
+  created_at: '2026-08-16T00:00:00+05:30'
+  parent_strategy_id: current_control_v1
+  hypothesis: 'NIFTY weekly settlement gravitates toward max pain and heavy OI walls
+    (documented pinning: spot closes within a few points of max pain and OI walls
+    cap the move). A defined-risk broken-wing condor whose short legs are anchored
+    to the max-pain strike and the nearest OI walls, instead of a symmetric spot-based
+    grid, sits on the settlement magnet rather than the mid. Entering only when the
+    regime gate reports TREND_HV with India VIX >= 16 (rich-to-high premium zone)
+    pays the seller for high-volatility premium while OI gravity pulls spot back toward
+    the anchor over the weekly horizon. The asymmetric wing design caps tail risk
+    on the trend-away side at a declared width while the premium-collecting side hugs
+    the dense wall. It may fail because TREND_HV is a trending regime: the same flow
+    that builds the walls can blow through them at expiry, and EOD single-timestamp
+    walls may not represent settlement-week dynamics. No profitability claim is made
+    here; the frozen engine, the canonical expiry calendar and the canonical cost
+    model decide.
+
+    '
+  research_question: 'On the frozen window, for NIFTY weeklies, does a broken-wing
+    condor with short legs anchored to max pain and OI walls, entered only when REGIME
+    == TREND_HV, VIX >= 16 and PCR <= 0.95, deliver positive mean net P&L per trade
+    after the canonical 40 per order and 1.5% per-fill slippage cost model over at
+    least 20 trades, and is its worst-trade loss bounded by the declared wide-wing
+    maximum loss on every entry?
+
+    '
+  expected_failure_modes:
+  - Trend continuation in TREND_HV drives spot through the short strikes at expiry;
+    the wide insurance wing is breached for near its full width and such losses cluster
+    on the highest-credit entries.
+  - The entry gate is too restrictive (TREND_HV + VIX >= 16 + PCR <= 0.95), yielding
+    fewer than 20 trades in the window and classifying the result NOT_RELIABLE.
+  - Execution cost drag (40 per order across 8 legs round trip + 1.5% slippage per
+    fill) exceeds the collected credit in normal-rich zones, leaving no net edge even
+    when pinning behaves as hypothesized.
+  - EOD single-timestamp OI walls diverge from settlement-week wall evolution, so
+    the max-pain anchor drifts and the pinning advantage disappears.
+strategy:
+  schema_version: '1.0'
+  strategy:
+    id: maxpain_brokenwing_condor_v1
+    name: Max-Pain Anchored Broken-Wing Condor (VIX-Gated)
+    version: 1
+    classification: RESEARCH_HYPOTHESIS
+  description: 'A defined-risk broken-wing iron condor on NIFTY weeklies. The two
+    short legs are anchored to the max-pain strike and the nearest OI walls in the
+    ATM band instead of a symmetric spot-based grid, so the structure sits on the
+    settlement magnet rather than the mid. Wing widths are intentionally asymmetric:
+    the insurance (outer long) leg is wider on the side where OI wall density is thin
+    (the trend-away side), while the credit-collecting side hugs the dense wall. Entry
+    is allowed only when the regime gate is TREND_HV, India VIX is in the rich-to-high
+    premium zone (>= 16) so the seller is compensated, and PCR is call-heavy (<= 0.95),
+    proxying upward pinning pressure toward max pain. Direction mode is NEUTRAL and
+    the entire P&L profile is bounded by the declared wing widths.
+
+    '
+  market:
+    underlying: NIFTY
+  regime:
+    allowed:
+    - TREND_HV
+  entry:
+    conditions:
+      all:
+      - id: regime
+        field: REGIME
+        operator: ==
+        value: TREND_HV
+      - id: vix_premium_rich
+        field: VIX
+        operator: '>='
+        value: 16.0
+      - id: call_heavy_pcr
+        field: PCR
+        operator: <=
+        value: 0.95
+      - id: gate
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.regime_gate_at
+  direction:
+    mode: NEUTRAL
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.run_candidate_c
+  instrument:
+    type: DEFINED_RISK_RANGE
+    option_side:
+    - CE
+    - PE
+    lot_size: 75
+  strike_selection:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.build_condor
+  risk:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.simulate_condor
+    capital_basis: 100000
+    position_size:
+      lots: 1
+      lot_size: 75
+    max_risk_pct: 1.0
+    note: 'Maximum loss = widest wing width minus net credit received; the narrower
+      wing side is additionally bounded by its own width. Maximum gain = net credit
+      collected at entry. Both wings are fully defined-risk vertical spreads. The
+      1% capital rule applies to the declared wide-wing maximum loss.
+
+      '
+  exit:
+    stop:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    target:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    expiry:
+      rule: CANONICAL_EXPIRY
+    allowed_reasons:
+    - TARGET
+    - STOP
+    - TIME
+    - EXPIRY
+    - EOD
+  execution:
+    cost_model:
+      cost_per_order: 40.0
+      orders_per_round_trip: 8
+    slippage_pct: 0.015
+  data_requirements:
+  - NIFTY
+  - VIX
+  - OPTIONS
+  - OI
+  - EXPIRY_CALENDAR
+  state:
+    lifecycle: DRAFT
+    classification: RESEARCH_HYPOTHESIS
+    promoted: false
+  references:
+    parent_strategy: current_control_v1
+    note: research hypothesis
+research:
+  dataset_manifest_hash: ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a
+  start_date: '2025-08-13'
+  end_date: '2026-08-13'
+  dev_oos_cut: '2026-03-01'
+  min_required_trades: 20
+  note: fixed window; frozen before evaluation

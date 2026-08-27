@@ -243,7 +243,7 @@ def generate_precision_signal():
     sl_points = round(spot * 0.008, 1) if spot else None  # 0.8% index SL
     tgt_points = round(sl_points * 2.0, 1) if sl_points else None  # 1:2 Risk-Reward
 
-    return {
+    result = {
         "timestamp": dt.datetime.now().strftime("%d %b %Y %H:%M IST"),
         "signal_action": signal_action,
         "signal_grade": signal_grade,
@@ -262,6 +262,24 @@ def generate_precision_signal():
         },
         "confluence_checks": checks,
     }
+
+    # Record into the immutable ground-truth ledger (observation -> signal ->
+    # prediction -> decision chain). Guarded so a ledger failure never breaks
+    # the live signal; the signal dict itself is also copied into the ledger.
+    try:
+        import ground_truth
+        ledger = ground_truth.GroundTruthDB()
+        chain = ledger.record_signal_chain(result, capital_guard_audit=checks.get("capital_guard_layer"))
+        result["ground_truth_chain"] = {
+            "signal_id": chain["signal_id"],
+            "prediction_id": chain["prediction_id"],
+            "decision_id": chain["decision_id"],
+            "recorded": True,
+        }
+    except Exception as _gt_err:
+        result["ground_truth_chain"] = {"recorded": False, "error": str(_gt_err)}
+
+    return result
 
 
 if __name__ == "__main__":

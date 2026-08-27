@@ -1,0 +1,135 @@
+proposal:
+  proposal_id: example_ai_proposal_0002
+  title: "EXAMPLE ONLY - Current control re-statement (NOT FOR TRADING)"
+  author_type: AI
+  author_model: big-pickle
+  created_at: "2026-08-15T10:05:00+05:30"
+  parent_strategy_id: current_control_v1
+  hypothesis: >
+    EXAMPLE ONLY. Re-declaring current_control_v1 through the research layer
+    must reproduce the committed baseline metrics (control equivalence proof).
+  research_question: >
+    EXAMPLE ONLY. Does the proposal->backtest pipeline reproduce the existing
+    control result exactly under the canonical cost model?
+  expected_failure_modes:
+    - "EXAMPLE ONLY: proposal schema rejects a valid re-statement"
+    - "EXAMPLE ONLY: engine equivalence drift from committed results"
+
+strategy:
+  schema_version: "1.0"
+
+  strategy:
+    id: current_control_v1
+    name: Current Frozen Control (6-Layer Confluence, long directional)
+    version: 1
+    classification: EXAMPLE_ONLY
+
+  description: >
+    EXAMPLE ONLY / NOT FOR TRADING. Declarative re-statement of the frozen
+    control (backtest_frozen.py, Phase E/F/F2/F3) to prove Phase I pipeline
+    reproducibility against the committed control baseline.
+
+  market:
+    underlying: NIFTY
+
+  regime:
+    allowed:
+      - TREND_HV
+      - TREND_LV
+      - RANGE_HV
+
+  entry:
+    gate:
+      grade:
+        min_confluence: 4
+        max_confluence: 6
+        l1_required: true
+        action_prefixes: [MODERATE, HIGH_CONVICTION]
+    conditions:
+      all:
+        - id: l1_regime
+          rule: EXISTING_PROJECT_RULE
+          project_ref: backtest_frozen.regime_gate_at
+        - id: l2_capital_guard
+          rule: EXISTING_PROJECT_RULE
+          project_ref: backtest_frozen.evaluate_day
+        - id: l3_technical
+          rule: EXISTING_PROJECT_RULE
+          project_ref: backtest_frozen.technical_verdict_at
+        - id: l4_options
+          rule: EXISTING_PROJECT_RULE
+          project_ref: backtest_frozen.options_layer_at
+        - id: l5_institutional
+          rule: EXISTING_PROJECT_RULE
+          project_ref: backtest_frozen.institutional_layer_at
+        - id: l6_ml
+          rule: EXISTING_PROJECT_RULE
+          project_ref: backtest_frozen.ml_predict_at
+
+  direction:
+    mode: DIRECTIONAL
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.evaluate_day
+    side_map: {CE: CALL, PE: PUT}
+
+  instrument:
+    type: NAKED_OPTION
+    option_side: [CE, PE]
+    lot_size: 75
+
+  strike_selection:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.evaluate_day
+
+  risk:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.evaluate_day
+    capital_basis: 100000
+    position_size:
+      lots: 1
+      lot_size: 75
+    max_risk_pct: 1.0
+    note: >
+      Defined risk (naked long option, max loss = full premium). ATR-based
+      SL/TP, canonical expiry square-off.
+
+  exit:
+    stop:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    target:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    expiry:
+      rule: CANONICAL_EXPIRY
+    allowed_reasons: [STOP_LOSS, TAKE_PROFIT, EXPIRY_SQUARE_OFF]
+
+  execution:
+    cost_model: {cost_per_order: 40.0, orders_per_round_trip: 2}
+    slippage_pct: 0.015
+
+  data_requirements:
+    - NIFTY
+    - VIX
+    - OPTIONS
+    - OI
+    - FII_DII
+    - ML_FEATURES
+    - EXPIRY_CALENDAR
+
+  state:
+    lifecycle: DRAFT
+    classification: EXAMPLE_ONLY
+    promoted: false
+
+  references:
+    parent_strategy: current_control_v1
+    note: EXAMPLE ONLY / NOT FOR TRADING - proves control equivalence via research layer.
+
+research:
+  dataset_manifest_hash: ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a
+  start_date: "2025-08-13"
+  end_date: "2026-08-13"
+  dev_oos_cut: "2026-03-01"
+  min_required_trades: 20
+  note: "fixed window; EXAMPLE ONLY"

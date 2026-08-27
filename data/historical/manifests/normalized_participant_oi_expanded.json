@@ -1,0 +1,13 @@
+{
+ "coverage_end": "2026-08-13",
+ "coverage_start": "2024-01-01",
+ "dataset": "participant_oi_expanded",
+ "format": "csv",
+ "granularity": "EOD",
+ "provenance": "REAL",
+ "quality": "A",
+ "retrieved_at": "2026-08-14T18:44:15+05:30",
+ "sha256": "d09394fb8d221ee6e7c6257e0a07ef04d43b8375351e7b80b574f717ec81aaa7",
+ "source": "NSE_PARTICIPANT_OI",
+ "source_url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_{DDMMYYYY}.csv"
+}

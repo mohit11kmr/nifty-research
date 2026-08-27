@@ -1,0 +1,133 @@
+schema_version: "1.0"
+
+strategy:
+  id: current_control_v1
+  name: Current Frozen Control (6-Layer Confluence, long directional)
+  version: 1
+  classification: CONTROL
+
+description: >
+  Formal, versioned representation of the EXISTING frozen strategy in
+  backtest_frozen.py (Phase E/F/F2/F3 baseline). This file is a specification,
+  NOT a strategy change. The 6-layer confluence funnel, the frozen side-selection
+  defect (all-PUT), the wall/spot strike rule, the ATR-based SL/TP and the
+  canonical-expiry square-off are all declared below and validated against the
+  authoritative engine (control equivalence must MATCH).
+
+market:
+  underlying: NIFTY
+
+regime:
+  allowed:
+    - TREND_HV
+    - TREND_LV
+    - RANGE_HV
+  note: >
+    RANGE_LV is excluded by the frozen L1 regime gate (gate == NO_TRADE or
+    regime == RANGE_LV blocks). No candidate may list RANGE_LV.
+
+entry:
+  gate:
+    grade:
+      min_confluence: 4
+      max_confluence: 6
+      l1_required: true
+      action_prefixes: [MODERATE, HIGH_CONVICTION]
+  conditions:
+    all:
+      - id: l1_regime
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.regime_gate_at
+        note: PASSED when gate != NO_TRADE and regime != RANGE_LV
+      - id: l2_capital_guard
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.evaluate_day
+        note: capital-guard audit is composed inside the frozen funnel (l2_status=PASSED)
+      - id: l3_technical
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.technical_verdict_at
+        note: PASSED when technical bias is non-NEUTRAL
+      - id: l4_options
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.options_layer_at
+      - id: l5_institutional
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.institutional_layer_at
+      - id: l6_ml
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.ml_predict_at
+
+direction:
+  mode: DIRECTIONAL
+  rule: EXISTING_PROJECT_RULE
+  project_ref: backtest_frozen.evaluate_day
+  side_map: {CE: CALL, PE: PUT}
+  note: >
+    FROZEN DEFECT (preserved, not fixed): side = CE if "BUY_CALL" or "BULLISH"
+    appears in the action, else PE. Because the funnel's actions are
+    MODERATE_CALL / HIGH_CONVICTION_CALL (no BUY_CALL/BULLISH token), every
+    realized trade is PUT -> all-PUT in F2/F3/Phase-H. Documented, not altered.
+
+instrument:
+  type: NAKED_OPTION
+  option_side: [CE, PE]
+  lot_size: 75
+
+strike_selection:
+  rule: EXISTING_PROJECT_RULE
+  project_ref: backtest_frozen.evaluate_day
+  note: >
+    CE: wall nearest_resistance else round(spot*1.01/50)*50;
+    PE: wall nearest_support else round(spot*0.99/50)*50.
+    Contract must exist as (expiry, strike, side) in the day-d chain,
+    else CONTRACT_UNAVAILABLE -> no trade, no substitute.
+
+risk:
+  rule: EXISTING_PROJECT_RULE
+  project_ref: backtest_frozen.evaluate_day
+  position_size:
+    lots: 1
+    lot_size: 75
+  max_risk_pct: 1.0
+  note: >
+    Entry = day-d chain LTP for (expiry, strike, side) else BS(sigma=0.15);
+    ATR = max(10.0, 0.25*entry);
+    SL = max(2.0, entry - 1.5*ATR); target = entry + 2*(entry - SL).
+
+exit:
+  stop:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.simulate_trade
+  target:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.simulate_trade
+  expiry:
+    rule: CANONICAL_EXPIRY
+  allowed_reasons: [STOP_LOSS, TAKE_PROFIT, EXPIRY_SQUARE_OFF]
+  note: >
+    Exit on day-d mark via chain LTP else BS; square-off at the contract's
+    REAL (canonical historical) expiry - no manual/forced exits.
+
+execution:
+  cost_model: {cost_per_order: 40.0, orders_per_round_trip: 2}
+  slippage_pct: 0.015
+
+data_requirements:
+  - NIFTY
+  - VIX
+  - OPTIONS
+  - OI
+  - FII_DII
+  - ML_FEATURES
+  - EXPIRY_CALENDAR
+
+state:
+  lifecycle: BACKTESTED
+  classification: CONTROL
+  promoted: false
+
+references:
+  frozen_source: backtest_frozen.py (authoritative, Phase E/F/F2/F3)
+  evidence: >
+    F3 baseline: 48 trades, win 33.3%, PF 1.011, net +1906.43, maxDD -51746.8.
+    Phase H result_hash c1d3a044e5744343bfa5796a8ea2c9f978b890d32f041fe627c37040ab3f6146.

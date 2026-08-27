@@ -13,6 +13,8 @@ import threading
 import datetime as dt
 import pandas as pd
 
+import truth
+
 DB_FILE = os.path.join("data", "historical_audit.db")
 TICK_CSV = os.path.join("data", "tick_history.csv")
 SIGNAL_CSV = os.path.join("data", "signal_history.csv")
@@ -61,6 +63,7 @@ def _init_sqlite_db():
 
     Opens ONE persistent connection (WAL mode + busy_timeout) reused by all
     subsequent writes - no per-call CREATE TABLE churn or connection churn.
+    Also runs the non-destructive provenance migration (P-05).
     """
     global _conn
     os.makedirs("data", exist_ok=True)
@@ -72,8 +75,44 @@ def _init_sqlite_db():
         conn.execute("PRAGMA busy_timeout=5000")
         conn.executescript(_SCHEMA)
         conn.commit()
+        _ensure_provenance_columns(conn)
         _conn = conn
         return _conn
+
+
+# --------------------------------------------------------------------------
+# P-05 provenance persistence (Phase 4A)
+# --------------------------------------------------------------------------
+def _ensure_provenance_columns(conn):
+    """Add provenance_json to the audit tables if missing (idempotent).
+
+    Additive + nullable: existing rows keep NULL (= LEGACY) and are never
+    rewritten or upgraded. Safe rollback: stop populating / ignore column.
+    """
+    col = "provenance_json"
+    for table in ("tick_history", "signal_history", "paper_trade_journal"):
+        try:
+            cols = [r[1] for r in conn.execute(f"PRAGMA table_info({table})").fetchall()]
+        except sqlite3.OperationalError:
+            continue
+        if col not in cols:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {col} TEXT")
+            print(f"💾 [History Logger] migration: added {col} to {table}")
+    conn.commit()
+
+
+def get_record_provenance(table, record_id):
+    """Read persisted provenance for a record.
+
+    Legacy rows (no provenance) read back as LEGACY - never as REAL.
+    """
+    _init_sqlite_db()
+    with _conn_lock:
+        cur = _conn.cursor()
+        row = cur.execute(
+            f"SELECT provenance_json FROM {table} WHERE id = ?", (record_id,)
+        ).fetchone()
+    return truth.deserialize_provenance(row[0] if row else None)
 
 
 def _get_conn():
@@ -106,15 +145,18 @@ def _real_market_context(spot_price):
     return vix, pcr, max_pain
 
 
-def log_market_tick(spot_price, vix=None, pcr=None, max_pain=None):
+def log_market_tick(spot_price, vix=None, pcr=None, max_pain=None, provenance=None):
     """Permanently log every live market tick (Append-Only).
 
     vix/pcr/max_pain default to None and are derived from real market context
     when omitted - no fabricated values are ever written to the audit trail.
-    SQLite (WAL, locked) is the source of truth; the CSV mirror is best-effort.
+    provenance (P-05) is a dict of truth-layer fields; when omitted the record
+    is stored with status UNKNOWN (never silently REAL). SQLite (WAL, locked)
+    is the source of truth; the CSV mirror is best-effort.
     """
     _init_sqlite_db()
     now_str = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S IST")
+    prov_json = truth.serialize_provenance(truth.canonical_provenance(**(provenance or {})))
 
     if vix is None or pcr is None or max_pain is None:
         real_vix, real_pcr, real_pain = _real_market_context(spot_price)
@@ -126,8 +168,8 @@ def log_market_tick(spot_price, vix=None, pcr=None, max_pain=None):
     with _conn_lock:
         cur = _conn.cursor()
         cur.execute(
-            "INSERT INTO tick_history (timestamp, spot_price, vix, pcr, max_pain) VALUES (?, ?, ?, ?, ?)",
-            (now_str, spot_price, vix, pcr, max_pain)
+            "INSERT INTO tick_history (timestamp, spot_price, vix, pcr, max_pain, provenance_json) VALUES (?, ?, ?, ?, ?, ?)",
+            (now_str, spot_price, vix, pcr, max_pain, prov_json)
         )
         _conn.commit()
 
@@ -138,7 +180,8 @@ def log_market_tick(spot_price, vix=None, pcr=None, max_pain=None):
             "spot_price": spot_price,
             "vix": vix,
             "pcr": pcr,
-            "max_pain": max_pain
+            "max_pain": max_pain,
+            "provenance_json": prov_json,
         }
         df = pd.DataFrame([row])
         hdr = not os.path.exists(TICK_CSV)
@@ -149,10 +192,15 @@ def log_market_tick(spot_price, vix=None, pcr=None, max_pain=None):
     print(f"💾 [History Logger] Appended Live Tick: ₹{spot_price:,.2f} @ {now_str}")
 
 
-def log_generated_signal(signal_data):
-    """Permanently log every generated signal for accuracy verification."""
+def log_generated_signal(signal_data, provenance=None):
+    """Permanently log every generated signal for accuracy verification.
+
+    provenance (P-05) is a dict of truth-layer fields; when omitted the record
+    is stored with status UNKNOWN (never silently REAL).
+    """
     _init_sqlite_db()
     now_str = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S IST")
+    prov_json = truth.serialize_provenance(truth.canonical_provenance(**(provenance or {})))
     action = signal_data.get("signal_action", "STAY_OUT")
     grade = signal_data.get("signal_grade", "NO_SIGNAL")
     conf = signal_data.get("confluence_score", "0/6")
@@ -162,8 +210,8 @@ def log_generated_signal(signal_data):
     with _conn_lock:
         cur = _conn.cursor()
         cur.execute(
-            "INSERT INTO signal_history (timestamp, action, grade, confluence_score, spot_price, recommended_strike, sl_points, target_points) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-            (now_str, action, grade, conf, spot, levels.get("recommended_call_strike", 0.0), levels.get("stop_loss_points", 0.0), levels.get("target_1_points", 0.0))
+            "INSERT INTO signal_history (timestamp, action, grade, confluence_score, spot_price, recommended_strike, sl_points, target_points, provenance_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            (now_str, action, grade, conf, spot, levels.get("recommended_call_strike", 0.0), levels.get("stop_loss_points", 0.0), levels.get("target_1_points", 0.0), prov_json)
         )
         _conn.commit()
 
@@ -176,7 +224,8 @@ def log_generated_signal(signal_data):
             "spot_price": spot,
             "recommended_strike": levels.get("recommended_call_strike", 0.0),
             "sl_points": levels.get("stop_loss_points", 0.0),
-            "target_points": levels.get("target_1_points", 0.0)
+            "target_points": levels.get("target_1_points", 0.0),
+            "provenance_json": prov_json,
         }
         df = pd.DataFrame([row])
         hdr = not os.path.exists(SIGNAL_CSV)
@@ -196,6 +245,18 @@ def get_historical_audit_summary():
     signals_count = pd.read_sql_query("SELECT COUNT(*) as cnt FROM signal_history", conn)["cnt"].iloc[0]
     journal_count = pd.read_sql_query("SELECT COUNT(*) as cnt FROM paper_trade_journal", conn)["cnt"].iloc[0]
 
+    provenance_coverage = {}
+    for table, count in (("tick_history", ticks_count), ("signal_history", signals_count),
+                         ("paper_trade_journal", journal_count)):
+        tagged = int(pd.read_sql_query(
+            f"SELECT COUNT(*) as cnt FROM {table} WHERE provenance_json IS NOT NULL",
+            conn)["cnt"].iloc[0])
+        provenance_coverage[table] = {
+            "records": int(count),
+            "with_provenance": tagged,
+            "legacy": int(count) - tagged,
+        }
+
     return {
         "audit_logger_status": "APPEND_ONLY_PERMANENT_LOGGING_ACTIVE",
         "total_historical_ticks_saved": int(ticks_count),
@@ -203,7 +264,8 @@ def get_historical_audit_summary():
         "total_paper_journal_records": int(journal_count),
         "database_file": DB_FILE,
         "tick_csv_file": TICK_CSV,
-        "signal_csv_file": SIGNAL_CSV
+        "signal_csv_file": SIGNAL_CSV,
+        "provenance_coverage": provenance_coverage,
     }
 
 

@@ -1,0 +1,52 @@
+{
+ "ce_rows": 525133,
+ "conflicts_quarantined": 0,
+ "dataset": "options_eod_expanded",
+ "duplicates_removed": 0,
+ "generated_at": "2026-08-14T16:09:06+05:30",
+ "oi_nonzero_rows": 739986,
+ "pe_rows": 535489,
+ "quarantined": {},
+ "rows": 1060622,
+ "trading_days": 646,
+ "underlying_check": {
+  "days_checked": 645,
+  "max_dev_pct": 2e-06,
+  "median_dev_pct": 0.0,
+  "status": "PASS",
+  "worst_days": [
+   {
+    "date": "2025-02-01",
+    "dev_pct": 1.6634975589831902e-06,
+    "nifty_close": 23482.150390625,
+    "underlying_price": 23482.15
+   },
+   {
+    "date": "2024-01-01",
+    "dev_pct": 0.0,
+    "nifty_close": 21741.9,
+    "underlying_price": 21741.9
+   },
+   {
+    "date": "2024-01-02",
+    "dev_pct": 0.0,
+    "nifty_close": 21665.8,
+    "underlying_price": 21665.8
+   },
+   {
+    "date": "2024-01-03",
+    "dev_pct": 0.0,
+    "nifty_close": 21517.35,
+    "underlying_price": 21517.35
+   },
+   {
+    "date": "2024-01-04",
+    "dev_pct": 0.0,
+    "nifty_close": 21658.6,
+    "underlying_price": 21658.6
+   }
+  ]
+ },
+ "unique_expiries": 167,
+ "volume_nonzero_rows": 608554
+}

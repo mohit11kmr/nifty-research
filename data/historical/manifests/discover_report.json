@@ -1,0 +1,15 @@
+{
+ "endpoints": {
+  "angel_master": "HTTP 200",
+  "fii_stats": "HTTP 200",
+  "fiidii_trade": "REQUIRES_COOKIE_BOOTSTRAP (nseindia.com blocks plain requests)",
+  "focpv": "REQUIRES_COOKIE_BOOTSTRAP (nseindia.com blocks plain requests)",
+  "ind_close_all": "HTTP 200",
+  "indices_history": "REQUIRES_COOKIE_BOOTSTRAP (nseindia.com blocks plain requests)",
+  "participant_oi": "HTTP 200",
+  "participant_vol": "HTTP 200",
+  "udiff_bhavcopy": "HTTP 200",
+  "vix_history": "REQUIRES_COOKIE_BOOTSTRAP (nseindia.com blocks plain requests)"
+ },
+ "probed_at": "2026-08-14T14:40:21+05:30"
+}

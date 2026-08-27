@@ -1,7 +1,9 @@
 """Super-AI Machine Learning Ensemble Engine for NIFTY Research.
 
 Trains XGBoost, LightGBM, Random Forest, and Gradient Boosting Ensembles
-with Walk-Forward Hyperparameter Optimization.
+on a FIXED 80/20 train/test split (NOT walk-forward). CONTEXT ONLY: no
+standalone edge (~51% vs ~52% baseline, see AGENTS.md). Feature cache
+freshness is surfaced in the output (feature_freshness).
 """
 import os
 import sys
@@ -21,6 +23,9 @@ def train_super_ai_ensemble():
     if not os.path.exists(feat_path):
         print(f"Error: {feat_path} not found.")
         return None
+
+    import truth
+    feat_fresh = truth.file_freshness(feat_path, truth.DAILY_CACHE_FRESHNESS_H)
 
     df = pd.read_csv(feat_path)
     if "target" not in df.columns:
@@ -98,6 +103,9 @@ def train_super_ai_ensemble():
         "ensemble_votes": ensemble_votes,
         "ensemble_bullish_probability": round(float(avg_bull_prob), 4),
         "super_ai_verdict": final_verdict,
+        "feature_freshness": feat_fresh.get("status"),
+        "feature_age_h": feat_fresh.get("age_h"),
+        "feature_freshness_budget_h": feat_fresh.get("budget_h"),
     }
 
     print(json.dumps(res, indent=2))

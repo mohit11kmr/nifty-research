@@ -25,7 +25,7 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("nifty-research")
 
-NIFTY_EXPIRY_WEEKDAY = 3  # Thursday
+import expiry_calendar  # canonical single-owner NIFTY weekly-expiry service
 
 
 def _jsonable(obj):
@@ -113,14 +113,14 @@ def _read_vix():
 
 def _expiry_status():
     today = dt.date.today()
-    days_ahead = (NIFTY_EXPIRY_WEEKDAY - today.weekday()) % 7
-    expiry = today + dt.timedelta(days=days_ahead)
     return {
         "today": today.isoformat(),
         "weekday": today.strftime("%A"),
-        "days_to_expiry": days_ahead,
-        "is_expiry_day": days_ahead == 0,
-        "next_expiry": expiry.isoformat(),
+        "days_to_expiry": (expiry_calendar.get_expiry_for_trade_date(today) - today).days,
+        "is_expiry_day": expiry_calendar.is_expiry_day(today),
+        "next_expiry": expiry_calendar.get_expiry_for_trade_date(today).isoformat(),
+        "era": expiry_calendar.expiry_era(today),
+        "source": expiry_calendar.describe(today)["source"],
     }
 
 
@@ -324,6 +324,265 @@ def full_daily_report() -> dict:
         return {"ok": True, "report": buf.getvalue()}
     except Exception as e:
         return {"ok": False, "error": f"{type(e).__name__}: {e}"}
+
+
+@mcp.tool()
+def ground_truth_signal(signal_grade: str = "A+ GRADE (SUPER PRECISE)",
+                        signal_action: str = "HIGH_CONVICTION_CALL",
+                        nifty_spot: float = None, vix: float = None,
+                        vix_zone: str = "NORMAL", market_state: str = "UNKNOWN",
+                        confluence_checks: dict = None) -> dict:
+    """Record a trade setup into the immutable ground-truth ledger as a full
+    chain (observation -> signal -> prediction -> decision). Re-derives the
+    prediction direction from the signal action; returns the chain ids. Use
+    this when the nifty-analyst produces a concrete setup, so the next
+    session close can score it. Leave signal_action as STAY_OUT to log a
+    no-trade day honestly."""
+    import ground_truth
+    sig = {
+        "signal_action": signal_action,
+        "signal_grade": signal_grade,
+        "confluence_score": "5/6",
+        "nifty_spot": nifty_spot,
+        "vix": vix,
+        "vix_zone": vix_zone,
+        "market_state": market_state,
+        "confluence_checks": confluence_checks or {},
+    }
+    ledger = ground_truth.GroundTruthDB()
+    return _safe(ledger.record_signal_chain, sig)
+
+
+@mcp.tool()
+def ground_truth_status() -> dict:
+    """Ground-truth ledger status: row counts, pending prediction evaluations,
+    reproducibility of the latest signal, and integrity gate (append-only).
+    Also runs pending prediction evaluations against the latest close."""
+    import ground_truth
+    ledger = ground_truth.GroundTruthDB()
+    out = {}
+    out["counts"] = _safe(ledger.counts)
+    out["pending_evaluated"] = _safe(ledger.evaluate_pending_predictions)
+    latest = None
+    try:
+        row = ledger._cur().execute(
+            "SELECT signal_id FROM signals ORDER BY signal_id DESC LIMIT 1"
+        ).fetchone()
+        if row:
+            latest = _safe(ledger.verify_reproducibility, int(row[0]))
+    except Exception as e:
+        latest = {"error": f"{type(e).__name__}: {e}"}
+    out["latest_signal_reproducible"] = latest
+    out["integrity"] = _safe(ledger.integrity_check)
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Phase 6 - read-only evaluation tools (measurement only, never mutate)
+# ---------------------------------------------------------------------------
+def _eval_engine():
+    import evaluation_engine
+    return evaluation_engine
+
+
+@mcp.tool()
+def evaluation_summary() -> dict:
+    """Read-only Phase 6 performance summary from the ground-truth ledger:
+    row counts, cohort sizes, signal/prediction/outcome evaluation, and the
+    leakage-verification flag. Never writes to the ledger."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(engine.evaluation_summary)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def signal_performance() -> dict:
+    """Read-only signal-level hit rate / outcome distribution by signal type
+    and market regime from REAL_FRESH-eligible records."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(engine.signal_performance)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def prediction_performance() -> dict:
+    """Read-only prediction accuracy / calibration / P&L by model, confidence
+    band and market regime."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(engine.prediction_performance)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def failure_summary() -> dict:
+    """Read-only failure taxonomy aggregation (DATA_ERROR / FEATURE_ERROR /
+    MODEL_ERROR / RISK_ERROR / ...) with evidence preserved."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(engine.failure_summary)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def confidence_calibration() -> dict:
+    """Read-only confidence-band vs observed-success calibration status
+    (CALIBRATED / PARTIALLY_CALIBRATED / UNCALIBRATED / INSUFFICIENT_DATA)."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(engine.confidence_calibration)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def regime_performance() -> dict:
+    """Read-only performance segmented by market_state/regime with sample
+    sufficiency labels."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(engine.regime_performance)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def baseline_status() -> dict:
+    """Read-only frozen-baseline status: report version, ledger db sha256,
+    row counts and evaluation cohort eligibility (REAL_FRESH etc.)."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(engine.baseline_status)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+# ---------------------------------------------------------------------------
+# Phase 6.5 - read-only live observation / chain health tools
+# ---------------------------------------------------------------------------
+@mcp.tool()
+def live_observation_status() -> dict:
+    """Read-only Phase 6.5 observation snapshot: counts, directional signals,
+    STAY_OUT/SKIP rate, open/closed positions, pending predictions, chain
+    findings and the observation state
+    (NO_DIRECTIONAL_TRADES_YET / PENDING_OUTCOMES / ACCUMULATING_OUTCOMES)."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(ee.live_observation_report, engine)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def ground_truth_chain_health() -> dict:
+    """Read-only chain-health monitor over the full ground truth chain. Flags
+    ORPHAN_* records, MISSING/DUPLICATE outcomes, MISSING_FEATURE_SNAPSHOT,
+    PROVENANCE_LOSS, TIMESTAMP_INCONSISTENCY and INVALID_STATE_TRANSITION with
+    severity INFO/WARNING/ERROR/CRITICAL. Never modifies the ledger."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(ee.chain_health_report, engine)
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def pending_evaluations() -> dict:
+    """Read-only list of predictions not yet evaluated against their horizon
+    close (i.e. whose outcome is still unknown)."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        rows = engine._load_prediction_rows()
+        pending = [r for r in rows if r.get("evaluation_status") in (None, "PENDING")]
+        return _safe(lambda: {"pending": len(pending),
+                              "prediction_ids": [r.get("prediction_id") for r in pending]})
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def open_positions() -> dict:
+    """Read-only list of currently open paper/live positions from the ledger
+    (never places orders)."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        tables = engine._tables()
+        if "positions" not in tables:
+            return _safe(lambda: {"open": 0, "positions": []})
+        rows = engine._qdict("SELECT * FROM positions WHERE status='OPEN'")
+        return _safe(lambda: {"open": len(rows),
+                              "positions": [{k: rows[i].get(k) for k in
+                                             ("position_id", "symbol", "side", "strike",
+                                              "option_type", "quantity", "entry_price",
+                                              "entry_timestamp", "position_ref")}
+                                            for i in range(len(rows))]})
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
+
+
+@mcp.tool()
+def outcome_status() -> dict:
+    """Read-only outcome status: by_class (WIN/LOSS/BREAKEVEN), total net P&L,
+    MFE/MAE availability and mfe_source distribution."""
+    ee = _eval_engine()
+    engine = ee.EvaluationEngine(gt_db=ee.GT_DB)
+    try:
+        return _safe(lambda: engine.evaluation_report()["outcome_evaluation"])
+    finally:
+        try:
+            engine._conn_ro.close()
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":

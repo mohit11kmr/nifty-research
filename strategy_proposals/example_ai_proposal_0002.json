@@ -1,0 +1,19 @@
+{
+  "author_model": "big-pickle",
+  "author_type": "AI",
+  "created_at": "2026-08-15T10:05:00+05:30",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "evidence": "BACKTESTED",
+  "failure_code": null,
+  "fingerprint": "3b04f25015b31ab38cf0980194789ae9948e0ab36c1b42e0a77f1fe18cea3985",
+  "human_decision": "RUN_CONTROLLED_PAPER_TEST",
+  "parent_strategy_id": "current_control_v1",
+  "proposal_hash": "7ceae874543c1fa91ccc4ce3ec9eaaa4fd7f2add8a23347cacc0ed2f2bc3a0ea",
+  "proposal_id": "example_ai_proposal_0002",
+  "result_hash": "fb13d3f5446344db3eeccaaed8f7a39c2e1a5ef0fff5471c45ebfcdd13f88e9a",
+  "spec_hash": "439a90575469e921d36619e7947826362dd8d9bbcef4e646cb8ac2e0cb5e0839",
+  "status": "REVIEW",
+  "strategy_id": "current_control_v1",
+  "template_version": "1.0",
+  "title": "EXAMPLE ONLY - Current control re-statement (NOT FOR TRADING)"
+}

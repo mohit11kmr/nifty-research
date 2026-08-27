@@ -23,7 +23,14 @@ def compute_volume_profile(df=None, bins=20):
 
     recent = df.tail(30).copy()
     prices = recent["close"].values
-    volumes = recent["volume"].values if "volume" in recent.columns else np.random.randint(1000, 5000, len(recent))
+    if "volume" in recent.columns and recent["volume"].notna().any():
+        volumes = recent["volume"].values
+        volume_source = "real"
+        data_status = "REAL"
+    else:
+        volumes = None
+        volume_source = "uniform_frequency (no real volume column - equal weight, not fabricated random)"
+        data_status = "ESTIMATED"
 
     # Histogram binning across price range
     counts, bin_edges = np.histogram(prices, bins=bins, weights=volumes)
@@ -55,7 +62,9 @@ def compute_volume_profile(df=None, bins=20):
         "value_area_high_vah": round(vah, 2),
         "value_area_low_val": round(val, 2),
         "price_vs_value_area": "ABOVE_VAH (BULLISH ACCELERATION)" if latest_close > vah else ("BELOW_VAL (BEARISH CASCADING)" if latest_close < val else "INSIDE_VALUE_AREA (BALANCED ACCUMULATION)"),
-        "institutional_insight": f"POC is at {poc_price:.0f}. Institutional Fair Value is between {val:.0f} and {vah:.0f}."
+        "institutional_insight": f"POC is at {poc_price:.0f}. Institutional Fair Value is between {val:.0f} and {vah:.0f}.",
+        "data_status": data_status,
+        "volume_source": volume_source,
     }
 
 

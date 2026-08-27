@@ -105,9 +105,14 @@ def report_tf_summary():
     print(_line())
     path = os.path.join(DATA, "tf_scan.csv")
     if not os.path.exists(path):
-        print("  no tf_scan.csv yet - run: python -c \"import multitf; ...\"")
+        print("  no tf_scan.csv yet - run: python rebuild_cache.py --only tf_scan")
         return
     import pandas as pd
+    import truth
+    fresh = truth.file_freshness(path, truth.DAILY_CACHE_FRESHNESS_H)
+    if fresh["status"] != truth.REAL:
+        print(f"  ⚠️ tf_scan.csv is {fresh['status']} "
+              f"(age {fresh['age_h']}h / budget {fresh['budget_h']}h) - run: python rebuild_cache.py --only tf_scan")
     df = pd.read_csv(path)
     try:
         import multitf

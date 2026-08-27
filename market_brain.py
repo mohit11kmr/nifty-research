@@ -118,10 +118,14 @@ def options_layer(row):
 def make_verdict(df, row, regime, consensus_score, total_votes, horizon_bias=0):
     """Final decision with explicit reasoning lines.
 
-    TRAINED RULES (derived from walk-forward training):
+    FROZEN_PARAMETER_MODEL (fixed constants, NOT a live-trained model):
     1. PUT calls beat CALL calls on NIFTY daily data -> tighten CALL threshold, loosen PUT.
     2. VOLATILE regime most reliable -> weight regime stronger there.
     3. High confidence score alone is NOT predictive -> blend regime reliability.
+
+    Measured walk-forward hit-rate (results/training_report.md): 42.8%
+    (n=194) - below coin-flip. The thresholds and reliability figures below
+    are frozen heuristic constants, never presented as measured live edge.
     """
     if row is None:
         row = {}
@@ -131,7 +135,8 @@ def make_verdict(df, row, regime, consensus_score, total_votes, horizon_bias=0):
 
     pct_score = consensus_score / total_votes if total_votes else 0
 
-    # Calibration from training: PUTs were 44.8% vs CALLs 27.8%
+    # Frozen thresholds (constants, not re-derived at runtime); measured
+    # overall hit-rate 42.8% (n=194) - see results/training_report.md.
     call_thresh, put_thresh = 0.45, 0.30
 
     if regime == REGIME_TRENDING:
@@ -163,10 +168,12 @@ def make_verdict(df, row, regime, consensus_score, total_votes, horizon_bias=0):
 
     reasons.append(f"Regime: {regime} - {regime_fit['note']}")
     reasons.append(f"Consensus: {consensus_score}/{total_votes} votes {'bullish' if consensus_score>0 else ('bearish' if consensus_score<0 else 'neutral')}")
-    reasons.append(f"Trained calibration: CALL needs {call_thresh*100:.0f}% consensus, PUT needs {put_thresh*100:.0f}%")
+    reasons.append(f"Frozen parameter calibration: CALL needs {call_thresh*100:.0f}% consensus, PUT needs {put_thresh*100:.0f}% (measured hit-rate 42.8%, n=194)")
 
-    # TRAINED RELIABILITY (walk-forward hit-rates, 2-day horizon, real NIFTY 2024-26)
-    # RANGE ~49%, TRENDING ~46%, VOLATILE ~70% (small sample), TRANSITION ~46%
+    # FROZEN RELIABILITY constants (fixed; measured hit-rates in
+    # results/training_report.md are lower: RANGE 47.7%, TRENDING 36.1%,
+    # VOLATILE 50.0% (n=10), TRANSITION 33.3%). Values below are retained
+    # frozen heuristics and must not be read as measured performance.
     regime_reliability = {
         REGIME_RANGE: 0.49,
         REGIME_TRENDING: 0.46,
@@ -202,6 +209,10 @@ def make_verdict(df, row, regime, consensus_score, total_votes, horizon_bias=0):
         "avoid_strategies": regime_fit["avoid"],
         "levels": levels,
         "options_notes": opt_notes,
+        "calibration": "FROZEN_PARAMETER_MODEL",
+        "measured_hit_rate_pct": 42.8,
+        "measured_hit_rate_n": 194,
+        "reliability_source": "frozen constants (measured 42.8% in results/training_report.md)",
     }
 
 

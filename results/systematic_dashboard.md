@@ -1,5 +1,5 @@
 # 📈 NIFTY 50 SYSTEMATIC TRADING DASHBOARD
-_Generated: 12 Aug 2026 | 22:21 IST_
+_Generated: 19 Aug 2026 | 12:17 IST_
 
 ---
 
@@ -15,49 +15,49 @@ _Generated: 12 Aug 2026 | 22:21 IST_
 ## 📊 2. LIVE MARKET & OPTION CHAIN METRICS
 | Metric | Value | Market Interpretation |
 |---|---|---|
-| **Nifty Spot** | 24,435.95 | Current Index Level |
+| **Nifty Spot** | 24,343.60 | Current Index Level |
 | **India VIX** | 0.00 | Options Premium Pricing Gauge |
-| **Put-Call Ratio (PCR)** | 0.754 | Bearish (<0.8) |
+| **Put-Call Ratio (PCR)** | 0.884 | Neutral |
 | **Max Pain Level** | 24400 | Option Buyers Max Loss Strike |
-| **Call Wall (Resistance)** | 25000, 24500, 25500 | Heavy CE OI Ceiling |
-| **Put Wall (Support)** | 24000, 24300, 23500 | Heavy PE OI Floor |
+| **Call Wall (Resistance)** | 25000, 24500, 24800 | Heavy CE OI Ceiling |
+| **Put Wall (Support)** | 24000, 24300, 24400 | Heavy PE OI Floor |
 
 ---
 ## 🌍 3. GLOBAL & SENTIMENT SNAPSHOT
 | Asset / Market | Price / Level | Daily Change |
 |---|---|---|
-| **S&P 500** | 7,728.20 | -0.32% |
-| **Dow Jones** | 53,791.85 | -0.34% |
-| **Nasdaq** | 26,445.45 | -0.60% |
-| **Dollar Index** | 99.82 | +0.01% |
-| **Gold** | 4,383.00 | +0.49% |
-| **Silver** | 64.77 | -0.52% |
-| **Crude Oil** | 83.20 | +1.30% |
-| **Bitcoin** | 63,551.88 | -0.56% |
-| **USDINR** | 95.40 | +0.20% |
-| **Nikkei** | 66,970.22 | +2.08% |
-| **SGX Nifty** | 24,471.70 | -0.46% |
+| **S&P 500** | 7,691.76 | -0.69% |
+| **Dow Jones** | 53,343.40 | -0.22% |
+| **Nasdaq** | 26,289.71 | -1.33% |
+| **Dollar Index** | 99.65 | +0.01% |
+| **Gold** | 4,366.00 | -1.17% |
+| **Silver** | 63.94 | -3.30% |
+| **Crude Oil** | 84.94 | +0.52% |
+| **Bitcoin** | 64,506.25 | +2.69% |
+| **USDINR** | 95.69 | +0.26% |
+| **Nikkei** | 67,460.73 | -2.54% |
+| **SGX Nifty** | 24,154.90 | -0.55% |
 
 ---
 ## 📰 4. LIVE MARKET HEADLINES
 
 ### NIFTY Headlines:
-- 🔹 Sensex Today | Nifty 50 | Stock Market Highlights: Sensex settles 188 pts lower, Nifty below 24,450; Adan... - economictimes.com
-- 🔹 Sensex, Nifty 50 extend losses for second consecutive session; 5 key factors behind stock market downtrend explained - livemint.com
-- 🔹 Stock Market Today Highlights: Dalal Street ends flat; BSE Sensex up 40 points, NSE Nifty50 closes flat - The Times of India
-- 🔹 Stock Market Today Highlights, Aug 11: Sensex drops 388 pts, Nifty slips to 24,471 on surging crude oil prices - BusinessLine
+- 🔹 Stock Market Today: Sensex, Nifty 50 Fall Amid Rising Crude Oil Prices, Middle East Tensions - India Infoline
+- 🔹 Profit growth at India's Nifty 50 firms hits 10-quarter high, boosts outlook - Reuters
+- 🔹 Nifty 50, Sensex prediction today: Check how Indian stock market is expected to trade on 19 August - livemint.com
+- 🔹 Nifty 50, BSE 200+ earnings beat estimates, geopolitics weigh: Nomura - Moneycontrol.com
 
 ### GLOBAL Headlines:
 - 🔹 News by CNBC TV18 on TradingView, 2026-08-04 — cnbctv:6b7dd981e094b:0 - TradingView
+- 🔹 Indian Rupee Opens Marginally Lower as US Dollar Holds Firm - CryptoRank
 - 🔹 Indian rupee to track merchant flows, dollar; bonds await foreign buying cues - Reuters
-- 🔹 INR vs USD, April 17: Indian rupee strengthens to 92.6 against US dollar amid positive global cues - Upstox
-- 🔹 Rupee slips 10 paise as stronger dollar and geopolitical jitters outweigh positive cues - The Times of India
+- 🔹 INR vs USD, April 17: Indian rupee strengthens to 92.6 against US dollar amid positive global cues - upstox.com
 
 ### FII Headlines:
+- 🔹 FII & DII Activity - Equitypandit
 - 🔹 How to Read an FII/DII Data Report (With Examples) - NiftyTrader
 - 🔹 FII DII Data Today: How to Read It & What It Signals - Sahi
 - 🔹 FII vs DII: Structural shift from foreign capital dependence to domestic capital resilience - livemint.com
-- 🔹 FII DII Data: Live FII & DII Trading Activity on NSE & BSE - HDFC Sky
 
 ---
 ## ⚡ 5. ACTIONABLE WATCHLIST & EXECUTIONS

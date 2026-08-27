@@ -23,13 +23,13 @@ from greeks import bs_price_and_greeks, probability_of_profit
 
 LOT_SIZE = 75
 WING = 200
-DEFAULT_SPOT = 24403.10
 DEFAULT_SIGMA = 0.15
 R = 0.06
 SNAP_DIR = os.path.join("data", "oi_snapshots")
 
 
 def _default_spot():
+    """Last real NIFTY close from cache; None if unavailable (no literal)."""
     try:
         hist = os.path.join("data", "nifty_history.csv")
         if os.path.exists(hist):
@@ -39,7 +39,7 @@ def _default_spot():
                 return float(df[col[0]].dropna().iloc[-1])
     except Exception:
         pass
-    return DEFAULT_SPOT
+    return None
 
 
 def _parse_expiry(chain):
@@ -174,6 +174,21 @@ def construct_multi_leg_strategy(spot_price=None, strategy_type="IRON_CONDOR",
     """
     chain, snapshot, stale = _latest_chain()
     spot = float(spot_price) if spot_price else _default_spot()
+    if spot is None:
+        return {
+            "strategy": strategy_type.upper(),
+            "status": "MISSING",
+            "spot_price": None,
+            "reason": "No real spot available - no multi-leg strategy computed (honest stand-down, no hardcoded fallback).",
+            "legs": [],
+            "strikes": [],
+            "net_premium_per_lot": None,
+            "max_risk_per_lot": None,
+            "max_reward_per_lot": None,
+            "breakevens": {"lower": None, "upper": None},
+            "probability_of_profit": None,
+            "risk_reward_ratio": None,
+        }
     if t_days is None:
         t_days = _expiry_days(chain)
     expiry_date = _parse_expiry(chain)

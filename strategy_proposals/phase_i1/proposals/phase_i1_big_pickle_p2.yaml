@@ -1,0 +1,152 @@
+proposal:
+  proposal_id: phase_i1_big_pickle_p2
+  title: 'RANGE_HV overbought-stretch fade: defined-risk NIFTY call credit spread
+    reverting to the VIX band and max pain'
+  author_type: AI
+  author_model: big_pickle
+  created_at: '2026-08-16T00:00:00+05:30'
+  parent_strategy_id: current_control_v1
+  hypothesis: 'In a RANGE_HV regime NIFTY prints wide, mean-reverting swings rather
+    than sustained runs. When the daily close stretches beyond the VIX-implied expected-move
+    band while RSI reads 72 or above, the impulse is typically locally exhausted and
+    price tends to revert toward the band center and the heavy OI / max-pain zone.
+    Entering a defined-risk call credit spread at that stretch expresses the reversion
+    with a capped wing-width loss while theta decays the short leg in the seller''s
+    favour. The regime gate and VIX window keep the fade out of fresh trends and out
+    of a too-cheap premium tape. It might fail because RANGE_HV classification lags
+    the close: a range that is actually breaking into a trend produces follow-through
+    instead of reversion, and because the thin credit net of a four-order cost model
+    may not cover the losing trades.
+
+    '
+  research_question: 'Over the frozen window with the dev/OOS split at 2026-03-01,
+    does entering one NIFTY call credit spread per signal (REGIME equals RANGE_HV,
+    RSI at or above 72, VIX between 16 and 25) that targets reversion to the VIX-implied
+    expected-move band and the max-pain zone produce at least 20 trades and a win
+    rate and profit factor on both splits that exceed current_control_v1 under the
+    canonical cost model?
+
+    '
+  expected_failure_modes:
+  - 'Regime lag: RANGE_HV at the signal close transitions to TREND_HV in the following
+    sessions, the fade is counter-trend, and the short call is exercised to the wing-width
+    maximum loss.'
+  - 'Gap risk: an overnight gap beyond the sold strike removes the reversion window,
+    and the spread realizes its maximum loss on the entry session.'
+  - 'Cost and theta drag: four orders per round trip at the canonical cost model plus
+    slippage exceed the average reversion credit, and shallow stretches revert only
+    partially, leaving no edge at the minimum sample size.'
+strategy:
+  schema_version: '1.0'
+  strategy:
+    id: range_fade_stretch_v1
+    name: RANGE_HV overbought-stretch call credit fade
+    version: 1
+    classification: RESEARCH_HYPOTHESIS
+  description: 'A bearish mean-reversion hypothesis for NIFTY. Entry fires only inside
+    the RANGE_HV regime when the close is overbought (RSI at or above 72) on a tape
+    that is still rich enough to sell premium (VIX between 16 and 25). The structure
+    is a 1-lot defined-risk call credit spread placed at the stretch, with the reversion
+    anchor supplied by the options layer (VIX-implied band and the heavy OI / max-pain
+    zone). The position is defined risk only, capped at the wing width minus credit,
+    and is squared off on target, stop, end of day, or canonical expiry. RANGE_LV
+    is never an allowed regime.
+
+    '
+  market:
+    underlying: NIFTY
+  regime:
+    allowed:
+    - RANGE_HV
+  entry:
+    conditions:
+      all:
+      - id: regime
+        field: REGIME
+        operator: ==
+        value: RANGE_HV
+      - id: vix_low
+        field: VIX
+        operator: '>='
+        value: 16
+      - id: vix_high
+        field: VIX
+        operator: <=
+        value: 25
+      - id: rsi_overbought
+        field: RSI
+        operator: '>='
+        value: 72
+      - id: regime_gate
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.regime_gate_at
+      - id: options_layer
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.options_layer_at
+      - id: sell_window
+        rule: EXISTING_PROJECT_RULE
+        project_ref: premium_seller.sell_ok
+  direction:
+    mode: DIRECTIONAL
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.run_candidate_b
+  instrument:
+    type: DEFINED_RISK_DIRECTIONAL
+    option_side:
+    - CE
+    lot_size: 75
+  strike_selection:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.evaluate_day
+  risk:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: backtest_frozen.simulate_trade
+    capital_basis: 100000
+    position_size:
+      lots: 1
+      lot_size: 75
+    max_risk_pct: 1.0
+    note: 'Maximum loss = wing width minus net credit received, fully defined and
+      capped at the 1% capital rule; credit capture at target closes the spread.
+
+      '
+  exit:
+    stop:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    target:
+      rule: EXISTING_PROJECT_RULE
+      project_ref: backtest_frozen.simulate_trade
+    expiry:
+      rule: CANONICAL_EXPIRY
+    allowed_reasons:
+    - TARGET
+    - STOP
+    - TIME
+    - EXPIRY
+    - EOD
+  execution:
+    cost_model:
+      cost_per_order: 40.0
+      orders_per_round_trip: 4
+    slippage_pct: 0.015
+  data_requirements:
+  - NIFTY
+  - VIX
+  - OPTIONS
+  - OI
+  - EXPIRY_CALENDAR
+  state:
+    lifecycle: DRAFT
+    classification: RESEARCH_HYPOTHESIS
+    promoted: false
+  references:
+    parent_strategy: current_control_v1
+    note: research hypothesis
+research:
+  dataset_manifest_hash: ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a
+  start_date: '2025-08-13'
+  end_date: '2026-08-13'
+  dev_oos_cut: '2026-03-01'
+  min_required_trades: 20
+  note: fixed window; frozen before evaluation

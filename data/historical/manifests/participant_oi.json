@@ -1,0 +1,3935 @@
+{
+ "days": {
+  "2024-01-01": {
+   "date": "2024-01-01",
+   "raw_sha256": "153eb4b52f015a2ca899ee7727b864dd048129ab5c7eef6765bcef6bee81edb0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01012024.csv"
+  },
+  "2024-01-02": {
+   "date": "2024-01-02",
+   "raw_sha256": "c26c29632bb3f2b9605bb216e3712a3e2f13f1efde4750996dec3ebecf255dd1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02012024.csv"
+  },
+  "2024-01-03": {
+   "date": "2024-01-03",
+   "raw_sha256": "dd58fec1962f4b2d85ebab3f1f2ddbcdf1fc7f5661480a14116205c5b0acb082",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03012024.csv"
+  },
+  "2024-01-04": {
+   "date": "2024-01-04",
+   "raw_sha256": "6a571689b0fb04beafc97bfe59fcc893176c01ea078b5ef6a4d46d4894b7be71",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04012024.csv"
+  },
+  "2024-01-05": {
+   "date": "2024-01-05",
+   "raw_sha256": "2feb2e175108c99e62e578d1867b79d85ae84a78a5022dfbe0be26246b8ae234",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05012024.csv"
+  },
+  "2024-01-08": {
+   "date": "2024-01-08",
+   "raw_sha256": "8cf9fefba63aaf09cd07059811313041e6abd8f55088832a342ad82e38e2ce53",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08012024.csv"
+  },
+  "2024-01-09": {
+   "date": "2024-01-09",
+   "raw_sha256": "8a920894e00da2094f4f30c66c89ce33cb0bd4a9f0a986e50393174afcca69e5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09012024.csv"
+  },
+  "2024-01-10": {
+   "date": "2024-01-10",
+   "raw_sha256": "09af6b76868fec003db40d1fde3cda3b8131c1f01e25aed33d2395e130d957ed",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10012024.csv"
+  },
+  "2024-01-11": {
+   "date": "2024-01-11",
+   "raw_sha256": "4acc2024a41e8f891004de4cbffb8d718fed1de4f01a5783fde649fa94a5c85d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11012024.csv"
+  },
+  "2024-01-12": {
+   "date": "2024-01-12",
+   "raw_sha256": "2de9e0c5ed32ffa9e749010615302aa37de285be3233e79a97acb3eda16de6e8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12012024.csv"
+  },
+  "2024-01-15": {
+   "date": "2024-01-15",
+   "raw_sha256": "40588af066d67e31bf51fbfd89cab253ea66c3f83de4700fa932490bb8185e26",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15012024.csv"
+  },
+  "2024-01-16": {
+   "date": "2024-01-16",
+   "raw_sha256": "9700fe9447f677062c474f2c835278bc7abde52a3b3920812361f15383e816ff",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16012024.csv"
+  },
+  "2024-01-17": {
+   "date": "2024-01-17",
+   "raw_sha256": "a19e3666891b5244b85fc94658ed52327cbacacffb367acaba22f89c89cce9e6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17012024.csv"
+  },
+  "2024-01-18": {
+   "date": "2024-01-18",
+   "raw_sha256": "0eb126bfb379534147d0e4d12770be4c873a8bcf96772988d70eba875eb3eb84",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18012024.csv"
+  },
+  "2024-01-19": {
+   "date": "2024-01-19",
+   "raw_sha256": "fa853a65452bf1227f8dbb80dde66661ef744109d4567b5cc19efe2f7cb1f216",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19012024.csv"
+  },
+  "2024-01-22": {
+   "date": "2024-01-22",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22012024.csv"
+  },
+  "2024-01-23": {
+   "date": "2024-01-23",
+   "raw_sha256": "b1b4841feb126124034162b2a594e10b514b67b25cfd7b15bfd79670158eb2b1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23012024.csv"
+  },
+  "2024-01-24": {
+   "date": "2024-01-24",
+   "raw_sha256": "b6e3362e7f4874dac96e05aa83f2b8463de298ff8bdec34ee39f8672c6687031",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24012024.csv"
+  },
+  "2024-01-25": {
+   "date": "2024-01-25",
+   "raw_sha256": "9e68d7e70e9218a9df0522964bfd1c3617d70a239f86ddbcc90b4cb0c0319519",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25012024.csv"
+  },
+  "2024-01-26": {
+   "date": "2024-01-26",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26012024.csv"
+  },
+  "2024-01-29": {
+   "date": "2024-01-29",
+   "raw_sha256": "8fc6ecfb606cb991983a55d3bb19ab023f77921a2cb363383f7d518baed17bc7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29012024.csv"
+  },
+  "2024-01-30": {
+   "date": "2024-01-30",
+   "raw_sha256": "a8b8103633ca967614c3623ce76c1c6db0e68cb3e268272814d0f6772a9ebdc1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30012024.csv"
+  },
+  "2024-01-31": {
+   "date": "2024-01-31",
+   "raw_sha256": "966c77bcb5bde082131666cddaa34cad4df69b2dae95c3361b11a42e6625c472",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31012024.csv"
+  },
+  "2024-02-01": {
+   "date": "2024-02-01",
+   "raw_sha256": "409ff98d0fe1e3236ed08203dd964cb2d32bb622cd536c4f9c6a26cb55f9d920",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01022024.csv"
+  },
+  "2024-02-02": {
+   "date": "2024-02-02",
+   "raw_sha256": "0f79781ebede9dac27158372b99d67153e03c918455e0558e76a04cd3fa34cc2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02022024.csv"
+  },
+  "2024-02-05": {
+   "date": "2024-02-05",
+   "raw_sha256": "799e9d073094abfbf373daf6c3dfa7bf3541df48a70ad6feaaa5812e55be4938",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05022024.csv"
+  },
+  "2024-02-06": {
+   "date": "2024-02-06",
+   "raw_sha256": "b5689ff986c87c552f489e30652f79c786ff43c9f921ddb0a11a0e1593e7bfc6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06022024.csv"
+  },
+  "2024-02-07": {
+   "date": "2024-02-07",
+   "raw_sha256": "8ff58c5c90fc2f3220b9a996cd35d61f18c479e8c38db01508f2aaa0a7017c4f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07022024.csv"
+  },
+  "2024-02-08": {
+   "date": "2024-02-08",
+   "raw_sha256": "0313fa1f8b5f7b5f6d5c53a3813e0d599989bee3e755f67fc69a292af0f42d42",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08022024.csv"
+  },
+  "2024-02-09": {
+   "date": "2024-02-09",
+   "raw_sha256": "48bda8e817af09b5760c6cb22601130a68ce64bd34458a883874552d3cfd3bf8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09022024.csv"
+  },
+  "2024-02-12": {
+   "date": "2024-02-12",
+   "raw_sha256": "0dae791ce95edcc7cb5334997a1b6c663e9f0f3723b00e3f38c7b675fa1e1915",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12022024.csv"
+  },
+  "2024-02-13": {
+   "date": "2024-02-13",
+   "raw_sha256": "af29ae4de69ecfb97a585a428b2a1a925509aa68b81eebaf50d3b12b6557f84d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13022024.csv"
+  },
+  "2024-02-14": {
+   "date": "2024-02-14",
+   "raw_sha256": "718fc679f43731a5c93d72d0adbf9520066e98924782109be2d425fbe3568d74",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14022024.csv"
+  },
+  "2024-02-15": {
+   "date": "2024-02-15",
+   "raw_sha256": "9ca81fb863d21d4e84d6bb30b9f177e8fb25b0bdfa964b188827014c23a7c881",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15022024.csv"
+  },
+  "2024-02-16": {
+   "date": "2024-02-16",
+   "raw_sha256": "f6f41b3d3aee17940f9a04a05c262bcc2458d090841ea3eb17296441f9e34363",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16022024.csv"
+  },
+  "2024-02-19": {
+   "date": "2024-02-19",
+   "raw_sha256": "b93bcc9a39ba6868f208b1c63d3f3c948bc4af1a47c687f174d18d9ebbbfcc06",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19022024.csv"
+  },
+  "2024-02-20": {
+   "date": "2024-02-20",
+   "raw_sha256": "adb1e844cc64f60d2586984c4eec0615286db5c97ec662c7ad5e72679a8826a5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20022024.csv"
+  },
+  "2024-02-21": {
+   "date": "2024-02-21",
+   "raw_sha256": "7fa287eb163b3228dd028540b9c6ad3a0e86c5ae52ddf5284b4d80bd5992dd1c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21022024.csv"
+  },
+  "2024-02-22": {
+   "date": "2024-02-22",
+   "raw_sha256": "ed654421a11c40130f291cbf1897e4d2ee301c6bb520566e56438c3058c9e1b4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22022024.csv"
+  },
+  "2024-02-23": {
+   "date": "2024-02-23",
+   "raw_sha256": "4333cf67fc15e3ab7589df2d2ab577a1e1736edee87d16c79be8037ad2e6a883",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23022024.csv"
+  },
+  "2024-02-26": {
+   "date": "2024-02-26",
+   "raw_sha256": "6e3e735a304217650639389efa8689f704f6e60eeeb8b909e6a41486feb1063e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26022024.csv"
+  },
+  "2024-02-27": {
+   "date": "2024-02-27",
+   "raw_sha256": "2e243475b8402e09e7e1a94aedaa8c23059beba4bfc6e6941f3752f960600306",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27022024.csv"
+  },
+  "2024-02-28": {
+   "date": "2024-02-28",
+   "raw_sha256": "66b53ffcdfd31085dfe811d7b707233adb3d8e92bb8da572e470eb6bef512fba",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28022024.csv"
+  },
+  "2024-02-29": {
+   "date": "2024-02-29",
+   "raw_sha256": "de596487566d2e0a7554eb7cca80033fe2320df1ac2858c3c300fab2a92b5fb9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29022024.csv"
+  },
+  "2024-03-01": {
+   "date": "2024-03-01",
+   "raw_sha256": "22756f3c48c3c39b2d2279e8906a944d35f6377699ced94c245f2558d52ca9f4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01032024.csv"
+  },
+  "2024-03-04": {
+   "date": "2024-03-04",
+   "raw_sha256": "6c5d9127ef6b0f935ac14e8653f3a64ff34915ab59aac6405767a690d7e8771c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04032024.csv"
+  },
+  "2024-03-05": {
+   "date": "2024-03-05",
+   "raw_sha256": "4e3242a6e4cf31b3f8a1020d199837753b06d329601b83637140008e7967c279",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05032024.csv"
+  },
+  "2024-03-06": {
+   "date": "2024-03-06",
+   "raw_sha256": "026af93e0aa80c8e08eb78e5b0799aaaa0a9e66708908683ec095c01676153bf",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06032024.csv"
+  },
+  "2024-03-07": {
+   "date": "2024-03-07",
+   "raw_sha256": "dcb3f5e9ad90a7887a18ef556076930a73d46b7f40b6e1c94d5dde2307d586ad",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07032024.csv"
+  },
+  "2024-03-08": {
+   "date": "2024-03-08",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08032024.csv"
+  },
+  "2024-03-11": {
+   "date": "2024-03-11",
+   "raw_sha256": "8b62261e4360dd68c1a25319b136b3c8443d16ef55543636e1163558fcda8acf",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11032024.csv"
+  },
+  "2024-03-12": {
+   "date": "2024-03-12",
+   "raw_sha256": "ae0271601ff2b1d5aa794bcd1c107fd0445701e421aab3de9e4f63d8d356dee3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12032024.csv"
+  },
+  "2024-03-13": {
+   "date": "2024-03-13",
+   "raw_sha256": "696ecedc29072501a83d5abd9f64e6abc97d66bad913532377aeef7ff2a524c4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13032024.csv"
+  },
+  "2024-03-14": {
+   "date": "2024-03-14",
+   "raw_sha256": "4d0b11e12b52733d692592ba88f9b856fad9208f9a179e4af963c6e80b036b81",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14032024.csv"
+  },
+  "2024-03-15": {
+   "date": "2024-03-15",
+   "raw_sha256": "ee4e940d3a6871071be93a02630e074e521dc92a272cd89c08a6b79e62c40054",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15032024.csv"
+  },
+  "2024-03-18": {
+   "date": "2024-03-18",
+   "raw_sha256": "6da78def73e08faa9475135fcce7c260e4f371f85acd2d57c735d978f0651f30",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18032024.csv"
+  },
+  "2024-03-19": {
+   "date": "2024-03-19",
+   "raw_sha256": "0fbf667c279d4ab0a5f414dfb8a392720b81d2b105ebcbdf4750fd38fde6a551",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19032024.csv"
+  },
+  "2024-03-20": {
+   "date": "2024-03-20",
+   "raw_sha256": "7abb499cb14523bc8ba2a5189ca0480c4a080638a01a5c553cbc286961ff93dd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20032024.csv"
+  },
+  "2024-03-21": {
+   "date": "2024-03-21",
+   "raw_sha256": "0cae518f7cb3bf9615877e0d5b57e4787a8a6739070077be530adc6e94eaea60",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21032024.csv"
+  },
+  "2024-03-22": {
+   "date": "2024-03-22",
+   "raw_sha256": "d06308fc8066ba38145ccfb8cbf42e2b2cf7ab21a8e4ba29f8cc5559fd63c301",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22032024.csv"
+  },
+  "2024-03-25": {
+   "date": "2024-03-25",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25032024.csv"
+  },
+  "2024-03-26": {
+   "date": "2024-03-26",
+   "raw_sha256": "a0e8e140c01a612647c2a4bee8403899f85a41c44ef3fceaf03a6806213a983b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26032024.csv"
+  },
+  "2024-03-27": {
+   "date": "2024-03-27",
+   "raw_sha256": "cb72708f4afb165566825fb589843ca23305f56fd99e1f7d277662878501be25",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27032024.csv"
+  },
+  "2024-03-28": {
+   "date": "2024-03-28",
+   "raw_sha256": "5e02d827c37fbc8e7fc3c836df92198dce354b93e49cf7e712110f66f5217ce9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28032024.csv"
+  },
+  "2024-03-29": {
+   "date": "2024-03-29",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29032024.csv"
+  },
+  "2024-04-01": {
+   "date": "2024-04-01",
+   "raw_sha256": "17c4ad1b32e7892aca643c80c1caedb82baea6368de2558775bc85a19fc30132",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01042024.csv"
+  },
+  "2024-04-02": {
+   "date": "2024-04-02",
+   "raw_sha256": "dc2a2657af2aae8ab9ca16bc34b76e253dd6f943f0b2f64d4954ff9ed039f0df",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02042024.csv"
+  },
+  "2024-04-03": {
+   "date": "2024-04-03",
+   "raw_sha256": "9d335688dde4833699bee071b12f68f7ae27423f0e902590d358375e5a0808d3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03042024.csv"
+  },
+  "2024-04-04": {
+   "date": "2024-04-04",
+   "raw_sha256": "9012ba78590a6ed5e96f4bd73d6e96ec3df293a9f44287a11e94559defad5f61",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04042024.csv"
+  },
+  "2024-04-05": {
+   "date": "2024-04-05",
+   "raw_sha256": "3f4e8dfd74723b8c094b934bc3ec68f46e4f164a382892de2ac4501b1828690e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05042024.csv"
+  },
+  "2024-04-08": {
+   "date": "2024-04-08",
+   "raw_sha256": "813b527e2388d7ebd8ad86e8b2ca094527732d24e02cdfa070e3a6ad781eeb59",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08042024.csv"
+  },
+  "2024-04-09": {
+   "date": "2024-04-09",
+   "raw_sha256": "cd39334dc0cc18dcbbbad670c895c767dd8ada54b1faca38ef11f1a0a228d975",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09042024.csv"
+  },
+  "2024-04-10": {
+   "date": "2024-04-10",
+   "raw_sha256": "fafbaadfdd33491ddbb31b0d1eb57b40321546fa2cac08ba463144d2eb9e898c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10042024.csv"
+  },
+  "2024-04-11": {
+   "date": "2024-04-11",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11042024.csv"
+  },
+  "2024-04-12": {
+   "date": "2024-04-12",
+   "raw_sha256": "ce533bf1e413044b978acb46f474398e679c5be67f23d5362d04af199fc7df67",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12042024.csv"
+  },
+  "2024-04-15": {
+   "date": "2024-04-15",
+   "raw_sha256": "b800dd2323d07dbf02bd4052c29fb4849226720ca7ae929b9efdca4183636d66",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15042024.csv"
+  },
+  "2024-04-16": {
+   "date": "2024-04-16",
+   "raw_sha256": "0ee3231013d2d9dfad16ce051f2f20e75a8aec2fa3af4cc760b956061f3bf7ea",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16042024.csv"
+  },
+  "2024-04-17": {
+   "date": "2024-04-17",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17042024.csv"
+  },
+  "2024-04-18": {
+   "date": "2024-04-18",
+   "raw_sha256": "6b7460f0a349e69f0ff917e50c9fd7d61ab47cede68d8204d8458a5b0ef63735",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18042024.csv"
+  },
+  "2024-04-19": {
+   "date": "2024-04-19",
+   "raw_sha256": "d5949d8cea62c608c24a2d499f2fe753c1a5062d22681973c5eeb026b8a9ab94",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19042024.csv"
+  },
+  "2024-04-22": {
+   "date": "2024-04-22",
+   "raw_sha256": "a45b079f7f4ae0a578d7a6c5193c5e4b6e8cd0f0e41e2544ac128f09a3e71675",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22042024.csv"
+  },
+  "2024-04-23": {
+   "date": "2024-04-23",
+   "raw_sha256": "ee8ac7b2596c2ef8880494cb8db5d29cc4aff6f2cd976ccaeb296ec7e9cfa833",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23042024.csv"
+  },
+  "2024-04-24": {
+   "date": "2024-04-24",
+   "raw_sha256": "88fe3d30e414761417acdcd18b1446ee2d917593532a250598a12b01f2ce8cfb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24042024.csv"
+  },
+  "2024-04-25": {
+   "date": "2024-04-25",
+   "raw_sha256": "7786677fa37c746beb66334bcd8653e0f548f14b0b419e0992a029ec51d2e8ba",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25042024.csv"
+  },
+  "2024-04-26": {
+   "date": "2024-04-26",
+   "raw_sha256": "e5fcb3a64b97e01f5f20d48355d2b8d03020c2290f72080d3c9fbdca9762593a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26042024.csv"
+  },
+  "2024-04-29": {
+   "date": "2024-04-29",
+   "raw_sha256": "805a31976bf83a1004580dcd99168dade92dfd5c88c105c5d20f825fa8f4db2f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29042024.csv"
+  },
+  "2024-04-30": {
+   "date": "2024-04-30",
+   "raw_sha256": "aa19f7d76ab714a2e1da97d9e6396045a170c90b7d9214c45227ce6151faa9bc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30042024.csv"
+  },
+  "2024-05-01": {
+   "date": "2024-05-01",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01052024.csv"
+  },
+  "2024-05-02": {
+   "date": "2024-05-02",
+   "raw_sha256": "ce15fa9dac62193b1b9ba4eab54bfd62a46f3546c5d5ddbb1666a5e4eacd55ed",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02052024.csv"
+  },
+  "2024-05-03": {
+   "date": "2024-05-03",
+   "raw_sha256": "08d87ac5648550fdfd41b97fd4c49cde307fe8b32acc7eabd4539aa4b1f3f9c4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03052024.csv"
+  },
+  "2024-05-06": {
+   "date": "2024-05-06",
+   "raw_sha256": "324cd577e227bc4739800e8b1524e2c7aa0938009afb55d92b120037d99e530f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06052024.csv"
+  },
+  "2024-05-07": {
+   "date": "2024-05-07",
+   "raw_sha256": "538f9e574c5c4ed759dc629a511724088888db6246947a6aaf53301838673ed1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07052024.csv"
+  },
+  "2024-05-08": {
+   "date": "2024-05-08",
+   "raw_sha256": "a9cd5826c732be6aeb3c068d21ec0e3bd3bd57e6d38d25c47732f957fab716c1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08052024.csv"
+  },
+  "2024-05-09": {
+   "date": "2024-05-09",
+   "raw_sha256": "0757f45736ad87e062ec551962b5f74c48744285c148928aec6a856f7f955fe5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09052024.csv"
+  },
+  "2024-05-10": {
+   "date": "2024-05-10",
+   "raw_sha256": "9c1b09f14b5861d43af79ddbced42b755de2b7c616fb2734ae6190b30075a8f2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10052024.csv"
+  },
+  "2024-05-13": {
+   "date": "2024-05-13",
+   "raw_sha256": "fc5e1a0c925e8c7cb7c78338944af01365c9cc40f13b6c2a37c78eedafcbf712",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13052024.csv"
+  },
+  "2024-05-14": {
+   "date": "2024-05-14",
+   "raw_sha256": "bf2b156589d7fb55d1a336e356c4baa362af12a37a5370c57a51c5668d77f60b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14052024.csv"
+  },
+  "2024-05-15": {
+   "date": "2024-05-15",
+   "raw_sha256": "70a2bd63322d661f0e7b00b094ec174aaeb03b2f388e7de90f15b59243f7c3e4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15052024.csv"
+  },
+  "2024-05-16": {
+   "date": "2024-05-16",
+   "raw_sha256": "1188310475709c7f23d28b47d7a191dc4e11d562dc0d4fb8fc35583e108c9136",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16052024.csv"
+  },
+  "2024-05-17": {
+   "date": "2024-05-17",
+   "raw_sha256": "56f5bca8aa3f0538709016547969aa312b9eb4f755980691d79eee1c4df32a10",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17052024.csv"
+  },
+  "2024-05-20": {
+   "date": "2024-05-20",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20052024.csv"
+  },
+  "2024-05-21": {
+   "date": "2024-05-21",
+   "raw_sha256": "04e9a984fea039f1347df2526513777d44beeedd3c95f985ec6954bde65d8472",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21052024.csv"
+  },
+  "2024-05-22": {
+   "date": "2024-05-22",
+   "raw_sha256": "3189106dc768b43ed68fdb8ea68d721c5546b8ff200189756ca1d4d725efcfb1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22052024.csv"
+  },
+  "2024-05-23": {
+   "date": "2024-05-23",
+   "raw_sha256": "ec6833eb7faa3b395f2ac27153d9dd8b4562b50865f679face0d2e9dac065850",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23052024.csv"
+  },
+  "2024-05-24": {
+   "date": "2024-05-24",
+   "raw_sha256": "013a9b8cb8d21397539a7ef9d08f4de696553e9785005347c00b527b7e2eac39",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24052024.csv"
+  },
+  "2024-05-27": {
+   "date": "2024-05-27",
+   "raw_sha256": "81381a9480293f87ccf50c9c22178d5a7f97622987f26a89078665b175bd8b31",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27052024.csv"
+  },
+  "2024-05-28": {
+   "date": "2024-05-28",
+   "raw_sha256": "8fb7f57818faf8d583796c70d2dd61c322647eccac772d864bb2282483d48719",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28052024.csv"
+  },
+  "2024-05-29": {
+   "date": "2024-05-29",
+   "raw_sha256": "92fe10e3ef9c549655cf7430d1800502da8788de79bd1352cdaad453a3704b60",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29052024.csv"
+  },
+  "2024-05-30": {
+   "date": "2024-05-30",
+   "raw_sha256": "0651fcca86a3b398a8933a533acd20969267c7cf12eff2cdba963098128bf827",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30052024.csv"
+  },
+  "2024-05-31": {
+   "date": "2024-05-31",
+   "raw_sha256": "523a67f6f27c7ea084efd970147f43992228b3dfb910ac95fb4bba4b453b0a20",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31052024.csv"
+  },
+  "2024-06-03": {
+   "date": "2024-06-03",
+   "raw_sha256": "c008294e0c82988c1d5ac9612bbc340692fc700cd8309df6498c5a4837e0b00c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03062024.csv"
+  },
+  "2024-06-04": {
+   "date": "2024-06-04",
+   "raw_sha256": "3929e12174139c39b122d2f47487f87fd0cd712fab86672c78f4ec816d4696a3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04062024.csv"
+  },
+  "2024-06-05": {
+   "date": "2024-06-05",
+   "raw_sha256": "d9810ff84aa745ff372e6dda5cf206f8927779e9de41b679980273de96c9d4b1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05062024.csv"
+  },
+  "2024-06-06": {
+   "date": "2024-06-06",
+   "raw_sha256": "461a1839b6a44c0e47cacef26365b6d1015b49c4641af576de616c60dddafd63",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06062024.csv"
+  },
+  "2024-06-07": {
+   "date": "2024-06-07",
+   "raw_sha256": "5180257820455df2dc6ac48dd4b9626cba68eb6a0118d1407123d55454148028",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07062024.csv"
+  },
+  "2024-06-10": {
+   "date": "2024-06-10",
+   "raw_sha256": "eccb23ea5fc8430ae414c161c380ea0c0dca35360f871d3556b827f53928e665",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10062024.csv"
+  },
+  "2024-06-11": {
+   "date": "2024-06-11",
+   "raw_sha256": "398a45424f1377334a4aaf9c1a3089997df0c1179d254f32d610aab0e8967a2a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11062024.csv"
+  },
+  "2024-06-12": {
+   "date": "2024-06-12",
+   "raw_sha256": "83e3d68d9e1befe449ace46b6c71505aa9bade016c71a5b07d38540d3e02a541",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12062024.csv"
+  },
+  "2024-06-13": {
+   "date": "2024-06-13",
+   "raw_sha256": "24a02cf863b87450f6a6b379bd01d59f676901f61c98cac8986d56ec73ed436f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13062024.csv"
+  },
+  "2024-06-14": {
+   "date": "2024-06-14",
+   "raw_sha256": "ec0ea6672ee7868911c2278d569fab9fd4052131edc322c48d50195c85e1a2e5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14062024.csv"
+  },
+  "2024-06-17": {
+   "date": "2024-06-17",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17062024.csv"
+  },
+  "2024-06-18": {
+   "date": "2024-06-18",
+   "raw_sha256": "69ae1dba1c4a5a0a991e278e3865f24d6e9cab7340124ad81502a087ef5638b5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18062024.csv"
+  },
+  "2024-06-19": {
+   "date": "2024-06-19",
+   "raw_sha256": "e2add239c0a15f2dffd76d9985b218b5d088bfd3152e8ca63f46163d6aed9efe",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19062024.csv"
+  },
+  "2024-06-20": {
+   "date": "2024-06-20",
+   "raw_sha256": "7a754c92c56666be06e9ea8db78c90c339a56ea73b5ea8db4953699a43bfc794",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20062024.csv"
+  },
+  "2024-06-21": {
+   "date": "2024-06-21",
+   "raw_sha256": "cf4406e37c6445a359307c3cbd5aa6f2ce05af2caf223006689fca3ac7f2c851",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21062024.csv"
+  },
+  "2024-06-24": {
+   "date": "2024-06-24",
+   "raw_sha256": "a1622db7c18affdafa3894d042b3e11ec55210db9ec45575c9f788a6bd1f61e5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24062024.csv"
+  },
+  "2024-06-25": {
+   "date": "2024-06-25",
+   "raw_sha256": "1ee01f0b96d3e34ba9e23e864fd10c6c8dee554c4ca09f7fb22fe01ca57ed458",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25062024.csv"
+  },
+  "2024-06-26": {
+   "date": "2024-06-26",
+   "raw_sha256": "1ff791ce7d322aff760a6ff1f887390a1083c3efb90d02dd215732da7e73917f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26062024.csv"
+  },
+  "2024-06-27": {
+   "date": "2024-06-27",
+   "raw_sha256": "17df8543554c01d2feea47c6b76430d758c753868b4e108dd46516610c9c91dd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27062024.csv"
+  },
+  "2024-06-28": {
+   "date": "2024-06-28",
+   "raw_sha256": "049bc93c6af2cadcd25d022882f33f38a9e54958ed4abd62a49338c5a106223a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28062024.csv"
+  },
+  "2024-07-01": {
+   "date": "2024-07-01",
+   "raw_sha256": "156da2cddd8b26d6c4b6e4d10a6bf5f57be0135f48918fb2e7cff384a3fd369e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01072024.csv"
+  },
+  "2024-07-02": {
+   "date": "2024-07-02",
+   "raw_sha256": "e8b0650321f11a6c41ca031c1bcdf800242de0b9388dd591fbb258f337293173",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02072024.csv"
+  },
+  "2024-07-03": {
+   "date": "2024-07-03",
+   "raw_sha256": "10999efc8051e9200d0ca83c553718e8226bafaf14224aaad88a1594c7a97614",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03072024.csv"
+  },
+  "2024-07-04": {
+   "date": "2024-07-04",
+   "raw_sha256": "c934e6a1eb452cca28982a39bf724f445afc04dbc243db2e6ae9d8220186f78f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04072024.csv"
+  },
+  "2024-07-05": {
+   "date": "2024-07-05",
+   "raw_sha256": "edee35999bab8bdd6e8cd98b2f723569d715123225d96f77eb7cf520bc443cc8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05072024.csv"
+  },
+  "2024-07-08": {
+   "date": "2024-07-08",
+   "raw_sha256": "4f44bbdc69009d8a4b536de1649ca561b717b584b93934e14300892e8a8c2cfa",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08072024.csv"
+  },
+  "2024-07-09": {
+   "date": "2024-07-09",
+   "raw_sha256": "4f16c554633d91385dee8b215391e1e3aeb3624f75c0a14e69072c0dad853704",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09072024.csv"
+  },
+  "2024-07-10": {
+   "date": "2024-07-10",
+   "raw_sha256": "b098962cf349f410fc68c9faa0230e0fb1badd3df32b5438d69e014bc0d9b9b8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10072024.csv"
+  },
+  "2024-07-11": {
+   "date": "2024-07-11",
+   "raw_sha256": "ee22f28a8281cc47db1ebd3d74af72fc669e811bb8672331e363d3ebe719c57e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11072024.csv"
+  },
+  "2024-07-12": {
+   "date": "2024-07-12",
+   "raw_sha256": "6b8e6c0115c7a0f01a21b9250f12568391d5bd805b3c5554cbc125f269ea8ef0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12072024.csv"
+  },
+  "2024-07-15": {
+   "date": "2024-07-15",
+   "raw_sha256": "fa3083cc64ddcd78de192f592adf6b0fedbfb69ce4d02a6df15d37948209f314",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15072024.csv"
+  },
+  "2024-07-16": {
+   "date": "2024-07-16",
+   "raw_sha256": "9e6936c6ae232a472e58e18aa8a7b4060b0e908006bedfa171342bec789687a5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16072024.csv"
+  },
+  "2024-07-17": {
+   "date": "2024-07-17",
+   "status": "MISSING",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17072024.csv"
+  },
+  "2024-07-18": {
+   "date": "2024-07-18",
+   "raw_sha256": "ce67c0e9abc7a61899f3bd49e0445ddae4c7582913053e99ce8fe6faf03d3e58",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18072024.csv"
+  },
+  "2024-07-19": {
+   "date": "2024-07-19",
+   "raw_sha256": "8a594d0f74f9f5f539fc3e09fb0040c0155c1bb8891cfba8df228cebed556c0d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19072024.csv"
+  },
+  "2024-07-22": {
+   "date": "2024-07-22",
+   "raw_sha256": "3129717e9fc64c1cbb40df0ba1213d72f520900b5316ac9259ec3d2d1c34a613",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22072024.csv"
+  },
+  "2024-07-23": {
+   "date": "2024-07-23",
+   "raw_sha256": "d59ca22776a1b233ae855e0da1bcba6243fc79d530fca8ab8dcfe78e0aec6827",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23072024.csv"
+  },
+  "2024-07-24": {
+   "date": "2024-07-24",
+   "raw_sha256": "b8bbe93ba2a9691d842ac1f3c5c5748b82a43e02cdd44a0b70c80022f48c1651",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24072024.csv"
+  },
+  "2024-07-25": {
+   "date": "2024-07-25",
+   "raw_sha256": "11e931a32757a1c9a3ae59b4fda12bcb395b9650fe2ded8b1fbbe5eb91a2c15a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25072024.csv"
+  },
+  "2024-07-26": {
+   "date": "2024-07-26",
+   "raw_sha256": "5716fe9deeb267de4ece697664b885e52e5019eb89314efe02a91afe5fbc1405",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26072024.csv"
+  },
+  "2024-07-29": {
+   "date": "2024-07-29",
+   "raw_sha256": "02e7cb409dceaa184fb3c73d68dfc5ac43f9aded5d90afb5d15d788fe1f4f3e5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29072024.csv"
+  },
+  "2024-07-30": {
+   "date": "2024-07-30",
+   "raw_sha256": "d4d32b4529d93f102f90faad141051e2c66cde07698c42233007fe9f23e047fd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30072024.csv"
+  },
+  "2024-07-31": {
+   "date": "2024-07-31",
+   "raw_sha256": "6eaf5443e7c5d1da6543725b41b468f8dcd3307f3fca9b2d0f342fff3c3e7763",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31072024.csv"
+  },
+  "2024-08-01": {
+   "date": "2024-08-01",
+   "raw_sha256": "5c25cf10415f86530c82704ad28c88444f828e7c265776cb1509430c7687db6a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01082024.csv"
+  },
+  "2024-08-02": {
+   "date": "2024-08-02",
+   "raw_sha256": "b4b9b4e9839f8cf9a92ba6f9318a9be97fa28f9b1fcd827cc3d551660f4e292b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02082024.csv"
+  },
+  "2024-08-05": {
+   "date": "2024-08-05",
+   "raw_sha256": "48afbe55f7d32d75b031eb7c360a7ec16e9eda113f470c5654fc8abdde4835e2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05082024.csv"
+  },
+  "2024-08-06": {
+   "date": "2024-08-06",
+   "raw_sha256": "a79dfec3cf6a3fecb95c60cfb6d1b68693552043d61cb9b7ae843af86dcd7436",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06082024.csv"
+  },
+  "2024-08-07": {
+   "date": "2024-08-07",
+   "raw_sha256": "100732209974eeab1ba12697cb701cf09871ca30e4dd841eb281c8124943c590",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07082024.csv"
+  },
+  "2024-08-08": {
+   "date": "2024-08-08",
+   "raw_sha256": "c30f0ee9239566c3aea7826c3a677067f2f7ba4f3012c94a03b11b0f00e19a18",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08082024.csv"
+  },
+  "2024-08-09": {
+   "date": "2024-08-09",
+   "raw_sha256": "ebab159453ae6f6d83e2d4bf5cbc913d4f4b29e637b9fcd680e9636ed93ba780",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09082024.csv"
+  },
+  "2024-08-12": {
+   "date": "2024-08-12",
+   "raw_sha256": "063e68abfb39c3f7f71ece762f80df28d0356708c1651f1780bc1a0ad1499e4d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12082024.csv"
+  },
+  "2024-08-13": {
+   "date": "2024-08-13",
+   "raw_sha256": "c662644b4a9e21fccd087faa589e420d2ae2eb35b2ab1bf56f1391c3faf5a4a6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13082024.csv"
+  },
+  "2024-08-14": {
+   "date": "2024-08-14",
+   "raw_sha256": "a44ff4f7ccbe3481eb805f947796572018ad0808bbdc2c312481ef7769b2e350",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14082024.csv"
+  },
+  "2024-08-16": {
+   "date": "2024-08-16",
+   "raw_sha256": "ad22fcd2baf399132c3f7981f9b5032fcfdcf61d302c9815492e6160910802d5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16082024.csv"
+  },
+  "2024-08-19": {
+   "date": "2024-08-19",
+   "raw_sha256": "a1aeb31e87f3cd1dd98e4b17a95ed44102f490227efcebea2fea1b6cf4fe4871",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19082024.csv"
+  },
+  "2024-08-20": {
+   "date": "2024-08-20",
+   "raw_sha256": "0279e72a3c50a15fa191c17c3366d52934c1ed38fd1912a3cca3ae9945f9f3b3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20082024.csv"
+  },
+  "2024-08-21": {
+   "date": "2024-08-21",
+   "raw_sha256": "053c57039093b347a7865e7a308cb914749b00c521e5b871a6abd0a6f99e1d1f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21082024.csv"
+  },
+  "2024-08-22": {
+   "date": "2024-08-22",
+   "raw_sha256": "2a14c6e83c545ab8b768d01c72c4f20f10d3cd6d053ee2f6639b2f2dce5d2c25",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22082024.csv"
+  },
+  "2024-08-23": {
+   "date": "2024-08-23",
+   "raw_sha256": "74fde80ee99c090b9eea41cdac661afab22c1c95ef5b6acdf723324cb679d76d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23082024.csv"
+  },
+  "2024-08-26": {
+   "date": "2024-08-26",
+   "raw_sha256": "f59d40fa841958e3b42e19f7ab97f225640a4eccbffd8864c0cea31cfb49b1b2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26082024.csv"
+  },
+  "2024-08-27": {
+   "date": "2024-08-27",
+   "raw_sha256": "0195827732837be15291d09007a3837fa8a4445a6ecd209fae9d954a69c6f59f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27082024.csv"
+  },
+  "2024-08-28": {
+   "date": "2024-08-28",
+   "raw_sha256": "8515a4925fd5a51987923fe5456d6e7773eaa462a55443a6a35216ce1a7c58af",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28082024.csv"
+  },
+  "2024-08-29": {
+   "date": "2024-08-29",
+   "raw_sha256": "45b017c0c93a2bb6132d95dd012abc747035f8643c34d8f4fcfefb05019f5a84",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29082024.csv"
+  },
+  "2024-08-30": {
+   "date": "2024-08-30",
+   "raw_sha256": "3a1eb2e9ae82acb26da0eb81c49a6f51e55605bd3805a639c5bdf74dc2423242",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30082024.csv"
+  },
+  "2024-09-02": {
+   "date": "2024-09-02",
+   "raw_sha256": "02b4c954ba785994a7b37ba2a433dfaa89069dc337ffc60241fd00b50135639a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02092024.csv"
+  },
+  "2024-09-03": {
+   "date": "2024-09-03",
+   "raw_sha256": "1fb68b8c4bc50af1e717e7ffc66027e034f8eff513b46d94b75ae8cf1d4310dd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03092024.csv"
+  },
+  "2024-09-04": {
+   "date": "2024-09-04",
+   "raw_sha256": "1f693cde1358120b2a80d0091f29e33d89f64fabe06a4944ded4f23c4fa88fdd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04092024.csv"
+  },
+  "2024-09-05": {
+   "date": "2024-09-05",
+   "raw_sha256": "19f1e1d639a1634efc22cabdca7545c2514afb1bdd7ef7cc281ce3985495cd7e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05092024.csv"
+  },
+  "2024-09-06": {
+   "date": "2024-09-06",
+   "raw_sha256": "178f4b6124073ea7bc619e8b22c04df5fc69bc9c2bd2ceb16f520f7a64b3849a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06092024.csv"
+  },
+  "2024-09-09": {
+   "date": "2024-09-09",
+   "raw_sha256": "f96b32d1098e2656024d5587930fb9959de3351d9de3de75b519c06c8090b279",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09092024.csv"
+  },
+  "2024-09-10": {
+   "date": "2024-09-10",
+   "raw_sha256": "f8dbaf6b4dd7fd3543519feb690b8827c6c0661df2cca73be3e9a82c99141d36",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10092024.csv"
+  },
+  "2024-09-11": {
+   "date": "2024-09-11",
+   "raw_sha256": "f98bc5a44b6a09500128e588d983da055557d1f229e95b3323c47dbd918680e5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11092024.csv"
+  },
+  "2024-09-12": {
+   "date": "2024-09-12",
+   "raw_sha256": "fc3dd1d688055adcb85a76f9c9658ea00840357200c83bd10d3dd238ddac75d7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12092024.csv"
+  },
+  "2024-09-13": {
+   "date": "2024-09-13",
+   "raw_sha256": "92c06e4965878148817d7c5c475724de0204723beda15cdc584e9eb17983e52f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13092024.csv"
+  },
+  "2024-09-16": {
+   "date": "2024-09-16",
+   "raw_sha256": "e47939f156df64cc96280a0248c40e83101a40f85aff9bbab3b39de6c047e5a3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16092024.csv"
+  },
+  "2024-09-17": {
+   "date": "2024-09-17",
+   "raw_sha256": "35c6e42a3709e0609da3a56ea9b56a9d7003683aa6411d8d2597aeb09513fa3e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17092024.csv"
+  },
+  "2024-09-18": {
+   "date": "2024-09-18",
+   "raw_sha256": "58958cb14a5f514b8848d5e5c914a94b06db473d36ce9572a7b1985e95a2a506",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18092024.csv"
+  },
+  "2024-09-19": {
+   "date": "2024-09-19",
+   "raw_sha256": "06306355ec188ac6128976e3940f179344e6a5fe50172419b41dc57086b0b154",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19092024.csv"
+  },
+  "2024-09-20": {
+   "date": "2024-09-20",
+   "raw_sha256": "55044fcfbab0af368d1b6a28b1b972f040b5899217ef1c6aa78d6ab42c1339d5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20092024.csv"
+  },
+  "2024-09-23": {
+   "date": "2024-09-23",
+   "raw_sha256": "8eef7b75ebc2bfd7e45487529eda681e04a2ae30e093ce46f072213014c7bb47",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23092024.csv"
+  },
+  "2024-09-24": {
+   "date": "2024-09-24",
+   "raw_sha256": "df96a0cbf2950dee8fe0b6b574ffc6c57eea325531da50f95aa76c1c7abdc583",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24092024.csv"
+  },
+  "2024-09-25": {
+   "date": "2024-09-25",
+   "raw_sha256": "fafb41d158e3996fe1213a5059ee7953cb8dceb6a5b13bd032c78eeee82e2d4c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25092024.csv"
+  },
+  "2024-09-26": {
+   "date": "2024-09-26",
+   "raw_sha256": "ee133c6369c0fe4ffad4c7a03cd8c65992496f1d887f3fcac1d5166a4b372c90",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26092024.csv"
+  },
+  "2024-09-27": {
+   "date": "2024-09-27",
+   "raw_sha256": "cae9c9367b939ad4e06f8dd34ad5dc9260d4fd6150c7fefce42fbbf481aff5cb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27092024.csv"
+  },
+  "2024-09-30": {
+   "date": "2024-09-30",
+   "raw_sha256": "6beda5e2320f30a20d4815622e7d530d3c13efbbab6ed4a311e13e0c4b097066",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30092024.csv"
+  },
+  "2024-10-01": {
+   "date": "2024-10-01",
+   "raw_sha256": "77a13f7d976c348225cf15d37d20ed73f2958132062164fd5acf214aca9c267f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01102024.csv"
+  },
+  "2024-10-03": {
+   "date": "2024-10-03",
+   "raw_sha256": "8012a97cef207f33c08cc99cbaf7e776ab347c57d9ea30e2004006aa8af42f58",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03102024.csv"
+  },
+  "2024-10-04": {
+   "date": "2024-10-04",
+   "raw_sha256": "1f9a2504a2786bfc09d63e3f085122be882433e81760b329aa876aba42a1c9e7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04102024.csv"
+  },
+  "2024-10-07": {
+   "date": "2024-10-07",
+   "raw_sha256": "a6dc2d14ce2ecd32729ad8263fd662479be90610688dfe9da8b37bfcb050d441",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07102024.csv"
+  },
+  "2024-10-08": {
+   "date": "2024-10-08",
+   "raw_sha256": "c45b640fe05b724d50a5f52f13781a085214682f30dd9dd2180076caedddb64c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08102024.csv"
+  },
+  "2024-10-09": {
+   "date": "2024-10-09",
+   "raw_sha256": "c69ac25581b8d28da42633723914fb8ceda02d24e6d0228bdd45a431a1fa30cf",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09102024.csv"
+  },
+  "2024-10-10": {
+   "date": "2024-10-10",
+   "raw_sha256": "560bc9e6a683001e514ca23eb60653b781088b41198b69659fa40e4cd15569ae",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10102024.csv"
+  },
+  "2024-10-11": {
+   "date": "2024-10-11",
+   "raw_sha256": "3bf9be090bc190b6b39996b3946e8cea0be17442bd892f677c056c7d49b87273",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11102024.csv"
+  },
+  "2024-10-14": {
+   "date": "2024-10-14",
+   "raw_sha256": "ac9889574737a3515713f548dd8ba5543fbbc730b9fdccf86766d897fa75eeb1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14102024.csv"
+  },
+  "2024-10-15": {
+   "date": "2024-10-15",
+   "raw_sha256": "4b189140a3510f8b70363c8f869a224c9cd9fa796f215968040ed735161f05c5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15102024.csv"
+  },
+  "2024-10-16": {
+   "date": "2024-10-16",
+   "raw_sha256": "646f8dd8bb5315454b64b6f83295a5c35ce09fcbb5a28d4b990753b803e4c813",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16102024.csv"
+  },
+  "2024-10-17": {
+   "date": "2024-10-17",
+   "raw_sha256": "e1cd916f36c3fc95821ac1f40100c90d878ee7c7f891bdd56feedb132620158c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17102024.csv"
+  },
+  "2024-10-18": {
+   "date": "2024-10-18",
+   "raw_sha256": "2417fd13f335ed5f1a897692e175b81544c9b5fe3ade500f2aa85ec34ad68bc1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18102024.csv"
+  },
+  "2024-10-21": {
+   "date": "2024-10-21",
+   "raw_sha256": "db7d6637c607ec60a4504fbceaf982360437371a9f2b7e2a10963418fc7d286a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21102024.csv"
+  },
+  "2024-10-22": {
+   "date": "2024-10-22",
+   "raw_sha256": "0f4393667c976b8c55daf3499663c36e1239493fcb1086be95430c30ee518c67",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22102024.csv"
+  },
+  "2024-10-23": {
+   "date": "2024-10-23",
+   "raw_sha256": "179294b6196ba2da271c2aeecad79ad1940aaa15f2ea8b2d0d62098fa375bc94",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23102024.csv"
+  },
+  "2024-10-24": {
+   "date": "2024-10-24",
+   "raw_sha256": "fb98921657063d525a8c2c96ee9a60a940c2847ca74acc9dd461920ecc56b213",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24102024.csv"
+  },
+  "2024-10-25": {
+   "date": "2024-10-25",
+   "raw_sha256": "ea2cf4a5917979b6de8efaffe66f8f062ced0f90ddac75531c109927d052c85e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25102024.csv"
+  },
+  "2024-10-28": {
+   "date": "2024-10-28",
+   "raw_sha256": "f75a3b271151d60df0f4ad294d1c1d613e6c0c2ef420d3ccc82a483614dc4cba",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28102024.csv"
+  },
+  "2024-10-29": {
+   "date": "2024-10-29",
+   "raw_sha256": "589dd952cbd0bbc6336dec8659d66aa06d833405e914339721c6af4b1d33c41d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29102024.csv"
+  },
+  "2024-10-30": {
+   "date": "2024-10-30",
+   "raw_sha256": "25bb49c7ea4c33a7ccacbbac99a50b224dd328ec71bfb67706accb7bc019a7b7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30102024.csv"
+  },
+  "2024-10-31": {
+   "date": "2024-10-31",
+   "raw_sha256": "d6ccfb6691d621d68b7af9072ecbc748071383c64d6fb3e973e715acdb9592a5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31102024.csv"
+  },
+  "2024-11-01": {
+   "date": "2024-11-01",
+   "raw_sha256": "3ba7a0a43968e3572815c6f4dd7cfd79db156d21a6c7128c148acd12e6aac5ee",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01112024.csv"
+  },
+  "2024-11-04": {
+   "date": "2024-11-04",
+   "raw_sha256": "8e59c1cc279d98d757846d24d27332da168fbe3cd1d6cdb2ef1025f69bcea9a5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04112024.csv"
+  },
+  "2024-11-05": {
+   "date": "2024-11-05",
+   "raw_sha256": "cde30f39387f28abc865c157b3ebb223767d7ff7b10d433e27bdc7e50f20e41c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05112024.csv"
+  },
+  "2024-11-06": {
+   "date": "2024-11-06",
+   "raw_sha256": "21c5d16ac3351fe0ceaec172e8545221ed9f3c99da61e1220486445f907fad7e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06112024.csv"
+  },
+  "2024-11-07": {
+   "date": "2024-11-07",
+   "raw_sha256": "426699e84ed6d5f4d03d7c38124f13c72fefbf4def90c0fc28565f7fdb8fd58a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07112024.csv"
+  },
+  "2024-11-08": {
+   "date": "2024-11-08",
+   "raw_sha256": "caad8df6b031fd8d5b7e821c8b53748de637930b175a257b597e8faeb664bd8c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08112024.csv"
+  },
+  "2024-11-11": {
+   "date": "2024-11-11",
+   "raw_sha256": "df75494b13414d01380f15b8c88c692d26dea35ea3ea55d77c68161596740b0e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11112024.csv"
+  },
+  "2024-11-12": {
+   "date": "2024-11-12",
+   "raw_sha256": "676fc7fe437c517cda9522f62594b06d2b943bfd13c37d398a1d231a9de83976",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12112024.csv"
+  },
+  "2024-11-13": {
+   "date": "2024-11-13",
+   "raw_sha256": "ebc1579b90714029bc2cc8612351ba3e9c9a7bcb7ef0432002289034bae82088",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13112024.csv"
+  },
+  "2024-11-14": {
+   "date": "2024-11-14",
+   "raw_sha256": "cc0b3e6a5643e32ab8dfd16f72b0d9c515b60861091fd8de219cb60a5e7e36e4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14112024.csv"
+  },
+  "2024-11-18": {
+   "date": "2024-11-18",
+   "raw_sha256": "8c88389008ee8a8a48fd8386017c8d1d0f3495d988fa307603decb319e813bd8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18112024.csv"
+  },
+  "2024-11-19": {
+   "date": "2024-11-19",
+   "raw_sha256": "9da8d4e40f9bcb0dc2b26f6fb2e71f8fde4f1627157099f7e2af09a06d4ab28a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19112024.csv"
+  },
+  "2024-11-21": {
+   "date": "2024-11-21",
+   "raw_sha256": "6a2980d32fe0b22e2624bdcc2685e9c66688216a9f9a5962f10efc639d15645e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21112024.csv"
+  },
+  "2024-11-22": {
+   "date": "2024-11-22",
+   "raw_sha256": "42b5181e208ca4f6ad3b16ccc126139dc197eaa34ae5e60042e3dade196ab550",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22112024.csv"
+  },
+  "2024-11-25": {
+   "date": "2024-11-25",
+   "raw_sha256": "33b4cc89ea9baa086f0d2b8edda7ba5b5c2775cbfc8c20914006b44cd8c0e27e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25112024.csv"
+  },
+  "2024-11-26": {
+   "date": "2024-11-26",
+   "raw_sha256": "6f82bf024908bd061a6720703d7162c6ff936049f841aae5446ccb4f632806aa",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26112024.csv"
+  },
+  "2024-11-27": {
+   "date": "2024-11-27",
+   "raw_sha256": "97b61722d8180f3ff518e527c267b1a718e04f62bb240e045d735f080ec54451",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27112024.csv"
+  },
+  "2024-11-28": {
+   "date": "2024-11-28",
+   "raw_sha256": "93975713cca293797b757966ec257e1fbdd79a91db04395197398411ce63e92c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28112024.csv"
+  },
+  "2024-11-29": {
+   "date": "2024-11-29",
+   "raw_sha256": "91a591aae4a7e5cd0df18840220e33c0b1be3b1552a2639574972d493e0b6077",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29112024.csv"
+  },
+  "2024-12-02": {
+   "date": "2024-12-02",
+   "raw_sha256": "9f5dae168a3a064a7eff175813110a465a2189265235c64af5e3067443476ed1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02122024.csv"
+  },
+  "2024-12-03": {
+   "date": "2024-12-03",
+   "raw_sha256": "5b57fc167f6e1b0b85edb35b6735b6aa005416894e5368dbbbba217b03f0ec44",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03122024.csv"
+  },
+  "2024-12-04": {
+   "date": "2024-12-04",
+   "raw_sha256": "ecb4833cc1e13c738c344b746c505cf8b06280a396c1e0f0b07317e57f9cc813",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04122024.csv"
+  },
+  "2024-12-05": {
+   "date": "2024-12-05",
+   "raw_sha256": "2996000370e3cf9d2d891bc92d7d6e447dce9e02e66b0f76aeb14bfeb5ffb584",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05122024.csv"
+  },
+  "2024-12-06": {
+   "date": "2024-12-06",
+   "raw_sha256": "cdceb853bebac62c2f6b47cdf50e8991091ed55b74a497798aec3a77679ac1bc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06122024.csv"
+  },
+  "2024-12-09": {
+   "date": "2024-12-09",
+   "raw_sha256": "2d0e19eb8cc10b826f26e8490b8477af0885296d1045eae88eaef8979e55d782",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09122024.csv"
+  },
+  "2024-12-10": {
+   "date": "2024-12-10",
+   "raw_sha256": "aff91a25075b93c20a84d9bb56dbbe15f537fd5575ccf49ef1146945df7092e3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10122024.csv"
+  },
+  "2024-12-11": {
+   "date": "2024-12-11",
+   "raw_sha256": "375c46ab09b2eb68a87d5cd6d093963f2f7416a03edf1d80a10bc726ffacd4d8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11122024.csv"
+  },
+  "2024-12-12": {
+   "date": "2024-12-12",
+   "raw_sha256": "ae82ca4000b56c40b2518dc3654e903108ced84d092884174538eac81b0cd686",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12122024.csv"
+  },
+  "2024-12-13": {
+   "date": "2024-12-13",
+   "raw_sha256": "39eee3eb2b08ba940df8458ba5f61cd1d8291a7cc74e6ae0c08922f1ce328fe3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13122024.csv"
+  },
+  "2024-12-16": {
+   "date": "2024-12-16",
+   "raw_sha256": "24a4aee905686abaa872f7ce96c18b76904def8c0c702786ee983911348e30e6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16122024.csv"
+  },
+  "2024-12-17": {
+   "date": "2024-12-17",
+   "raw_sha256": "2a42b80e351803b230ad8c2fb1f1c7bb11df8ef05d04b81388ac0fbeac819e24",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17122024.csv"
+  },
+  "2024-12-18": {
+   "date": "2024-12-18",
+   "raw_sha256": "7229f74a0f221962b3f5cc2a477e03f916ff5d88bb434d6f0a948103f406ecb9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18122024.csv"
+  },
+  "2024-12-19": {
+   "date": "2024-12-19",
+   "raw_sha256": "9723cbc33ba9c38bb1156f68fb8f91462adc95fa7a3ce10c39b325cb5678a807",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19122024.csv"
+  },
+  "2024-12-20": {
+   "date": "2024-12-20",
+   "raw_sha256": "1722d17b3369e19048b84dfca0fa5e1f0da8cdb8f75918c0ff8652a3a6e2c6b4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20122024.csv"
+  },
+  "2024-12-23": {
+   "date": "2024-12-23",
+   "raw_sha256": "ea4a0a0e7a07251aa33b410c83b99076aa3182ff04d4d649d15f1668afeebbe9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23122024.csv"
+  },
+  "2024-12-24": {
+   "date": "2024-12-24",
+   "raw_sha256": "230be0f8b791965c2a264e946b29f50bcfecb170538d70c61f58c5ef06a0d3c4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24122024.csv"
+  },
+  "2024-12-26": {
+   "date": "2024-12-26",
+   "raw_sha256": "531efe3265a22c848e3d8632ae20c0f3d4b4ccd7a2ce93c0b9b066433de1a4e3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26122024.csv"
+  },
+  "2024-12-27": {
+   "date": "2024-12-27",
+   "raw_sha256": "cb619549d1435a2dadbdc3849a09ff5a684ac6847c931af3f7a29ce841f106cd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27122024.csv"
+  },
+  "2024-12-30": {
+   "date": "2024-12-30",
+   "raw_sha256": "3b1d418c1d56799ae153359e71613b9530f44a70c7b78c77bb859fe22a66e6dc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30122024.csv"
+  },
+  "2024-12-31": {
+   "date": "2024-12-31",
+   "raw_sha256": "d5ae9a43a682f088dc564ecc5cf3f2634f258ed52cbf9e72961c89f69159cda5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31122024.csv"
+  },
+  "2025-01-01": {
+   "date": "2025-01-01",
+   "raw_sha256": "a17d9abba7f2451dcefd46cd69743a72a916a885e5e3d979961f746817d3e34a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01012025.csv"
+  },
+  "2025-01-02": {
+   "date": "2025-01-02",
+   "raw_sha256": "dfa3d85d79d8fd8b3a9ced5d30780465c739fe080e0c5616401d7619a6ad26e2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02012025.csv"
+  },
+  "2025-01-03": {
+   "date": "2025-01-03",
+   "raw_sha256": "434f66aec470477285d9c497f701249797d47541b0029aa8a7ee7ab015748b98",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03012025.csv"
+  },
+  "2025-01-06": {
+   "date": "2025-01-06",
+   "raw_sha256": "6d43f89efcc11573f8aeb29367716aa6273705e04d8a5a1ab38a645d1b75b7d9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06012025.csv"
+  },
+  "2025-01-07": {
+   "date": "2025-01-07",
+   "raw_sha256": "5589f56ce45b749874193c6450496f46c4fdab1d815fc790893bf8818b3acea8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07012025.csv"
+  },
+  "2025-01-08": {
+   "date": "2025-01-08",
+   "raw_sha256": "1a4b4ca4a2a22153295618fae09ae8e01457721df11b7fa95e6e5c730c3b28d4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08012025.csv"
+  },
+  "2025-01-09": {
+   "date": "2025-01-09",
+   "raw_sha256": "b5f227bfab6815ad8f2a299218940d8b99915771c8aed3b1c320db1a28a8d5f3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09012025.csv"
+  },
+  "2025-01-10": {
+   "date": "2025-01-10",
+   "raw_sha256": "b2974c0f03ec127b9887764cfb1462283bd7fde4c7a91b4cbbad1f591912ab4d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10012025.csv"
+  },
+  "2025-01-13": {
+   "date": "2025-01-13",
+   "raw_sha256": "d50b063ff9b0c88c8e225d087ce1fc8569012b89375d8186c99b70ee2b1059b5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13012025.csv"
+  },
+  "2025-01-14": {
+   "date": "2025-01-14",
+   "raw_sha256": "f8445fe9a797ac7b11d4e381fb81e5f7826cff786260d9d8bda6ba7873d401bf",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14012025.csv"
+  },
+  "2025-01-15": {
+   "date": "2025-01-15",
+   "raw_sha256": "96996cf5c00ffcb84a27a8ff3eec2efaecceacb94fd6851e83bf0bfaa8eccb09",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15012025.csv"
+  },
+  "2025-01-16": {
+   "date": "2025-01-16",
+   "raw_sha256": "e69f53707150af2611c8bd57e5d05651770eae4ef02b922a7deba9546375b685",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16012025.csv"
+  },
+  "2025-01-17": {
+   "date": "2025-01-17",
+   "raw_sha256": "772191f98f21a24c0aa9e46d0897bdebdb53296121622c470f26204d6fd782b6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17012025.csv"
+  },
+  "2025-01-20": {
+   "date": "2025-01-20",
+   "raw_sha256": "652a1cebc5c8c771450ea279446b643171a4f3c9b105d45e3be9aa6799b2bf78",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20012025.csv"
+  },
+  "2025-01-21": {
+   "date": "2025-01-21",
+   "raw_sha256": "bd39af1e1f6f3d80cf21198d38094ddde3029543a4bffc2a682767e703389f7a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21012025.csv"
+  },
+  "2025-01-22": {
+   "date": "2025-01-22",
+   "raw_sha256": "75fbfccf260d6645f933f5f8efdf3240f03c860471ef4db0f5ecffb5328f599e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22012025.csv"
+  },
+  "2025-01-23": {
+   "date": "2025-01-23",
+   "raw_sha256": "8ca7c58eb19cab11515d12a02bae3fb4761cf4d5f8e6527cbc053229d84ea956",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23012025.csv"
+  },
+  "2025-01-24": {
+   "date": "2025-01-24",
+   "raw_sha256": "23d781cbc4bd348572586a6572783fd9cd7cb94ee96bd945e1ed311bc311c22c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24012025.csv"
+  },
+  "2025-01-27": {
+   "date": "2025-01-27",
+   "raw_sha256": "7b9db2f7d03887bbd0e9fa75932f5c94ecd62ede7f7b424fccb75a144f647dbe",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27012025.csv"
+  },
+  "2025-01-28": {
+   "date": "2025-01-28",
+   "raw_sha256": "91fe422a23e6c9b015883b86bb575ad4502d33c77900fd6a0747a9f2a2a502a3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28012025.csv"
+  },
+  "2025-01-29": {
+   "date": "2025-01-29",
+   "raw_sha256": "e620bc1eef0dc9e4832134e1e5cbfe04beffc8348e98597ec24f1d8ceaaf292c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29012025.csv"
+  },
+  "2025-01-30": {
+   "date": "2025-01-30",
+   "raw_sha256": "f28290fd41890d492e23dc809cfd00774eb05d7d161cfd41f894f21b52c407ac",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30012025.csv"
+  },
+  "2025-01-31": {
+   "date": "2025-01-31",
+   "raw_sha256": "3dc6dff9d7b9147f6fc96bdbf6272d0b82e841db12901dd275030cd1a15b79b3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31012025.csv"
+  },
+  "2025-02-01": {
+   "date": "2025-02-01",
+   "raw_sha256": "d90ad0e10669deab8477bbd4019294ed2c66ee4250a1863398ef12ee1a456309",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01022025.csv"
+  },
+  "2025-02-03": {
+   "date": "2025-02-03",
+   "raw_sha256": "a65303e55c5783c4b35279170325428ca2a43e16208381cf4a9b5d292cca40fe",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03022025.csv"
+  },
+  "2025-02-04": {
+   "date": "2025-02-04",
+   "raw_sha256": "01464eb84810f51605ab04533efe20342041c51453978b28b770752521af2e27",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04022025.csv"
+  },
+  "2025-02-05": {
+   "date": "2025-02-05",
+   "raw_sha256": "248ae73c584f7c54525e54832b0e3f6463199c9a0d9db5cce651ac6c4ab70656",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05022025.csv"
+  },
+  "2025-02-06": {
+   "date": "2025-02-06",
+   "raw_sha256": "46e62afa1f9fa30a5b777c8f7a1034bf682b07ee801b2614b442fa3b8a728563",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06022025.csv"
+  },
+  "2025-02-07": {
+   "date": "2025-02-07",
+   "raw_sha256": "05413d0227c2dce7b09eff77696b8870a1f56cf53a9647411e37ec77680d3915",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07022025.csv"
+  },
+  "2025-02-10": {
+   "date": "2025-02-10",
+   "raw_sha256": "695f34bbe7de7fe3f9705bf2a971127e05a2adabfbece2dc1c4201b5828dc234",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10022025.csv"
+  },
+  "2025-02-11": {
+   "date": "2025-02-11",
+   "raw_sha256": "9a02a9eadec729f37b9c56f7ea6f332de6e18a9205f2a553483a3900f54e4734",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11022025.csv"
+  },
+  "2025-02-12": {
+   "date": "2025-02-12",
+   "raw_sha256": "32ca382bed6fc9e98bdb150d256cdeb20ce014676910b20a8362bc67e45f7e6b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12022025.csv"
+  },
+  "2025-02-13": {
+   "date": "2025-02-13",
+   "raw_sha256": "c57f3657690be451c732a4c5ef86e9a84e52170da28d9611ac614bfe5c4d641f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13022025.csv"
+  },
+  "2025-02-14": {
+   "date": "2025-02-14",
+   "raw_sha256": "77be97230e2315bc965ceb431bceeea6b4d26d6f15f9994ffc2b1551174874bd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14022025.csv"
+  },
+  "2025-02-17": {
+   "date": "2025-02-17",
+   "raw_sha256": "bb7734e5e902f0d0b637782e2d20a213464221667132eeec80c180fc03d0f0ca",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17022025.csv"
+  },
+  "2025-02-18": {
+   "date": "2025-02-18",
+   "raw_sha256": "6f9a5d3a47767ca1f6383d3877fb69a93dc48c459e233b531946352428cd7c27",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18022025.csv"
+  },
+  "2025-02-19": {
+   "date": "2025-02-19",
+   "raw_sha256": "12c5a3b8e7e2f11ab005630d2102fac66be91308032cba65f5a2dab7c3c7fcd7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19022025.csv"
+  },
+  "2025-02-20": {
+   "date": "2025-02-20",
+   "raw_sha256": "517b639fc10f078f7215cb64f1ccfbbf1b44905f52abda30c66b61a997802e97",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20022025.csv"
+  },
+  "2025-02-21": {
+   "date": "2025-02-21",
+   "raw_sha256": "38593f09d7150a37e74e7e99010e1c002cdb2af310f6cd11dab5c0c0be0dca0d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21022025.csv"
+  },
+  "2025-02-24": {
+   "date": "2025-02-24",
+   "raw_sha256": "df02eae829485eeaa55c26010e3f057321f97fa316efb41b2fd532879649bad0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24022025.csv"
+  },
+  "2025-02-25": {
+   "date": "2025-02-25",
+   "raw_sha256": "9668049a610f4323ba3ef78b28029a948c04bbd956a61645ac1631d6be249a0e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25022025.csv"
+  },
+  "2025-02-27": {
+   "date": "2025-02-27",
+   "raw_sha256": "d68e8e5c6a01babe4dc61cb35c0ece6a8d0650d323043d6c4672d083c2fff63a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27022025.csv"
+  },
+  "2025-02-28": {
+   "date": "2025-02-28",
+   "raw_sha256": "72f0113c0a0360d0388265c6510e1feae94ad6412eccc69a0034507911422b46",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28022025.csv"
+  },
+  "2025-03-03": {
+   "date": "2025-03-03",
+   "raw_sha256": "ad64bcf747906a9628fd74d87511f35b8ba7b0be0152371ed12409e711633d66",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03032025.csv"
+  },
+  "2025-03-04": {
+   "date": "2025-03-04",
+   "raw_sha256": "e26203e87d91ccc9f853a9ca3228b5c27f7f522bf65276c419d28a57aa9d6cf8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04032025.csv"
+  },
+  "2025-03-05": {
+   "date": "2025-03-05",
+   "raw_sha256": "1ddca8355b9665ec0988c92fd691de07ac438a143d4f14884c4a54f4aca2e3dc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05032025.csv"
+  },
+  "2025-03-06": {
+   "date": "2025-03-06",
+   "raw_sha256": "cbdec18c143720d8487db065eb1446619c5100419b4a1a04102273059b5886ae",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06032025.csv"
+  },
+  "2025-03-07": {
+   "date": "2025-03-07",
+   "raw_sha256": "4cfc84373f6bde16c09038fdece36d32e0cd28978b50662c7d1913cae2dc13d0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07032025.csv"
+  },
+  "2025-03-10": {
+   "date": "2025-03-10",
+   "raw_sha256": "58473fc04c54a47bbdf2aba30d7ff38427026183ab512a0ca829a109e961f932",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10032025.csv"
+  },
+  "2025-03-11": {
+   "date": "2025-03-11",
+   "raw_sha256": "d87d828272499daa4127d2aba40bb824ca274d9b394e30460c0513b1f4b79638",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11032025.csv"
+  },
+  "2025-03-12": {
+   "date": "2025-03-12",
+   "raw_sha256": "73840620e3ec0bdfaa73168e5b6d8d58104e49e4f4af2b9c37f13db7b1d36a47",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12032025.csv"
+  },
+  "2025-03-13": {
+   "date": "2025-03-13",
+   "raw_sha256": "5ac93014aed1e8fa12a4530ce316330e8dc3f3791f2437792b0c569fcb88927e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13032025.csv"
+  },
+  "2025-03-17": {
+   "date": "2025-03-17",
+   "raw_sha256": "caac83f0def019964ff97349ca81630246dac65e81d1ca2effd86727664f6088",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17032025.csv"
+  },
+  "2025-03-18": {
+   "date": "2025-03-18",
+   "raw_sha256": "82d97f5b3248c41d4989d09e7de4db6e2f6c2ddfcfe299ceca0d045ded562973",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18032025.csv"
+  },
+  "2025-03-19": {
+   "date": "2025-03-19",
+   "raw_sha256": "68b28cba033879c70de4cd42e251a7e14cf7a728e4b818aaf3d45f3f04afaad2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19032025.csv"
+  },
+  "2025-03-20": {
+   "date": "2025-03-20",
+   "raw_sha256": "ab731842cff520fa1ddd7d13304a2a20ca034f5032418c6208eae2c297ba9f2c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20032025.csv"
+  },
+  "2025-03-21": {
+   "date": "2025-03-21",
+   "raw_sha256": "136eb4bdbceb430721d3fd3113f173abca2686969ca75cc59c4243e61c70aebe",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21032025.csv"
+  },
+  "2025-03-24": {
+   "date": "2025-03-24",
+   "raw_sha256": "3397039e12e344d255a1122005f8eb01317a1f5c42a59bfa40aea88683480701",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24032025.csv"
+  },
+  "2025-03-25": {
+   "date": "2025-03-25",
+   "raw_sha256": "59b739a1b8e2df9ab8d14fd2d12da8947bcb993d714c2a9a1e8118c363e6e9e0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25032025.csv"
+  },
+  "2025-03-26": {
+   "date": "2025-03-26",
+   "raw_sha256": "63b752a16fc01cca26b68e8c2df8c16f80239548c8ad87aed94b3a3ddee49b9e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26032025.csv"
+  },
+  "2025-03-27": {
+   "date": "2025-03-27",
+   "raw_sha256": "97253f286e047dc540bc7b309ade4dec37180ace43b0bc4977a3496d0ed528b4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27032025.csv"
+  },
+  "2025-03-28": {
+   "date": "2025-03-28",
+   "raw_sha256": "fc760111fe4f3246db87bf8887ecea360fe48ad04ecb0f82492a9a68dbfdfaae",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28032025.csv"
+  },
+  "2025-04-01": {
+   "date": "2025-04-01",
+   "raw_sha256": "4263f6ad06097f7b040467090866940f552ebc06c1df55ea81ef9596ab61f8e2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01042025.csv"
+  },
+  "2025-04-02": {
+   "date": "2025-04-02",
+   "raw_sha256": "90e43b7eb459300d8abf6445449a1e74165ff65c8dac728877de86ce3d306f8c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02042025.csv"
+  },
+  "2025-04-03": {
+   "date": "2025-04-03",
+   "raw_sha256": "0846f7a76b82ba5b69c34e761d714e2e419c95f1a25430b4cbb42c31e86a0960",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03042025.csv"
+  },
+  "2025-04-04": {
+   "date": "2025-04-04",
+   "raw_sha256": "a2a44edba8e30922096ece1b9d069f902f81f647aceff63660f4f88dd554ef7a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04042025.csv"
+  },
+  "2025-04-07": {
+   "date": "2025-04-07",
+   "raw_sha256": "6a7f0c94ffbea141feeeed21abbab11bb850c36be72b4a413790439b15f1c582",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07042025.csv"
+  },
+  "2025-04-08": {
+   "date": "2025-04-08",
+   "raw_sha256": "a59fd4c7ac9678b7752e2fecf2caee39253b97e85e8579f0b786bb78d642dde9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08042025.csv"
+  },
+  "2025-04-09": {
+   "date": "2025-04-09",
+   "raw_sha256": "b09cefa98c906c7a66b1d6feb8a7d813236e3a3a24b4f27ea7a4c4f2fe552724",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09042025.csv"
+  },
+  "2025-04-11": {
+   "date": "2025-04-11",
+   "raw_sha256": "b6b2507dbac6534ad6e6793f6901221fd47e4b358fab59362f2327c58874344c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11042025.csv"
+  },
+  "2025-04-15": {
+   "date": "2025-04-15",
+   "raw_sha256": "d700fbbbd5a862e67d1ce85ef096a97753b7c08797550adf1d88051310c81d41",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15042025.csv"
+  },
+  "2025-04-16": {
+   "date": "2025-04-16",
+   "raw_sha256": "027ecf273fa5e2aac44b06b7ee8ba9b984b605feaada3d4c814870c7707cade2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16042025.csv"
+  },
+  "2025-04-17": {
+   "date": "2025-04-17",
+   "raw_sha256": "45151bc8931fff18cc4ac9d5c65421a945f463efd89814a68752a4cc33adb091",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17042025.csv"
+  },
+  "2025-04-21": {
+   "date": "2025-04-21",
+   "raw_sha256": "f80209d531472215445d0e0ca815d5200fe97c1a6a11362b9bc81dd7b7dc904f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21042025.csv"
+  },
+  "2025-04-22": {
+   "date": "2025-04-22",
+   "raw_sha256": "9c6f7759437e541f3986054b21f295560e5be68a9095fa663ad40f52031a967f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22042025.csv"
+  },
+  "2025-04-23": {
+   "date": "2025-04-23",
+   "raw_sha256": "f686cb542dff2669ff982f04bf1f57791b6710023224940bd37e2d9d73cdbadc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23042025.csv"
+  },
+  "2025-04-24": {
+   "date": "2025-04-24",
+   "raw_sha256": "868b63aa96c2f9a849eb4064c931c13e56eeedd77075b15d70975f9c6a03e6e0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24042025.csv"
+  },
+  "2025-04-25": {
+   "date": "2025-04-25",
+   "raw_sha256": "4042c44109d2a37cef31e25b2005f24096ce445d86d5850d09c2e29a51002e13",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25042025.csv"
+  },
+  "2025-04-28": {
+   "date": "2025-04-28",
+   "raw_sha256": "92c029a9910cb1e4b3b1ba5fa6693cc8a4893bba56618f9a734ea88ebad70260",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28042025.csv"
+  },
+  "2025-04-29": {
+   "date": "2025-04-29",
+   "raw_sha256": "86aabd1fc279f37d83fad08983c4574ec9a7df67369784c3ee584c3c0ef2a0f4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29042025.csv"
+  },
+  "2025-04-30": {
+   "date": "2025-04-30",
+   "raw_sha256": "8b8b56d917297adc79d58950714cabcc14224dea3684bf8f7509a1aa77bdc383",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30042025.csv"
+  },
+  "2025-05-02": {
+   "date": "2025-05-02",
+   "raw_sha256": "442cb8df589aacc2accd50481449c4d34e20229e4deff7968d99363282a7c116",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02052025.csv"
+  },
+  "2025-05-05": {
+   "date": "2025-05-05",
+   "raw_sha256": "704b877c51cd8541d2e072a6a4aca03763c98ac109a442eb8ac20abbace8afbb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05052025.csv"
+  },
+  "2025-05-06": {
+   "date": "2025-05-06",
+   "raw_sha256": "9d6e8f4d3e800876b9b3ed2effb49990d2d2efc407950112a6e41e557d3471e8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06052025.csv"
+  },
+  "2025-05-07": {
+   "date": "2025-05-07",
+   "raw_sha256": "d2f165482824123d87dbda0ea85f7bcb507b421c1d647f9205976ca2b13732d9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07052025.csv"
+  },
+  "2025-05-08": {
+   "date": "2025-05-08",
+   "raw_sha256": "3f3d21f531fc8ef0e73cd9028aff3e2a5aa9a321407b5fba61dd0e19be232e9c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08052025.csv"
+  },
+  "2025-05-09": {
+   "date": "2025-05-09",
+   "raw_sha256": "3a4daefe27c51f77510ca95e0c66119972304e9b1276d50f896b83834bda0428",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09052025.csv"
+  },
+  "2025-05-12": {
+   "date": "2025-05-12",
+   "raw_sha256": "1c5284e362d7b7c60f0dd19c9f688fe0fb4cc2d0ffdfaf167f41cb3bbcc9a88b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12052025.csv"
+  },
+  "2025-05-13": {
+   "date": "2025-05-13",
+   "raw_sha256": "175a21aebdf97cced11990869b7a5565fe8c8bc4398b0467815400b085648042",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13052025.csv"
+  },
+  "2025-05-14": {
+   "date": "2025-05-14",
+   "raw_sha256": "366275d43adb97e6cdeec5a760f2a0087d0cf7430a9125c5b910a3edf8b63fc0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14052025.csv"
+  },
+  "2025-05-15": {
+   "date": "2025-05-15",
+   "raw_sha256": "78168aeacac63425da6d38d1d0dedebe811536e90b835e85fdd2fecce3c9a6fb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15052025.csv"
+  },
+  "2025-05-16": {
+   "date": "2025-05-16",
+   "raw_sha256": "30caebca1b49e36616576e0de7ce8684c7cad1dc6322b748e77bca3c40a7465c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16052025.csv"
+  },
+  "2025-05-19": {
+   "date": "2025-05-19",
+   "raw_sha256": "a02cd9bacfcc0fdcdc8fd334e689fb75b250a03a6ebeb80c5aa19c413b266b0d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19052025.csv"
+  },
+  "2025-05-20": {
+   "date": "2025-05-20",
+   "raw_sha256": "2325ca83abaef90e499993aa5b6eb5467fa75fbde9fa84a53a82792e24f25150",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20052025.csv"
+  },
+  "2025-05-21": {
+   "date": "2025-05-21",
+   "raw_sha256": "57111d0b75171dcb2ed22b2a866305edced8ebbc3843d3bcb387f1bcf97d666d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21052025.csv"
+  },
+  "2025-05-22": {
+   "date": "2025-05-22",
+   "raw_sha256": "a9a4bd82759ae62a9f073031afc8bc29b6cf6cba4c05dfbeb6076effaab2a920",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22052025.csv"
+  },
+  "2025-05-23": {
+   "date": "2025-05-23",
+   "raw_sha256": "5032538daa9cef8a5c617af1c64720b48d91c8b5223334884951dd9f92b5fbfc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23052025.csv"
+  },
+  "2025-05-26": {
+   "date": "2025-05-26",
+   "raw_sha256": "43c4cd1f45b3e29e288996d6fd41cda232fbb72318045c4b052163925e0b1c29",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26052025.csv"
+  },
+  "2025-05-27": {
+   "date": "2025-05-27",
+   "raw_sha256": "1a7417ff7761d7ff10d45890dec8e152ced4760a9385055cd9e7ea2bf2ae552e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27052025.csv"
+  },
+  "2025-05-28": {
+   "date": "2025-05-28",
+   "raw_sha256": "f76f04dd4192ab717fa3985c8c24f543791b67949c780ade5fac8945134b394b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28052025.csv"
+  },
+  "2025-05-29": {
+   "date": "2025-05-29",
+   "raw_sha256": "312b329c6c0ac955fdd3da184ccb630420346be67342b643981d8b5214fb0738",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29052025.csv"
+  },
+  "2025-05-30": {
+   "date": "2025-05-30",
+   "raw_sha256": "c255872083f0bb8f28a7b630240a4364ccdf7eed04bde6ef89a54b43e7af64a0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30052025.csv"
+  },
+  "2025-06-02": {
+   "date": "2025-06-02",
+   "raw_sha256": "ec4bc5189ae601894d0492133783e9fc0beae8fac65497624099e8086955e6d7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02062025.csv"
+  },
+  "2025-06-03": {
+   "date": "2025-06-03",
+   "raw_sha256": "a6b7ad9ba2fc5c01eb7f731399c97804f85e2e9bd4d0d2e536d94747f6d1aa4e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03062025.csv"
+  },
+  "2025-06-04": {
+   "date": "2025-06-04",
+   "raw_sha256": "3e7938c2cabfbe5447724efc23463e9ffb66aaa14432f49b0f8b110e30d94243",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04062025.csv"
+  },
+  "2025-06-05": {
+   "date": "2025-06-05",
+   "raw_sha256": "35b198de8caae5524b5c9b0c1784733a9786f3ee6b3821d1469b1271f49b8978",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05062025.csv"
+  },
+  "2025-06-06": {
+   "date": "2025-06-06",
+   "raw_sha256": "8586bb3465cb399d37211ca6a86f7ba81ce6c34bce26c01e756fe3f180d347d4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06062025.csv"
+  },
+  "2025-06-09": {
+   "date": "2025-06-09",
+   "raw_sha256": "0fe9cd9eccd4d90126518f243d68942efb99bf6fc28107fa3ff463c7761a3a6c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09062025.csv"
+  },
+  "2025-06-10": {
+   "date": "2025-06-10",
+   "raw_sha256": "1efe6ded22f42b1dda5e21371554edcd002ab1340e4bf340fabc95b9a3217ead",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10062025.csv"
+  },
+  "2025-06-11": {
+   "date": "2025-06-11",
+   "raw_sha256": "cd3e573986e758eab52d07ae24e63a27382c4f748ab73b96a6046dec455aa0a8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11062025.csv"
+  },
+  "2025-06-12": {
+   "date": "2025-06-12",
+   "raw_sha256": "d90b858d41d022493b13858c7b24439cc69d5eaecbc33c9143e2371150cf8eb4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12062025.csv"
+  },
+  "2025-06-13": {
+   "date": "2025-06-13",
+   "raw_sha256": "f8c4c165cc31faee81af7c7685fc6a07144cbcf48d13e1dba35c4c6f54b3f164",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13062025.csv"
+  },
+  "2025-06-16": {
+   "date": "2025-06-16",
+   "raw_sha256": "42f3e3824572655b558d8a7c6a8b69977f02d11244d086cddd1f319e73891714",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16062025.csv"
+  },
+  "2025-06-17": {
+   "date": "2025-06-17",
+   "raw_sha256": "88724162e3ff99f1effa0a09879e770d9aeb0d684bafdbf29c21b57995e6282b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17062025.csv"
+  },
+  "2025-06-18": {
+   "date": "2025-06-18",
+   "raw_sha256": "1c6e01bcb2e2bce4c84236e9294052935a6d7ff0a60a5d3f1d305cbb3c94db0f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18062025.csv"
+  },
+  "2025-06-19": {
+   "date": "2025-06-19",
+   "raw_sha256": "db66327708fc9fd7d2a2e5d1d3b7ced9ccde16de4279f219f872d10da34bd58d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19062025.csv"
+  },
+  "2025-06-20": {
+   "date": "2025-06-20",
+   "raw_sha256": "00e2a261eca720a4d7f9aadc6fca4f2c83433c7575e4c7ecd24764123f4c23e6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20062025.csv"
+  },
+  "2025-06-23": {
+   "date": "2025-06-23",
+   "raw_sha256": "975475c0954eb35489987ad8681365b50e378c6d00ed11f057457b0996e87597",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23062025.csv"
+  },
+  "2025-06-24": {
+   "date": "2025-06-24",
+   "raw_sha256": "c8843259be14395c56e8214712731ad2858e61225e4d5aa073196ea2b9c16b24",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24062025.csv"
+  },
+  "2025-06-25": {
+   "date": "2025-06-25",
+   "raw_sha256": "eb987427ef0d8755168c0b4e949e59074e28b9f944f4c196253f57626fb8aaf4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25062025.csv"
+  },
+  "2025-06-26": {
+   "date": "2025-06-26",
+   "raw_sha256": "e86822a3b784667a4e2c8ef186105a724aa9c0944b236bf22efe39bf96d48e76",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26062025.csv"
+  },
+  "2025-06-27": {
+   "date": "2025-06-27",
+   "raw_sha256": "f85eab64b1f02a6a2c10cb40a8e9eb57f2755bdc98e26b7a05df62d7d8f1ef10",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27062025.csv"
+  },
+  "2025-06-30": {
+   "date": "2025-06-30",
+   "raw_sha256": "5205e4e473bcc3bf36c16713fc9d53f03bca5167605bbac754bb965acfbefcf2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30062025.csv"
+  },
+  "2025-07-01": {
+   "date": "2025-07-01",
+   "raw_sha256": "437136b59bc1a47d90274250efd70aa66dd6dea99a1eddfa984de43801be7d35",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01072025.csv"
+  },
+  "2025-07-02": {
+   "date": "2025-07-02",
+   "raw_sha256": "df1f4f7c0d1f217af3fa99c04a82a50be933f1c68899114d02565ec74858056e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02072025.csv"
+  },
+  "2025-07-03": {
+   "date": "2025-07-03",
+   "raw_sha256": "c10ce29ec79644d614bf397ee44f95c09125d18f91c82f6c8dcad4082286152e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03072025.csv"
+  },
+  "2025-07-04": {
+   "date": "2025-07-04",
+   "raw_sha256": "64e1056ec182aa1bffd1872e73549f2478043a465310032e27adbc6c3e3f07d5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04072025.csv"
+  },
+  "2025-07-07": {
+   "date": "2025-07-07",
+   "raw_sha256": "efaf5760a25506604a74f2915a8ba538aa0dba598f969d9b5af29b4b23a8c061",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07072025.csv"
+  },
+  "2025-07-08": {
+   "date": "2025-07-08",
+   "raw_sha256": "0e7b5c320b98951ef0610969e760dc72ff29ef575d3ba02096d4cdc747ea3246",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08072025.csv"
+  },
+  "2025-07-09": {
+   "date": "2025-07-09",
+   "raw_sha256": "c217a965609f1241bb9eae7a145560ec097b0520411b5c5e5ae5fd73fc4e465a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09072025.csv"
+  },
+  "2025-07-10": {
+   "date": "2025-07-10",
+   "raw_sha256": "2e2dfbcb5fbdafd7ffb9858072b190fe56bbad400da39903a332fabb5056220e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10072025.csv"
+  },
+  "2025-07-11": {
+   "date": "2025-07-11",
+   "raw_sha256": "7e11d5866ad56722e632d884dfca0bd210f4fe4acfe6021d9a003a43597cbea7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11072025.csv"
+  },
+  "2025-07-14": {
+   "date": "2025-07-14",
+   "raw_sha256": "f87b7dd2c72aedfcebe3c3d2daeb11a82b26bcd920a73dc60c1391d5f66fd3bd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14072025.csv"
+  },
+  "2025-07-15": {
+   "date": "2025-07-15",
+   "raw_sha256": "4bdbfea2b07182578da5ea4294e13fece48fa6f0bc40fd81b0a5b1378cb7c45f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15072025.csv"
+  },
+  "2025-07-16": {
+   "date": "2025-07-16",
+   "raw_sha256": "928928b7b69011ed7cfd9203e959b0f4455b4c82cc1a993aaff21f355f213bc3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16072025.csv"
+  },
+  "2025-07-17": {
+   "date": "2025-07-17",
+   "raw_sha256": "dc66e082f5cf6a844e350663b37a6df186172f9efb5b9374c1f103e95d9a7d3b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17072025.csv"
+  },
+  "2025-07-18": {
+   "date": "2025-07-18",
+   "raw_sha256": "082a7808067eac158b9d19b67e76a6318415bc696a2bcf29d62a0c4d45ff9eb9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18072025.csv"
+  },
+  "2025-07-21": {
+   "date": "2025-07-21",
+   "raw_sha256": "a61272ed59382f6352219ec348ef2fa03862a2dbec3c83fbd85ffd9be5e208df",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21072025.csv"
+  },
+  "2025-07-22": {
+   "date": "2025-07-22",
+   "raw_sha256": "7ca52736770ad5b39998a915a998ddcde36b5b679ed89060501b43261f7521d9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22072025.csv"
+  },
+  "2025-07-23": {
+   "date": "2025-07-23",
+   "raw_sha256": "c7c60c4b6108dcb1719e8608fd7cea0ff40f537d12bb0bb5a96b5b8d535d7225",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23072025.csv"
+  },
+  "2025-07-24": {
+   "date": "2025-07-24",
+   "raw_sha256": "8309cbf867852cf3d7f99da2bbef74f8f70ac653cf5f97e4cd65923dc9ee4220",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24072025.csv"
+  },
+  "2025-07-25": {
+   "date": "2025-07-25",
+   "raw_sha256": "2f9b0e2044d84e129a7ce05157ff70f30aa2ed7136e0ebd90df7678415da14c5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25072025.csv"
+  },
+  "2025-07-28": {
+   "date": "2025-07-28",
+   "raw_sha256": "49b8fa90e312f8ccd4b778afc2c4d304991881e9b608ff0a3a80ad15f87ea70b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28072025.csv"
+  },
+  "2025-07-29": {
+   "date": "2025-07-29",
+   "raw_sha256": "76d756e31e79a45862a1e762ab0437ae4b71956a69867ba74c4bed69d2458f7f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29072025.csv"
+  },
+  "2025-07-30": {
+   "date": "2025-07-30",
+   "raw_sha256": "79a5dadfc5ebca40a3c647c30cf0c6c4fe18f1ff24a81063027ad4e90367b7b1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30072025.csv"
+  },
+  "2025-07-31": {
+   "date": "2025-07-31",
+   "raw_sha256": "b89f5692688853b5773453608265ea08394f9f51394e310ec77c82fa9bcab8c2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31072025.csv"
+  },
+  "2025-08-01": {
+   "date": "2025-08-01",
+   "raw_sha256": "a6d9b2d5bfedb551c3b07afcab795c18c9bcbf810738c959b541d36379880156",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01082025.csv"
+  },
+  "2025-08-04": {
+   "date": "2025-08-04",
+   "raw_sha256": "157c578550e9c9adce68cb0c4e13789f925270f3d9940c702c481b7234740076",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04082025.csv"
+  },
+  "2025-08-05": {
+   "date": "2025-08-05",
+   "raw_sha256": "b68598d92bda265fa89183fde49464400989ed40f7184d9079299178819a8c58",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05082025.csv"
+  },
+  "2025-08-06": {
+   "date": "2025-08-06",
+   "raw_sha256": "f16507e17e3ae42aab849843b1ec4bd221c874ac55c3e999b4ab07a0f44ce427",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06082025.csv"
+  },
+  "2025-08-07": {
+   "date": "2025-08-07",
+   "raw_sha256": "b3f32da6b4eedbd1c967fb919ce7909b4c85db5b40be2023cc8172a5b6ef66b1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07082025.csv"
+  },
+  "2025-08-08": {
+   "date": "2025-08-08",
+   "raw_sha256": "2a69cf58b13a1dfdfb215888fe7501f9ff2c400eb9aa292e77f62fa52b75b9e0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08082025.csv"
+  },
+  "2025-08-11": {
+   "date": "2025-08-11",
+   "raw_sha256": "3d9faef7c19cf6236d43616ac2e9659901cc3b87705a1f5911c391eda3a0df07",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11082025.csv"
+  },
+  "2025-08-12": {
+   "date": "2025-08-12",
+   "raw_sha256": "5553875cf2a5e2599065eab1c20ce974b6248c82e9cc5090c07b4f20d7c51f28",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12082025.csv"
+  },
+  "2025-08-13": {
+   "date": "2025-08-13",
+   "raw_sha256": "8719aa0d59a85b1b7753ba48b3ea4802821925acf524c50f09910ac09b67bae2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13082025.csv"
+  },
+  "2025-08-14": {
+   "date": "2025-08-14",
+   "raw_sha256": "07e382bc95daa5c0c41f18b4e67a6d661ac62e1219008ed322455100419855d4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14082025.csv"
+  },
+  "2025-08-18": {
+   "date": "2025-08-18",
+   "raw_sha256": "46d322e703d5fc444c18daa73fbad0fbe479bbe229573c8727141a15acee1d19",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18082025.csv"
+  },
+  "2025-08-19": {
+   "date": "2025-08-19",
+   "raw_sha256": "50807dc95544fcb90f109e593c5a446e10e0afee5447fd3e0cb9b07768c7fd8b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19082025.csv"
+  },
+  "2025-08-20": {
+   "date": "2025-08-20",
+   "raw_sha256": "4fc9173ae2613eafbb37dec7a3812fd796d283e231f81451cf66b3309064deaa",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20082025.csv"
+  },
+  "2025-08-21": {
+   "date": "2025-08-21",
+   "raw_sha256": "752e367a0a42629677aa14aba245ead98208e209a39cc802b47d061d5f876568",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21082025.csv"
+  },
+  "2025-08-22": {
+   "date": "2025-08-22",
+   "raw_sha256": "03347073f53e87f893e802ca02b7998108bb49a6b551da0fbebf3bd1dbff1ffe",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22082025.csv"
+  },
+  "2025-08-25": {
+   "date": "2025-08-25",
+   "raw_sha256": "a00fdc64de8605d2cbb6b6a84bfe371f3246ec0fe0a6fb5b6ca91c4573df8484",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25082025.csv"
+  },
+  "2025-08-26": {
+   "date": "2025-08-26",
+   "raw_sha256": "ac33ac9e97a4ea7ff4893806bbbd98eaaf43538100f720e68c03b46fdcb492a0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26082025.csv"
+  },
+  "2025-08-28": {
+   "date": "2025-08-28",
+   "raw_sha256": "fc34e59a5ec8ed89223f5c814b7c58eb35f77a9d6288537444e76b22213bfa8e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28082025.csv"
+  },
+  "2025-08-29": {
+   "date": "2025-08-29",
+   "raw_sha256": "8505d948df2ecaf127167038ba8a41fbe1cdda9283212749ada5fff7df4b5a2e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29082025.csv"
+  },
+  "2025-09-01": {
+   "date": "2025-09-01",
+   "raw_sha256": "6b9a5b014bfefdaf167e8fd15ce83acf87c24dd28a7b991c4646a927aaf953c0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01092025.csv"
+  },
+  "2025-09-02": {
+   "date": "2025-09-02",
+   "raw_sha256": "e73c8fe408a2e6895800c5841357b7d7b2d1e7056e8afadc6f1167a317c95f76",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02092025.csv"
+  },
+  "2025-09-03": {
+   "date": "2025-09-03",
+   "raw_sha256": "c67821b1916dc2504d2946f9d548c43bdb5804cccbecfda81cb875d7a34f7744",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03092025.csv"
+  },
+  "2025-09-04": {
+   "date": "2025-09-04",
+   "raw_sha256": "ce24afe1697f3147748a6f5f3fe61c8d4dcd3df34ced6cc7827df5c9f3142bf3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04092025.csv"
+  },
+  "2025-09-05": {
+   "date": "2025-09-05",
+   "raw_sha256": "d8134738d237d32adf2300a89b6c4de19cbcd56c85c5170d3b1a3a1c50207f8f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05092025.csv"
+  },
+  "2025-09-08": {
+   "date": "2025-09-08",
+   "raw_sha256": "4b85521faa9b558ecb942e5e911b386d92765722aade6952d06613bc461d1434",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08092025.csv"
+  },
+  "2025-09-09": {
+   "date": "2025-09-09",
+   "raw_sha256": "8f58762abba417899d7f204775828a3fa03fc99e0001907723988a84d1f4641b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09092025.csv"
+  },
+  "2025-09-10": {
+   "date": "2025-09-10",
+   "raw_sha256": "f05532a5468198ccaabe05ea2524213c44cbb21fb3812e2941ff259107cd6414",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10092025.csv"
+  },
+  "2025-09-11": {
+   "date": "2025-09-11",
+   "raw_sha256": "d560affcfc96b9d307d1e761875565f6936bc25f3c6b4550c3c4d9a778bc6fa7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11092025.csv"
+  },
+  "2025-09-12": {
+   "date": "2025-09-12",
+   "raw_sha256": "4263e393c48ae6a570e74fea6fdab60f43f80af36de21903a57064aec0430ee9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12092025.csv"
+  },
+  "2025-09-15": {
+   "date": "2025-09-15",
+   "raw_sha256": "12d0b54b1ba3e888f1216c8c3c0e37c23e42c6aea720a2b85426f279f7c6cc39",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15092025.csv"
+  },
+  "2025-09-16": {
+   "date": "2025-09-16",
+   "raw_sha256": "2521a35367d95f4ef457eae82eee83895e1fa58cf4b0a9c9a0faea31e62145aa",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16092025.csv"
+  },
+  "2025-09-17": {
+   "date": "2025-09-17",
+   "raw_sha256": "93098217824243f2ca4452b3679a69ebb732c2dfdc4d0f10bf75cadac2a3efdb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17092025.csv"
+  },
+  "2025-09-18": {
+   "date": "2025-09-18",
+   "raw_sha256": "3e4d7bade4597bfecbbe1d2e355a71b53193bcb6e12af153d5d7b6c028e86399",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18092025.csv"
+  },
+  "2025-09-19": {
+   "date": "2025-09-19",
+   "raw_sha256": "13acf17de662bacdc282926a50592ae6e2c89a69ad3e3a4f4f1cbb0dae3ec29c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19092025.csv"
+  },
+  "2025-09-22": {
+   "date": "2025-09-22",
+   "raw_sha256": "6b86605256bda60855bbcb1a85c3bdaae689835c351c529227d2d1ff016ec566",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22092025.csv"
+  },
+  "2025-09-23": {
+   "date": "2025-09-23",
+   "raw_sha256": "3878f86494ece2d3e551382e3920239b619ffaa5adaf92ff33eebd041333fd78",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23092025.csv"
+  },
+  "2025-09-24": {
+   "date": "2025-09-24",
+   "raw_sha256": "0a5aa0947dc9c03cb1d5b52befaa05effd459337499eded592dc4fd67850f103",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24092025.csv"
+  },
+  "2025-09-25": {
+   "date": "2025-09-25",
+   "raw_sha256": "0aee86869b75ed230c7dbd8e98eb6179ea1b38bed226b60df13fda72ca70f409",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25092025.csv"
+  },
+  "2025-09-26": {
+   "date": "2025-09-26",
+   "raw_sha256": "9a3c1a8c4b38f6fbb920b68f4c198675103097a53e523e8500f901dcea9513ef",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26092025.csv"
+  },
+  "2025-09-29": {
+   "date": "2025-09-29",
+   "raw_sha256": "a083ff3840d7c58ec8c3ab1970448204d94646054647eda5e42458529175f185",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29092025.csv"
+  },
+  "2025-09-30": {
+   "date": "2025-09-30",
+   "raw_sha256": "e4eb3bd6b17a6d3131ae6c1aae23419dd4e4966262436458eaf3917e0ec06f09",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30092025.csv"
+  },
+  "2025-10-01": {
+   "date": "2025-10-01",
+   "raw_sha256": "d14a7806c6c551b073664bea1fba8132dfd6d4809f0acd30f9d419ea6790e293",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01102025.csv"
+  },
+  "2025-10-03": {
+   "date": "2025-10-03",
+   "raw_sha256": "fca827704dfa4f87bc505127869b295e7bcb5b0034b8224b6211c5f89f5cd520",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03102025.csv"
+  },
+  "2025-10-06": {
+   "date": "2025-10-06",
+   "raw_sha256": "17c6c4aa38412d460f1c58dd9f94558dace658eec433b1543683f831476e92de",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06102025.csv"
+  },
+  "2025-10-07": {
+   "date": "2025-10-07",
+   "raw_sha256": "a6bab0ea0532e824106929115cc9c46dbc38c68bf61cf6d8b16a27df11c36c01",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07102025.csv"
+  },
+  "2025-10-08": {
+   "date": "2025-10-08",
+   "raw_sha256": "f4b24dd54843df0f32256e48805d9b826dada2a3f4fdb055c67335278d673ec7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08102025.csv"
+  },
+  "2025-10-09": {
+   "date": "2025-10-09",
+   "raw_sha256": "06adb5de719efb789a49c6db5d3fa146b1f57ec80d992a9a984f55e68ff20c06",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09102025.csv"
+  },
+  "2025-10-10": {
+   "date": "2025-10-10",
+   "raw_sha256": "04b17d4d8d324d96f2b5bfe47dcc768dd06f35b74114744f71623604fa956113",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10102025.csv"
+  },
+  "2025-10-13": {
+   "date": "2025-10-13",
+   "raw_sha256": "909ebe36f17260ef68652558c49d554b6cc124e80aeb46477c53c9fc3f48ccc4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13102025.csv"
+  },
+  "2025-10-14": {
+   "date": "2025-10-14",
+   "raw_sha256": "17b5dadccf6d5d37dd966f58c0a1ead5c1da1d63c1fefbf96f9a5cf35d3337a6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14102025.csv"
+  },
+  "2025-10-15": {
+   "date": "2025-10-15",
+   "raw_sha256": "1cd970c84639a50e8bda7480501bf7661f8bee848c0bb9106960348e5ad19bfa",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15102025.csv"
+  },
+  "2025-10-16": {
+   "date": "2025-10-16",
+   "raw_sha256": "a6de8e6294130dda46aef0a4d7c8fdb03a994e7ed9f150f71e9d3319167c7977",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16102025.csv"
+  },
+  "2025-10-17": {
+   "date": "2025-10-17",
+   "raw_sha256": "690406a3af01366152260472c74bcd978b8769f301c1737ca34beedad709dcd6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17102025.csv"
+  },
+  "2025-10-20": {
+   "date": "2025-10-20",
+   "raw_sha256": "f7c92bc123866ef08206323c2e75f49cc30e15503c5d55875760ff22fea05913",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20102025.csv"
+  },
+  "2025-10-21": {
+   "date": "2025-10-21",
+   "raw_sha256": "51c281ca4fb6806cdea7ac4520dfe056208307d52800d8cc95eca0d1d67ae2c0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21102025.csv"
+  },
+  "2025-10-23": {
+   "date": "2025-10-23",
+   "raw_sha256": "c48ac4663f1c5a527978423b60628f0987972ebe1dcb8cc5759a43b1f7159984",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23102025.csv"
+  },
+  "2025-10-24": {
+   "date": "2025-10-24",
+   "raw_sha256": "e8c9a5acf1df5ea9d7685efaad3073b7085285cce689731fc57d3275207f6204",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24102025.csv"
+  },
+  "2025-10-27": {
+   "date": "2025-10-27",
+   "raw_sha256": "87ce03a1c4fd7440c11ee12045b8fa3ebcf3254f3a984cd2dd712f9c4e2054cd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27102025.csv"
+  },
+  "2025-10-28": {
+   "date": "2025-10-28",
+   "raw_sha256": "ef2a6f25905248e24419ce146635ae539ba68dc4e46d4ce7a66836457459235e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28102025.csv"
+  },
+  "2025-10-29": {
+   "date": "2025-10-29",
+   "raw_sha256": "79643f66fdd4b6c2fa51e2f7d05429e3efde6b7f36f9a45ad57bb59e09bdeafd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29102025.csv"
+  },
+  "2025-10-30": {
+   "date": "2025-10-30",
+   "raw_sha256": "3553ecc8fa1a95b090be77b7b8529f1e2d6c157ec71fc9ef870addb7f052b474",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30102025.csv"
+  },
+  "2025-10-31": {
+   "date": "2025-10-31",
+   "raw_sha256": "e83d5c6c2c56112e0eca02cb60f0c670d43f8a53624cb137dbf9bbe1e0a1e6ff",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31102025.csv"
+  },
+  "2025-11-03": {
+   "date": "2025-11-03",
+   "raw_sha256": "43f5822e28eaf8d6cfc10781084ecb7ce880d0bec8aa552ed45a5e14acbe7917",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03112025.csv"
+  },
+  "2025-11-04": {
+   "date": "2025-11-04",
+   "raw_sha256": "a9e009dc287f2e6062cf287119022bb4fcb4b83b87daeeec72b89b7810ba46fb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04112025.csv"
+  },
+  "2025-11-06": {
+   "date": "2025-11-06",
+   "raw_sha256": "ea3aa959f51a0f2ae94fb98cadd4d235d267cfe3835d4ec96c166e3df005b0c9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06112025.csv"
+  },
+  "2025-11-07": {
+   "date": "2025-11-07",
+   "raw_sha256": "a3a3d44ce1ddb2bec7942c16b938a316945aceed148106d7ae64640ae890e5d3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07112025.csv"
+  },
+  "2025-11-10": {
+   "date": "2025-11-10",
+   "raw_sha256": "dfb4b40a7957fa4ab08e51f50b79a46db88c5d580760e9853586daaf13255f5f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10112025.csv"
+  },
+  "2025-11-11": {
+   "date": "2025-11-11",
+   "raw_sha256": "518111e04b05b39060b40029646eed499948fdc6cc4aca3b302cb958418403d4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11112025.csv"
+  },
+  "2025-11-12": {
+   "date": "2025-11-12",
+   "raw_sha256": "1dbd1e7d1806ef6a0d7040d4be475e6f7f3fed013f5ac9af422df270a393680e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12112025.csv"
+  },
+  "2025-11-13": {
+   "date": "2025-11-13",
+   "raw_sha256": "ece6885db651248f64c5faa70a4baff0760544b47b5ad523d1052f4aa2156252",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13112025.csv"
+  },
+  "2025-11-14": {
+   "date": "2025-11-14",
+   "raw_sha256": "9f9d65d021eb2605ed9a953b1e284d1e8968ea2a6710d9b491fb744494f13d67",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14112025.csv"
+  },
+  "2025-11-17": {
+   "date": "2025-11-17",
+   "raw_sha256": "b764863b41bc95d032004909063591f2fc0b0d25b21387fe14a203dd71002b34",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17112025.csv"
+  },
+  "2025-11-18": {
+   "date": "2025-11-18",
+   "raw_sha256": "c30eceeb02690de0778a73cb8458bd89ed43eb6edbdef27c4efb92374485d7bc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18112025.csv"
+  },
+  "2025-11-19": {
+   "date": "2025-11-19",
+   "raw_sha256": "1b679b0555d05357f009fda8b25cce23b6a260347c87f1bf0c9a0303aa1ebfaf",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19112025.csv"
+  },
+  "2025-11-20": {
+   "date": "2025-11-20",
+   "raw_sha256": "97212327163eb88271fdbf85ea88e8fa5e59f1aa1b796c4211b7150c8087ac96",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20112025.csv"
+  },
+  "2025-11-21": {
+   "date": "2025-11-21",
+   "raw_sha256": "e6006b70c8202ad72f991be632d75bb5c3fdcb234f90b9fd651eebc3a7c97ef2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21112025.csv"
+  },
+  "2025-11-24": {
+   "date": "2025-11-24",
+   "raw_sha256": "1d9b2662dbed448be938da8fbad9428446e8bc103826243dfea4f29224462d0d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24112025.csv"
+  },
+  "2025-11-25": {
+   "date": "2025-11-25",
+   "raw_sha256": "73a4a4cca7ab92ba4c555a6017ea481a50dfd0a3f474d194c78343355e5b6b58",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25112025.csv"
+  },
+  "2025-11-26": {
+   "date": "2025-11-26",
+   "raw_sha256": "7143ab1a441ec40843718ac179f45b7fbb56b506e38baf972817587e29f674dc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26112025.csv"
+  },
+  "2025-11-27": {
+   "date": "2025-11-27",
+   "raw_sha256": "2575dacd332372e9a6d99000f05933f22f192a1948679990be6bbab3106744a8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27112025.csv"
+  },
+  "2025-11-28": {
+   "date": "2025-11-28",
+   "raw_sha256": "5dccb2d20f5ba1069ec9364b40211bc4262b4e24cf8819f52d44f79067a166be",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28112025.csv"
+  },
+  "2025-12-01": {
+   "date": "2025-12-01",
+   "raw_sha256": "197beeeec01afee76e12477d71c8206e47369db40ec7381aa012d1ba41d721d0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01122025.csv"
+  },
+  "2025-12-02": {
+   "date": "2025-12-02",
+   "raw_sha256": "1257ba1318ec951cb808b8c97fdfc2eb5ab3366c1b551ee6ac8bd9b2b46aa2c6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02122025.csv"
+  },
+  "2025-12-03": {
+   "date": "2025-12-03",
+   "raw_sha256": "e8763320d398c6dcdd9418484613eaa5e279024a0bbdb40a02d6743767b58263",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03122025.csv"
+  },
+  "2025-12-04": {
+   "date": "2025-12-04",
+   "raw_sha256": "9e71fc7047d5084076d2ee05a91649cc6b6d76d7ce51fee8e1bcd076161ab57d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04122025.csv"
+  },
+  "2025-12-05": {
+   "date": "2025-12-05",
+   "raw_sha256": "26c107713c74091a67a21a124e8fd1bc299f62d590552950037ac74f64d45cce",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05122025.csv"
+  },
+  "2025-12-08": {
+   "date": "2025-12-08",
+   "raw_sha256": "b65c174cdd993ff8662d38a5b87382f423b19e8e12629c46e165be457ef44604",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08122025.csv"
+  },
+  "2025-12-09": {
+   "date": "2025-12-09",
+   "raw_sha256": "86d913ed5e19057f765350038747bd537c2e8f00e6732a3f09225af82729afe2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09122025.csv"
+  },
+  "2025-12-10": {
+   "date": "2025-12-10",
+   "raw_sha256": "c02d3383b6fe32191bab2768012e41760eac0c0494f17fc00362f4e0d40bc716",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10122025.csv"
+  },
+  "2025-12-11": {
+   "date": "2025-12-11",
+   "raw_sha256": "8bcbc30846beb088648624af32fb515f8f77d12f9057ffd320dcbc26df5bcf74",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11122025.csv"
+  },
+  "2025-12-12": {
+   "date": "2025-12-12",
+   "raw_sha256": "68b4c50a2dbccf2220984e1033232b04268287f1d5d2df440d5c7c1d97bb8b88",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12122025.csv"
+  },
+  "2025-12-15": {
+   "date": "2025-12-15",
+   "raw_sha256": "2f201ed3e974acffc519bdd4d523d5f5fcc6ca9987fe27a07ed8ddb2adfe03df",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15122025.csv"
+  },
+  "2025-12-16": {
+   "date": "2025-12-16",
+   "raw_sha256": "8ae22d362ae195afc3de0f23ce4a73185f82771b69e6fd838c116fa5b9f77fb5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16122025.csv"
+  },
+  "2025-12-17": {
+   "date": "2025-12-17",
+   "raw_sha256": "80454bebbffb2817fc48cf2f4ca248f88da5cc925ddcd4a1c1147a156e2e8918",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17122025.csv"
+  },
+  "2025-12-18": {
+   "date": "2025-12-18",
+   "raw_sha256": "9ae884ac96d541d770c17734dbbcf81bf795b9c7fe2860a6ad7c56cc8ffc2c7b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18122025.csv"
+  },
+  "2025-12-19": {
+   "date": "2025-12-19",
+   "raw_sha256": "3dc8a03a4f78fe7014fd1b03ec9d6f802332465be7f22ea13b6bd1dd0714733f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19122025.csv"
+  },
+  "2025-12-22": {
+   "date": "2025-12-22",
+   "raw_sha256": "4083f19e26ac31837875353a4997643904745572d4ef92b4ecb8a1426ebea30a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22122025.csv"
+  },
+  "2025-12-23": {
+   "date": "2025-12-23",
+   "raw_sha256": "ab73e18088967f3d329f3d1206f03eb390a6318d8ad64f0557607c10a2690013",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23122025.csv"
+  },
+  "2025-12-24": {
+   "date": "2025-12-24",
+   "raw_sha256": "ef017b6ccbc360b8b8367c8f220d26c40a4c6a3e93bd118840a4b063937952f8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24122025.csv"
+  },
+  "2025-12-26": {
+   "date": "2025-12-26",
+   "raw_sha256": "74aa77321ac0a7fe5d04f0bb118d66dcfbef4277cbc4294081fdf6baf6118404",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26122025.csv"
+  },
+  "2025-12-29": {
+   "date": "2025-12-29",
+   "raw_sha256": "dff9d1c8c69b64426d87ff99c9f573f5899c107980200d9e9c5ee29b816c964e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29122025.csv"
+  },
+  "2025-12-30": {
+   "date": "2025-12-30",
+   "raw_sha256": "db12ccefd99d04b20a11dde6dde702af743730d2e34b193fcd227680c681302f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30122025.csv"
+  },
+  "2025-12-31": {
+   "date": "2025-12-31",
+   "raw_sha256": "33d0c27b4afa44feee8f0a289d9594d13236323b6a29f6fc2450f30e0e1c9397",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31122025.csv"
+  },
+  "2026-01-01": {
+   "date": "2026-01-01",
+   "raw_sha256": "5c7ef52e8846b56c3a14c8ed757b35848686ca753b202e961e3471fba45e66cb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01012026.csv"
+  },
+  "2026-01-02": {
+   "date": "2026-01-02",
+   "raw_sha256": "3c7f11c7b63fccbf945f682b1f825e3a5fee53673e8195ef50fd7043efc56e65",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02012026.csv"
+  },
+  "2026-01-05": {
+   "date": "2026-01-05",
+   "raw_sha256": "f9edcba0a7506287408b65dd38684fe55c1442ed34b263c5e326399b3a160fb1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05012026.csv"
+  },
+  "2026-01-06": {
+   "date": "2026-01-06",
+   "raw_sha256": "89e1d55de02d042bfb092520c887bf52a2f97df47b75907d078096019fa5bbc2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06012026.csv"
+  },
+  "2026-01-07": {
+   "date": "2026-01-07",
+   "raw_sha256": "edb9d02b585de223a0462bc6733f12e867a5bc246825c3e13ea2f8697f11ebc9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07012026.csv"
+  },
+  "2026-01-08": {
+   "date": "2026-01-08",
+   "raw_sha256": "3e5ac4328f0c4de1d770701f76447cca37ddddd2cc3b1add7a5345b687f7df13",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08012026.csv"
+  },
+  "2026-01-09": {
+   "date": "2026-01-09",
+   "raw_sha256": "816a5dea44dbe552651d488dbcc730e9433312cb6e3ca5bae24557ff142de500",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09012026.csv"
+  },
+  "2026-01-12": {
+   "date": "2026-01-12",
+   "raw_sha256": "2005d21e0344d9975d33e5a870477e87f70d5c64dadbc74f5290b3a7fc023825",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12012026.csv"
+  },
+  "2026-01-13": {
+   "date": "2026-01-13",
+   "raw_sha256": "923f33b090046ca27b4510b251b661b0ba7595e0963f4693ab02385bdc5e4fd8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13012026.csv"
+  },
+  "2026-01-14": {
+   "date": "2026-01-14",
+   "raw_sha256": "03e6ecedaf24480f2187eb268e2b2a8ce857b2ca305a96baf686e7f15a508a3d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14012026.csv"
+  },
+  "2026-01-16": {
+   "date": "2026-01-16",
+   "raw_sha256": "6a6f6aa9d1b684cbafa1352b42632f92ca7db745f3fb88878208e9e6c04fc095",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16012026.csv"
+  },
+  "2026-01-19": {
+   "date": "2026-01-19",
+   "raw_sha256": "c91eb231a75b75e47a113d9978009afcc9875e7f8245bc41c24b0675eda3d031",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19012026.csv"
+  },
+  "2026-01-20": {
+   "date": "2026-01-20",
+   "raw_sha256": "4e4533144534246b925224f8de4787b608a5c31a007861e5618d4021b87f741d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20012026.csv"
+  },
+  "2026-01-21": {
+   "date": "2026-01-21",
+   "raw_sha256": "ef2e16714a88789ff7991f33dfd6216decf7a8ff5871545f18e7f23c58e35e1e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21012026.csv"
+  },
+  "2026-01-22": {
+   "date": "2026-01-22",
+   "raw_sha256": "cce7f09ecf7dd99e8ffc100a072802300b52b0ed6781df6913e4886ef843b5ef",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22012026.csv"
+  },
+  "2026-01-23": {
+   "date": "2026-01-23",
+   "raw_sha256": "a90a989707978bbe68f819ab97d0cc09f60daee478a572f9efa1a38930eb4f40",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23012026.csv"
+  },
+  "2026-01-27": {
+   "date": "2026-01-27",
+   "raw_sha256": "df56f42fdb16ab515609aaf340a88dad252a878297d537b75041f2667b86f698",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27012026.csv"
+  },
+  "2026-01-28": {
+   "date": "2026-01-28",
+   "raw_sha256": "90e0ba4e03b884ce721ba54c6fc8a317d24cc678564a8a7dcbe41c6699f508ff",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28012026.csv"
+  },
+  "2026-01-29": {
+   "date": "2026-01-29",
+   "raw_sha256": "125b17e521c4a24c69b60f2b5e3596c2eec3dec098bd50049e7105277376220b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29012026.csv"
+  },
+  "2026-01-30": {
+   "date": "2026-01-30",
+   "raw_sha256": "97515fa50c3a71de934ef3d06a6413436561a1e346775993269fb5cc57be0c65",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30012026.csv"
+  },
+  "2026-02-02": {
+   "date": "2026-02-02",
+   "raw_sha256": "0c5fc2074ce39c3d97d8199dd1d7637af21852f3998f36d6c7be200240468be0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02022026.csv"
+  },
+  "2026-02-03": {
+   "date": "2026-02-03",
+   "raw_sha256": "50b3d78047e2291896fbc9fc8ba9df16a199324730466b419c66e73c67636ce8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03022026.csv"
+  },
+  "2026-02-04": {
+   "date": "2026-02-04",
+   "raw_sha256": "171d7c2edff2b5f5c522ef6557cc99faf3830cc5996d2c4ef4c0135b64a627c4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04022026.csv"
+  },
+  "2026-02-05": {
+   "date": "2026-02-05",
+   "raw_sha256": "f69489e3ba65f1cb1a2f184c2d7abc890b8943c7eda8ea60de9f8db86f7c5324",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05022026.csv"
+  },
+  "2026-02-06": {
+   "date": "2026-02-06",
+   "raw_sha256": "b5df73edd9ec51564ef3607345dc83ffc09b50d80da9dc806e2ee2360532f2d8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06022026.csv"
+  },
+  "2026-02-09": {
+   "date": "2026-02-09",
+   "raw_sha256": "d54a6bc45c2ada4b0620613dd627343a23a785ca361bb487181ee89524156199",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09022026.csv"
+  },
+  "2026-02-10": {
+   "date": "2026-02-10",
+   "raw_sha256": "bf5fbf345e5ee639d945d387cd1756356713b8cb6b9379c3b2e523f04dba2f3c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10022026.csv"
+  },
+  "2026-02-11": {
+   "date": "2026-02-11",
+   "raw_sha256": "eed82641da706a641039088fb003c3c60247a5b042807076e407acf1a2462cc8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11022026.csv"
+  },
+  "2026-02-12": {
+   "date": "2026-02-12",
+   "raw_sha256": "cefbaa888cb120575e40eaca2721c32cdc82c26ea84249b76ec3322945c21f3f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12022026.csv"
+  },
+  "2026-02-13": {
+   "date": "2026-02-13",
+   "raw_sha256": "f62c8c06ee3774bef56729c39a52e97cb30247050979ffc0d989a4aeaa42c536",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13022026.csv"
+  },
+  "2026-02-16": {
+   "date": "2026-02-16",
+   "raw_sha256": "9506459de4694479f0f5fb971ed03637dbee99442575b879e6dfd6a760a7964b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16022026.csv"
+  },
+  "2026-02-17": {
+   "date": "2026-02-17",
+   "raw_sha256": "34abe176e48bd43e2bdcd86f37244c66e8e5feb273d8d902311517ce066f0f03",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17022026.csv"
+  },
+  "2026-02-18": {
+   "date": "2026-02-18",
+   "raw_sha256": "f859e2fb198e65156ecaeee8c7d7965210004e8382319dd94ace48feb098c169",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18022026.csv"
+  },
+  "2026-02-19": {
+   "date": "2026-02-19",
+   "raw_sha256": "7de2819776d299d4661e0633827653d1277ead5c8e21e73a73d024603e8df80e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19022026.csv"
+  },
+  "2026-02-20": {
+   "date": "2026-02-20",
+   "raw_sha256": "d484be41b26109457789308090bb4362c81854c962a3d43a4cdba319db7bced1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20022026.csv"
+  },
+  "2026-02-23": {
+   "date": "2026-02-23",
+   "raw_sha256": "b8cf4cb71aa8c5849de25ee772b555950f018d9f04c543e681332870430d23c3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23022026.csv"
+  },
+  "2026-02-24": {
+   "date": "2026-02-24",
+   "raw_sha256": "a755e670e708387f896d8c68e1f78cebf63d5429e11a50aabd8922d37289c460",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24022026.csv"
+  },
+  "2026-02-25": {
+   "date": "2026-02-25",
+   "raw_sha256": "0eb05d2e3f7199bdb4410e47b051140a05d30964909efe061bfa8acdec8214d8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25022026.csv"
+  },
+  "2026-02-26": {
+   "date": "2026-02-26",
+   "raw_sha256": "23fee5081ffc9834c0fd9e3fc5de839c7fcc1238f4e59f4d0d151f25c853fefb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26022026.csv"
+  },
+  "2026-02-27": {
+   "date": "2026-02-27",
+   "raw_sha256": "6546937824802cf7a7ae99e20ebdfbb200cee39b2bae12f1282ae95e61890d88",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27022026.csv"
+  },
+  "2026-03-02": {
+   "date": "2026-03-02",
+   "raw_sha256": "83728616d447d9444f7756328a9f63d20f097846695f57524333f3055d0fa487",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02032026.csv"
+  },
+  "2026-03-04": {
+   "date": "2026-03-04",
+   "raw_sha256": "ad55f135ae4c66bf6131354be3391f6c4e822dee0ed9031cb13fc70a2cf9fdec",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04032026.csv"
+  },
+  "2026-03-05": {
+   "date": "2026-03-05",
+   "raw_sha256": "22833ecc672371c56741c8ae9ad7c757b0811a711d055152e9a116fef9f48fa6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05032026.csv"
+  },
+  "2026-03-06": {
+   "date": "2026-03-06",
+   "raw_sha256": "cb6472eb44b72cfe96dac4bf9911c510a9015ba4a9cd09b005fede4635429ae3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06032026.csv"
+  },
+  "2026-03-09": {
+   "date": "2026-03-09",
+   "raw_sha256": "2b51f15a4e7e50d86e947ac4dfcbef66a9e9e3d484a6d3f71c5e4ef0fa44bcbd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09032026.csv"
+  },
+  "2026-03-10": {
+   "date": "2026-03-10",
+   "raw_sha256": "e627d6835f5aa369c110cf52a0c7d9c94643805687ab3d64cfb24953c48a201b",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10032026.csv"
+  },
+  "2026-03-11": {
+   "date": "2026-03-11",
+   "raw_sha256": "940be1750cca8711aae1c526adaa7dedd176bee3a2a457b3515dcf93b39d6aa9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11032026.csv"
+  },
+  "2026-03-12": {
+   "date": "2026-03-12",
+   "raw_sha256": "08667650486b39f3583141b440756c082cffe379fc545b06204f4e780dcaa5a4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12032026.csv"
+  },
+  "2026-03-13": {
+   "date": "2026-03-13",
+   "raw_sha256": "56fee691871d03365f5c82d6283386fe11678a8b560f9242c1b674d3fb041ada",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13032026.csv"
+  },
+  "2026-03-16": {
+   "date": "2026-03-16",
+   "raw_sha256": "bb73782043afd9b70ca8ecd9a62db5362cda69d43989d83ef1276e3dc469cc16",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16032026.csv"
+  },
+  "2026-03-17": {
+   "date": "2026-03-17",
+   "raw_sha256": "03e3b277e62d6302c0b67b01c4623be555a8b5ebe3f6ac9a4a2d68e2c1711286",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17032026.csv"
+  },
+  "2026-03-18": {
+   "date": "2026-03-18",
+   "raw_sha256": "7c38b740f0d99f220c6b37583df71835605d54771058bb5d4f9db23b5ef5f2a6",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18032026.csv"
+  },
+  "2026-03-19": {
+   "date": "2026-03-19",
+   "raw_sha256": "a229f08fceb7b189c44b0e9ea79f3eeed53ae798053cd018c3a38e85096676eb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19032026.csv"
+  },
+  "2026-03-20": {
+   "date": "2026-03-20",
+   "raw_sha256": "948095ccc6c7cb0603775faf7ea8571a25966e5d82d8e2378214fcaf67bcc879",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20032026.csv"
+  },
+  "2026-03-23": {
+   "date": "2026-03-23",
+   "raw_sha256": "a59314878026090ac87c35e348d3633128d504c0c5cc6a06040dc0e20d7783c4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23032026.csv"
+  },
+  "2026-03-24": {
+   "date": "2026-03-24",
+   "raw_sha256": "266ac2b8a5d46d0cb0748e482a5c5e716cf43bce3920bd1dae268b4ab151d3cd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24032026.csv"
+  },
+  "2026-03-25": {
+   "date": "2026-03-25",
+   "raw_sha256": "1d255ab324f66b4253004a132d7ffeca6c77bb4c08e3bad8a80deb73e1f50e0e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25032026.csv"
+  },
+  "2026-03-27": {
+   "date": "2026-03-27",
+   "raw_sha256": "93e386d83078bbd6de52e09cf04c4d103d74094872573efa435072d0d5d7a0cb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27032026.csv"
+  },
+  "2026-03-30": {
+   "date": "2026-03-30",
+   "raw_sha256": "e228e51c95cc9009e463ef6faf3653dfcb095d19933a8d72d8c8674102802b36",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30032026.csv"
+  },
+  "2026-04-01": {
+   "date": "2026-04-01",
+   "raw_sha256": "4cb93dffba12827992b2a48b111879f93864a525b1d5be4ba6ab69ff589fe795",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01042026.csv"
+  },
+  "2026-04-02": {
+   "date": "2026-04-02",
+   "raw_sha256": "2627f822990993d5995768739f4b5dcdce2cf2f32a83e37de9e3c49c20ed5006",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02042026.csv"
+  },
+  "2026-04-06": {
+   "date": "2026-04-06",
+   "raw_sha256": "fb8093cbfdf3d2a0ae01e86ff98d1e9ece3902b9e8c6b9f6db623a6eb30b0fac",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06042026.csv"
+  },
+  "2026-04-07": {
+   "date": "2026-04-07",
+   "raw_sha256": "28380164fa110acda0c9a5982ac0cdcc8663a94ea1db3abf7aa4460c0650f497",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07042026.csv"
+  },
+  "2026-04-08": {
+   "date": "2026-04-08",
+   "raw_sha256": "3431c1813d2b52974e5eef7da41edda91da2a2eeb1629073c1cd9d70ea5cf451",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08042026.csv"
+  },
+  "2026-04-09": {
+   "date": "2026-04-09",
+   "raw_sha256": "3eeacd463453d3fe6a66f48d4836662edfb58a5e9db0980c9d46fc33931a056d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09042026.csv"
+  },
+  "2026-04-10": {
+   "date": "2026-04-10",
+   "raw_sha256": "a54bbd7cdb549923ae810ba4c4a01b6e17e16ce7fbb31e79e1ae0fa0b0e965e5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10042026.csv"
+  },
+  "2026-04-13": {
+   "date": "2026-04-13",
+   "raw_sha256": "73202013748dedfb93d0550b0bfb831f7f4974e8fd788fac9ee0ff9d8453b982",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13042026.csv"
+  },
+  "2026-04-15": {
+   "date": "2026-04-15",
+   "raw_sha256": "958d884aa47aa6cfaed2decc32755c0ba31ac65301417fde3c66cfaebde6fe55",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15042026.csv"
+  },
+  "2026-04-16": {
+   "date": "2026-04-16",
+   "raw_sha256": "7e9aeb4a41d68de5d4a990e47809afc8f3c4e180b14bd5d1e0ceb58dcc3a8936",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16042026.csv"
+  },
+  "2026-04-17": {
+   "date": "2026-04-17",
+   "raw_sha256": "651ada6bfb91d3cd460a72ad0536626ee67cee2a3502db5f6801647043f1bfea",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17042026.csv"
+  },
+  "2026-04-20": {
+   "date": "2026-04-20",
+   "raw_sha256": "e5b0bea9a8ee6139edda0d99445d9477b806436529962802726ef92c55b28a8f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20042026.csv"
+  },
+  "2026-04-21": {
+   "date": "2026-04-21",
+   "raw_sha256": "4cdb3d8aefde2eb87a28b7de18fa5b1c579cd5462bfcb2560c47c0df90796657",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21042026.csv"
+  },
+  "2026-04-22": {
+   "date": "2026-04-22",
+   "raw_sha256": "2a774b6b7a23bb16f5679dfa10d8fea3387d59f3cb0451ecd51f2da0c01dbec5",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22042026.csv"
+  },
+  "2026-04-23": {
+   "date": "2026-04-23",
+   "raw_sha256": "388ba98bacfbe773eee377bda022d0e7be6c4bd00e3d42e8f8fbba9b9f85903e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23042026.csv"
+  },
+  "2026-04-24": {
+   "date": "2026-04-24",
+   "raw_sha256": "d0f46b19a789f2eb16b8782eee78dcd410cebc6affbe9eb73c34d71f7923f934",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24042026.csv"
+  },
+  "2026-04-27": {
+   "date": "2026-04-27",
+   "raw_sha256": "7e98d394331001ff6d20818393ef735ba150f9d194ee357f85a789441c24d500",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27042026.csv"
+  },
+  "2026-04-28": {
+   "date": "2026-04-28",
+   "raw_sha256": "a76a9efeae1d32ad7254e8af258cb1ae289e099250710e69510a330665435ac2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28042026.csv"
+  },
+  "2026-04-29": {
+   "date": "2026-04-29",
+   "raw_sha256": "ea7978eb97f902d01a2cbb1f8de83eb34518a258bf8a35bfa90f7b71708dd9d7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29042026.csv"
+  },
+  "2026-04-30": {
+   "date": "2026-04-30",
+   "raw_sha256": "dcdcd97772fd424855d4d3bc2375301a5e007d72bb74d6c1670502a6c48190e2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30042026.csv"
+  },
+  "2026-05-04": {
+   "date": "2026-05-04",
+   "raw_sha256": "19f7b9a8b4751def6507076057062a387fb6149d1245297917d4efbc72cb5081",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04052026.csv"
+  },
+  "2026-05-05": {
+   "date": "2026-05-05",
+   "raw_sha256": "49339ec2e252ccc0594f9b0bfbf9503c9690d74156fcce7350827b4fa38d3a82",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05052026.csv"
+  },
+  "2026-05-06": {
+   "date": "2026-05-06",
+   "raw_sha256": "dd7e3b075d85c902fa885e86085b6d1b36330469939a6bf7cf43e0d5d38cdc4f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06052026.csv"
+  },
+  "2026-05-07": {
+   "date": "2026-05-07",
+   "raw_sha256": "cffb21c9f858375ad51218685b5bbdcb7e429e5d577d6b4e9de175967c398bfc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07052026.csv"
+  },
+  "2026-05-08": {
+   "date": "2026-05-08",
+   "raw_sha256": "256734d8af08018509c835c9e3057942cd195550351434ffc4882f6cc7e60461",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08052026.csv"
+  },
+  "2026-05-11": {
+   "date": "2026-05-11",
+   "raw_sha256": "bb6600c426334a6fd7993733cecddb8c89bea45b5a2c1ac4928787284401ee16",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11052026.csv"
+  },
+  "2026-05-12": {
+   "date": "2026-05-12",
+   "raw_sha256": "71dacfe304358f2e82c203ce1a45d54af5e7cdd80d8ec6f185f21ba573053af0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12052026.csv"
+  },
+  "2026-05-13": {
+   "date": "2026-05-13",
+   "raw_sha256": "a1434d74aac59c1096248da0a53491f641838bf3a00a88b260ec81aa0e2f44c2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13052026.csv"
+  },
+  "2026-05-14": {
+   "date": "2026-05-14",
+   "raw_sha256": "2b1542e4938997c74577f23465235b4c37decf1c462ff0adb9fb7df724f9a5dc",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14052026.csv"
+  },
+  "2026-05-15": {
+   "date": "2026-05-15",
+   "raw_sha256": "748d8d9d2ecff19d424e4e4a29e496cf1aaa2fb39833ba6d52cf68e7d6dc5c90",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15052026.csv"
+  },
+  "2026-05-18": {
+   "date": "2026-05-18",
+   "raw_sha256": "4acff363e476b27f954705f9e847bae80ead74e0ebcef286529f8cff55a2c15c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18052026.csv"
+  },
+  "2026-05-19": {
+   "date": "2026-05-19",
+   "raw_sha256": "d5417d3eb6dad8feccad3af0522cbff8c66c399ac0693f285878c670b883fe27",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19052026.csv"
+  },
+  "2026-05-20": {
+   "date": "2026-05-20",
+   "raw_sha256": "b46bbf4766cf8be33b8a02956c13c1214421e2865b17d0cc2bca52ff5bcd4f09",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20052026.csv"
+  },
+  "2026-05-21": {
+   "date": "2026-05-21",
+   "raw_sha256": "cfc8a9bd1d840970d27183d25f3a3de1658032a4adf94aabae14ddd7bbcdc8f7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21052026.csv"
+  },
+  "2026-05-22": {
+   "date": "2026-05-22",
+   "raw_sha256": "7ab7bbae5f83cd217aadd1ce5b52175ef054b3473ca1f39d8e7fe8114221894f",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22052026.csv"
+  },
+  "2026-05-25": {
+   "date": "2026-05-25",
+   "raw_sha256": "df40e25905ef9474adb15fe5973f9c1c555b9f3b30d02d182df382fe7c8e83f0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25052026.csv"
+  },
+  "2026-05-26": {
+   "date": "2026-05-26",
+   "raw_sha256": "52ced990f8745f5c1b831c21dc9882c8971ce3487d90c96752d9fac637d37be7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_26052026.csv"
+  },
+  "2026-05-27": {
+   "date": "2026-05-27",
+   "raw_sha256": "437614c75cbc84dc7ec6984884e7e0659ed688f180d466d6f223113fe6ecc500",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27052026.csv"
+  },
+  "2026-05-29": {
+   "date": "2026-05-29",
+   "raw_sha256": "5d30efc8392c2ee2e7655799291668b07adcee8e6936c288c2f5e2ebdfb6b199",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29052026.csv"
+  },
+  "2026-06-01": {
+   "date": "2026-06-01",
+   "raw_sha256": "f6b767fce28156f997d8c4e6634b87a90492c417cd1e9c3d26b32b6167046f3d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01062026.csv"
+  },
+  "2026-06-02": {
+   "date": "2026-06-02",
+   "raw_sha256": "c1e8f9e5bd8acbf29a620f09ee9f46439b4372fbb83c30da9832d11bbc087866",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02062026.csv"
+  },
+  "2026-06-03": {
+   "date": "2026-06-03",
+   "raw_sha256": "50e3914f7de3a219a8675ae6d9d1719e5383917e7be20cad608a071edc3ea5e9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03062026.csv"
+  },
+  "2026-06-04": {
+   "date": "2026-06-04",
+   "raw_sha256": "8830dc8a77db89171a408a0823237112825299613fb348e31359f87763255891",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04062026.csv"
+  },
+  "2026-06-05": {
+   "date": "2026-06-05",
+   "raw_sha256": "d94928d8de69e9dc54c2087ad55d6df4188ae72f1998bd9acf58403ef04f85ab",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05062026.csv"
+  },
+  "2026-06-08": {
+   "date": "2026-06-08",
+   "raw_sha256": "ab1d22c97e959d460f23c1a8907d5daff41526c6a46fe27cbfcf7e370a8b57b9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08062026.csv"
+  },
+  "2026-06-09": {
+   "date": "2026-06-09",
+   "raw_sha256": "eb105f9eb0d6d91169972989c4799c5fcf4d9aaf3fd70ffd147a3781d9aa2e44",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09062026.csv"
+  },
+  "2026-06-10": {
+   "date": "2026-06-10",
+   "raw_sha256": "3f67ab201eab20f117bc34f9c8cb18bcf0feb73b3220db07cde647b02f502ba4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10062026.csv"
+  },
+  "2026-06-11": {
+   "date": "2026-06-11",
+   "raw_sha256": "736e54c57dceadd43a875ec802c3b55a40377ed4b2c7de44bca1228ed450cca2",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11062026.csv"
+  },
+  "2026-06-12": {
+   "date": "2026-06-12",
+   "raw_sha256": "f3a4a5ea78f5ba3aec18da38f509004a53863ca0bc88f2c423fc8144d7cf1fe7",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12062026.csv"
+  },
+  "2026-06-15": {
+   "date": "2026-06-15",
+   "raw_sha256": "f9f2ecdec8c7953305ffaa433539508a5c98a54e6a6a3a8fabf494cdf741cbb4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15062026.csv"
+  },
+  "2026-06-16": {
+   "date": "2026-06-16",
+   "raw_sha256": "a2407ea5e377799e1aded119a04b37ab63ff95348d48dfa38db986e508089788",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16062026.csv"
+  },
+  "2026-06-17": {
+   "date": "2026-06-17",
+   "raw_sha256": "1e27a43d70197171d5c7f5d61b00ade3920fae8e0214a987c6986070297088fe",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17062026.csv"
+  },
+  "2026-06-18": {
+   "date": "2026-06-18",
+   "raw_sha256": "f61ae903924d852fe330907f385c620984162f66a86d2437f644fc4f872dec60",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_18062026.csv"
+  },
+  "2026-06-19": {
+   "date": "2026-06-19",
+   "raw_sha256": "8ea887926053fcb7131b6f440d25dd45afda5881e2da1f359e15b6136d48d20c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_19062026.csv"
+  },
+  "2026-06-22": {
+   "date": "2026-06-22",
+   "raw_sha256": "88a57f4ce934f193ec14c7b628c0c33223ba77e5e2330c9fbb1b32e6f386c2a4",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22062026.csv"
+  },
+  "2026-06-23": {
+   "date": "2026-06-23",
+   "raw_sha256": "71929ba0610d2c257cf45b02a8450a8e0dfb6a05584899fe25114b35a6971925",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23062026.csv"
+  },
+  "2026-06-24": {
+   "date": "2026-06-24",
+   "raw_sha256": "f737303a1c10112c0ee0dd0438fd15c860cac94d7b4d58781558d8e925ecba78",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24062026.csv"
+  },
+  "2026-06-25": {
+   "date": "2026-06-25",
+   "raw_sha256": "1cbbae0791a25083a311ef5ed0785c98cc754487700edb45f722b11d4ff9f12c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_25062026.csv"
+  },
+  "2026-06-29": {
+   "date": "2026-06-29",
+   "raw_sha256": "0f15452b22bea8c6cea0f60c845ab66b89ffd1e74ad3c69e0d5ad63e7960dbef",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29062026.csv"
+  },
+  "2026-06-30": {
+   "date": "2026-06-30",
+   "raw_sha256": "b543570cffff95f1579390e7d59866aa85455e1006b79820dcee0144e27a5a97",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30062026.csv"
+  },
+  "2026-07-01": {
+   "date": "2026-07-01",
+   "raw_sha256": "d8c98919ae01620edb3a64baf3b5901f08978e8a91c7be5a3401cb535999ed72",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_01072026.csv"
+  },
+  "2026-07-02": {
+   "date": "2026-07-02",
+   "raw_sha256": "f6430502a20f873a50f14b6fd1d2656cafa4c4d843a9487a4870176c00c5c7a1",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_02072026.csv"
+  },
+  "2026-07-03": {
+   "date": "2026-07-03",
+   "raw_sha256": "f77474870a9fc4c62928fc95b18e3c5ee5d5c6e23888e80b575e2b7a0ee46a92",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03072026.csv"
+  },
+  "2026-07-06": {
+   "date": "2026-07-06",
+   "raw_sha256": "6f189a0bd9d76ac088f13aec48259ed01d80179da29437bf0cbd26a5b02b0a71",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06072026.csv"
+  },
+  "2026-07-07": {
+   "date": "2026-07-07",
+   "raw_sha256": "3aa563682c9da99f3c03ddd2887aa2507a20208464199fc91d1f4e6fbb5ffcbd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07072026.csv"
+  },
+  "2026-07-08": {
+   "date": "2026-07-08",
+   "raw_sha256": "8346dd80d445158b7b33e3b1e1070939807c8e3c919cf52388f8d9453ee333fd",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_08072026.csv"
+  },
+  "2026-07-09": {
+   "date": "2026-07-09",
+   "raw_sha256": "a266f5dc5cf09b901b78e0268d88acc859911ab844eec82f839d5a6496b6e866",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_09072026.csv"
+  },
+  "2026-07-10": {
+   "date": "2026-07-10",
+   "raw_sha256": "d78acec6bf125c136338f85513fe5ba7f49e137d723e4d0ff227c2d1d12ff7a3",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10072026.csv"
+  },
+  "2026-07-13": {
+   "date": "2026-07-13",
+   "raw_sha256": "14ae394f794810a2517d911356d45cb821185ce113aa1690052cdf684e1d512e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13072026.csv"
+  },
+  "2026-07-14": {
+   "date": "2026-07-14",
+   "raw_sha256": "bfefb6b61fc6ffe0fb8471fe02159f641fd540ba54633019f66bf831adbd352a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_14072026.csv"
+  },
+  "2026-07-15": {
+   "date": "2026-07-15",
+   "raw_sha256": "2c8a59127bc3d0fbf377ddca1d9d8caeec3a6d23bab81e1ca66dd760d4efa0bf",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_15072026.csv"
+  },
+  "2026-07-16": {
+   "date": "2026-07-16",
+   "raw_sha256": "a37d8c39197b6c90a0365925fe35111f285f0c5c5c012c0d8203815680a719f8",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_16072026.csv"
+  },
+  "2026-07-17": {
+   "date": "2026-07-17",
+   "raw_sha256": "adbbe30dccac0b6230602860f4e8a35bc3c876062efb0be2dd264d6f1780eed9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_17072026.csv"
+  },
+  "2026-07-20": {
+   "date": "2026-07-20",
+   "raw_sha256": "904a4ba9c3e8a3699994bb187c55a0bc6c9a4982f76ac10b0c402876b5f627db",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_20072026.csv"
+  },
+  "2026-07-21": {
+   "date": "2026-07-21",
+   "raw_sha256": "7e3c024a9742f0b6c340c753e96966e53df2bd85d6d09e47e9a21a8e26b94550",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_21072026.csv"
+  },
+  "2026-07-22": {
+   "date": "2026-07-22",
+   "raw_sha256": "a5dedc053bb8d92455523d85fa0dd2e02b439b226f3743cdbbdcdf8c6bcfa6fe",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_22072026.csv"
+  },
+  "2026-07-23": {
+   "date": "2026-07-23",
+   "raw_sha256": "ac8a34bead649e4e8242ca7c22f3f10f53dd14327e8a0e1214bc57c089a57c5e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_23072026.csv"
+  },
+  "2026-07-24": {
+   "date": "2026-07-24",
+   "raw_sha256": "43b147fe147fb134f540192fe31295a39f44e57c6627618173f82f6548c0b445",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_24072026.csv"
+  },
+  "2026-07-27": {
+   "date": "2026-07-27",
+   "raw_sha256": "9888effa54e7142c7eb4355728bb57c871417605f556d2ba74625059c843a32d",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_27072026.csv"
+  },
+  "2026-07-28": {
+   "date": "2026-07-28",
+   "raw_sha256": "9a1ad591821fce0ed768bc03c7eaa0f63ab31937d2c1781b9769171b50b40b01",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_28072026.csv"
+  },
+  "2026-07-29": {
+   "date": "2026-07-29",
+   "raw_sha256": "f0e7411d79643e40e141bb0800342458bbf1f0cbe3c7482dbc0d8f47a0c8fa8a",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_29072026.csv"
+  },
+  "2026-07-30": {
+   "date": "2026-07-30",
+   "raw_sha256": "f9de521b645550730e465125b5e603ff22de7dce4adb39348baba36cb12317f9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_30072026.csv"
+  },
+  "2026-07-31": {
+   "date": "2026-07-31",
+   "raw_sha256": "b06d5db296bc689b7d4d5f4916e278803eb2e77f3a082c28b8e8f7f2a40672eb",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_31072026.csv"
+  },
+  "2026-08-03": {
+   "date": "2026-08-03",
+   "raw_sha256": "71220472936224d9e007f3eaefbcc8d9ce3f9940ac5f4268805ff86ee56509a9",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_03082026.csv"
+  },
+  "2026-08-04": {
+   "date": "2026-08-04",
+   "raw_sha256": "d091ff8ce6a9ff5a0c146280cad1a4080d15e410156e194985258f26187f002c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_04082026.csv"
+  },
+  "2026-08-05": {
+   "date": "2026-08-05",
+   "raw_sha256": "b91f2dd92aae5724dddd58ddf381c231c8b7dd16ee891270efca256270774da0",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_05082026.csv"
+  },
+  "2026-08-06": {
+   "date": "2026-08-06",
+   "raw_sha256": "984a902da41a628a27d10d88fe52e4760d12bdc7d8e69329a89c9072e6da6661",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_06082026.csv"
+  },
+  "2026-08-07": {
+   "date": "2026-08-07",
+   "raw_sha256": "25c7b22ee4c7ef4f13b87aa682f72355d0d99d306b4cc235cf120719a003bf0e",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_07082026.csv"
+  },
+  "2026-08-10": {
+   "date": "2026-08-10",
+   "raw_sha256": "9b81f3bc6b94e459a121d7a86627b645770e87f59a0bd702bbd70f351c2d7d53",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_10082026.csv"
+  },
+  "2026-08-11": {
+   "date": "2026-08-11",
+   "raw_sha256": "4f936c7418dd9f4548aceab899ab236faa9f21ad055884cea6ea62ef62480e71",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_11082026.csv"
+  },
+  "2026-08-12": {
+   "date": "2026-08-12",
+   "raw_sha256": "1079d92641b141c1fbce372baa65ce3971db6b3050c4e67603d900e68b64757c",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_12082026.csv"
+  },
+  "2026-08-13": {
+   "date": "2026-08-13",
+   "raw_sha256": "71acba5a9f7aac784c24d4e6c450f0f2d8401ead2231d3820cfa020961a00c28",
+   "status": "OK",
+   "url": "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_13082026.csv"
+  }
+ }
+}

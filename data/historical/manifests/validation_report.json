@@ -1,0 +1,45 @@
+{
+ "datasets": {
+  "alignment_matrix": {
+   "issues": [],
+   "rows": 956,
+   "status": "PASS"
+  },
+  "coverage_matrix": {
+   "issues": [],
+   "rows": 656,
+   "status": "PASS"
+  },
+  "nifty_eod_expanded": {
+   "issues": [],
+   "rows": 646,
+   "status": "PASS"
+  },
+  "options_eod_expanded": {
+   "issues": [],
+   "rows": 1060622,
+   "status": "PASS"
+  },
+  "options_eod_nifty": {
+   "issues": [],
+   "rows": 642707,
+   "status": "PASS"
+  },
+  "participant_oi_expanded": {
+   "issues": [],
+   "rows": 3230,
+   "status": "PASS"
+  },
+  "trading_calendar_expanded": {
+   "issues": [],
+   "rows": 956,
+   "status": "PASS"
+  },
+  "vix_expanded": {
+   "issues": [],
+   "rows": 646,
+   "status": "PASS"
+  }
+ },
+ "validated_at": "2026-08-14T18:05:45+05:30"
+}

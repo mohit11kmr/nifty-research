@@ -25,8 +25,16 @@ class TestR1PrecisionHonestConfluence(unittest.TestCase):
     """Confluence score must equal the count of PASSED layers - never inflated."""
 
     def setUp(self):
-        import precision_signals
-        self.sig = precision_signals.generate_precision_signal()
+        import tempfile
+        import ground_truth
+        self._gt_dir = tempfile.mkdtemp()
+        orig_db = ground_truth.DB_FILE
+        ground_truth.DB_FILE = os.path.join(self._gt_dir, "ground_truth.db")
+        try:
+            import precision_signals
+            self.sig = precision_signals.generate_precision_signal()
+        finally:
+            ground_truth.DB_FILE = orig_db
 
     def test_grade_key_present(self):
         self.assertIn("signal_grade", self.sig)

@@ -68,34 +68,44 @@ class ValueAtRiskManager:
             "var_99_confidence_pct": round((var_99_rupees / capital) * 100, 2),
             "daily_volatility_used_pct": round(daily_volatility * 100, 3),
             "vol_source": vol_source,
+            "evaluation_method": "parametric_var_zscore",
             "var_status": "APPROVED (VaR within 3% daily safety threshold)" if var_95_rupees <= (capital * 0.03) else "HIGH_RISK_WARNING"
         }
 
     def run_portfolio_stress_test(self, capital=100000.0):
-        """Simulate portfolio impact across 3 historical crash scenarios."""
+        """Simulate portfolio impact across 3 historical crash scenarios.
+
+        Truth-layer (Phase 3): these losses are FORMULAIC ESTIMATES
+        (capital * drop * 0.5), not backtested portfolio outcomes. Results
+        are tagged ESTIMATED and must not be read as empirical evidence.
+        """
         scenarios = {
             "scenario_1_flash_crash": {
                 "description": "Intraday Flash Crash (-5.0% Market Drop)",
                 "estimated_portfolio_loss": round(capital * 0.05 * 0.5, 2),  # Hedged delta loss
                 "account_impact_pct": -2.5,
-                "survival": "PASSED"
+                "loss_method": "ESTIMATED (formulaic capital*drop*0.5)",
+                "survival": "ESTIMATED PASS"
             },
             "scenario_2_covid_circuit": {
                 "description": "Lower Circuit Breaker (-10.0% Market Drop)",
                 "estimated_portfolio_loss": round(capital * 0.10 * 0.5, 2),
                 "account_impact_pct": -5.0,
-                "survival": "PASSED (Kill-Switch Lock Engaged)"
+                "loss_method": "ESTIMATED (formulaic capital*drop*0.5)",
+                "survival": "ESTIMATED PASS"
             },
             "scenario_3_black_monday_1987": {
                 "description": "1987 Black Monday Crash (-22.0% Single-Day Drop)",
                 "estimated_portfolio_loss": round(capital * 0.22 * 0.5, 2),
                 "account_impact_pct": -11.0,
-                "survival": "SURVIVED (Drawdown De-risking Matrix Active)"
+                "loss_method": "ESTIMATED (formulaic capital*drop*0.5)",
+                "survival": "ESTIMATED PASS (survived formulaic scenario)"
             }
         }
 
         return {
-            "stress_test_status": "PASSED_ALL_3_HISTORICAL_CRASH_SCENARIOS",
+            "stress_test_status": "ESTIMATED_ALL_3_CRASH_SCENARIOS (formulaic, not backtested)",
+            "evaluation_method": "formulaic_estimate",
             "timestamp": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S IST"),
             "scenarios_evaluated": scenarios
         }

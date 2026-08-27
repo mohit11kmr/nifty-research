@@ -1,0 +1,140 @@
+schema_version: "1.0"
+
+strategy:
+  id: directional_spread_v1
+  name: Defined-Risk Directional Vertical Spread
+  version: 1
+  classification: WEAK
+
+description: >
+  Formal, versioned representation of the EXACT frozen Phase H candidate B
+  (multi_strategy_backtest.py run_candidate_b). Same 6-layer control funnel
+  restricted to trend regimes, with the CORRECT bias -> side mapping
+  (CALL -> bull call spread, PUT -> bear put spread), 500-pt width, 1 lot,
+  defined risk. NOT improved. Phase H evidence is negative - do not pursue.
+
+market:
+  underlying: NIFTY
+
+regime:
+  allowed:
+    - TREND_HV
+    - TREND_LV
+  note: RANGE_* excluded by spec (frozen for Phase H).
+
+entry:
+  gate:
+    grade:
+      min_confluence: 4
+      max_confluence: 6
+      l1_required: true
+      action_prefixes: [MODERATE, HIGH_CONVICTION]
+  conditions:
+    all:
+      - id: l1_regime
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.regime_gate_at
+        note: PASSED when gate != NO_TRADE and regime != RANGE_LV
+      - id: l2_capital_guard
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.evaluate_day
+        note: frozen audit - APPROVED every day
+      - id: l3_technical
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.technical_verdict_at
+        note: PASSED when technical bias is non-NEUTRAL
+      - id: l4_options
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.options_layer_at
+      - id: l5_institutional
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.institutional_layer_at
+      - id: l6_ml
+        rule: EXISTING_PROJECT_RULE
+        project_ref: backtest_frozen.ml_predict_at
+    any:
+      - id: trend_hv
+        field: REGIME
+        operator: "=="
+        value: TREND_HV
+      - id: trend_lv
+        field: REGIME
+        operator: "=="
+        value: TREND_LV
+
+direction:
+  mode: DIRECTIONAL
+  rule: EXISTING_PROJECT_RULE
+  project_ref: multi_strategy_backtest.run_candidate_b
+  side_map: {CE: CALL, PE: PUT}
+  note: >
+    CORRECT mapping frozen for B (differs from control defect):
+    CALL bias -> bull call spread (CE long/short), PUT bias -> bear put spread.
+
+instrument:
+  type: DEFINED_RISK_DIRECTIONAL
+  option_side: [CE, PE]
+  lot_size: 75
+
+strike_selection:
+  rule: EXISTING_PROJECT_RULE
+  project_ref: multi_strategy_backtest.build_spread
+  note: >
+    long leg = wall (nearest resistance for CE / support for PE) else
+    round(spot*1.01 or *0.99)/50*50, recomputed with the correct side;
+    short leg = nearest listed strike to long +/- SPREAD_WIDTH (500.0).
+    Skip if either leg unlisted or net debit <= 0.
+
+risk:
+  rule: EXISTING_PROJECT_RULE
+  project_ref: multi_strategy_backtest.simulate_spread
+  position_size:
+    lots: 1
+    lot_size: 75
+  max_risk_pct: 1.0
+  note: >
+    net debit = long LTP - short LTP (chain else BS sigma=0.15);
+    defined risk: max loss = width - net debit. ATR = max(10, 0.25*net_debit);
+    SL = max(2.0, net_debit - 1.5*ATR); target = net_debit + 2*(net_debit - SL).
+    4 orders round-trip.
+
+exit:
+  stop:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.simulate_spread
+  target:
+    rule: EXISTING_PROJECT_RULE
+    project_ref: multi_strategy_backtest.simulate_spread
+  expiry:
+    rule: CANONICAL_EXPIRY
+  allowed_reasons: [STOP_LOSS, TAKE_PROFIT, EXPIRY_SQUARE_OFF]
+  note: >
+    Exit on net mark (long - short); EXPIRY_SQUARE_OFF nets intrinsic value at
+    the contract's real expiry.
+
+execution:
+  cost_model: {cost_per_order: 40.0, orders_per_round_trip: 4}
+  slippage_pct: 0.015
+
+data_requirements:
+  - NIFTY
+  - VIX
+  - OPTIONS
+  - OI
+  - FII_DII
+  - ML_FEATURES
+  - EXPIRY_CALENDAR
+
+state:
+  lifecycle: BACKTESTED
+  classification: WEAK
+  promoted: false
+  note: >
+    Phase H evidence: 24 trades, win 20.8%, PF 0.473, net -44398.33,
+    maxDD -52179.12. Losing in every trend regime - should not be pursued.
+
+references:
+  frozen_source: multi_strategy_backtest.py run_candidate_b
+  evidence: >
+    Phase H result_hash c1d3a044e5744343bfa5796a8ea2c9f978b890d32f041fe627c37040ab3f6146
+    (candidate B: 24/20.8%/0.473/-44398.33/-52179.12).

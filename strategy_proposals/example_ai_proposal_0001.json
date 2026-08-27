@@ -1,0 +1,19 @@
+{
+  "author_model": "big-pickle",
+  "author_type": "AI",
+  "created_at": "2026-08-15T10:00:00+05:30",
+  "dataset_hash": "ff068e6d54094f696ce02ea357503251fb0ce973b286fcaa4f357bedbd7fa57a",
+  "evidence": "BACKTESTED",
+  "failure_code": null,
+  "fingerprint": "e1013100a04c288993691d6be159e0d38e2131b65c4b1d067c1f7b4ca019b36d",
+  "human_decision": "REQUEST_MORE_DATA",
+  "parent_strategy_id": "range_hv_iron_condor_v1",
+  "proposal_hash": "d5a060c59978ed4aaa1d84e081e89e6f682ee3915f6bab350377ac5cbec84e27",
+  "proposal_id": "example_ai_proposal_0001",
+  "result_hash": "0f7665acc54683fc527e0f3f2f1c192e5a9f62fe8c28736e3fe244930a8a00d8",
+  "spec_hash": "d8117eed20a7d17fbe32374f5623497ffc68283ae99b8b1a152f87d17b3c5da7",
+  "status": "REVIEW",
+  "strategy_id": "range_hv_iron_condor_v1",
+  "template_version": "1.0",
+  "title": "EXAMPLE ONLY - RANGE_HV condor research hypothesis (NOT FOR TRADING)"
+}
